@@ -32,18 +32,25 @@ Route::view('/about', 'website.pages.about');
 Route::prefix('dashboard')->group(function () {
     // Route::view('/', 'dashboard.pages.dashboard');
 });
+/**************** Website **********************/
+/****** Home *********/
+Route::get('listDoctors' , [HomePageController::class, 'listDoctors']);
+Route::get('listServices' , [HomePageController::class, 'listServices']);
+Route::get('listReviews' , [HomePageController::class, 'listReviews']);
 
 
+/**************** End Website **********************/
 
+
+/************************* Test lamiaa *********************/
 Route::prefix('test')->group(function () {
 
-    Route::get('doctors' , [HomePageController::class, 'listDoctors']);
+    Route::get('listDoctors' , [HomePageController::class, 'listDoctors']);
     Route::get('listServices' , [HomePageController::class, 'listServices']);
     Route::get('listReviews' , [HomePageController::class, 'listReviews']);
 
 });
-
-
+/************************* End Test *********************/
 
 
 

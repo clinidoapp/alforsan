@@ -56,5 +56,5 @@ class HomePageController extends Controller
 
     }
 
-    
+
 }
