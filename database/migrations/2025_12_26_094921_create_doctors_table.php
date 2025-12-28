@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('name_en');
-            $table->string('name_ar')->nullable();
+            $table->string('name_ar');
 
             $table->string('academic_title_en');
             $table->string('academic_title_ar');
@@ -31,6 +31,8 @@ return new class extends Migration
 
             $table->text('qualifications_en')->nullable();
             $table->text('qualifications_ar')->nullable();
+            $table->string('image')->nullable();
+
 
             $table->tinyInteger('status')
                 ->default(1)
