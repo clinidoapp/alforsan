@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->foreignId('request_id')
                 ->nullable()
-                ->constrained()
+                ->constrained('book_requests')
                 ->nullOnDelete();
 
             $table->tinyInteger('rate')

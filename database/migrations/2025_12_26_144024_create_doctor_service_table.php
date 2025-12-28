@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('doctor_service', function (Blueprint $table) {
             $table->id();
             $table->foreignId('doctor_id')
-                ->constrained()
+                ->constrained('doctors')
                 ->cascadeOnDelete();
 
             $table->foreignId('service_id')
-                ->constrained()
+                ->constrained('services')
                 ->cascadeOnDelete();
             $table->timestamps();
         });

@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\website\HomePageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -31,3 +32,18 @@ Route::view('/about', 'website.pages.about');
 Route::prefix('dashboard')->group(function () {
     // Route::view('/', 'dashboard.pages.dashboard');
 });
+
+
+
+Route::prefix('test')->group(function () {
+
+    Route::get('doctors' , [HomePageController::class, 'listDoctors']);
+    Route::get('listServices' , [HomePageController::class, 'listServices']);
+    Route::get('listReviews' , [HomePageController::class, 'listReviews']);
+
+});
+
+
+
+
+

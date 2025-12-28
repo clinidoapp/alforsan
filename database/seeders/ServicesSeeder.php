@@ -106,6 +106,7 @@ class ServicesSeeder extends Seeder
                 'description_en' => $service['description_en'],
                 'description_ar' => $service['description_ar'],
                 'status' => 1,
+                'icon' => 'icon.svg',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

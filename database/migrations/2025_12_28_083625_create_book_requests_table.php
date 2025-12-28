@@ -20,7 +20,7 @@ return new class extends Migration
 
             $table->foreignId('service_id')
                 ->nullable()
-                ->constrained()
+                ->constrained('services')
                 ->nullOnDelete();
             $table->text('notes')->nullable();
 
