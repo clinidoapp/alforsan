@@ -20,7 +20,7 @@ Route::post('/change-language', function (Request $request) {
 | Website routes
 |--------------------------------------------------------------------------
 */
-Route::view('/', 'website.pages.home');
+//Route::view('/', 'website.pages.home');
 Route::view('/services', 'website.pages.services');
 Route::view('/about', 'website.pages.about');
 
@@ -34,7 +34,9 @@ Route::prefix('dashboard')->group(function () {
 });
 /**************** Website **********************/
 /****** Home *********/
-Route::get('listDoctors' , [HomePageController::class, 'listDoctors']);
+
+Route::get('/' , [HomePageController::class, 'homeContent']);
+
 Route::get('listServices' , [HomePageController::class, 'listServices']);
 Route::get('listReviews' , [HomePageController::class, 'listReviews']);
 
@@ -42,13 +44,15 @@ Route::get('listReviews' , [HomePageController::class, 'listReviews']);
 /**************** End Website **********************/
 
 
+
+
+
+
 /************************* Test lamiaa *********************/
 Route::prefix('test')->group(function () {
-
     Route::get('listDoctors' , [HomePageController::class, 'listDoctors']);
     Route::get('listServices' , [HomePageController::class, 'listServices']);
     Route::get('listReviews' , [HomePageController::class, 'listReviews']);
-
 });
 /************************* End Test *********************/
 
