@@ -151,6 +151,7 @@ class ServicesSeeder extends Seeder
                 'brief_ar' => $service['brief_ar'],
                 'status' => 1,
                 'icon' => 'icon.svg',
+                'image' => 'image.png',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

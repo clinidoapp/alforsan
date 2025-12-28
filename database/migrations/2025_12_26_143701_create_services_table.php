@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('brief_ar')->nullable();
 
             $table->string('icon')->nullable();
+            $table->string('image')->nullable();
 
 
             $table->tinyInteger('status')
