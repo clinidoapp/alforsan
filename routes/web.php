@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\website\HomePageController;
+use App\Http\Controllers\website\ServicesPageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -21,7 +22,7 @@ Route::post('/change-language', function (Request $request) {
 |--------------------------------------------------------------------------
 */
 //Route::view('/', 'website.pages.home');
-Route::view('/services', 'website.pages.services');
+//Route::view('/services', 'website.pages.services');
 Route::view('/about', 'website.pages.about');
 
 /*
@@ -36,9 +37,11 @@ Route::prefix('dashboard')->group(function () {
 /****** Home *********/
 
 Route::get('/' , [HomePageController::class, 'homeContent']);
+Route::get('/services',[ServicesPageController::class, 'listServices']);
 
-Route::get('listServices' , [HomePageController::class, 'listServices']);
-Route::get('listReviews' , [HomePageController::class, 'listReviews']);
+
+//Route::get('listServices' , [HomePageController::class, 'listServices']);
+//Route::get('listReviews' , [HomePageController::class, 'listReviews']);
 
 
 /**************** End Website **********************/
