@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
             DoctorServiceSeeder::class,
             BookRequestsSeeder::class,
             ReviewsSeeder::class,
+            ServiceFaqsSeeder::class,
+            ServiceSymptomsSeeder::class,
+            ServiceTechniquesSeeder::class,
 
 
         ]);

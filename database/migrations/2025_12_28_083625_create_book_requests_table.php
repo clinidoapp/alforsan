@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('email');
 
             $table->foreignId('service_id')
-                ->nullable()
                 ->constrained('services')
                 ->nullOnDelete();
             $table->text('notes')->nullable();

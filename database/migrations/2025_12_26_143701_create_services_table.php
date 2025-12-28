@@ -19,6 +19,10 @@ return new class extends Migration
 
             $table->text('description_en')->nullable();
             $table->text('description_ar')->nullable();
+
+            $table->text('brief_en')->nullable();
+            $table->text('brief_ar')->nullable();
+
             $table->string('icon')->nullable();
 
 

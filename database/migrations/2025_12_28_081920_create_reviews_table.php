@@ -25,7 +25,7 @@ return new class extends Migration
             $table->text('comment')->nullable();
 
             $table->tinyInteger('status')
-                ->default(1)
+                ->default(0)
                 ->comment('1 = published, 0 = hidden');
 
             $table->softDeletes();

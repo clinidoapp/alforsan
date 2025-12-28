@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class ServicesPageController extends Controller
 {
-
     public function listServices(){
 
         $services = DB::table('services')
@@ -19,9 +18,5 @@ class ServicesPageController extends Controller
         return view('website.pages.services', compact('services'));
 
     }
-
-
-
-
 
 }
