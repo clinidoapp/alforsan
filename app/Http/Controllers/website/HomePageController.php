@@ -27,7 +27,6 @@ class HomePageController extends Controller
                 'name_ar' , 'name_en' ,'academic_title_en','academic_title_ar',
                 'main_speciality_en' ,'main_speciality_ar' ,
                 'image')->get();
-        dd(session('random_doctors_ids') , $doctors);
 
         $services = DB::table('services')
             ->where('status', 1)
