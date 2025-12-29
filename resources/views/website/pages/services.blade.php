@@ -1,38 +1,27 @@
 @extends('layouts.website')
 
 @section('title', 'Services')
-
+@php
+    $local=app()->getLocale();
+@endphp
 @section('content')
-<div class="container">
-    <h2 class="text-center text-primary-custom mb-4">Our Services</h2>
-
-    <div class="row">
-        <div class="col-md-4 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5>General Consultation</h5>
-                    <p>Professional medical consultations for all patients.</p>
-                </div>
+<section class="services py-5 mt-5 bg-light-blue">
+   <div class="container mt-4">
+      <div class="text-center">
+         <h1>{{ __('words.services_title') }}</h1>
+         <p>{{ __('words.services_subtitle') }}</p>
+      </div>
+      <div class="row">
+         @foreach($services as $service)
+         <div class="col-md-2 col-6">
+            <div class="card mb-3 p-3 text-center">
+               <img src="{{ asset('images/services_icons/'.$service->icon) }}">
+               <h3>{{ $service->{'name_'.$local} }} </h3>
             </div>
-        </div>
+         </div>
+         @endforeach
+      </div>
 
-        <div class="col-md-4 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5>Home Care</h5>
-                    <p>High-quality medical care at home.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mb-3">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5>Laboratory Services</h5>
-                    <p>Accurate and fast lab testing.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+   </div>
+</section>
 @endsection

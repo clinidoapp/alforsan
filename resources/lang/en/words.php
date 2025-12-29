@@ -4,7 +4,7 @@ return [
     'home' => 'Home',
     'services' => 'Services',
     'about_us' => 'About Us',
-    'contact' => 'Contact',
+    'contact' => 'Contact Us',
     'phone' => '+20 123 456 789',
     'email' => 'info@example.com',
     'language' => 'Language',
@@ -35,9 +35,13 @@ return [
     'Testimonials subtitle'=>'Real stories from patients who improved their eye health with us',
     'contactUs title'=>'We are here to serve you',
     'contactUs subtitle'=>'Contact us to book an appointment or inquire about our services.',
-    'Call us'=>'Call Us',
+    'Call us'=>'contact Us',
     'Working hours'=>'Working hours',
-    'address'=>'Address'
+    'address'=>'Address',
+    // footer
+    'Quick links'=>'Quick links',
+    'Our medical services'=>'Our medical services',
+    'doctors'=>'All Doctors'
 
 ];
 

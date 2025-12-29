@@ -31,6 +31,9 @@ body {
 .bg-light-blue{
     background-color:var(--bg-light-blue);
 }
+.bg-primary-custome{
+    background:var(--primary-color);
+}
 /* Navbar */
 .small-navbar{
     background-color:#fff !important;
@@ -40,6 +43,8 @@ body {
     background-color:var(--primary-color);
     color:#fff !important;
     margin-top: 30px;
+
+
 }
 .navbar {
     direction: ltr;
@@ -47,8 +52,19 @@ body {
     padding: 0;
     padding-top: 2px;
 }
-
+.nav-item .nav-link.active{
+    background: #fff;
+    border-radius: 4px;
+    color: #32519b !important;
+}
+.nav-item{
+    margin: 0 10px;
+}
+.nav-item .nav-link {
+	color: #fff;
+}
 .navbar-brand {
+	display: block;
     font-weight: 700;
     background: #fff;
     padding: 6px 140px 12px 60px;
@@ -73,9 +89,13 @@ h1, h2, h3, h4, h5 {
 
 /* Footer */
 footer {
-    background-color: #f0f2f5;
+    /* background-color: #f0f2f5; */
     color: var(--text-light);
+    border-top: 1px solid #fcfcfc;
+    padding-top: 16px;
 }
+
+
 
 /* Buttons */
 .btn-primary-custom {
@@ -152,6 +172,7 @@ footer {
 .services .card{
     border:none;
     align-items: center;
+    min-height: 124px;
 }
 .services .card img{
     width: 50px;
@@ -160,7 +181,7 @@ footer {
     font-size: 14px;
 }
 /* _________why choose us section___ */
-.why_choose_us h1, .ourTeam h1{
+.why_choose_us h1, .ourTeam h1, .Testimonials h1, .contactUs h1{
   font-size: 30px;
   font-stretch: normal;
   font-style: normal;
@@ -169,7 +190,7 @@ footer {
   text-align: center;
   color: #11b3cf;
 }
-.why_choose_us p, .ourTeam p{
+.why_choose_us p, .ourTeam p, .Testimonials p, .contactUs p{
     font-size: 20px;
   font-weight: normal;
   font-stretch: normal;
@@ -182,7 +203,7 @@ footer {
 .why_choose_us .card{
     padding: 20px;
     border:none;
-    min-height: 280px;
+    min-height: 300px;
 }
 .why_choose_us .card img{
     width: 50px;
@@ -238,14 +259,27 @@ footer {
   color: #000;
 }
 /* _____________ Testimonials _____________ */
+#testimonialsCarouselMobile,
+#testimonialsCarouselDesktop {
+    position: relative;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+
 .Testimonials .card{
-    border-radius: 8px;
+  border-radius: 8px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.31);
   background-color: #fff;
+      border: none;
+    border-bottom: 8px solid var(--primary-color);
+    min-height: 200px;
 }
-.Testimonials .card .stars{
+.Testimonials .card .stars i{
     align-self: anchor-center;
-    color:#ffc107;
+    color:#ffc107 !important;
 }
 .Testimonials .card .patient_review p{
     font-size: 16px;
@@ -274,17 +308,134 @@ footer {
 }
 
 .contactUs .card p{
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+/* ================================
+        Footer
+=================================== */
+.footer-toggle {
+    background: none;
+    border: 0;
+    color: var(--primary-color);
+    /* font-weight: 600; */
+    width: 100%;
+    text-align: left;
+    padding: 0;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.footer-toggle::after {
+    content: "+";
+    position: absolute;
+    right:  0;
+    font-size: 20px;
+}
+
+.footer-toggle[aria-expanded="true"]::after {
+    content: "−";
+}
+footer .list-unstyled {
+    padding-left: 0;
+    list-style: none;
+    padding-left: 14px;
+}
+#footerContact i{
+    color:var(--primary-color) !important;
+    font-size: 14px;
+    padding-right: 8px;
+}
+#socialLinks a{
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    padding: 6px 12px;
+    color: var(--primary-color) !important;
+    margin: 0 4px;
     font-size: 16px;
+    line-height: 1.8;
+}
+.dropdown-menu[data-bs-popper]{
+    right: 0 !important;
+    left: unset;
+}
+/* Desktop: disable toggle UI */
+@media (min-width: 768px) {
+    .footer-toggle::after {
+        display: none;
+    }
 }
 
 
 
+
 @media (max-width: 768px) {
+
+	.nav_custome {
+		width: 100%;
+		color: var(--primary-color) !important;
+	}
+
+	.nav_custome #mainNavbar {
+		background: #fff;
+		color: var(--primary-color) !important;
+	}
+
+	.nav-item .nav-link {
+		color: #000;
+	}
+
+	.navbar-toggler {
+		float: inline-end;
+		margin: 10px;
+		color: #fff;
+	}
+    .navbar-brand {
+    display: inline-block;
+    font-weight: 700;
+    background: #fff;
+    padding: 6px 85px 12px 21px;
+    clip-path: polygon(0 0, calc(100% - 70px) 0, 100% 70px, 100% 100%, 0 100%);
+}
     .home-header {
         text-align: center;
+        background-image: url(../images/bg@2x.webp);
+        margin-top: 100px;
+        height: 40vh;
     }
 
     .home-header h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
+    }
+        .home-header p{
+        padding: 0;
+    }
+    .why_choose_us h1, .ourTeam h1, .Testimonials h1, .contactUs h1, .services h1{
+        font-size: 20px;
+        line-height: 1.5;
+    }
+    .why_choose_us p, .ourTeam p, .Testimonials p, .contactUs p{
+        font-size: 16px;
+    }
+     .services-row {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .services-row > [class*="col-"] {
+        flex: 0 0 auto;
+        width: 56%;
+        max-width: 70%;
+    }
+
+    .services-row::-webkit-scrollbar {
+        display: none;
+    }
+    .why_choose_us .card {
+        min-height: 232px;
+    }
+    .ourTeam .card img{
+        width: 150px;
     }
 }

@@ -35,8 +35,13 @@ return [
     'Testimonials subtitle'=>'تجارب حقيقية لمرضى استعادوا صحة عيونهم معنا',
     'contactUs title'=>'نحن هنا لخدمتك',
     'contactUs subtitle'=>'تواصل معنا لحجز موعد أو الاستفسار عن خدماتنا',
-    'Call us'=>'اتصل بنا',
+    'Call us'=>'تواصل معنا',
     'Working hours'=>'مواعيد العمل',
     'address'=>'العنوان',
+    // footer
+    'Quick links'=>'روابط سريعه',
+    'Our medical services'=>'خدماتنا الطبية',
+    'doctors'=>'الأطباء'
+
 
 ];
