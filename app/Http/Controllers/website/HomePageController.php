@@ -10,7 +10,7 @@ class HomePageController extends Controller
 {
     public function homeContent(){
 
-        if (!Session::has('random_doctors_ids')) {
+        if (!session()->has('random_doctors_ids')) {
             $randomIds = DB::table('doctors')
                 ->where('status', 1)
                 ->where('is_deleted', 0)
@@ -18,14 +18,16 @@ class HomePageController extends Controller
                 ->limit(4)
                 ->pluck('id')
                 ->toArray();
-            Session::put('random_doctors_ids', $randomIds);
+           session()->put('random_doctors_ids', $randomIds);
         }
+
         $doctors = DB::table('doctors')
             ->whereIn('id', session('random_doctors_ids'))
             ->select('id',
                 'name_ar' , 'name_en' ,
                 'main_speciality_en' ,'main_speciality_ar' ,
                 'image')->get();
+        dd(session('random_doctors_ids') , $doctors);
 
         $services = DB::table('services')
             ->where('status', 1)
