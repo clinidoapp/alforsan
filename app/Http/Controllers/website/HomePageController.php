@@ -24,7 +24,7 @@ class HomePageController extends Controller
         $doctors = DB::table('doctors')
             ->whereIn('id', session('random_doctors_ids'))
             ->select('id',
-                'name_ar' , 'name_en' ,
+                'name_ar' , 'name_en' ,'academic_title_en','academic_title_ar',
                 'main_speciality_en' ,'main_speciality_ar' ,
                 'image')->get();
         dd(session('random_doctors_ids') , $doctors);

@@ -13,6 +13,7 @@
     --secondary-color: #11b3cf;
     --text-dark: #333333;
     --text-light: #666666;
+    --bg-light-blue:#f8fcfd;
     --bg-light: #f5f5f5;
     --white: #ffffff;
     --transition: all 0.3s ease;
@@ -24,11 +25,13 @@ html {
 
 body {
     font-family: 'DGHeaven', sans-serif;
-    background-color: var(--bg-light);
+    /* background-color: var(--bg-light); */
     color: var(--text-dark);
     text-align: right;
 }
-
+.bg-light-blue{
+    background-color:var(--bg-light-blue);
+}
 /* Navbar */
 .small-navbar{
     background-color:#fff !important;
@@ -37,6 +40,7 @@ body {
 .main-navbar{
     background-color:var(--primary-color);
     color:#fff !important;
+    margin-top: 30px;
 }
 .navbar {
     direction: rtl;
@@ -126,6 +130,167 @@ footer {
     line-height: 1.8;
     padding: 0 120px;
 }
+
+/* _________ counters section ___________*/
+.counters{
+    background:#fff;
+}
+.counters .card{
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.16);
+    border: none;
+}
+.counters .card img{
+    width: 50px;
+    align-self: center;
+    padding: 8px 0;
+}
+.counters .card h2{
+    font-size: 22px;
+}
+.counters .card span{
+      font-size: 16px;
+      color:var(--primary-color);
+
+}
+/* _____________ Services section _________________ */
+
+.services h1{
+    color:var(--secondary-color);
+    font-size: 2rem;
+}
+
+.services .card{
+    border:none;
+    align-items: center;
+}
+.services .card img{
+    width: 50px;
+}
+.services .card h3{
+    font-size: 14px;
+}
+/* _________why choose us section___ */
+.why_choose_us h1, .ourTeam h1, .Testimonials h1, .contactUs h1{
+  font-size: 30px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.13;
+  letter-spacing: normal;
+  text-align: center;
+  color: #11b3cf;
+}
+.why_choose_us p, .ourTeam p, .Testimonials p, .contactUs p{
+    font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.8;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000;
+}
+.why_choose_us .card{
+    padding: 20px;
+    border:none;
+    min-height: 280px;
+}
+.why_choose_us .card img{
+    width: 50px;
+    align-self: anchor-center;
+}
+.why_choose_us .card .why_us_feature{
+    font-size: 16px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: center;
+    color: #32519b;
+}
+.why_choose_us .card .why_us_feature_description{
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.75;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000;
+}
+/* _______________ our team ______________ */
+.ourTeam .card{
+    border:none;
+    border-bottom: 8px solid var(--primary-color);
+}
+.ourTeam .card img{
+    border-top-right-radius: 4px;
+    height: 200px;
+    border-top-left-radius: 4px;
+}
+.ourTeam .card .doctor-data .doctor_name{
+     font-size: 18px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: center;
+    color: #32519b;
+}
+.ourTeam .card .doctor-data .about-doctor{
+     font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: center;
+  color: #000;
+}
+/* _____________ Testimonials _____________ */
+.Testimonials .card{
+    border-radius: 8px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.31);
+  background-color: #fff;
+      border: none;
+    border-bottom: 8px solid var(--primary-color);
+}
+.Testimonials .card .stars{
+    align-self: anchor-center;
+    color:#ffc107;
+}
+.Testimonials .card .patient_review p{
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: #0e0e0e;
+}
+/* _________________contact us____________________ */
+.contactUs .card img{
+    width: 50px;
+    align-self: anchor-center;
+}
+.contactUs .card h2{
+    font-size: 18px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: center;
+    color: #32519b;
+    margin-top: 14px;
+}
+.contactUs .card p{
+    font-size: 16px;
+}
+
+
+
+
+
 @media (max-width: 768px) {
     .home-header {
         text-align: center;

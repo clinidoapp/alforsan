@@ -1,6 +1,6 @@
 
 <!-- Top Navbar: Contacts & Social -->
-<nav class="navbar navbar-expand-lg navbar-dark py-1 small-navbar">
+<nav class="navbar navbar-expand-lg navbar-dark py-1 small-navbar fixed-top">
     <div class="container">
         <div class="d-flex justify-content-between w-100">
             <div class="contact-info">
@@ -16,7 +16,7 @@
     </div>
 </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light main-navbar">
+<nav class="navbar navbar-expand-lg navbar-light main-navbar fixed-top">
     <div class="d-flex justify-content-between">
         <!-- Logo -->
         <a class="navbar-brand" href="{{ url('/') }}">
