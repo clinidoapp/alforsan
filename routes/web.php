@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\website\ContactPageController;
 use App\Http\Controllers\website\DoctorsPageController;
 use App\Http\Controllers\website\HomePageController;
 use App\Http\Controllers\website\ServicesPageController;
@@ -39,6 +40,7 @@ Route::prefix('dashboard')->group(function () {
 
 Route::get('/' , [HomePageController::class, 'homeContent']);
 Route::get('/services',[ServicesPageController::class, 'listServices']);
+Route::get('/contact_us',[ContactPageController::class, 'index']);
 Route::get('serviceDetails/{id}' , [ServicesPageController::class, 'serviceDetails']);
 Route::get('doctors' , [DoctorsPageController::class, 'listDoctors']);
 Route::get('doctorDetails/{id}' , [DoctorsPageController::class, 'doctorDetails']);
@@ -63,6 +65,7 @@ Route::prefix('test')->group(function () {
     Route::get('serviceDetails/{id}' , [ServicesPageController::class, 'serviceDetails']);
     Route::get('listDoctors' , [DoctorsPageController::class, 'listDoctors']);
     Route::get('doctorDetails/{id}' , [DoctorsPageController::class, 'doctorDetails']);
+    Route::post('storeRequest' , [ContactPageController::class, 'StoreRequest']);
 });
 /************************* End Test *********************/
 

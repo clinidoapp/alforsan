@@ -10,14 +10,38 @@ use function Laravel\Prompts\select;
 class DoctorsPageController extends Controller
 {
 
-    public function listDoctors(){
+    public function listDoctors(Request $request){
 
-        $doctors= DB::table('doctors')
+        $query= DB::table('doctors')
             ->where('status', 1)
             ->where('is_deleted', 0)
-            ->select('id','name_en' , 'name_ar' , 'image' , 'main_speciality_en' , 'main_speciality_ar')
-            ->paginate(12);
+            ->select('id','name_en' , 'name_ar' , 'image' ,
+                'main_speciality_en' , 'main_speciality_ar');
 
+
+        if ($request->filled('doctor_name')) {
+            $search = trim($request->doctor_name);
+
+            $search = str_replace(['أ','إ','آ'], 'ا', $search);
+            $search = str_replace(['ى','ي'], 'ي', $search);
+            $search = str_replace('ة', 'ه', $search);
+            $query->where( function ($q) use ($search) {
+                $q->where('name_en', 'like', '%' . $search . '%')
+                    ->orWhereRaw("
+        REPLACE(
+          REPLACE(
+            REPLACE(
+              REPLACE(
+                REPLACE(name_ar,'أ','ا'),
+              'إ','ا'),
+            'آ','ا'),
+          'ى','ي'),
+        'ة','ه')
+        LIKE ?
+      ", ["%{$search}%"]);
+            });
+        }
+        $doctors =    $query->paginate(12);
         return view('website.pages.doctors', compact('doctors'));
 
     }
