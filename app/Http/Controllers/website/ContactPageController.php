@@ -28,6 +28,8 @@ class ContactPageController extends Controller
             'service_id' => $data['service_id'],
             'notes' => $data['notes'],
             'status' => 0,
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
         return redirect()->route('contact_us');
 
