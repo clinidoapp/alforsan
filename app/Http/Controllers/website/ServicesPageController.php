@@ -67,7 +67,12 @@ class ServicesPageController extends Controller
                  'suitable_for_ar'
              )
              ->get();
-         $result = ServiceDto::toJson($service , $faqs , $symptoms , $techniques);
+         $doctors = DB::table('doctor_service')->where('service_id', $id)
+             ->join('doctors', 'doctor_service.doctor_id', '=', 'doctors.id')
+             ->select('doctors.id', 'doctors.name_en', 'doctors.name_ar', 'doctors.image')
+             ->get()->toArray();
+         $result = ServiceDto::toJson($service , $faqs , $symptoms , $techniques , $doctors);
+
          return view('*********', compact('result'));
     }
 }

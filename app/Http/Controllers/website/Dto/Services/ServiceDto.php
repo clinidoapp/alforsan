@@ -18,8 +18,10 @@ class ServiceDto extends Controller
     public array $symptoms = [];
     /** @var ServiceTechniqueDto[] */
     public array $techniques = [];
+    public ?array $doctors = [];
 
-    public static function toJson($service , $faqs = null , $symptoms = null , $techniques =null): ServiceDto
+
+    public static function toJson($service , $faqs = null , $symptoms = null , $techniques =null , $doctors = null ): ServiceDto
     {
         $result = new ServiceDto();
         $result->id = $service->id;
@@ -40,6 +42,11 @@ class ServiceDto extends Controller
         if ($techniques) {
             foreach ($techniques as $technique) {
                 $result->techniques[] = ServiceTechniqueDto::toJson($technique);
+            }
+        }
+        if ($doctors) {
+            foreach ($doctors as $doctor) {
+                $result->doctors[] = ServiceDoctorsDto::toJson($doctor);
             }
         }
         return $result;
