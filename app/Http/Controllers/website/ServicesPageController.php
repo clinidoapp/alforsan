@@ -19,9 +19,9 @@ class ServicesPageController extends Controller
         return view('website.pages.services', compact('services'));
 
     }
-     public function serviceDetails($id){
+    public function serviceDetails($id){
 
-         $service =    DB::table('services')
+         $service = DB::table('services')
              ->where('id', $id)
              ->where('status', 1)
              ->whereNotNull('icon')

@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\website\DoctorsPageController;
 use App\Http\Controllers\website\HomePageController;
 use App\Http\Controllers\website\ServicesPageController;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,8 @@ Route::prefix('dashboard')->group(function () {
 Route::get('/' , [HomePageController::class, 'homeContent']);
 Route::get('/services',[ServicesPageController::class, 'listServices']);
 Route::get('serviceDetails/{id}' , [ServicesPageController::class, 'serviceDetails']);
+Route::get('doctors' , [DoctorsPageController::class, 'listDoctors']);
+Route::get('doctorDetails/{id}' , [DoctorsPageController::class, 'doctorDetails']);
 
 
 //Route::get('listServices' , [HomePageController::class, 'listServices']);
@@ -58,6 +61,8 @@ Route::prefix('test')->group(function () {
     Route::get('listServices' , [HomePageController::class, 'listServices']);
     Route::get('listReviews' , [HomePageController::class, 'listReviews']);
     Route::get('serviceDetails/{id}' , [ServicesPageController::class, 'serviceDetails']);
+    Route::get('listDoctors' , [DoctorsPageController::class, 'listDoctors']);
+    Route::get('doctorDetails/{id}' , [DoctorsPageController::class, 'doctorDetails']);
 });
 /************************* End Test *********************/
 
