@@ -15,7 +15,7 @@ class DoctorsPageController extends Controller
         $query= DB::table('doctors')
             ->where('status', 1)
             ->where('is_deleted', 0)
-            ->select('id','name_en' , 'name_ar' , 'image' ,
+            ->select('id','name_en' , 'name_ar' , 'image' ,'academic_title_ar','academic_title_en',
                 'main_speciality_en' , 'main_speciality_ar');
 
 
@@ -41,7 +41,7 @@ class DoctorsPageController extends Controller
       ", ["%{$search}%"]);
             });
         }
-        $doctors =    $query->paginate(12);
+        $doctors =    $query->paginate(10);
         return view('website.pages.doctors', compact('doctors'));
 
     }

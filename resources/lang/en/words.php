@@ -3,7 +3,7 @@
 return [
     'home' => 'Home',
     'services' => 'Services',
-    'about_us' => 'About Us',
+    'about_us' => 'About hospital',
     'contact' => 'Contact Us',
     'phone' => '+20 123 456 789',
     'email' => 'info@example.com',
@@ -38,6 +38,13 @@ return [
     'Call us'=>'contact Us',
     'Working hours'=>'Working hours',
     'address'=>'Address',
+    'doctors title'=>'Our Medical Team.. Expertise You Can Trust',
+    'doctors sub_title'=>'At Alforsan Center, we believe that the cornerstone of any medical success is the doctor That’s why our center includes a constellation of the most skilled ophthalmology professors and consultants, who combine deep knowledge with extensive practical experience and compassionate.patient care',
+    'about_us title'=>'About Alforsan Eye Center',
+    'our vision'=>'Our Vision',
+    'our vision text'=>'To be the leading and trusted centre in the field of ophthalmology, by providing exceptional medical care that matches international standards, while maintaining human values in  dealing with our patients',
+    'our mission'=>'Our Mission',
+    'our mission text'=>'Our mission is to preserve the gift of sight for our patients by providing the latest diagnostic and therapeutic solutions, in a safe and comfortable environment, at the hands of an expert medical team that puts the patient first and treats them with professionalism and compassion',
     // footer
     'Quick links'=>'Quick links',
     'Our medical services'=>'Our medical services',

@@ -1,5 +1,5 @@
 @extends('layouts.website')
-@section('title', 'Home')
+@section('title', 'Home - Alforsan Hospital')
 @section('content')
 @php
     $local=app()->getLocale();

@@ -1,381 +1,490 @@
 /* ===============================
    English Website Styles (LTR)
    =============================== */
-   @font-face {
-    font-family: 'PT Serif Caption';
-    src: url('../fonts/PTSerifCaption-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+@font-face {
+	font-family: 'PT Serif Caption';
+	src: url('../fonts/PTSerifCaption-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
 }
 
 :root {
-    --primary-color: #32519b;
-    --secondary-color: #11b3cf;
-    --text-dark: #333333;
-    --text-light: #666666;
-    --bg-light-blue:#f8fcfd;
-    --bg-light: #f5f5f5;
-    --white: #ffffff;
-    --transition: all 0.3s ease;
+	--primary-color: #32519b;
+	--secondary-color: #11b3cf;
+	--text-dark: #333333;
+	--text-light: #666666;
+	--bg-light-blue: #f8fcfd;
+	--bg-light: #f5f5f5;
+	--white: #ffffff;
+	--transition: all 0.3s ease;
 }
 
 html {
-    direction: ltr;
+	direction: ltr;
 }
 
 body {
-    font-family: 'PT Serif Caption', serif;
-     /* background-color: var(--bg-light); */
-    color: var(--text-dark);
+	font-family: 'PT Serif Caption', serif;
+	/* background-color: var(--bg-light); */
+	color: var(--text-dark);
 }
-.bg-light-blue{
-    background-color:var(--bg-light-blue);
+
+.bg-light-blue {
+	background-color: var(--bg-light-blue);
 }
-.bg-primary-custome{
-    background:var(--primary-color);
+
+.bg-primary-custome {
+	background: var(--primary-color);
 }
+
 /* Navbar */
-.small-navbar{
-    background-color:#fff !important;
-    color:#000 !important;
+.small-navbar {
+	background-color: #fff !important;
+	color: #000 !important;
 }
-.main-navbar{
-    background-color:var(--primary-color);
-    color:#fff !important;
-    margin-top: 30px;
+
+.main-navbar {
+	background-color: var(--primary-color);
+	color: #fff !important;
+	margin-top: 30px;
 
 
 }
+
 .navbar {
-    direction: ltr;
-    background-color:var(--primary-color);
-    padding: 0;
-    padding-top: 2px;
+	direction: ltr;
+	background-color: var(--primary-color);
+	padding: 0;
+	padding-top: 2px;
 }
-.nav-item .nav-link.active{
-    background: #fff;
-    border-radius: 4px;
-    color: #32519b !important;
+
+.nav-item .nav-link.active {
+	background: #fff;
+	border-radius: 4px;
+	color: #32519b !important;
 }
-.nav-item{
-    margin: 0 10px;
+
+.nav-item {
+	margin: 0 10px;
 }
+
 .nav-item .nav-link {
 	color: #fff;
 }
+
 .navbar-brand {
 	display: block;
-    font-weight: 700;
-    background: #fff;
-    padding: 6px 140px 12px 60px;
-    clip-path: polygon(0 0, calc(100% - 70px) 0, 100% 70px, 100% 100%, 0 100%);
+	font-weight: 700;
+	background: #fff;
+	padding: 6px 140px 12px 60px;
+	clip-path: polygon(0 0, calc(100% - 70px) 0, 100% 70px, 100% 100%, 0 100%);
 
 }
 
 /* Links */
 a {
-    color: var(--primary-color);
-    transition: var(--transition);
+	color: var(--primary-color);
+	transition: var(--transition);
 }
 
 a:hover {
-    color: var(--secondary-color);
+	color: var(--secondary-color);
 }
 
 /* Headings */
-h1, h2, h3, h4, h5 {
-    color: var(--primary-color);
+h1,
+h2,
+h3,
+h4,
+h5,
+i {
+	color: var(--primary-color);
 }
 
 /* Footer */
 footer {
-    /* background-color: #f0f2f5; */
-    color: var(--text-light);
-    border-top: 1px solid #fcfcfc;
-    padding-top: 16px;
+	/* background-color: #f0f2f5; */
+	color: var(--text-light);
+	border-top: 1px solid #fcfcfc;
+	padding-top: 16px;
 }
-
 
 
 /* Buttons */
 .btn-primary-custom {
-    background-color: var(--primary-color);
-    color: var(--white);
-    border: none;
+	background-color: var(--primary-color);
+	color: var(--white);
+	border: none;
 }
 
 .btn-primary-custom:hover {
-    background-color: var(--secondary-color);
+	background-color: var(--secondary-color);
 }
+
+.btn-outline-primary {
+	border-color: var(--primary-color);
+	color: var(--primary-color);
+}
+
+.btn-outline-primary:focus, .btn-outline-primary:active, .btn-outline-primary:focus-visible  {
+	border-color: var(--primary-color) !important;
+	background: var(--primary-color) !important;
+}
+
 /*=====================================
             Home page
 =======================================*/
 .home-header {
-    position: relative;
-    height: 60vh;
-    background-image: url('../images/bg-header-1@3x.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+	position: relative;
+	height: 60vh;
+    margin-top: 100px;
+	background-image: url('../images/bg-header-1@3x.webp');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 .home-header .overlay {
-    position: absolute;
-    inset: 0;
-    /* background: rgba(0, 0, 0, 0.55); */
+	position: absolute;
+	inset: 0;
+	/* background: rgba(0, 0, 0, 0.55); */
 }
 
 .home-header .container {
-    position: relative;
-    z-index: 2;
+	position: relative;
+	z-index: 2;
 }
 
 .home-header h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #fff !important;
+	font-size: 3rem;
+	font-weight: 700;
+	color: #fff !important;
 }
 
 .home-header p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    padding: 0 120px;
+	font-size: 1.1rem;
+	line-height: 1.8;
+	padding: 0 120px;
 }
+
 /* _________ counters section ___________*/
-.counters{
-    background:#fff;
+.counters {
+	background: #fff;
 }
-.counters .card{
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.16);
-    border: none;
+
+.counters .card {
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.16);
+	border: none;
 }
-.counters .card img{
-    width: 50px;
-    align-self: center;
-    padding: 8px 0;
+
+.counters .card img {
+	width: 50px;
+	align-self: center;
+	padding: 8px 0;
 }
-.counters .card h2{
-    font-size: 22px;
+
+.counters .card h2 {
+	font-size: 22px;
 }
-.counters .card span{
-      font-size: 16px;
-      color:var(--primary-color);
+
+.counters .card span {
+	font-size: 16px;
+	color: var(--primary-color);
 
 }
+
 /* _____________ Services section _________________ */
 
-.services h1{
-    color:var(--secondary-color);
-    font-size: 2rem;
+.services h1 {
+	color: var(--secondary-color);
+	font-size: 2rem;
 }
 
-.services .card{
-    border:none;
-    align-items: center;
-    min-height: 124px;
+.services .card {
+	border: none;
+	align-items: center;
+	min-height: 124px;
 }
-.services .card img{
-    width: 50px;
+
+.services .card img {
+	width: 50px;
 }
-.services .card h3{
-    font-size: 14px;
+
+.services .card h3 {
+	font-size: 14px;
 }
+
 /* _________why choose us section___ */
-.why_choose_us h1, .ourTeam h1, .Testimonials h1, .contactUs h1{
-  font-size: 30px;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.13;
-  letter-spacing: normal;
-  text-align: center;
-  color: #11b3cf;
+.why_choose_us h1,
+.ourTeam h1,
+.Testimonials h1,
+.contactUs h1 {
+	font-size: 30px;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.13;
+	letter-spacing: normal;
+	text-align: center;
+	color: #11b3cf;
 }
-.why_choose_us p, .ourTeam p, .Testimonials p, .contactUs p{
-    font-size: 20px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.8;
-  letter-spacing: normal;
-  text-align: center;
-  color: #000;
+
+.why_choose_us p,
+.ourTeam p,
+.Testimonials p,
+.contactUs p {
+	font-size: 20px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.8;
+	letter-spacing: normal;
+	text-align: center;
+	color: #000;
 }
-.why_choose_us .card{
-    padding: 20px;
-    border:none;
-    min-height: 300px;
+
+.why_choose_us .card {
+	padding: 20px;
+	border: none;
+	min-height: 300px;
 }
-.why_choose_us .card img{
-    width: 50px;
-    align-self: anchor-center;
+
+.why_choose_us .card img {
+	width: 50px;
+	align-self: anchor-center;
 
 }
-.why_choose_us .card .why_us_feature{
-    font-size: 16px;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
-    text-align: center;
-    color: #32519b;
+
+.why_choose_us .card .why_us_feature {
+	font-size: 16px;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.2;
+	letter-spacing: normal;
+	text-align: center;
+	color: #32519b;
 }
-.why_choose_us .card .why_us_feature_description{
-  font-size: 14px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.75;
-  letter-spacing: normal;
-  text-align: center;
-  color: #000;
+
+.why_choose_us .card .why_us_feature_description {
+	font-size: 14px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.75;
+	letter-spacing: normal;
+	text-align: center;
+	color: #000;
 }
+
 /* _______________ our team ______________ */
-.ourTeam .card{
-    border:none;
-    border-bottom: 8px solid var(--primary-color);
+.ourTeam .card {
+	border: none;
+	border-bottom: 8px solid var(--primary-color);
 }
-.ourTeam .card img{
-    border-top-right-radius: 4px;
-    height: 200px;
-    border-top-left-radius: 4px;
+
+.ourTeam .card img {
+	border-top-right-radius: 4px;
+	height: 200px;
+	border-top-left-radius: 4px;
 }
-.ourTeam .card .doctor-data .doctor_name{
-     font-size: 18px;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
-    text-align: center;
-    color: #32519b;
+
+.ourTeam .card .doctor-data .doctor_name {
+	font-size: 18px;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.2;
+	letter-spacing: normal;
+	text-align: center;
+	color: #32519b;
 }
-.ourTeam .card .doctor-data .about-doctor{
-     font-size: 16px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
-  text-align: center;
-  color: #000;
+
+.ourTeam .card .doctor-data .about-doctor {
+	font-size: 16px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.25;
+	letter-spacing: normal;
+	text-align: center;
+	color: #000;
 }
+
 /* _____________ Testimonials _____________ */
 #testimonialsCarouselMobile,
 #testimonialsCarouselDesktop {
-    position: relative;
+	position: relative;
 }
 
 .carousel-control-prev,
 .carousel-control-next {
-    width: 5%;
+	width: 5%;
 }
 
-.Testimonials .card{
-  border-radius: 8px;
-  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.31);
-  background-color: #fff;
-      border: none;
-    border-bottom: 8px solid var(--primary-color);
-    min-height: 200px;
+.Testimonials .card {
+	border-radius: 8px;
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.31);
+	background-color: #fff;
+	border: none;
+	border-bottom: 8px solid var(--primary-color);
+	min-height: 200px;
 }
-.Testimonials .card .stars i{
-    align-self: anchor-center;
-    color:#ffc107 !important;
+
+.Testimonials .card .stars i {
+	align-self: anchor-center;
+	color: #ffc107 !important;
 }
-.Testimonials .card .patient_review p{
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: center;
-    color: #0e0e0e;
+
+.Testimonials .card .patient_review p {
+	font-size: 16px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.33;
+	letter-spacing: normal;
+	text-align: center;
+	color: #0e0e0e;
 }
+
 /* _________________contact us____________________ */
-.contactUs .card img{
-    width: 50px;
-    align-self: anchor-center;
-}
-.contactUs .card h2{
-    font-size: 18px;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
-    text-align: center;
-    color: #32519b;
-    margin-top: 14px;
+.contactUs .card img {
+	width: 50px;
+	align-self: anchor-center;
 }
 
-.contactUs .card p{
-    font-size: 14px;
-    margin-bottom: 4px;
+.contactUs .card h2 {
+	font-size: 18px;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.2;
+	letter-spacing: normal;
+	text-align: center;
+	color: #32519b;
+	margin-top: 14px;
+}
+
+.contactUs .card p {
+	font-size: 14px;
+	margin-bottom: 4px;
+}
+/* =================================
+        Doctors view
+==================================== */
+.search-box {
+    max-width: 450px;
+    height: 42px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+}
+
+.search-box .form-control:focus {
+    box-shadow: none;
+}
+
+.search-box .input-group-text {
+    background-color: #fff;
+}
+.search-box.ltr .input-group-text {
+    border-radius: 8px 0 0 8px;
+    border-right: 0;
+}
+.search-box.ltr .form-control {
+    border-radius: 0;
+    border-left: 0;
+}
+.search-box.ltr .btn {
+    border-radius: 0 8px 8px 0;
+}
+.page-link{
+    color: var(--primary-color);
+    margin: 0 20px;
+    border-radius: 4px;
+    padding: 8px 16px;
+}
+.pagination p.small.text-muted{
+    display: none;
 }
 /* ================================
         Footer
 =================================== */
 .footer-toggle {
-    background: none;
-    border: 0;
-    color: var(--primary-color);
-    /* font-weight: 600; */
-    width: 100%;
-    text-align: left;
-    padding: 0;
-    margin-bottom: 10px;
-    position: relative;
+	background: none;
+	border: 0;
+	color: var(--primary-color);
+	/* font-weight: 600; */
+	width: 100%;
+	text-align: left;
+	padding: 0;
+	margin-bottom: 10px;
+	position: relative;
 }
 
 .footer-toggle::after {
-    content: "+";
-    position: absolute;
-    right:  0;
-    font-size: 20px;
+	content: "+";
+	position: absolute;
+	right: 0;
+	font-size: 20px;
 }
 
 .footer-toggle[aria-expanded="true"]::after {
-    content: "−";
+	content: "−";
 }
+
 footer .list-unstyled {
-    padding-left: 0;
-    list-style: none;
-    padding-left: 14px;
+	padding-left: 0;
+	list-style: none;
+	padding-left: 14px;
 }
-#footerContact i{
-    color:var(--primary-color) !important;
-    font-size: 14px;
-    padding-right: 8px;
+
+#footerContact i {
+	color: var(--primary-color) !important;
+	font-size: 14px;
+	padding-right: 8px;
 }
-#socialLinks a{
-    border: 1px solid var(--primary-color);
-    border-radius: 50%;
-    padding: 6px 12px;
-    color: var(--primary-color) !important;
-    margin: 0 4px;
-    font-size: 16px;
-    line-height: 1.8;
+
+#socialLinks a {
+	border: 1px solid var(--primary-color);
+	border-radius: 50%;
+	padding: 6px 12px;
+	color: var(--primary-color) !important;
+	margin: 0 4px;
+	font-size: 16px;
+	line-height: 1.8;
 }
-.dropdown-menu[data-bs-popper]{
-    right: 0 !important;
-    left: unset;
+
+.dropdown-menu[data-bs-popper] {
+	right: 0 !important;
+	left: unset;
 }
+
 /* Desktop: disable toggle UI */
 @media (min-width: 768px) {
-    .footer-toggle::after {
-        display: none;
-    }
+	.footer-toggle::after {
+		display: none;
+	}
 }
-
-
 
 
 @media (max-width: 768px) {
+	.navbar-nav {
+		padding-right: 0 !important;
+		padding-left: 36px;
+	}
 
+	.btn-outline-primary.w-100.selected {
+		background: #f5f5f5;
+		border: none;
+		color: #000;
+		font-weight: 600;
+	}
+    .small-navbar .d-flex.justify-content-between.w-100{
+        font-size: 11px !important;
+    }
 	.nav_custome {
 		width: 100%;
 		color: var(--primary-color) !important;
 	}
-
+    .main-navbar{
+        margin-top: 24px;
+    }
 	.nav_custome #mainNavbar {
 		background: #fff;
 		color: var(--primary-color) !important;
@@ -390,52 +499,67 @@ footer .list-unstyled {
 		margin: 10px;
 		color: #fff;
 	}
-    .navbar-brand {
-    display: inline-block;
-    font-weight: 700;
-    background: #fff;
-    padding: 6px 85px 12px 21px;
-    clip-path: polygon(0 0, calc(100% - 70px) 0, 100% 70px, 100% 100%, 0 100%);
-}
-    .home-header {
-        text-align: center;
-        background-image: url(../images/bg@2x.webp);
-        margin-top: 100px;
-        height: 40vh;
-    }
 
-    .home-header h1 {
-        font-size: 2rem;
-    }
-        .home-header p{
-        padding: 0;
-    }
-    .why_choose_us h1, .ourTeam h1, .Testimonials h1, .contactUs h1, .services h1{
-        font-size: 20px;
-        line-height: 1.5;
-    }
-    .why_choose_us p, .ourTeam p, .Testimonials p, .contactUs p{
-        font-size: 16px;
-    }
-     .services-row {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
+	.navbar-brand {
+		display: inline-block;
+		font-weight: 700;
+		background: #fff;
+		padding: 6px 85px 12px 21px;
+		clip-path: polygon(0 0, calc(100% - 70px) 0, 100% 70px, 100% 100%, 0 100%);
+	}
 
-    .services-row > [class*="col-"] {
-        flex: 0 0 auto;
-        width: 56%;
-        max-width: 70%;
-    }
+	.home-header {
+		text-align: center;
+		background-image: url(../images/bg@2x.webp);
+		margin-top: 94px;
+		height: 40vh;
+	}
 
-    .services-row::-webkit-scrollbar {
-        display: none;
-    }
-    .why_choose_us .card {
-        min-height: 232px;
-    }
-    .ourTeam .card img{
-        width: 150px;
-    }
+	.home-header h1 {
+		font-size: 1.8rem;
+	}
+
+	.home-header p {
+		padding: 0;
+	}
+
+	.why_choose_us h1,
+	.ourTeam h1,
+	.Testimonials h1,
+	.contactUs h1,
+	.services h1 {
+		font-size: 20px;
+		line-height: 1.5;
+	}
+
+	.why_choose_us p,
+	.ourTeam p,
+	.Testimonials p,
+	.contactUs p {
+		font-size: 16px;
+	}
+
+	.services-row,
+	.doctors_row {
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.services-row>[class*="col-"],
+	.doctors_row>[class*="col-"] {
+		flex: 0 0 auto;
+		width: 70%;
+		max-width: 70%;
+	}
+
+	.services-row::-webkit-scrollbar,
+	.doctors_row::-webkit-scrollbar {
+		display: none;
+	}
+
+	.why_choose_us .card {
+		min-height: 232px;
+	}
+
 }
