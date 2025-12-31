@@ -11,11 +11,17 @@ class ContactPageController extends Controller
 {
     public function index(){
 
-        $services = DB::table('services')
+        $services = DB::table('booking_services')
             ->select('id' , 'name_en' , 'name_ar')
             ->get();
-
         return view('website.contact' ,  compact('services'));
+    }
+    public function getBookingServices(){
+
+        $services = DB::table('booking_services')
+            ->select('id' , 'name_en' , 'name_ar')
+            ->get();
+        return $services;
     }
 
     public function StoreRequest(StoreBookRequest $request){
