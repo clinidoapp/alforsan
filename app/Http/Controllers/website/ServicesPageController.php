@@ -69,10 +69,9 @@ class ServicesPageController extends Controller
              ->get();
          $doctors = DB::table('doctor_service')->where('service_id', $id)
              ->join('doctors', 'doctor_service.doctor_id', '=', 'doctors.id')
-             ->select('doctors.id', 'doctors.name_en', 'doctors.name_ar', 'doctors.image')
+             ->select('doctors.id', 'doctors.name_en', 'doctors.name_ar', 'doctors.image', 'doctors.main_speciality_en' , 'doctors.main_speciality_ar')
              ->get()->toArray();
          $result = ServiceDto::toJson($service , $faqs , $symptoms , $techniques , $doctors);
-
          return view('*********', compact('result'));
     }
 }

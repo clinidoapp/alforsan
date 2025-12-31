@@ -10,6 +10,8 @@ class ServiceDoctorsDto extends Controller
     public ?int $id;
     public ?string $name_en;
     public ?string $name_ar;
+    public ?string $main_speciality_ar;
+    public ?string $main_speciality_en;
     public ?string $image;
     public static function toJson($doctor): ServiceDoctorsDto
     {
@@ -17,6 +19,8 @@ class ServiceDoctorsDto extends Controller
         $result->id = $doctor->id;
         $result->name_en = $doctor->name_en;
         $result->name_ar = $doctor->name_ar;
+        $result->main_speciality_ar = $doctor->main_speciality_ar;
+        $result->main_speciality_en = $doctor->main_speciality_en;
         $result->image = $doctor->image;
         return $result;
     }
