@@ -31,11 +31,16 @@ class ContactPageController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        return redirect()->route('contact_us');
-
-
-
-
-
+        $service = DB::table('services')->where('id' , '=' , $data['service_id'])
+        ->select("id" , 'name_en' , 'name_ar')->
+        first();
+        $response = [
+            'patient_name' => $data['full_name'],
+            'patient_email' => $data['email'],
+            'patient_phone' => $data['phone'],
+            'service_name_en' => $service->name_en,
+            'service_name_ar' => $service->name_ar,
+        ];
+        return view('******' ,  compact('response'));
     }
 }
