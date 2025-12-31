@@ -62,7 +62,7 @@ Route::prefix('test')->group(function () {
     Route::get('listDoctors' , [HomePageController::class, 'listDoctors']);
     Route::get('listServices' , [HomePageController::class, 'listServices']);
     Route::get('listReviews' , [HomePageController::class, 'listReviews']);
-    Route::get('serviceDetails/{id}' , [ServicesPageController::class, 'serviceDetails']);
+    Route::get('serviceDetails/{slug}' , [ServicesPageController::class, 'serviceDetails']);
     Route::get('listDoctors' , [DoctorsPageController::class, 'listDoctors']);
     Route::get('doctorDetails/{id}' , [DoctorsPageController::class, 'doctorDetails']);
     Route::post('storeRequest' , [ContactPageController::class, 'StoreRequest']);
