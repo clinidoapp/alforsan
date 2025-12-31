@@ -22,7 +22,7 @@
             </span>
 
             <input type="text"
-                   name="query"
+                   name="doctor_name"
                    class="form-control"
                    placeholder="{{ $isArabic ? 'ابحث هنا...' : 'Search here...' }}"
                    aria-label="Search">

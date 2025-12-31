@@ -5,14 +5,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark py-1 small-navbar fixed-top">
    <div class="container">
       <div class="d-flex justify-content-between w-100">
+          <div class="social-links">
+             <a href="#" class="mx-2"><i class="fa-brands fa-facebook-f"></i></a>
+             <a href="#" class="mx-2"><i class="fa-brands fa-twitter"></i></a>
+             <a href="#" class="mx-2"><i class="fa-brands fa-instagram"></i></a>
+          </div>
          <div class="contact-info">
             <span class="m-0 m-md-3"><i class="px-2 fa-solid fa-phone-volume"></i> +201234567890</span>
             <span class="m-0 m-md-3"><i class="px-2 fa-solid fa-envelope"></i>info@alforsan.com</span>
-         </div>
-         <div class="social-links">
-            <a href="#" class="mx-2"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="mx-2"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#" class="mx-2"><i class="fa-brands fa-instagram"></i></a>
          </div>
       </div>
    </div>
@@ -59,7 +59,7 @@
             <li class="nav-item">
                <a class="nav-link  {{ request()->is('contact*') ? 'active' : '' }}"
                   href="{{ url('/contact') }}">
-               {{ __('words.contact') }}
+               {{ __('words.Call us') }}
                </a>
             </li>
          </ul>

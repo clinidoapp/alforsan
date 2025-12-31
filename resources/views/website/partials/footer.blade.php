@@ -1,4 +1,3 @@
-
 <footer class="text-dark mt-4">
     <div class="container">
         <div class="row">
@@ -19,7 +18,7 @@
                     <li><a href="#" class="text-dark text-decoration-none">{{__('words.home')}}</a></li>
                     <li><a href="#" class="text-dark text-decoration-none">{{__('words.about_us')}}</a></li>
                     <li><a href="#" class="text-dark text-decoration-none">{{__('words.doctors')}}</a></li>
-                    <li><a href="#" class="text-dark text-decoration-none">{{__('words.contact')}}</a></li>
+                    <li><a href="#" class="text-dark text-decoration-none">{{__('words.Call us')}}</a></li>
                 </ul>
             </div>
 
@@ -60,4 +59,12 @@
     <div class="bg-primary-custome text-white text-center py-3 mt-3">
         <small>Al Forsan © Copyright {{ date('Y') }} </small>
     </div>
+        @php
+        $isArabic = app()->getLocale() === 'ar';
+        $whatsappNumber = '201006067573';
+        @endphp
+
+        <a href="https://wa.me/{{ $whatsappNumber }}"target="_blank"class="whatsapp-float {{ $isArabic ? 'rtl' : 'ltr' }}"aria-label="WhatsApp Chat" title="{{ $isArabic ? 'تواصل معنا عبر واتساب' : 'Chat with us on WhatsApp' }}">
+            <img src="{{ asset('images/whatsapp-icon@2x.webp') }}" height="60">
+        </a>
 </footer>

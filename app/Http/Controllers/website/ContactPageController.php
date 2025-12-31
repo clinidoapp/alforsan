@@ -14,7 +14,7 @@ class ContactPageController extends Controller
         $services = DB::table('booking_services')
             ->select('id' , 'name_en' , 'name_ar')
             ->get();
-        return view('website.contact' ,  compact('services'));
+        return view('website.pages.contact' ,  compact('services'));
     }
     public function getBookingServices(){
 
