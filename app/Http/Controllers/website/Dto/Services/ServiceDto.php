@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class ServiceDto extends Controller
 {
     public ?int $id;
+    public ?string $slug;
     public ?string $name_en;
     public ?string $name_ar;
     public ?string $icon;
@@ -25,6 +26,7 @@ class ServiceDto extends Controller
     {
         $result = new ServiceDto();
         $result->id = $service->id;
+        $result->slug = $service->slug;
         $result->name_en = $service->name_en;
         $result->name_ar = $service->name_ar;
         $result->icon = $service->icon;

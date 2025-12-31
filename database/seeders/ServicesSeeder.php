@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
 
 class ServicesSeeder extends Seeder
 {
@@ -143,6 +145,7 @@ class ServicesSeeder extends Seeder
         ];
         foreach ($services as $service) {
             DB::table('services')->insert([
+                'slug' => Str::slug($service['name_en']),
                 'name_en' => $service['name_en'],
                 'name_ar' => $service['name_ar'],
                 'description_en' => $service['description_en'],
