@@ -37,7 +37,7 @@ class ContactPageController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        $service = DB::table('services')->where('id' , '=' , $data['service_id'])
+        $service = DB::table('booking_services')->where('id' , '=' , $data['service_id'])
         ->select("id" , 'name_en' , 'name_ar')->
         first();
         $response = [
