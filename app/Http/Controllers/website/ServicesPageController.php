@@ -19,10 +19,10 @@ class ServicesPageController extends Controller
         return view('website.pages.services', compact('services'));
 
     }
-    public function serviceDetails($id){
+    public function serviceDetails($slug){
 
          $service = DB::table('services')
-             ->where('id', $id)
+             ->where('slug', $slug)
              ->where('status', 1)
              ->whereNotNull('icon')
              ->select(
@@ -33,6 +33,7 @@ class ServicesPageController extends Controller
                  'image',
                  'slug'
              )->first();
+          $id = $service->id;
          $faqs = DB::table('service_faqs')
              ->where('service_id', $id)
              ->select(
