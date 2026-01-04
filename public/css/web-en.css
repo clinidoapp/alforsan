@@ -405,9 +405,20 @@ footer {
 /* ===========================
         Doctor profile
 ===============================*/
-.doctor-professional-data h2, .doctoer-personal-data h2{
+.doctor-personal-data h1{
+    font-size: 30px;
+}
+
+.doctor-personal-data h2{
+    color:var(--secondary-color);
+    font-size: 22px;
+}
+.doctor-personal-data p{
+    font-size: 20px;
+}
+.doctor-professional-data h2{
     font-size: 28px;
-    color:var(--secondary-color)
+    color:var(--secondary-color);
 }
 /* ===========================
         About us

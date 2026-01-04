@@ -2,9 +2,10 @@
 @section('title', 'Doctors - Alforsan Hospital')
 @php
 $local=app()->getLocale();
+// dd($doctor);
 @endphp
 @section('content')
-<section class="doctoer-personal-data  py-5 mt-5 bg-white">
+<section class="doctor-personal-data  py-5 mt-5 bg-white">
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-3">
@@ -53,9 +54,9 @@ $local=app()->getLocale();
         <h2 class="lh-lg">{{ __('words.doctor videos') }}</h2>
         <div class="row">
             @foreach($doctor->videos as $video)
-            <div class="col-md-4 px-2">
-                <div class="card">
-                    <video  controls class="w-100">
+            <div class="col-md-4 px-2 mb-3">
+                <div class="card rounded-2">
+                    <video  controls class="w-100 rounded-top-2">
                         <source src="{{  $video->video_url }}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>

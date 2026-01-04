@@ -18,7 +18,7 @@
    </div>
 </nav>
 <nav class="navbar navbar-expand-lg navbar-light main-navbar fixed-top">
-   <div class="d-block d-lg-flex nav_custome">
+   <div class="d-block d-lg-flex nav_custome w-100">
       <!-- Logo -->
       <div class="dm-flex">
          <a class="navbar-brand" href="{{ url('/') }}">
