@@ -73,7 +73,6 @@ class DoctorsPageController extends Controller
         $doctor->qualifications_en = explode(',', $doctor->qualifications_en);
         $doctor->qualifications_ar = explode(',', $doctor->qualifications_ar);
         $doctor->videos = $videos;
-        dd($doctor);
         return view('*********', compact('doctor'));
     }
 
