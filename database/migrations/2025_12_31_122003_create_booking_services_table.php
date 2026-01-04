@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name_en');
             $table->string('name_ar');
+            $table->tinyInteger('status')
+                ->default(1)
+                ->comment('1 = published, 0 = hidden');
             $table->timestamps();
         });
     }
