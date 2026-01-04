@@ -60,32 +60,42 @@ class DoctorController extends Controller
             $image = $request->file('image');
             $image_name = ImageHandlerService::fileUploader(ImagePaths::DOCTOR_PHOTOS->value,$image,null);
         }
-       $doctor_id = DB::table('doctors')->insertGetId([
-            'name_en' => $data['name_en'],
-            'name_ar' => $data['name_ar'],
+        DB::transaction(function () use ($data, $image_name) {
+            $doctor_id = DB::table('doctors')->insertGetId([
+                'name_en' => $data['name_en'],
+                'name_ar' => $data['name_ar'],
 
-            'academic_title_ar' => $data['academic_title_ar'],
-            'academic_title_en' => $data['academic_title_en'],
-            'main_speciality_ar' => $data['main_speciality_ar'],
-            'main_speciality_en' => $data['main_speciality_en'],
+                'academic_title_ar' => $data['academic_title_ar'],
+                'academic_title_en' => $data['academic_title_en'],
+                'main_speciality_ar' => $data['main_speciality_ar'],
+                'main_speciality_en' => $data['main_speciality_en'],
 
-            'bio_ar' => $data['bio_ar'],
-            'bio_en' => $data['bio_en'],
-            'experience_ar' => $data['experience_ar'],
-            'experience_en' => $data['experience_en'],
-            'qualification_ar' => $data['qualification_ar'],
-            'qualification_en' => $data['qualification_en'],
+                'bio_ar' => $data['bio_ar'],
+                'bio_en' => $data['bio_en'],
+                'experiences_ar' => $data['experiences_ar'],
+                'experiences_en' => $data['experiences_en'],
+                'qualifications_ar' => $data['qualifications_ar'],
+                'qualifications_en' => $data['qualifications_en'],
 
-            'image' => $image_name,
-            'status' => $data['status'],
+                'image' => $image_name,
+                'status' => $data['status'],
 
-        ]);
+            ]);
+            foreach ($data['services_ids'] as $serviceId) {
+                DB::table('doctor_service')->updateOrInsert(
+                    [
+                        'doctor_id'  => $doctor_id,
+                        'service_id' => $serviceId,
+                    ],
+                    [
+                        'created_at' => now(),
+                    ]
+                );
 
+            }
+        });
 
-
-
-        dd($data);
-
+        dd('Done');
         return view('********');
     }
 

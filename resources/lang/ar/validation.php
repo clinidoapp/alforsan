@@ -32,5 +32,8 @@ return [
             'string' => 'حقل :attribute يجب ألا يزيد عن :max حرف.',
             'file'   => 'حقل :attribute يجب ألا يزيد عن :max كيلوبايت.',
         ],
+        'exists' => 'القيمة المختارة في حقل :attribute غير صحيحة.',
+
+
     ]
 ];
