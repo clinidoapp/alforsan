@@ -75,6 +75,12 @@ return [
     'thank you title'=>'طلبك وصل لينا بنجاح',
     'thank you subtitle'=>'سيتم التواصل معك في اقرب وقت لتأكيد الحجز',
     'booking data'=>'بيانات الحجز',
+
+    // doctor details
+    'about doctor'=>'نبذة عن الطبيب',
+    'doctor qualification'=>'المؤهلات العلمية',
+    'doctor experience'=>'الخبرات العملية',
+    'doctor videos'=>'فيديوهات الطبيب',
     // footer
     'Quick links'=>'روابط سريعه',
     'Our medical services'=>'خدماتنا الطبية',
