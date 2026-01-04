@@ -427,6 +427,13 @@ footer {
     display: none;
 }
 /* ===========================
+        Doctor profile
+===============================*/
+.doctor-professional-data h2, .doctoer-personal-data h2{
+    font-size: 28px;
+    color:var(--secondary-color)
+}
+/* ===========================
         About us
 ===============================*/
 .vm-container .card h2{

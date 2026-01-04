@@ -84,7 +84,7 @@
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
                 <div class="card p-3 text-center">
-                    <img src="{{ asset('images/values_icons/icon3.svg') }}" >
+                    <img src="{{ asset('images/values_icons/professionalism.webp') }}" >
                     <h4>{{ __('words.value 3') }}</h4>
                     <p>{{ __('words.value 3 desc') }}</p>
                 </div>

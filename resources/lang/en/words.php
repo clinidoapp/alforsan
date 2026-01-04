@@ -80,6 +80,11 @@ return [
     'thank you subtitle'=>'You will be contacted soon to confirm your booking.',
     'booking data'=>'Booking Data',
 
+    // doctor details
+    'about doctor'=>'About the doctor',
+    'doctor qualification'=>'Academic qualifications',
+    'doctor experience'=>'Practical experience',
+    'doctor videos'=>'Doctor Videos',
     // footer
     'Quick links'=>'Quick links',
     'Our medical services'=>'Our medical services',

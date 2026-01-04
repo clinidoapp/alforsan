@@ -44,7 +44,7 @@ Route::get('/services',[ServicesPageController::class, 'listServices']);
 Route::get('/contact',[ContactPageController::class, 'index'])->name('contact_us');
 Route::get('serviceDetails/{slug}' , [ServicesPageController::class, 'serviceDetails']);
 Route::get('doctors' , [DoctorsPageController::class, 'listDoctors']);
-Route::get('doctorDetails/{id}' , [DoctorsPageController::class, 'doctorDetails']);
+Route::get('doctorDetails/{id}' , [DoctorsPageController::class, 'doctorDetails'])->name('doctorDetails');
 Route::post('thank_you' , [ContactPageController::class, 'StoreRequest'])->name('StoreRequest');
 
 /**************** End Website **********************/
