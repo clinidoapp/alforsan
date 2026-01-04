@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\dashboard\DoctorController;
 use App\Http\Controllers\website\ContactPageController;
 use App\Http\Controllers\website\DoctorsPageController;
 use App\Http\Controllers\website\HomePageController;
@@ -44,20 +45,19 @@ Route::get('/contact',[ContactPageController::class, 'index'])->name('contact_us
 Route::get('serviceDetails/{slug}' , [ServicesPageController::class, 'serviceDetails']);
 Route::get('doctors' , [DoctorsPageController::class, 'listDoctors']);
 Route::get('doctorDetails/{id}' , [DoctorsPageController::class, 'doctorDetails']);
-Route::post('storeRequest' , [ContactPageController::class, 'StoreRequest'])->name('StoreRequest');
-
-
-//Route::get('listServices' , [HomePageController::class, 'listServices']);
-//Route::get('listReviews' , [HomePageController::class, 'listReviews']);
-
+Route::post('thank_you' , [ContactPageController::class, 'StoreRequest'])->name('StoreRequest');
 
 /**************** End Website **********************/
+/**************** Dashboard **********************/
+
+Route::prefix('dashboard')->group(function () {
+    // Route::view('/', 'dashboard.pages.dashboard');
+    Route::get('listDoctors' , [DoctorController::class, 'listDoctors']);
 
 
+});
 
-
-
-
+/**************** End Dashboard **********************/
 /************************* Test lamiaa *********************/
 Route::prefix('test')->group(function () {
     Route::get('listDoctors' , [HomePageController::class, 'listDoctors']);

@@ -23,4 +23,14 @@ return [
             'exists'   => 'Selected service is invalid.',
         ],
     ],
+    'doctor' => [
+        'required' => 'The :attribute field is required.',
+        'string'   => 'The :attribute must be a valid string.',
+        'image'    => 'The :attribute must be an image.',
+        'mimes'    => 'The :attribute must be a file of type: :values.',
+        'max'      => [
+            'string' => 'The :attribute may not be greater than :max characters.',
+            'file'   => 'The :attribute may not be greater than :max kilobytes.',
+        ],
+    ]
 ];
