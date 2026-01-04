@@ -17,6 +17,8 @@ return new class extends Migration
                 ->constrained('doctors')
                 ->cascadeOnDelete();
             $table->string('video_url');
+            $table->string('title_en');
+            $table->string('title_ar');
             $table->tinyInteger('status')
                 ->default(1)
                 ->comment('1 = published, 0 = hidden');

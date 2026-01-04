@@ -15,28 +15,54 @@ class DoctorVideosSeeder extends Seeder
     {
         $doctors = DB::table('doctors')->pluck('id')->toArray();
 
+        if (empty($doctors)) {
+            return;
+        }
+
+        // فيديوهات نموذجية (YouTube URLs كمثال)
         $videos = [
             [
-                'video_url' => 'https://www.youtube.com/watch?v=example1',
+                'title_en' => 'Laser Vision Correction Explained',
+                'title_ar' => 'شرح عملية تصحيح الإبصار بالليزر',
+                'video_url' => 'https://www.youtube.com/watch?v=Uto36GI6HIg',
             ],
             [
-                'video_url' => 'https://www.youtube.com/watch?v=example2',
+                'title_en' => 'Cataract Surgery Overview',
+                'title_ar' => 'شرح عملية المياه البيضاء',
+                'video_url' => 'https://www.youtube.com/watch?v=Uto36GI6HIg',
             ],
             [
-                'video_url' => 'https://www.youtube.com/watch?v=example3',
+                'title_en' => 'Glaucoma Symptoms and Treatment',
+                'title_ar' => 'أعراض وعلاج الجلوكوما',
+                'video_url' => 'https://www.youtube.com/watch?v=Uto36GI6HIg',
+            ],
+            [
+                'title_en' => 'Retina Diseases Explained',
+                'title_ar' => 'شرح أمراض الشبكية',
+                'video_url' => 'https://www.youtube.com/watch?v=Uto36GI6HIg',
             ],
         ];
 
+        $rows = [];
+
         foreach ($doctors as $doctorId) {
-            foreach ($videos as $video) {
-                DB::table('doctor_videos')->insert([
+            // كل دكتور ليه من 1 إلى 3 فيديوهات
+            $count = rand(1, 3);
+            $selected = collect($videos)->shuffle()->take($count);
+
+            foreach ($selected as $video) {
+                $rows[] = [
                     'doctor_id' => $doctorId,
                     'video_url' => $video['video_url'],
-                    'status' => 1,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
+                    'title_en'  => $video['title_en'],
+                    'title_ar'  => $video['title_ar'],
+                    'status'    => 1,
+                    'created_at'=> now(),
+                    'updated_at'=> now(),
+                ];
             }
         }
+
+        DB::table('doctor_videos')->insert($rows);
     }
 }

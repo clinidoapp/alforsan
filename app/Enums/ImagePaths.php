@@ -2,9 +2,9 @@
 
 namespace App\Enums;
 
-enum ImagePaths: int
+enum ImagePaths: string
 {
-  //  case DOCTOR_IMAGE = 'images/'
+    case DOCTOR_PHOTOS = 'images/doctor_photos/' ;
 
 
 

@@ -65,7 +65,7 @@ class DoctorsPageController extends Controller
         $videos = DB::table('doctor_videos')
             ->where('doctor_id', $id)
             ->where('status', 1)
-            ->select('video_url')
+            ->select('video_url' , 'title_ar' , 'title_en')
             ->get()->toArray();
 
         $doctor->experiences_en = explode(',', $doctor->experiences_en);
@@ -73,6 +73,7 @@ class DoctorsPageController extends Controller
         $doctor->qualifications_en = explode(',', $doctor->qualifications_en);
         $doctor->qualifications_ar = explode(',', $doctor->qualifications_ar);
         $doctor->videos = $videos;
+        dd($doctor);
         return view('*********', compact('doctor'));
     }
 

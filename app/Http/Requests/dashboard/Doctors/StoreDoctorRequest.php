@@ -38,6 +38,8 @@ class StoreDoctorRequest extends FormRequest
 
             'image'                => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
             'status'               => 'required|in:0,1',
+            'services_ids'         => 'required|array',
+            'services_ids.*'       => 'required|exists:services,id',
 
             ];
     }
@@ -86,7 +88,15 @@ class StoreDoctorRequest extends FormRequest
 
             // in
             'status.in'                   => __('validation.doctor.in'),
-        ];
+
+            'services_ids.required'   => __('validation.required'),
+            'services_ids.array'      => __('validation.array'),
+
+            // services_ids.*
+            'services_ids.*.required' => __('validation.required'),
+            'services_ids.*.exists'   => __('validation.exists'),
+
+            ];
     }
 
 }

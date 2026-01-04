@@ -53,6 +53,7 @@ Route::post('thank_you' , [ContactPageController::class, 'StoreRequest'])->name(
 Route::prefix('dashboard')->group(function () {
     // Route::view('/', 'dashboard.pages.dashboard');
     Route::get('listDoctors' , [DoctorController::class, 'listDoctors']);
+    Route::post('storeDoctor' , [DoctorController::class, 'storeDoctor']);
 
 
 });
@@ -67,6 +68,8 @@ Route::prefix('test')->group(function () {
     Route::get('listDoctors' , [DoctorsPageController::class, 'listDoctors']);
     Route::get('doctorDetails/{id}' , [DoctorsPageController::class, 'doctorDetails']);
     Route::post('storeRequest' , [ContactPageController::class, 'StoreRequest']);
+    Route::post('storeDoctor' , [DoctorController::class, 'storeDoctor']);
+
 });
 /************************* End Test *********************/
 
