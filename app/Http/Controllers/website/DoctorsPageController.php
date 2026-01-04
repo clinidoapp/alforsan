@@ -50,6 +50,7 @@ class DoctorsPageController extends Controller
 
         $doctor = DB::table('doctors')
             ->where('status', 1)
+            ->where('id', $id)
             ->where('is_deleted', 0)
             ->select(
                 'id',
