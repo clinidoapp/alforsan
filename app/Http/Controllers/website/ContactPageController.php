@@ -39,7 +39,9 @@ class ContactPageController extends Controller
             'patient_phone' => $data['phone'],
             'service_name_en' => $service->name_en,
             'service_name_ar' => $service->name_ar,
+            'patient_notes' =>$data['notes']
         ];
-        return view('******' ,  compact('response'));
+        // dd($response);
+        return view('website.pages.thank-you' ,  compact('response'));
     }
 }

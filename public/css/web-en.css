@@ -458,6 +458,118 @@ footer {
     text-align: left;
     color:var(--primary-color);
 }
+.form-control::placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+    text-align: left;
+}
+.booking form .form-control, .booking form .form-select{
+    height: 56px !important;
+}
+/* intltelinput libarary start*/
+.iti {
+	width: 100%;
+}
+
+.iti--allow-dropdown .iti__flag-container {
+	right: 0;
+	left: auto;
+}
+
+.iti__selected-flag {
+	direction: ltr;
+	/* keep flag and code left-to-right */
+}
+
+input[type="tel"] {
+	text-align: right;
+	padding-right: 60px;
+	/* space for flag dropdown */
+}
+.iti__country-list {
+left:  0;
+z-index: 1055;
+}
+.iti {
+	width: 100%;
+	display: block !important;
+	direction: rtl !important;
+}
+
+.iti--separate-dial-code .iti__selected-flag {
+	background: none !important;
+}
+
+.iti .iti__selected-flag .down-arrow {
+	left: 20px !important;
+}
+
+.iti .iti__selected-flag {
+	padding: 6px !important;
+}
+
+.iti .iti__selected-flag .iti__flag {
+	left: 0;
+	right: 0;
+}
+
+.iti .iti__selected-flag .iti__arrow {
+	margin-left: 6px;
+	margin-right: 0px;
+}
+
+.iti.iti--allow-dropdown .iti__flag-container {
+    height: 40px;
+    left: 0px;
+    right: auto;
+    border-left: none !important;
+    border-right: 1px solid #979797 !important;
+    align-self: center;
+
+}
+
+.iti .iti__selected-flag {
+	border-right: solid 0.5px #979797;
+	border-left: none !important;
+}
+
+.iti .iti__selected-flag:focus {
+	outline: none;
+}
+
+.iti.iti--allow-dropdown .iti__flag-container:hover .iti__selected-flag {
+	background-color: #ffffff;
+}
+
+.iti input {
+	text-align: left !important;
+	padding-left: 100px !important;
+}
+
+.iti__country-name,
+.iti__flag-box {
+	float: left;
+	margin-left: 6px;
+	margin-left: 0px !important;
+}
+
+/* intltelinput libarary end */
+/* ==============================
+        Thank You
+=================================*/
+.thank-you .thanks-container i{
+    font-size: 100px;
+}
+.thank-you .place-items-center{
+
+    place-items: center;
+}
+.thank-you .card p{
+    font-size: 20px;
+}
+.thank-you strong{
+    color:var(--secondary-color);
+}
 /* ================================
         Footer
 =================================== */

@@ -44,6 +44,7 @@ Route::get('/contact',[ContactPageController::class, 'index'])->name('contact_us
 Route::get('serviceDetails/{slug}' , [ServicesPageController::class, 'serviceDetails']);
 Route::get('doctors' , [DoctorsPageController::class, 'listDoctors']);
 Route::get('doctorDetails/{id}' , [DoctorsPageController::class, 'doctorDetails']);
+Route::post('storeRequest' , [ContactPageController::class, 'StoreRequest'])->name('StoreRequest');
 
 
 //Route::get('listServices' , [HomePageController::class, 'listServices']);

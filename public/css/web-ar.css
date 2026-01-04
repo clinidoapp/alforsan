@@ -491,6 +491,123 @@ footer {
     text-align: right;
     color:var(--primary-color);
 }
+.booking form .form-control::placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+    text-align: right;
+}
+.booking form .form-control, .booking form .form-select{
+    height: 56px !important;
+}
+
+/* intltelinput libarary start*/
+.iti {
+	width: 100%;
+}
+
+.iti--allow-dropdown .iti__flag-container {
+	left: 0;
+	right: auto;
+}
+
+.iti__selected-flag {
+	direction: ltr;
+	/* keep flag and code left-to-right */
+}
+
+input[type="tel"] {
+	text-align: right;
+	padding-right: 60px;
+	/* space for flag dropdown */
+}
+.iti__country-list {
+right:   0;
+z-index: 1055;
+
+}
+.iti {
+	width: 100%;
+	display: block !important;
+	direction: rtl !important;
+}
+
+.iti--separate-dial-code .iti__selected-flag {
+	background: none !important;
+}
+
+.iti .iti__selected-flag .down-arrow {
+	left: 20px !important;
+}
+
+.iti .iti__selected-flag {
+	padding: 6px !important;
+}
+
+.iti .iti__selected-flag .iti__flag {
+	left: 0;
+	right: 0;
+}
+
+.iti .iti__selected-flag .iti__arrow {
+	margin-left: 6px;
+	margin-right: 0px;
+}
+
+.iti.iti--allow-dropdown .iti__flag-container {
+      height: 40px;
+    right: 0px;
+    left: auto;
+    border-right: none !important;
+    border-left: 1px solid #979797 !important;
+    align-self: center;
+}
+.iti .iti__selected-flag {
+	border-left: solid 0.5px #979797;
+	border-right: none !important;
+}
+
+.iti .iti__selected-flag:focus {
+	outline: none;
+}
+
+.iti.iti--allow-dropdown .iti__flag-container:hover .iti__selected-flag {
+	background-color: #ffffff;
+}
+
+.iti input {
+	text-align: right !important;
+	padding-right: 100px !important;
+}
+
+.iti__country-name,
+.iti__flag-box {
+	float: right;
+	margin-right: 6px;
+	margin-right: 0px !important;
+}
+
+/* intltelinput libarary end */
+/* ==============================
+        Thank You
+=================================*/
+.thank-you .thanks-container i{
+    font-size: 100px;
+}
+.thank-you .place-items-center{
+
+    place-items: center;
+}
+.thank-you h2{
+    color: #000;
+    line-height: 3;
+    font-size: 1.9rem;
+}
+.thank-you .card p{
+    font-size: 20px;
+}
+.thank-you strong{
+    color:var(--secondary-color);
+}
 /* ================================
         Footer
 =================================== */

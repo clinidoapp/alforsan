@@ -61,16 +61,20 @@ return [
     'value 5'=>'التطوير المستمر',
     'value 5 desc'=>'نواكب أحدث التطورات العلمية والتقنية في مجال طب العيون',
     // booking form
-    'name label'=>'*الاسم الكامل',
+    'name label'=>'الاسم الكامل',
     'name placeholder'=>'ادخل اسمك بالكامل',
-    'mobile label'=>'*رقم الهاتف',
+    'mobile label'=>'رقم الهاتف',
     'mobile placeholder'=>'اكتب رقم هاتفك',
     'email label'=>'البريد الإلكتروني',
     'email placeholder'=>'ادخل البريد الإلكترونى',
-    'service label'=>'*اختر الخدمة',
+    'service label'=>'اختر الخدمة',
     'message label'=>'رسالة',
     'message placeholder'=>'اكتب رسالتك هنا',
     'send'=>'إرسال',
+    // Thank you
+    'thank you title'=>'طلبك وصل لينا بنجاح',
+    'thank you subtitle'=>'سيتم التواصل معك في اقرب وقت لتأكيد الحجز',
+    'booking data'=>'بيانات الحجز',
     // footer
     'Quick links'=>'روابط سريعه',
     'Our medical services'=>'خدماتنا الطبية',

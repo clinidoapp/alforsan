@@ -61,20 +61,25 @@ return [
     'value 5'=>'Continuous development',
     'value 5 desc'=>'We keep up with the latest scientific and technological developments in the field of ophthalmology.',
     // Booking form
-    'name label'        => '*Full Name',
+    'name label'        => 'Full Name',
     'name placeholder'  => 'Enter your full name',
 
-    'mobile label'      => '*Phone Number',
+    'mobile label'      => 'Phone Number',
     'mobile placeholder'=> 'Enter your phone number',
 
     'email label'       => 'Email Address',
     'email placeholder' => 'Enter your email address',
 
-    'service label'     => '*Select Service',
+    'service label'     => 'Select Service',
 
     'message label'     => 'Message',
     'message placeholder'=> 'Write your message here',
     'send'=>'Send',
+    // Thank you
+    'thank you title'=>'Your order has been delivered successfully',
+    'thank you subtitle'=>'You will be contacted soon to confirm your booking.',
+    'booking data'=>'Booking Data',
+
     // footer
     'Quick links'=>'Quick links',
     'Our medical services'=>'Our medical services',

@@ -1,6 +1,10 @@
 @extends('layouts.website')
 @section('title', 'Contact Us - Alforsan Hospital')
 @section('content')
+@php
+    $local=app()->getLocale();
+@endphp
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.17/css/intlTelInput.css" />
 <section class="contact-us py-5 mt-5 bg-light-blue">
    <div class="container mt-4">
       <div class="text-center">
@@ -53,37 +57,40 @@
          <div class="col-md-8 col-lg-9 mt-3">
             <div class="card shadow-sm border-0">
                <div class="card-body">
-                  <form>
+                  <form method="POST" action="{{ route('StoreRequest') }}">
                      @csrf
                      <!-- Name -->
                      <div class="mb-3">
-                        <label class="form-label">{{__('words.name label')}}</label>
-                        <input type="text" class="form-control" placeholder="{{__('words.name placeholder')}}">
+                        <label class="form-label">{{__('words.name label')}} <i class="fa-solid fa-asterisk text-dark fs-6"></i></label>
+                        <input type="text" name="full_name" class="form-control" placeholder="{{__('words.name placeholder')}}">
                      </div>
                      <!-- Mobile -->
                      <div class="mb-3">
-                        <label class="form-label">{{__('words.mobile label')}}</label>
-                        <input type="tel" class="form-control" placeholder="{{__('words.mobile placeholder')}}">
+                        <label class="form-label">{{__('words.mobile label')}} <i class="fa-solid fa-asterisk text-dark fs-6"></i></label>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="{{__('words.mobile placeholder')}}">
+                          <input type="hidden" name="phone_full" id="phone_full">
+
                      </div>
                      <!-- Email -->
                      <div class="mb-3">
                         <label class="form-label">{{__('words.email label')}}</label>
-                        <input type="email" class="form-control" placeholder="{{__('words.email placeholder')}}">
+                        <input type="email" name="email" class="form-control" placeholder="{{__('words.email placeholder')}}">
                      </div>
                      <!-- Service Dropdown -->
                      <div class="mb-3">
-                        <label class="form-label">{{__('words.service label')}}</label>
-                        <select class="form-select">
-                           <option selected disabled>Select service</option>
-                           <option>LASIK</option>
-                           <option>Cataract Surgery</option>
-                           <option>Eye Checkup</option>
+                        <label class="form-label">{{__('words.service label')}} <i class="fa-solid fa-asterisk text-dark fs-6"></i></label>
+                        <select class="form-select" name="service_id">
+                           <option selected disabled>{{__('words.service label')}}</option>
+                           @foreach ($services as $service)
+                            <option value="{{ $service->id }}"> {{ $service->{'name_'.$local} }}</option>
+                           @endforeach
+
                         </select>
                      </div>
                      <!-- Message -->
                      <div class="mb-3">
                         <label class="form-label">{{__('words.message label')}}</label>
-                        <textarea class="form-control" rows="4" placeholder="{{__('words.message placeholder')}}"></textarea>
+                        <textarea name="notes" class="form-control" rows="4" placeholder="{{__('words.message placeholder')}}"></textarea>
                      </div>
                      <!-- Submit Button -->
                      <div class="text-center">
@@ -98,4 +105,24 @@
       </div>
    </div>
 </section>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.17/js/intlTelInput.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.17/js/utils.js"></script>
+        <script>
+  const input = document.querySelector("#phone");
+
+  const iti = window.intlTelInput(input, {
+    initialCountry: "eg",       // Egypt by default
+    separateDialCode: true,
+    nationalMode: false,
+    autoPlaceholder: "polite",
+    utilsScript:
+      "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/18.5.2/js/utils.js",
+  });
+
+  // Save full number on change
+  input.addEventListener("blur", function () {
+    document.getElementById("phone_full").value = iti.getNumber();
+  });
+</script>
+
 @endsection
