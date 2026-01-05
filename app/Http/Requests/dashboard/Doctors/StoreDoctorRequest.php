@@ -38,8 +38,15 @@ class StoreDoctorRequest extends FormRequest
 
             'image'                => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
             'status'               => 'required|in:0,1',
+
             'services_ids'         => 'required|array',
             'services_ids.*'       => 'required|exists:services,id',
+
+            'videos'               => 'required|array',
+            'videos.*.video_url'   => 'required_with:videos|string|max:191',
+            'videos.*.title_en'    => 'required_with:videos|string|max:191',
+            'videos.*.title_ar'    => 'required_with:videos|string|max:191',
+            'videos.*.status'      => 'required_with:videos|in:0,1',
 
             ];
     }

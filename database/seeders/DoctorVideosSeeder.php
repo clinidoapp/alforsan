@@ -19,7 +19,6 @@ class DoctorVideosSeeder extends Seeder
             return;
         }
 
-        // فيديوهات نموذجية (YouTube URLs كمثال)
         $videos = [
             [
                 'title_en' => 'Laser Vision Correction Explained',
@@ -46,7 +45,6 @@ class DoctorVideosSeeder extends Seeder
         $rows = [];
 
         foreach ($doctors as $doctorId) {
-            // كل دكتور ليه من 1 إلى 3 فيديوهات
             $count = rand(1, 3);
             $selected = collect($videos)->shuffle()->take($count);
 
