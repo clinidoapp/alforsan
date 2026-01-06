@@ -444,6 +444,40 @@ footer {
     font-size: 28px;
     color:var(--secondary-color);
 }
+/* ==========================
+        Service Details
+============================*/
+.service-details {
+    position: relative;
+        display: flex;
+    flex-direction: row-reverse;
+}
+
+/* card hits window start */
+.service-name-card {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+/* card styling */
+.service-name-card .card {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 18px 60px 18px 20px;
+    border: none;
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.14);
+}
+.service-image-container{
+        text-align: left;
+    padding-left: 60px;
+
+}
+.bg-primary{
+    background-color:var(--primary-color) !important;
+}
 /* ===========================
         About us
 ===============================*/

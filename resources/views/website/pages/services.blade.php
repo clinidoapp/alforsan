@@ -14,10 +14,12 @@
       <div class="row">
          @foreach($services as $service)
          <div class="col-md-2 col-6">
+            <a href="{{ route('serviceDetails', $service->slug) }}" class="text-decoration-none">
             <div class="card mb-3 p-3 text-center">
                <img src="{{ asset('images/services_icons/'.$service->icon) }}">
                <h3>{{ $service->{'name_'.$local} }} </h3>
             </div>
+            </a>
          </div>
          @endforeach
       </div>

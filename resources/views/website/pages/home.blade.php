@@ -15,7 +15,7 @@
             <p class="mb-4">
                {{ __('words.home_subtitle') }}
             </p>
-            <a href="{{ url('/services') }}" class="btn btn-primary-custom btn-lg">
+            <a href="{{ url('/contact') }}" class="btn btn-primary-custom btn-lg">
             {{ __('words.Book Your Appointment') }}
             </a>
          </div>
@@ -65,10 +65,12 @@
       <div class="row services-row">
          @foreach($services as $service)
          <div class="col-md-2 col-6">
+            <a href="{{ route('serviceDetails', $service->slug) }}" class="text-decoration-none">
             <div class="card mb-2 p-3 text-center">
                <img src="{{ asset('images/services_icons/'.$service->icon) }}">
                <h3>{{ $service->{'name_'.$local} }} </h3>
             </div>
+            </a>
          </div>
          @endforeach
       </div>
@@ -129,6 +131,7 @@
       <div class="row doctors_row">
          @foreach($doctors as $doctor)
          <div class="col-md-3">
+            <a href="{{ route('doctorDetails', $doctor->id) }}" class="text-decoration-none">
             <div class="card mb-2 text-center">
                <img src="{{ asset('images/doctor_photos/' . ($doctor->image ? $doctor->image : 'alternative.jpg')) }}">
                <div class="p-3 doctor-data">
@@ -136,11 +139,12 @@
                   <p class="about-doctor">{{ $doctor->{'academic_title_'.$local} .' '. $doctor->{'main_speciality_'.$local} }}</p>
                </div>
             </div>
+            </a>
          </div>
          @endforeach
       </div>
       <div class="text-center py-3">
-         <a class="btn btn-primary-custom btn-lg text-white">{{ __('words.Meet All Doctors') }}</a>
+         <a href="{{ url('/doctors') }}" class="btn btn-primary-custom btn-lg text-white">{{ __('words.Meet All Doctors') }}</a>
       </div>
    </div>
 </section>

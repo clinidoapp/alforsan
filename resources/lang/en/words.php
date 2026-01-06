@@ -85,6 +85,15 @@ return [
     'doctor qualification'=>'Academic qualifications',
     'doctor experience'=>'Practical experience',
     'doctor videos'=>'Doctor Videos',
+
+    // service details
+    'about service title'=>'About service',
+    'service symptoms'=>'Service Symptoms',
+    'service techniques'=>'Technologies used at Al Fursan Center',
+    'suitable for'=>'Suitable for',
+    'why Alforsan for'=>'Why Alforsan for',
+    'service doctors'=>'Doctors who provide this service',
+
     // footer
     'Quick links'=>'Quick links',
     'Our medical services'=>'Our medical services',

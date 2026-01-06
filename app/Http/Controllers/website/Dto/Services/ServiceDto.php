@@ -11,6 +11,10 @@ class ServiceDto extends Controller
     public ?string $slug;
     public ?string $name_en;
     public ?string $name_ar;
+    public ?string $brief_ar;
+    public ?string $brief_en;
+    public ?string $description_ar;
+    public ?string $description_en;
     public ?string $icon;
     public ?string $image;
     /** @var ServiceFaqsDto[] */
@@ -29,6 +33,10 @@ class ServiceDto extends Controller
         $result->slug = $service->slug;
         $result->name_en = $service->name_en;
         $result->name_ar = $service->name_ar;
+        $result->brief_en = $service->brief_en;
+        $result->brief_ar = $service->brief_ar;
+        $result->description_ar = $service->description_ar;
+        $result->description_en = $service->description_en;
         $result->icon = $service->icon;
         $result->image = $service->image;
         if ($faqs) {

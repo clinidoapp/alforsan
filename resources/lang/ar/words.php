@@ -81,6 +81,15 @@ return [
     'doctor qualification'=>'المؤهلات العلمية',
     'doctor experience'=>'الخبرات العملية',
     'doctor videos'=>'فيديوهات الطبيب',
+
+    // service details
+    'about service title'=>'نبذة عن الخدمة',
+    'service symptoms'=>'اعراض الخدمه',
+    'service techniques'=>'التقنيات المستخدمه فى مركز الفرسان',
+    'suitable for'=>'لمن تناسب ',
+    'why Alforsan for'=>'لماذا تختار مركز الفرسان',
+    'service doctors'=>'الأطباء الذين يقدمون الخدمة',
+
     // footer
     'Quick links'=>'روابط سريعه',
     'Our medical services'=>'خدماتنا الطبية',
