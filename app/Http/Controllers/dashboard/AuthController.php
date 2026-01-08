@@ -47,7 +47,9 @@ class AuthController extends Controller
         ])->withInput();
 
     }
-
+    public function logout(){
+        dd('here');
+    }
 
 
 

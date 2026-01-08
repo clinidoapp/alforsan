@@ -8,8 +8,8 @@
     <div class="col-md-4">
         <div class="card shadow-sm">
             <div class="card-body">
-                <h6 class="text-muted">Total Users</h6>
-                <h3 class="fw-bold">1,250</h3>
+                <h6 class="text-muted">Total Doctors</h6>
+                <h3 class="fw-bold">150</h3>
             </div>
         </div>
     </div>
@@ -17,8 +17,8 @@
     <div class="col-md-4">
         <div class="card shadow-sm">
             <div class="card-body">
-                <h6 class="text-muted">Revenue</h6>
-                <h3 class="fw-bold">$18,400</h3>
+                <h6 class="text-muted">Bookings</h6>
+                <h3 class="fw-bold">400</h3>
             </div>
         </div>
     </div>
@@ -26,8 +26,8 @@
     <div class="col-md-4">
         <div class="card shadow-sm">
             <div class="card-body">
-                <h6 class="text-muted">Orders</h6>
-                <h3 class="fw-bold">320</h3>
+                <h6 class="text-muted">Services</h6>
+                <h3 class="fw-bold">30</h3>
             </div>
         </div>
     </div>
