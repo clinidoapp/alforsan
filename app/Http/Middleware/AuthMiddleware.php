@@ -16,7 +16,7 @@ class AuthMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!session()->has('logged_user_id')) {
-            return redirect('/login');
+            return redirect('admin/login');
         }
         return $next($request);
     }

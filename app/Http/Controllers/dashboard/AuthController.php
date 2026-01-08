@@ -38,7 +38,7 @@ class AuthController extends Controller
                 'logged_user_id' => $user->id,
 
             ]);
-            return view('dashboard.pages.home');
+            return redirect('admin/dashboard');
 
         }
 
@@ -47,8 +47,11 @@ class AuthController extends Controller
         ])->withInput();
 
     }
-    public function logout(){
-        dd('here');
+    public function logout(Request $request){
+        $request->session()->forget('logged_user');
+        $request->session()->forget('logged_user_id');
+        return redirect('admin/login');
+
     }
 
 

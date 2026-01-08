@@ -53,17 +53,22 @@ Route::post('thank_you' , [ContactPageController::class, 'StoreRequest'])->name(
 /**************** Dashboard **********************/
 
 Route::get('admin/login' , [AuthController::class, 'index']);
-Route::get('admin/logout' , [AuthController::class, 'logout'])->name('logout');
-Route::get('admin/dashboard' , function (){return view('dashboard.pages.dashboard');})->name('dashboard');
+Route::get('admin/dashboard' , function (){return view('dashboard.pages.home');})->name('dashboard');
 Route::post('admin/login-user' , [AuthController::class, 'login'])->name('login');
 
 Route::get('admin/listDoctors' , [DoctorController::class, 'listDoctors'])->middleware(['permission:xxxxxxxxx']);
 
 
-Route::middleware([AuthMiddleware::class])->prefix('dashboard')->group(function () {
+Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
 
     /*** Auth ***/
-    // Route::view('/', 'dashboard.pages.dashboard');
+    Route::post('logout' , [AuthController::class, 'logout'])->name('logout');
+
+    /*** Dashboard ***/
+    Route::get('dashboard' , function ()
+    {
+        return view('dashboard.pages.home');
+    })->name('dashboard');
 
 
 
