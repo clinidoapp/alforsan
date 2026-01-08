@@ -30,7 +30,7 @@ class HomePageController extends Controller
 
         $services = DB::table('services')
             ->where('status', 1)
-            ->select('id','name_en' , 'name_ar' , 'icon')
+            ->select('id','name_en' , 'name_ar' , 'icon','slug')
             ->whereNotNull('icon')
             ->limit(6)->get();
 

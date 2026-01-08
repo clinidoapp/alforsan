@@ -30,6 +30,10 @@ class ServicesPageController extends Controller
                  'name_en',
                  'name_ar',
                  'icon',
+                 'brief_en',
+                 'brief_ar',
+                 'description_en',
+                 'description_ar',
                  'image',
                  'slug'
              )->first();
@@ -74,6 +78,6 @@ class ServicesPageController extends Controller
              ->select('doctors.id', 'doctors.name_en', 'doctors.name_ar', 'doctors.image', 'doctors.main_speciality_en' , 'doctors.main_speciality_ar')
              ->get()->toArray();
          $result = ServiceDto::toJson($service , $faqs , $symptoms , $techniques , $doctors);
-         return view('*********', compact('result'));
+         return view('website.pages.service-details', compact('result'));
     }
 }

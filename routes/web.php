@@ -44,7 +44,7 @@ Route::prefix('dashboard')->group(function () {
 Route::get('/' , [HomePageController::class, 'homeContent']);
 Route::get('/services',[ServicesPageController::class, 'listServices']);
 Route::get('/contact',[ContactPageController::class, 'index'])->name('contact_us');
-Route::get('serviceDetails/{slug}' , [ServicesPageController::class, 'serviceDetails']);
+Route::get('services/{slug}' , [ServicesPageController::class, 'serviceDetails'])->name('serviceDetails');
 Route::get('doctors' , [DoctorsPageController::class, 'listDoctors']);
 Route::get('doctors/details/{id}' , [DoctorsPageController::class, 'doctorDetails'])->name('doctorDetails');
 Route::post('thank_you' , [ContactPageController::class, 'StoreRequest'])->name('StoreRequest');
