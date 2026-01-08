@@ -19,10 +19,16 @@ class AuthController extends Controller
                 'email'    => 'required|email',
                 'password' => 'required|string',
         ]);
+       // dd($data);
 
         $user = DB::table('users')
             ->where('email', $data['email'])
             ->first();
+        if (!$user) {
+            return back()->withErrors([
+                'email' => 'Email does not exist',
+            ])->withInput();
+        }
 
         if ($user && Hash::check($data['password'], $user->password)) {
 
@@ -32,12 +38,12 @@ class AuthController extends Controller
                 'logged_user_id' => $user->id,
 
             ]);
-            return redirect('/dashboard');
+            return view('dashboard.pages.home');
 
         }
 
         return back()->withErrors([
-            'Invalid email or password',
+            'password' => 'Incorrect password',
         ])->withInput();
 
     }

@@ -14,7 +14,7 @@
         <h4 class="text-center mb-4">Login</h4>
 
         {{-- <form method="POST" action="{{ route('login') }}"> --}}
-        <form method="GET" action="{{ route('dashboard') }}">
+        <form method="POST" action="{{ route('login') }}">
             @csrf
 
             <div class="mb-3">
