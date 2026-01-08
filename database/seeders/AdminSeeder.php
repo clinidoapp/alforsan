@@ -16,11 +16,17 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         $permissions = [
-            // Doctor Management
+            /*** Doctor Management ***/
             ['name' => 'Create Doctor', 'slug' => 'create_doctor', 'category' => 'Doctor Management'],
             ['name' => 'Read Doctor', 'slug' => 'read_doctor', 'category' => 'Doctor Management'],
             ['name' => 'Update Doctor', 'slug' => 'update_doctor', 'category' => 'Doctor Management'],
             ['name' => 'Delete Doctor', 'slug' => 'delete_doctor', 'category' => 'Doctor Management'],
+            /*** Permission Management ***/
+            ['name' => 'Create Permission', 'slug' => 'create_permission', 'category' => 'Permission Management'],
+            ['name' => 'Read Permission', 'slug' => 'read_permission', 'category' => 'Permission Management'],
+            ['name' => 'Update Permission', 'slug' => 'update_permission', 'category' => 'Permission Management'],
+            ['name' => 'Delete Permission', 'slug' => 'delete_permission', 'category' => 'Permission Management'],
+
         ];
         $permissionIds = [];
         foreach ($permissions as $permission) {
