@@ -35,9 +35,7 @@ Route::view('/about', 'website.pages.about');
 | Dashboard routes (future)
 |--------------------------------------------------------------------------
 */
-Route::prefix('dashboard')->group(function () {
-    // Route::view('/', 'dashboard.pages.dashboard');
-});
+
 /**************** Website **********************/
 /****** Home *********/
 
@@ -50,8 +48,15 @@ Route::get('doctors/details/{id}' , [DoctorsPageController::class, 'doctorDetail
 Route::post('thank_you' , [ContactPageController::class, 'StoreRequest'])->name('StoreRequest');
 
 /**************** End Website **********************/
+
+
 /**************** Dashboard **********************/
-Route::get('listDoctors' , [DoctorController::class, 'listDoctors'])->middleware(['permission:xxxxxxxxx']);
+
+Route::get('admin/login' , [AuthController::class, 'index']);
+Route::get('admin/dashboard' , function (){return view('dashboard.pages.dashboard');})->name('dashboard');
+Route::post('admin/login-user' , [AuthController::class, 'login'])->name('login');
+
+Route::get('admin/listDoctors' , [DoctorController::class, 'listDoctors'])->middleware(['permission:xxxxxxxxx']);
 
 
 Route::middleware([AuthMiddleware::class])->prefix('dashboard')->group(function () {
@@ -62,8 +67,8 @@ Route::middleware([AuthMiddleware::class])->prefix('dashboard')->group(function 
 
 
     /*** Doctors ***/
-    Route::get('listDoctors' , [DoctorController::class, 'listDoctors']);
-    Route::post('storeDoctor' , [DoctorController::class, 'storeDoctor']);
+    Route::get('admin/listDoctors' , [DoctorController::class, 'listDoctors']);
+    Route::post('admin/storeDoctor' , [DoctorController::class, 'storeDoctor']);
 
 
 });

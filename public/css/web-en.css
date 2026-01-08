@@ -402,6 +402,10 @@ footer {
 .bg-primary{
     background-color:var(--primary-color) !important;
 }
+.about-service h2{
+    color:var(--secondary-color);
+    font-size: 24px;
+}
 /* =================================
         Doctors view
 ==================================== */

@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    public function index(){
+        return view('dashboard.pages.login');
+    }
     public function login(Request $request)
     {
         $data = $request->validate([

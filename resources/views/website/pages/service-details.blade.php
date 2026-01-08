@@ -20,7 +20,7 @@
       </div>
    </div>
 </section>
-<section class="about-service py-5 bg-light-blue">
+<section class="about-service pb-5 bg-light-blue">
     <div class="container">
         <div class="row">
             <div class="col-12 mt-4">
@@ -45,11 +45,11 @@
                 @foreach ($result->techniques as $technique)
                     <div class="card rounded-3">
                         <div class="card-tit bg-primary p-3 text-white rounded-top-3">
-                            <p>{{ $technique->{'title_'.$local} }}</p>
+                            <p class="m-0">{{ $technique->{'title_'.$local} }}</p>
                         </div>
                         <div class="card-body p-3">
                             <p>{{ $technique->{'description_'.$local} }}</p>
-                            <h4>{{ __('words.suitable for') }}</h4>
+                            <h4 class="fs-6">{{ __('words.suitable for') }}</h4>
                             <p>{{ $technique->{'suitable_for_'. $local} }}</p>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
 
                  @foreach($result->doctors as $doctor)
                         <a href="{{ route('doctorDetails', $doctor->id) }}" class="text-decoration-none">
-                        <div class="card mb-3 text-center">
+                        <div class="card doctor-card mb-3 text-center">
                         <img class="w-100 rounded-top" src="{{ asset('images/doctor_photos/' . ($doctor->image ? $doctor->image : 'alternative.jpg')) }}">
                             <div class="p-3 doctor-data fs-6">
                                 <h3 class="doctor_name">{{ $doctor->{'name_'.$local} }}</h3>
