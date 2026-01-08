@@ -24,38 +24,69 @@ class AdminSeeder extends Seeder
         ];
         $permissionIds = [];
         foreach ($permissions as $permission) {
-            $permissionIds[] = DB::table('permissions')->updateOrInsert(
+            DB::table('permissions')->updateOrInsert(
                 ['slug' => $permission['slug']],
-                $permission
+                array_merge($permission, [
+                    'updated_at' => now(),
+                    'created_at' => now(),
+                ])
+            );
+
+            $permissionIds[] = DB::table('permissions')
+                ->where('slug', $permission['slug'])
+                ->value('id');
+        }
+
+
+        DB::table('roles')->updateOrInsert(
+            ['slug' => 'admin'],
+            [
+                'name'       => 'Admin',
+                'updated_at' => now(),
+                'created_at' => now(),
+            ]
+        );
+
+        $roleId = DB::table('roles')
+            ->where('slug', 'admin')
+            ->value('id');
+
+        foreach ($permissionIds as $permissionId) {
+            DB::table('role_permissions')->updateOrInsert(
+                [
+                    'role_id'       => $roleId,
+                    'permission_id' => $permissionId,
+                ],
+                [
+                    'created_at' => now(),
+                ]
             );
         }
 
-
-        $roleId = DB::table('roles')->insertGetId(
-            ['slug' => 'admin',
-            'name' => 'Admin']
+        DB::table('users')->updateOrInsert(
+            ['email' => 'admin@example.com'],
+            [
+                'name'              => 'Administrator',
+                'email_verified_at' => now(),
+                'password'          => Hash::make('password'),
+                'updated_at'        => now(),
+                'created_at'        => now(),
+            ]
         );
 
-        foreach ($permissionIds as $permissionId) {
-            DB::table('role_permission')->updateOrInsert([
-                'role_id' => $roleId,
-                'permission_id' => $permissionId,
-            ]);
-        }
+        $userId = DB::table('users')
+            ->where('email', 'admin@example.com')
+            ->value('id');
 
-        $userId = DB::table('users')->insertGetId(
+        DB::table('user_role')->updateOrInsert(
             [
-                'email' => 'admin@example.com',
-                'name' => 'Administrator',
-                'email_verified_at' => now(),
-                'password' => Hash::make('password'),
+                'user_id' => $userId,
+                'role_id' => $roleId,
+            ],
+            [
+                'created_at' => now(),
             ]
-       );
-
-        DB::table('user_role')->updateOrInsert([
-            'user_id' => $userId,
-            'role_id' => $roleId,
-        ]);
+        );
 
     }
 }
