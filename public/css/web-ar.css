@@ -470,6 +470,9 @@ footer {
     border: none;
     box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.14);
 }
+.service-name-card h1{
+    font-size: 22px;
+}
 .service-image-container{
         text-align: left;
     padding-left: 60px;
@@ -483,8 +486,70 @@ footer {
     font-size: 24px;
 }
 .about-service .doctor-card{
+    max-height: 320px;
     border-bottom:10px solid var(--primary-color);
 }
+.about-service .symptom-card{
+    min-height: 160px;
+}
+.about-service .technique-card{
+    min-height: 320px;
+}
+.about-service .doctor-card img{
+    height: 190px;
+}
+.about-service .doctor-card h3, .about-service .symptom-card h3{
+    font-size: 18px;
+}
+.about-service .doctor-card p{
+    font-size: 16px;
+}
+.service-faq .card h2{
+    color:var(--secondary-color);
+    font-size: 1.75rem;
+}
+.accordion {
+    max-width: 600px;
+    margin: auto;
+    /* border: 1px solid #ddd; */
+    /* border-radius: 8px; */
+    overflow: hidden;
+}
+.accordion-header {
+    width: 100%;
+    padding: 10px 16px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    text-align: right;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion-content {
+  display: none;
+  padding: 0 16px;
+  background: #fff;
+  text-align: right;
+}
+
+.accordion-content p {
+  padding: 16px 0;
+  margin: 0;
+}
+
+.icon {
+  font-size: 20px;
+  transition: transform 0.3s;
+}
+
+.accordion-item.active .icon {
+  transform: rotate(45deg);
+}
+
 /* ===========================
         About us
 ===============================*/
@@ -870,5 +935,18 @@ footer .list-unstyled {
 }
 .counters .card span{
     font-size: 14px;
+}
+.about-service .doctor-card{
+    max-height:fit-content;
+}
+.service-name-card .card{
+    max-width: 50%;
+    font-size: 16px;
+}
+.about-service .symptom-card {
+    min-height: 132px;
+}
+.about-service .technique-card {
+    min-height: 300px;
 }
 }
