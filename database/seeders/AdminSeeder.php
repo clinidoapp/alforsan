@@ -15,27 +15,68 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
+
+        $categories = [
+            ['name' => 'Admin Management', 'slug' => 'admin_management'],
+            ['name' => 'Permission Management', 'slug' => 'permission_management'],
+            ['name' => 'Role Management', 'slug' => 'role_management'],
+            ['name' => 'Doctor Management', 'slug' => 'doctor_management'],
+        ];
+        foreach ($categories as $category) {
+
+            DB::table('permission_categories')->updateOrInsert(
+                ['slug' => $category['slug']],
+                [
+                    'name'       => $category['name'],
+                    'slug'       => $category['slug'],
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]
+            );
+
+        }
+
+        $categories = DB::table('permission_categories')
+            ->pluck('id', 'slug');
+
         $permissions = [
             /*** Doctor Management ***/
-            ['name' => 'Create Doctor', 'slug' => 'create_doctor', 'category' => 'Doctor Management'],
-            ['name' => 'Read Doctor', 'slug' => 'read_doctor', 'category' => 'Doctor Management'],
-            ['name' => 'Update Doctor', 'slug' => 'update_doctor', 'category' => 'Doctor Management'],
-            ['name' => 'Delete Doctor', 'slug' => 'delete_doctor', 'category' => 'Doctor Management'],
-            /*** Permission Management ***/
-            ['name' => 'Create Permission', 'slug' => 'create_permission', 'category' => 'Permission Management'],
-            ['name' => 'Read Permission', 'slug' => 'read_permission', 'category' => 'Permission Management'],
-            ['name' => 'Update Permission', 'slug' => 'update_permission', 'category' => 'Permission Management'],
-            ['name' => 'Delete Permission', 'slug' => 'delete_permission', 'category' => 'Permission Management'],
+            ['name' => 'Create Doctor', 'slug' => 'create_doctor', 'category_slug' => 'doctor_management'],
+            ['name' => 'Read Doctor',   'slug' => 'read_doctor',   'category_slug' => 'doctor_management'],
+            ['name' => 'Update Doctor', 'slug' => 'update_doctor', 'category_slug' => 'doctor_management'],
+            ['name' => 'Delete Doctor', 'slug' => 'delete_doctor', 'category_slug' => 'doctor_management'],
 
+            /*** Permission Management ***/
+            ['name' => 'Create Permission', 'slug' => 'create_permission', 'category_slug' => 'permission_management'],
+            ['name' => 'Read Permission',   'slug' => 'read_permission',   'category_slug' => 'permission_management'],
+            ['name' => 'Update Permission', 'slug' => 'update_permission', 'category_slug' => 'permission_management'],
+            ['name' => 'Delete Permission', 'slug' => 'delete_permission', 'category_slug' => 'permission_management'],
+
+            /*** Role Management ***/
+            ['name' => 'Create Role', 'slug' => 'create_role', 'category_slug' => 'role_management'],
+            ['name' => 'Read Role',   'slug' => 'read_role',   'category_slug' => 'role_management'],
+            ['name' => 'Update Role', 'slug' => 'update_role', 'category_slug' => 'role_management'],
+            ['name' => 'Delete Role', 'slug' => 'delete_role', 'category_slug' => 'role_management'],
+
+            /*** Admin Management ***/
+            ['name' => 'Create Admin', 'slug' => 'create_admin', 'category_slug' => 'admin_management'],
+            ['name' => 'Read Admin',   'slug' => 'read_admin',   'category_slug' => 'admin_management'],
+            ['name' => 'Update Admin', 'slug' => 'update_admin', 'category_slug' => 'admin_management'],
+            ['name' => 'Delete Admin', 'slug' => 'delete_admin', 'category_slug' => 'admin_management'],
         ];
+
         $permissionIds = [];
         foreach ($permissions as $permission) {
+
             DB::table('permissions')->updateOrInsert(
                 ['slug' => $permission['slug']],
-                array_merge($permission, [
-                    'updated_at' => now(),
-                    'created_at' => now(),
-                ])
+                [
+                    'name'        => $permission['name'],
+                    'slug'        => $permission['slug'],
+                    'category_id' => $categories[$permission['category_slug']],
+                    'updated_at'  => now(),
+                    'created_at'  => now(),
+                ]
             );
 
             $permissionIds[] = DB::table('permissions')

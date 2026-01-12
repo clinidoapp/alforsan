@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('permissions', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->unique();
-            $table->foreignId('category_id')->constrained('permission_categories');
-            $table->string('slug')->unique();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+
+            $table->tinyInteger('status')
+                ->default(1)
+                ->comment('1 = active, 0 = inactive');
+
+            $table->tinyInteger('is_deleted')
+                ->default(0)
+                ->comment('0 = not_deleted , 1 = deleted');
         });
     }
 
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('permissions');
+        //
     }
 };

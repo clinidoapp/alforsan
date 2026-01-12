@@ -53,10 +53,26 @@ class AuthController extends Controller
         return redirect('admin/login');
 
     }
+    public function listAdmins(Request $request){
 
+        $query = DB::table('users')
+            ->join('user_role', 'users.id', '=', 'user_role.user_id')
+            ->join('roles', 'user_role.role_id', '=', 'roles.id')
+            ->select(
+            'users.id',
+            'users.name',
+            'users.email',
+            'roles.name as role_name');
 
-
-
+        if ($request->filled('admin_id')) {
+            $query->where('users.id', $request->admin_id);
+        }
+        if ($request->filled('admin_name')) {
+            $query->where('users.name', 'like', '%' . $request->admin_name . '%');
+        }
+        $admins = $query->paginate(10);
+        return view('dashboard.pages.listAdmins', compact('admins'));
+    }
 
 
 }
