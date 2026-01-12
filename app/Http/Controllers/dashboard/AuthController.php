@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\dashboard\Admins\StoreAminRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,7 @@ class AuthController extends Controller
 
             ]);
 
-            return redirect('admin/dashboard');
+            return redirect()->route('admin.dashboard');
 
         }
 
@@ -84,6 +85,30 @@ class AuthController extends Controller
         $admins = $query->paginate(10);
         return view('dashboard.pages.listAdmins', compact('admins'));
     }
+
+    public function addAdmins(Request $request)
+    {
+        return view('dashboard.pages.addAdmins');
+    }
+    public function storeAdmins(StoreAminRequest $request)
+    {
+
+        $data = $request->validated();
+
+        DB::beginTransaction();
+        $admin_id = DB::table('users')->insertGetId([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+        DB::table('user_role')->insert([
+            'user_id' => $admin_id,
+            'role_id' => $data['role_id'],
+        ]);
+        DB::commit();
+        return redirect()->route('admin.admins');
+    }
+
     public function toggleAdminStatus(Request $request,$id)
     {
 
