@@ -90,6 +90,8 @@ return [
     'why Alforsan for'=>'لماذا تختار مركز الفرسان',
     'service doctors'=>'الأطباء الذين يقدمون الخدمة',
 
+    // ______________ FAQ ______________
+    'faq'=>'أسئلة شائعة',
     // footer
     'Quick links'=>'روابط سريعه',
     'Our medical services'=>'خدماتنا الطبية',

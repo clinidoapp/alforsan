@@ -94,6 +94,9 @@ return [
     'why Alforsan for'=>'Why Alforsan for',
     'service doctors'=>'Doctors who provide this service',
 
+    // ______________ FAQ ______________
+    'faq'=>'FAQ',
+
     // footer
     'Quick links'=>'Quick links',
     'Our medical services'=>'Our medical services',
