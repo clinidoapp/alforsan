@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
 
-            $table->tinyInteger('status')
+            $table->tinyInteger('status')->after('password')
                 ->default(1)
                 ->comment('1 = active, 0 = inactive');
 
-            $table->tinyInteger('is_deleted')
+            $table->tinyInteger('is_deleted')->after('password')
                 ->default(0)
                 ->comment('0 = not_deleted , 1 = deleted');
         });

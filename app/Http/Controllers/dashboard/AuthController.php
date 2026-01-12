@@ -19,11 +19,11 @@ class AuthController extends Controller
                 'email'    => 'required|email',
                 'password' => 'required|string',
         ]);
-       // dd($data);
 
         $user = DB::table('users')
-            ->where('email', $data['email'])
+            ->where('email', $data['email'])->where('is_deleted', 0)
             ->first();
+
         if (!$user) {
             return back()->withErrors([
                 'email' => 'Email does not exist',
@@ -32,12 +32,19 @@ class AuthController extends Controller
 
         if ($user && Hash::check($data['password'], $user->password)) {
 
+            if ($user->status == 0) {
+                return back()->withErrors([
+                    'activate' => 'Your account does not Activated',
+                ])->withInput();
+
+            }
             $request->session()->regenerate();
             session([
                 'logged_user' => $user,
                 'logged_user_id' => $user->id,
 
             ]);
+
             return redirect('admin/dashboard');
 
         }
@@ -60,6 +67,7 @@ class AuthController extends Controller
             ->join('roles', 'user_role.role_id', '=', 'roles.id')
             ->select(
             'users.id',
+            'users.status',
             'users.name',
             'users.email',
             'roles.name as role_name');
@@ -72,6 +80,15 @@ class AuthController extends Controller
         }
         $admins = $query->paginate(10);
         return view('dashboard.pages.listAdmins', compact('admins'));
+    }
+    public function toggleAdminStatus(Request $request,$id)
+    {
+
+        $admin = DB::table('users')->where('id', $id);
+        $currentStatus = $admin->value('status');
+        $newStatus = $currentStatus == 1 ? 0 : 1;
+        $admin->update(['status' => $newStatus]);
+        return redirect()->route('admin.admins');
     }
 
 
