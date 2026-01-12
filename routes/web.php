@@ -4,6 +4,7 @@
 use App\Http\Controllers\dashboard\AuthController;
 use App\Http\Controllers\dashboard\DoctorController;
 use App\Http\Controllers\dashboard\PermissionsController;
+use App\Http\Controllers\dashboard\RolesController;
 use App\Http\Controllers\website\ContactPageController;
 use App\Http\Controllers\website\DoctorsPageController;
 use App\Http\Controllers\website\HomePageController;
@@ -57,14 +58,19 @@ Route::post('admin/login-user' , [AuthController::class, 'login'])->name('login'
 
 Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
 
-    /*** Auth ***/
-    Route::post('logout' , [AuthController::class, 'logout'])->name('logout');
-
     /*** Dashboard ***/
     Route::get('dashboard' , function ()
     {
         return view('dashboard.pages.home');
     })->name('dashboard');
+
+    /*** Auth ***/
+    Route::post('logout' , [AuthController::class, 'logout'])->name('logout');
+
+    /*** Admins ***/
+    Route::get('admins' , [AuthController::class, 'listAdmins'])->middleware(['permission:read_admin'])->name('admin.admins');
+    Route::get('toggleAdmin/{id}' , [AuthController::class, 'toggleAdminStatus'])->middleware(['permission:update_admin'])->name('admin.toggle');
+
 
     /*** Doctors ***/
     Route::get('listDoctors' , [DoctorController::class, 'listDoctors'])->middleware(['permission:read_doctor']);
@@ -87,7 +93,13 @@ Route::prefix('test')->group(function () {
     Route::post('login' , [AuthController::class, 'login']);
 
 
-    Route::post('permissions' , [PermissionsController::class, 'index']);
+    Route::get('permissions' , [PermissionsController::class, 'index']);
+    Route::get('roles' , [RolesController::class, 'index']);
+    Route::get('admins' , [AuthController::class, 'listAdmins']);
+    Route::get('toggleAdminStatus/{id}' , [AuthController::class, 'toggleAdminStatus']);
+    Route::get('deleteAdmin/{id}' , [AuthController::class, 'deleteAdmin']);
+    Route::post('storeAdmins' , [AuthController::class, 'storeAdmins']);
+
 
 
 
