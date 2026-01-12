@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\dashboard\Admins\StoreAminRequest;
+use App\Http\Requests\dashboard\Admins\StoreAdminRequest;
 use Carbon\Carbon;
 use Couchbase\Role;
 use Illuminate\Http\Request;
@@ -98,15 +98,14 @@ class AuthController extends Controller
                // $second = $admins->last();
                 dd($first);
         */
-        dd($admins);
-        return view('dashboard.pages.listAdmins', compact('admins'));
+        return view('dashboard.pages.admins', compact('admins'));
     }
     public function addAdmins(Request $request)
     {
         $roles = DB::table('roles')->select('id' , 'name')->get();
-        return view('dashboard.pages.addAdmins' , compact('roles'));
+        return view('dashboard.pages.addAdmin' , compact('roles'));
     }
-    public function storeAdmins(StoreAminRequest $request)
+    public function storeAdmins(StoreAdminRequest $request)
     {
 
         $data = $request->validated();
@@ -122,7 +121,7 @@ class AuthController extends Controller
             'role_id' => $data['role_id'],
         ]);
         DB::commit();
-        return redirect()->route('admin.admins');
+        return redirect()->route('admin-list');
     }
     public function toggleAdminStatus(Request $request,$id)
     {

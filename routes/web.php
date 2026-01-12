@@ -68,8 +68,10 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::post('logout' , [AuthController::class, 'logout'])->name('logout');
 
     /*** Admins ***/
-    Route::get('admins' , [AuthController::class, 'listAdmins'])->middleware(['permission:read_admin'])->name('admin.admins');
+    Route::get('admin-list' , [AuthController::class, 'listAdmins'])->middleware(['permission:read_admin'])->name('admin-list');
+    Route::get('add-admin' , [AuthController::class, 'addAdmins'])->middleware(['permission:create_admin'])->name('addAdmins');
     Route::get('toggleAdmin/{id}' , [AuthController::class, 'toggleAdminStatus'])->middleware(['permission:update_admin'])->name('admin.toggle');
+    Route::post('storeAdmins' , [AuthController::class, 'storeAdmins'])->name('store-admin');
 
 
     /*** Doctors ***/
