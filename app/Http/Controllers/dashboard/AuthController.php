@@ -5,10 +5,12 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\dashboard\Admins\StoreAminRequest;
 use Carbon\Carbon;
+use Couchbase\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use function Laravel\Prompts\select;
 
 class AuthController extends Controller
 {
@@ -83,12 +85,26 @@ class AuthController extends Controller
             $query->where('users.name', 'like', '%' . $request->admin_name . '%');
         }
         $admins = $query->paginate(10);
+
+        /*
+                $first = DB::table('alforsan.permissions')->
+                    join('alforsan2.permission_categories', 'alforsan.permissions.category_id', '=', 'alforsan2.permission_categories.id')
+                    ->select('alforsan.permissions.category_id as db1category_id'
+                    , 'alforsan.permissions.name as db1name'
+                    , 'alforsan2.permission_categories.name as db2name'
+                    )
+                    ->first();
+              //  $second = DB::connection('mysql_s')->table('users')->get();
+               // $second = $admins->last();
+                dd($first);
+        */
+        dd($admins);
         return view('dashboard.pages.listAdmins', compact('admins'));
     }
-
     public function addAdmins(Request $request)
     {
-        return view('dashboard.pages.addAdmins');
+        $roles = DB::table('roles')->select('id' , 'name')->get();
+        return view('dashboard.pages.addAdmins' , compact('roles'));
     }
     public function storeAdmins(StoreAminRequest $request)
     {
@@ -108,7 +124,6 @@ class AuthController extends Controller
         DB::commit();
         return redirect()->route('admin.admins');
     }
-
     public function toggleAdminStatus(Request $request,$id)
     {
 
