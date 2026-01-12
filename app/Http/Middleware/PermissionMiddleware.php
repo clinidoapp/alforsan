@@ -22,12 +22,11 @@ class PermissionMiddleware
             return redirect('/login');
         }
         $hasPermission = DB::table('user_role')
-            ->join('role_permission', 'user_role.role_id', '=', 'role_permission.role_id')
-            ->join('permissions', 'role_permission.permission_id', '=', 'permissions.id')
+            ->join('role_permissions', 'user_role.role_id', '=', 'role_permissions.role_id')
+            ->join('permissions', 'role_permissions.permission_id', '=', 'permissions.id')
             ->where('user_role.user_id', $userId)
-            ->where('permissions.name', $permission)
+            ->where('permissions.slug', $permission)
             ->exists();
-
         if (!$hasPermission) {
             dd('Permission denied');
            // TODO

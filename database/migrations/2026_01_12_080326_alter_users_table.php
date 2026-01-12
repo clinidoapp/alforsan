@@ -20,6 +20,8 @@ return new class extends Migration
             $table->tinyInteger('is_deleted')->after('password')
                 ->default(0)
                 ->comment('0 = not_deleted , 1 = deleted');
+
+            $table->softDeletes();
         });
     }
 

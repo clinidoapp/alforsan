@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -63,11 +64,13 @@ class AuthController extends Controller
     public function listAdmins(Request $request){
 
         $query = DB::table('users')
+            ->where('is_deleted', 0)->whereNull('deleted_at')
             ->join('user_role', 'users.id', '=', 'user_role.user_id')
             ->join('roles', 'user_role.role_id', '=', 'roles.id')
             ->select(
             'users.id',
             'users.status',
+            'users.is_deleted',
             'users.name',
             'users.email',
             'roles.name as role_name');
@@ -90,6 +93,19 @@ class AuthController extends Controller
         $admin->update(['status' => $newStatus]);
         return redirect()->route('admin.admins');
     }
+    public function deleteAdmin(Request $request,$id)
+    {
+
+        DB::table('users')
+            ->where('id', $id)
+            ->update([
+                'is_deleted' => 1,
+                'deleted_at' => Carbon::now(),
+            ]);
+        return redirect()->route('admin.admins');
+
+    }
+
 
 
 }
