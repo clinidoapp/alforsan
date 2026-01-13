@@ -14,7 +14,7 @@ use function Laravel\Prompts\select;
 class AuthController extends Controller
 {
     public function index(){
-        return view('dashboard.pages.login');
+        return view('dashboard.pages.admins.login');
     }
     public function login(Request $request)
     {
@@ -88,17 +88,17 @@ class AuthController extends Controller
             'admin_id' => $request->admin_id ?? null,
             'admin_name' => $request->admin_name ?? null,
         ];
-        return view('dashboard.pages.admins', compact('admins' , 'search'));
+        return view('dashboard.pages.admins.admins', compact('admins' , 'search'));
     }
     public function addAdmin(Request $request)
     {
         $roles = DB::table('roles')->select('id' , 'name')->get();
-        return view('dashboard.pages.addAdmin' , compact('roles'));
+        return view('dashboard.pages.admins.addAdmin' , compact('roles'));
     }
     public function createOrEditAdmin(StoreAdminRequest $request , $id = null)
     {
-        dd('sgdgsg');
         $data = $request->validated();
+        // dd($data);
 
         DB::beginTransaction();
 
@@ -144,7 +144,7 @@ class AuthController extends Controller
                 'user_role.role_id')
             ->first();
         $roles = DB::table('roles')->select('id' , 'name')->get();
-        return view('dashboard.pages.editAdmin' , compact('roles','admin'));
+        return view('dashboard.pages.admins.editAdmin' , compact('roles','admin'));
     }
     public function toggleAdminStatus(Request $request,$id)
     {

@@ -15,7 +15,7 @@
 
         {{-- Admins --}}
         <li class="nav-item rounded-2 m-2">
-            <a href="{{route('admin-list')}}" class="nav-link  {{ Request::is('admin/admin-*') ? 'active' : '' }}">
+            <a href="{{route('admin-list')}}" class="nav-link  {{ Request::is('admin/*') ? 'active' : '' }}">
                 <img src="{{ asset('images/dashboard-icons/admin.webp') }}">
                 Admins
             </a>
