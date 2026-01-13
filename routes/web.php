@@ -69,12 +69,12 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
 
     /*** Admins ***/
     Route::get('admin-list' , [AuthController::class, 'listAdmins'])->middleware(['permission:read_admin'])->name('admin-list');
-    Route::get('add-admin' , [AuthController::class, 'addAdmins'])->middleware(['permission:create_admin'])->name('addAdmins');
+    Route::get('add-admin' , [AuthController::class, 'addAdmin'])->middleware(['permission:create_admin'])->name('addAdmins');
     Route::get('toggleAdmin/{id}' , [AuthController::class, 'toggleAdminStatus'])->middleware(['permission:update_admin'])->name('admin.toggle');
     Route::get('deleteAdmin/{id}' , [AuthController::class, 'deleteAdmin'])->middleware(['permission:update_admin'])->name('admin.delete');
     Route::post('storeAdmins' , [AuthController::class, 'createOrEditAdmins'])->middleware(['permission:create_admin'])->name('store-admin');
-    Route::post('storeAdmins/{id}' , [AuthController::class, 'createOrEditAdmins'])->middleware(['permission:update_admin'])->name('Update-admin');
-    Route::get('editAdmins/{id}' , [AuthController::class, 'editAdmins'])->middleware(['permission:update_admin'])->name('Edit-admin');;
+    Route::post('storeAdmins/{id}' , [AuthController::class, 'createOrEditAdmin'])->middleware(['permission:update_admin'])->name('Update-admin');
+    Route::get('editAdmins/{id}' , [AuthController::class, 'editAdmin'])->middleware(['permission:update_admin'])->name('Edit-admin');;
 
 
     /*** Doctors ***/

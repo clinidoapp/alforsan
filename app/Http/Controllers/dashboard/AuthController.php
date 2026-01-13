@@ -99,12 +99,12 @@ class AuthController extends Controller
         */
         return view('dashboard.pages.admins', compact('admins'));
     }
-    public function addAdmins(Request $request)
+    public function addAdmin(Request $request)
     {
         $roles = DB::table('roles')->select('id' , 'name')->get();
         return view('dashboard.pages.addAdmin' , compact('roles'));
     }
-    public function createOrEditAdmins(StoreAdminRequest $request , $id = null)
+    public function createOrEditAdmin(StoreAdminRequest $request , $id = null)
     {
 
         $data = $request->validated();
@@ -143,7 +143,7 @@ class AuthController extends Controller
         DB::commit();
         return redirect()->route('admin-list');
     }
-    public function editAdmins(Request $request , $id)
+    public function editAdmin(Request $request , $id)
     {
         $admin = DB::table('users')->where('users.id', $id)
             ->join('user_role', 'users.id', '=', 'user_role.user_id')
