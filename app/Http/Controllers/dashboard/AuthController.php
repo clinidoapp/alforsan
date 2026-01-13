@@ -84,19 +84,6 @@ class AuthController extends Controller
             $query->where('users.name', 'like', '%' . $request->admin_name . '%');
         }
         $admins = $query->paginate(10);
-
-        /*
-                $first = DB::table('alforsan.permissions')->
-                    join('alforsan2.permission_categories', 'alforsan.permissions.category_id', '=', 'alforsan2.permission_categories.id')
-                    ->select('alforsan.permissions.category_id as db1category_id'
-                    , 'alforsan.permissions.name as db1name'
-                    , 'alforsan2.permission_categories.name as db2name'
-                    )
-                    ->first();
-              //  $second = DB::connection('mysql_s')->table('users')->get();
-               // $second = $admins->last();
-                dd($first);
-        */
         return view('dashboard.pages.admins', compact('admins'));
     }
     public function addAdmin(Request $request)
