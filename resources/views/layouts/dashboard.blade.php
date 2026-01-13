@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('title', 'Dashboard')</title>
+    <link rel="icon" href="{{ asset('images/logo-icon.svg') }}" type="image/x-icon"/>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap 5 -->
@@ -16,7 +18,7 @@
 <div class="d-flex">
     <!-- Sidebar -->
         @include('dashboard.partials.sidebar')
-    
+
 
     <!-- Main Content -->
     <div class="flex-grow-1">
@@ -29,6 +31,7 @@
         @include('dashboard.partials.footer')
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
     function toggleSidebar() {

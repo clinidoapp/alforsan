@@ -7,14 +7,18 @@
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 </head>
-<body class="d-flex align-items-center justify-content-center min-vh-100">
-<div class="card shadow-lg border-0" style="max-width: 400px; width: 100%;">
+<body class="min-vh-100" style="align-content: center; justify-items: anchor-center;">
+    <img src="{{ asset('images/logo@3x.webp') }}" alt="Logo" class="d-block py-2">
+    <div class="col-md-6">
+    <h1 class="mb-4 fw-bold">Login</h1>
+
+<div class="card shadow border-0 mt-4 p-4 rounded-4">
     <div class="card-body p-4">
-        <h4 class="text-center mb-4">Login</h4>
 
         {{-- <form method="POST" action="{{ route('login') }}"> --}}
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }}" id="Loging-form">
             @csrf
 
             <div class="mb-3">
@@ -22,6 +26,7 @@
                 <input
                     type="email"
                     name="email"
+                    placeholder="Enter your email"
                     class="form-control @error('email') is-invalid @enderror"
                     value="{{ old('email') }}"
                     required
@@ -36,6 +41,7 @@
                 <input
                     type="password"
                     name="password"
+                    placeholder="Enter password"
                     class="form-control @error('password') is-invalid @enderror"
                     required
                 >
@@ -44,17 +50,10 @@
                 @enderror
             </div>
 
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <div class="form-check">
-                    <input type="checkbox" name="remember" class="form-check-input">
-                    <label class="form-check-label">Remember me</label>
-                </div>
 
-                <a href="#" class="small">Forgot password?</a>
-            </div>
-
-            <button class="btn btn-primary w-100">Login</button>
+            <div class="text-center"><button class="btn btn-primary-custom w-50">Login</button></div>
         </form>
+    </div>
     </div>
 </div>
 </body>
