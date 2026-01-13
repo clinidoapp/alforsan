@@ -84,7 +84,11 @@ class AuthController extends Controller
             $query->where('users.name', 'like', '%' . $request->admin_name . '%');
         }
         $admins = $query->paginate(10);
-        return view('dashboard.pages.admins', compact('admins'));
+        $search = [
+            'admin_id' => $request->admin_id ?? null,
+            'admin_name' => $request->admin_name ?? null,
+        ];
+        return view('dashboard.pages.admins', compact('admins' , 'search'));
     }
     public function addAdmin(Request $request)
     {
