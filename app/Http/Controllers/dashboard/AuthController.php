@@ -130,7 +130,7 @@ class AuthController extends Controller
         $currentStatus = $admin->value('status');
         $newStatus = $currentStatus == 1 ? 0 : 1;
         $admin->update(['status' => $newStatus]);
-        return redirect()->route('admin.admins');
+        return redirect()->route('admin-list');
     }
     public function deleteAdmin(Request $request,$id)
     {
