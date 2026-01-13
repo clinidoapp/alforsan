@@ -71,7 +71,7 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('admin-list' , [AuthController::class, 'listAdmins'])->middleware(['permission:read_admin'])->name('admin-list');
     Route::get('add-admin' , [AuthController::class, 'addAdmins'])->middleware(['permission:create_admin'])->name('addAdmins');
     Route::get('toggleAdmin/{id}' , [AuthController::class, 'toggleAdminStatus'])->middleware(['permission:update_admin'])->name('admin.toggle');
-    Route::post('storeAdmins' , [AuthController::class, 'storeAdmins'])->name('store-admin');
+    Route::post('storeAdmins/{id}?' , [AuthController::class, 'createOrEditAdmins'])->name('store-admin');
 
 
     /*** Doctors ***/
@@ -101,6 +101,7 @@ Route::prefix('test')->group(function () {
     Route::get('toggleAdminStatus/{id}' , [AuthController::class, 'toggleAdminStatus']);
     Route::get('deleteAdmin/{id}' , [AuthController::class, 'deleteAdmin']);
     Route::post('storeAdmins' , [AuthController::class, 'storeAdmins']);
+    Route::get('editAdmins/{id}' , [AuthController::class, 'editAdmins']);
 
 
 

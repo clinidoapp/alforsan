@@ -5,7 +5,6 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\dashboard\Admins\StoreAdminRequest;
 use Carbon\Carbon;
-use Couchbase\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -105,42 +104,72 @@ class AuthController extends Controller
         $roles = DB::table('roles')->select('id' , 'name')->get();
         return view('dashboard.pages.addAdmin' , compact('roles'));
     }
-    public function storeAdmins(StoreAdminRequest $request)
+    public function createOrEditAdmins(StoreAdminRequest $request , $id = null)
     {
 
         $data = $request->validated();
 
         DB::beginTransaction();
-        $admin_id = DB::table('users')->insertGetId([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-        DB::table('user_role')->insert([
-            'user_id' => $admin_id,
-            'role_id' => $data['role_id'],
-        ]);
+
+
+        if ($id) {
+            DB::table('users')
+                ->where('id', $id)
+                ->update([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => !empty($data['password'])
+                        ? Hash::make($data['password'])
+                        : DB::raw('password'),
+                ]);
+            DB::table('user_role')
+                ->where('user_id', $id)
+                ->update([
+                    'role_id' => $data['role_id'],
+                ]);
+        }else {
+            $admin_id = DB::table('users')->insertGetId([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
+
+            DB::table('user_role')->insert([
+                'user_id' => $admin_id,
+                'role_id' => $data['role_id'],
+            ]);
+        }
+
         DB::commit();
         return redirect()->route('admin-list');
     }
 
 
-    public function UpdateAdmins(Request $request)
+    public function editAdmins(Request $request , $id)
     {
+        $admin = DB::table('users')->where('users.id', $id)
+            ->join('user_role', 'users.id', '=', 'user_role.user_id')
+            ->select('users.id',
+                'users.name',
+                'users.email',
+                'user_role.role_id')
+            ->first();
         $roles = DB::table('roles')->select('id' , 'name')->get();
         return view('dashboard.pages.updateAdmins' , compact('roles'));
     }
-    public function storeAdmins(StoreAminRequest $request)
+    public function upadeAdmins(UpdateAdminRequest $request , $id)
     {
 
         $data = $request->validated();
 
         DB::beginTransaction();
+
         $admin_id = DB::table('users')->insertGetId([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
         DB::table('user_role')->insert([
             'user_id' => $admin_id,
             'role_id' => $data['role_id'],

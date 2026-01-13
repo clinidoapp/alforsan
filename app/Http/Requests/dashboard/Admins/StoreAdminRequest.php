@@ -3,6 +3,7 @@
 namespace App\Http\Requests\dashboard\Admins;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreAdminRequest extends FormRequest
 {
@@ -21,10 +22,16 @@ class StoreAdminRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('id');
+
         return [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users', 'email')->ignore($id),
+            ],
+            'password' => $id ? 'nullable|min:8' : 'required|min:8',
             'role_id' => 'required|exists:roles,id',
 
         ];
