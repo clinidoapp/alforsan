@@ -49,16 +49,19 @@
                         <td class="py-1 text-center">{{$admin->name}}</td>
                         <td class="py-1 text-center">{{$admin->email}}</td>
                         <td class="py-1 text-center">{{$admin->role_name }}</td>
-                        <td class="py-1 text-center"><badge class="badge-success">{{$admin->status==1?'Active':'InActive'}}</badge></td>
+                        <td class="py-1 text-center"><span class="badge bg-{{$admin->status==1?'success':'danger'}}">{{$admin->status==1?'Active':'InActive'}}</span></td>
                         <td class="py-1 text-center">
-                            <button class="btn btn-primary-custom">Edit</button>
-                            <button class="btn btn-outline-primary">Deactivate</button>
-                            <button class="btn btn-danger">Delete</button>
+                            <a class="btn btn-primary-custom">Edit</a>
+                            <a href="{{ route('admin.toggle', $admin->id) }}" class="btn btn-outline-{{$admin->status==1?'danger':'success'}}">{{$admin->status==1?'Deactivate':'Activate'}}</a>
+                            <a class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            <div class="d-flex justify-content-end align-items-center px-3 py-3 text-align-right">
+                {{ $admins->links('pagination::bootstrap-5') }}
+            </div>
 
         </div>
       </div>
