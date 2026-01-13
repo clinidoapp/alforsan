@@ -22,8 +22,8 @@ class StoreAdminRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->route('id');
 
+        $id = $this->route('id');
         return [
             'name' => 'required',
             'email' => [

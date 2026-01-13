@@ -97,7 +97,7 @@ class AuthController extends Controller
     }
     public function createOrEditAdmin(StoreAdminRequest $request , $id = null)
     {
-        dd('jhj');
+        dd('sgdgsg');
         $data = $request->validated();
 
         DB::beginTransaction();

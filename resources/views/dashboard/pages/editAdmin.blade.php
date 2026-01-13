@@ -2,6 +2,7 @@
 @section('title', 'Dashboard - Admins')
 @section('page-title', 'Admins')
 @section('content')
+
 <section class="listing">
    <div class="container-fluid">
    <h2>Edit admin {{$admin->name}}</h2>
@@ -13,12 +14,18 @@
                <div class="mb-3">
                   <label for="admin_name" class="form-label">Admin Name</label>
                   <input type="text" class="form-control" id="admin_name" name="name" placeholder="Enter admin name" value="{{ $admin->name }}">
+                   @error('name')
+                   <div class="invalid-feedback">{{ $message }}</div>
+                   @enderror
                </div>
             </div>
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="admin_email" class="form-label">Admin Email</label>
                   <input type="email" class="form-control" id="admin_email" name="email" placeholder="Enter admin email" value="{{ $admin->email }}">
+                   @error('email')
+                   <div class="invalid-feedback">{{ $message }}</div>
+                   @enderror
                </div>
             </div>
          </div>
@@ -37,7 +44,10 @@
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="admin_password" class="form-label">Admin password</label>
-                  <input type="text" class="form-control" id="admin_password" name="password" placeholder="Enter admin password" value="*******">
+                  <input type="text" class="form-control" id="admin_password" name="password" placeholder="Enter admin password" value="**********">
+                   @error('password')
+                   <div class="invalid-feedback">{{ $message }}</div>
+                   @enderror
                </div>
             </div>
             <div class="row justify-content-center">

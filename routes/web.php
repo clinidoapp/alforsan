@@ -72,10 +72,11 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('add-admin' , [AuthController::class, 'addAdmin'])->middleware(['permission:create_admin'])->name('addAdmins');
     Route::get('toggleAdmin/{id}' , [AuthController::class, 'toggleAdminStatus'])->middleware(['permission:update_admin'])->name('admin.toggle');
     Route::get('deleteAdmin/{id}' , [AuthController::class, 'deleteAdmin'])->middleware(['permission:update_admin'])->name('admin.delete');
-    Route::post('storeAdmins' , [AuthController::class, 'createOrEditAdmins'])->middleware(['permission:create_admin'])->name('store-admin');
-    Route::post('storeAdmins/{id}' , [AuthController::class, 'createOrEditAdmin'])->middleware(['permission:update_admin'])->name('Update-admin');
+    Route::post('storeAdmins' , [AuthController::class, 'createOrEditAdmin'])->middleware(['permission:create_admin'])->name('store-admin');
+    Route::post('UpdateAdmins/{id}' , [AuthController::class, 'createOrEditAdmin'])->middleware(['permission:update_admin'])->name('Update-admin');
     Route::get('editAdmins/{id}' , [AuthController::class, 'editAdmin'])->middleware(['permission:update_admin'])->name('Edit-admin');;
-
+    /*** Doctors ***/
+    Route::get('roles' , [RolesController::class, 'listRoles'])->middleware(['permission:read_roles'])->name('roles-list');
 
     /*** Doctors ***/
     Route::get('listDoctors' , [DoctorController::class, 'listDoctors'])->middleware(['permission:read_doctor']);
@@ -99,7 +100,7 @@ Route::prefix('test')->group(function () {
 
 
     Route::get('permissions' , [PermissionsController::class, 'index']);
-    Route::get('roles' , [RolesController::class, 'index']);
+    Route::get('roles' , [RolesController::class, 'listRoles']);
     Route::get('admins' , [AuthController::class, 'listAdmins']);
     Route::get('toggleAdminStatus/{id}' , [AuthController::class, 'toggleAdminStatus']);
     Route::get('deleteAdmin/{id}' , [AuthController::class, 'deleteAdmin']);

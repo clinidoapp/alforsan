@@ -8,31 +8,17 @@ use Illuminate\Support\Facades\DB;
 
 class RolesController extends Controller
 {
-    public function index()
+    public function listRoles(Request $request)
     {
-
-        $roles = DB::table('roles')
+        $query = DB::table('roles')
             ->select('id', 'name')
-            ->orderBy('name')
-            ->paginate(3);
-        /*
-        dd($roles);
-        $data = collect($roles->items())->map(function ($role) {
-            return [
-                'id' => $role->id,
-                'name' => $role->name,
-                'permissions' => DB::table('role_permissions')
-                    ->join('permissions', 'permissions.id', '=', 'role_permissions.permission_id')
-                    ->where('role_permissions.role_id', $role->id)
-                    ->orderBy('permissions.name')
-                    ->get(['permissions.id', 'permissions.name', 'permissions.slug']),
-            ];
-        });
-        $roles->item =
+            ->orderBy('name');
 
-        dd($data);*/
+        if ($request->filled('role_name')) {
+            $query->where('name', 'like', '%' . $request->role_name . '%');
+        }
 
-
+        $roles = $query->paginate(10);
 
         return view('users.pages-permission', compact('roles'));
     }
