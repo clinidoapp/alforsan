@@ -24,29 +24,44 @@ class StoreDoctorRequest extends FormRequest
         return [
             'name_en'              => 'required|string|max:191',
             'name_ar'              => 'required|string|max:191',
-            'academic_title_en'    => 'required|string|max:191',
-            'academic_title_ar'    => 'required|string|max:191',
+            'academic_title'    => 'required|string|in:specialist,professor,consultant',
+            //'academic_title_ar'    => 'required|string|max:191',
             'main_speciality_en'   => 'required|string|max:191',
             'main_speciality_ar'   => 'required|string|max:191',
 
             'bio_en'               => 'required|string',
             'bio_ar'               => 'required|string',
+
+            'experiences_en' => ['required', 'array'],
+            'experiences_ar' => ['required', 'array'],
+            /*
+            'experiences.*.experiences_en' => ['required_with:experiences', 'string'],
+            'experiences.*.experiences_ar' => ['required_with:experiences', 'string'],
+            /*
             'experiences_en'       => 'required|string',
             'experiences_ar'       => 'required|string',
+            */
+            'qualifications_en' => ['required', 'array'],
+            'qualifications_ar' => ['required', 'array'],
+            /*
+            'qualifications.*.qualifications_en' => ['required_with:qualifications', 'string'],
+            'qualifications.*.qualifications_ar' => ['required_with:qualifications', 'string'],
+            /*
             'qualifications_en'    => 'required|string',
             'qualifications_ar'    => 'required|string',
-
+            */
             'image'                => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'status'               => 'required|in:0,1',
+            //'status'               => 'required|in:0,1',
 
             'services_ids'         => 'required|array',
             'services_ids.*'       => 'required|exists:services,id',
 
-            'videos'               => 'required|array',
+           /* 'videos'               => 'required|array',
             'videos.*.video_url'   => 'required_with:videos|string|max:191',
             'videos.*.title_en'    => 'required_with:videos|string|max:191',
             'videos.*.title_ar'    => 'required_with:videos|string|max:191',
             'videos.*.status'      => 'required_with:videos|in:0,1',
+           */
 
             ];
     }

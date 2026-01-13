@@ -33,7 +33,16 @@ return [
             'file'   => 'حقل :attribute يجب ألا يزيد عن :max كيلوبايت.',
         ],
         'exists' => 'القيمة المختارة في حقل :attribute غير صحيحة.',
-
-
-    ]
+    ],
+    'admin' => [
+        'required' => 'حقل :attribute مطلوب.',
+        'string'   => 'حقل :attribute يجب أن يكون نصًا.',
+        'image'    => 'حقل :attribute يجب أن يكون صورة.',
+        'mimes'    => 'حقل :attribute يجب أن يكون من نوع: :values.',
+        'max'      => [
+            'string' => 'حقل :attribute يجب ألا يزيد عن :max حرف.',
+            'file'   => 'حقل :attribute يجب ألا يزيد عن :max كيلوبايت.',
+        ],
+        'exists' => 'القيمة المختارة في حقل :attribute غير صحيحة.',
+]
 ];

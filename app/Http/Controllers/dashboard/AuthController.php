@@ -85,26 +85,37 @@ class AuthController extends Controller
             $query->where('users.name', 'like', '%' . $request->admin_name . '%');
         }
         $admins = $query->paginate(10);
-
-        /*
-                $first = DB::table('alforsan.permissions')->
-                    join('alforsan2.permission_categories', 'alforsan.permissions.category_id', '=', 'alforsan2.permission_categories.id')
-                    ->select('alforsan.permissions.category_id as db1category_id'
-                    , 'alforsan.permissions.name as db1name'
-                    , 'alforsan2.permission_categories.name as db2name'
-                    )
-                    ->first();
-              //  $second = DB::connection('mysql_s')->table('users')->get();
-               // $second = $admins->last();
-                dd($first);
-        */
-        dd($admins);
         return view('dashboard.pages.listAdmins', compact('admins'));
     }
     public function addAdmins(Request $request)
     {
         $roles = DB::table('roles')->select('id' , 'name')->get();
         return view('dashboard.pages.addAdmins' , compact('roles'));
+    }
+    public function storeAdmins(StoreAminRequest $request)
+    {
+
+        $data = $request->validated();
+
+        DB::beginTransaction();
+        $admin_id = DB::table('users')->insertGetId([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+        DB::table('user_role')->insert([
+            'user_id' => $admin_id,
+            'role_id' => $data['role_id'],
+        ]);
+        DB::commit();
+        return redirect()->route('admin.admins');
+    }
+
+
+    public function UpdateAdmins(Request $request)
+    {
+        $roles = DB::table('roles')->select('id' , 'name')->get();
+        return view('dashboard.pages.updateAdmins' , compact('roles'));
     }
     public function storeAdmins(StoreAminRequest $request)
     {
