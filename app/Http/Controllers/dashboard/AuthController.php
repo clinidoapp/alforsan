@@ -97,7 +97,7 @@ class AuthController extends Controller
     }
     public function createOrEditAdmin(StoreAdminRequest $request , $id = null)
     {
-
+        dd('jhj');
         $data = $request->validated();
 
         DB::beginTransaction();
@@ -144,7 +144,7 @@ class AuthController extends Controller
                 'user_role.role_id')
             ->first();
         $roles = DB::table('roles')->select('id' , 'name')->get();
-        return view('dashboard.pages.updateAdmins' , compact('roles'));
+        return view('dashboard.pages.editAdmin' , compact('roles','admin'));
     }
     public function toggleAdminStatus(Request $request,$id)
     {

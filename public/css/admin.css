@@ -153,6 +153,9 @@ footer {
 #sidebar .nav-link i {
     font-size: 16px;
 } */
+ .admin-actions .toggle{
+    width: 100px;
+ }
 footer{
     position: sticky;
     top: 100%;
@@ -168,4 +171,7 @@ footer{
 	.sidebar.show {
 		left: 0;
 	}
+     .admin-actions .toggle{
+    width: auto;
+ }
 }

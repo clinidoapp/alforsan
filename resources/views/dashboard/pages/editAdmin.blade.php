@@ -4,21 +4,21 @@
 @section('content')
 <section class="listing">
    <div class="container-fluid">
-   <h2>Add New Admin</h2>
+   <h2>Edit admin {{$admin->name}}</h2>
    <div class="card p-3">
-      <form id="add_admin" action="{{ route('store-admin') }}" method="POST">
+      <form id="add_admin" action="{{ route('Update-admin', $admin->id) }}" method="POST">
         @csrf
          <div class="row">
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="admin_name" class="form-label">Admin Name</label>
-                  <input type="text" class="form-control" id="admin_name" name="name" placeholder="Enter admin name">
+                  <input type="text" class="form-control" id="admin_name" name="name" placeholder="Enter admin name" value="{{ $admin->name }}">
                </div>
             </div>
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="admin_email" class="form-label">Admin Email</label>
-                  <input type="email" class="form-control" id="admin_email" name="email" placeholder="Enter admin email">
+                  <input type="email" class="form-control" id="admin_email" name="email" placeholder="Enter admin email" value="{{ $admin->email }}">
                </div>
             </div>
          </div>
@@ -29,7 +29,7 @@
                   <select class="form-select" id="admin_role" name="role_id">
                      <option value="" disabled selected>Select role</option>
                      @foreach($roles as $role)
-                        <option value="{{$role->id}}">{{$role->name}}</option>
+                        <option value="{{$role->id}}"  {{ $admin->role_id == $role->id ? 'selected' : '' }} >{{$role->name}}</option>
                      @endforeach
                   </select>
                </div>
@@ -37,20 +37,16 @@
             <div class="col-md-6">
                <div class="mb-3">
                   <label for="admin_password" class="form-label">Admin password</label>
-                  <input type="text" class="form-control" id="admin_password" name="password" placeholder="Enter admin password">
+                  <input type="text" class="form-control" id="admin_password" name="password" placeholder="Enter admin password" value="*******">
                </div>
             </div>
             <div class="row justify-content-center">
                <div class="col-md-3 text-center mt-4">
-                  <button type="submit" class="btn btn-primary-custom">Add Admin</button>
+                  <button type="submit" class="btn btn-primary-custom">Update Admin</button>
                </div>
             </div>
       </form>
       </div>
    </div>
 </section>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{{ asset('js/dashboard/add-admin.js') }}"></script>
-
-
 @endsection

@@ -17,12 +17,13 @@
                <form action="" class="inline-form">
                   <div class="row">
                      <div class="col-md-8 d-flex gap-3">
-                        <input type="text" id="admin_id" name="admin_id" class="form-control" placeholder="Admin Id">
-                        <input type="text" id="admin_name" name="admin_name" class="form-control" placeholder="Admin Name">
+                      <input type="text" id="admin_id" name="admin_id" class="form-control" placeholder="Admin Id" value="{{ $search['admin_id'] ?? '' }}">
+                        <input type="text"id="admin_name"name="admin_name"class="form-control"placeholder="Admin Name"value="{{ $search['admin_name'] ?? '' }}">
+
                      </div>
                      <div class="col-md-4 d-flex gap-3 justify-content-end">
                         <button class="w-50 btn btn-primary-custom">Search</button>
-                        <button class="w-50 btn btn-outline-primary">Reset</button>
+                        <a href="{{ route('admin-list') }}" class="w-50 btn btn-outline-primary">Reset</a>
                      </div>
                   </div>
                </form>
@@ -45,15 +46,15 @@
                 <tbody>
                     @foreach($admins as $admin)
                     <tr>
-                        <td class="py-1 text-center">{{$admin->id}}</td>
-                        <td class="py-1 text-center">{{$admin->name}}</td>
-                        <td class="py-1 text-center">{{$admin->email}}</td>
-                        <td class="py-1 text-center">{{$admin->role_name }}</td>
-                        <td class="py-1 text-center"><span class="badge bg-{{$admin->status==1?'success':'danger'}}">{{$admin->status==1?'Active':'InActive'}}</span></td>
-                        <td class="py-1 text-center">
-                            <a class="btn btn-primary-custom">Edit</a>
-                            <a href="{{ route('admin.toggle', $admin->id) }}" class="btn btn-outline-{{$admin->status==1?'danger':'success'}}">{{$admin->status==1?'Deactivate':'Activate'}}</a>
-                            <a class="btn btn-danger">Delete</a>
+                        <td class="py-2 text-center">{{$admin->id}}</td>
+                        <td class="py-2 text-center">{{$admin->name}}</td>
+                        <td class="py-2 text-center">{{$admin->email}}</td>
+                        <td class="py-2 text-center">{{$admin->role_name }}</td>
+                        <td class="py-2 text-center"><span class="w-100 rounded-pill badge bg-{{$admin->status==1?'success':'danger'}}">{{$admin->status==1?'Active':'InActive'}}</span></td>
+                        <td class="py-2 text-center admin-actions">
+                            <a href="{{ route('Edit-admin', $admin->id) }}" class="btn btn-primary-custom">Edit</a>
+                            <a href="{{ route('admin.toggle', $admin->id) }}" class="toggle btn btn-outline-{{$admin->status==1?'danger':'success'}}"onclick="return confirm('Are you sure you want to change this admin staus this admin?');">{{$admin->status==1?'Deactivate':'Activate'}}</a>
+                            <a href="{{ route('admin.delete', $admin->id) }}"class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this admin?');">Delete</a>
                         </td>
                     </tr>
                     @endforeach
