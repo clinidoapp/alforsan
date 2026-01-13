@@ -143,8 +143,6 @@ class AuthController extends Controller
         DB::commit();
         return redirect()->route('admin-list');
     }
-
-
     public function editAdmins(Request $request , $id)
     {
         $admin = DB::table('users')->where('users.id', $id)
@@ -156,26 +154,6 @@ class AuthController extends Controller
             ->first();
         $roles = DB::table('roles')->select('id' , 'name')->get();
         return view('dashboard.pages.updateAdmins' , compact('roles'));
-    }
-    public function upadeAdmins(UpdateAdminRequest $request , $id)
-    {
-
-        $data = $request->validated();
-
-        DB::beginTransaction();
-
-        $admin_id = DB::table('users')->insertGetId([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-
-        DB::table('user_role')->insert([
-            'user_id' => $admin_id,
-            'role_id' => $data['role_id'],
-        ]);
-        DB::commit();
-        return redirect()->route('admin.admins');
     }
     public function toggleAdminStatus(Request $request,$id)
     {
