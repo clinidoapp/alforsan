@@ -84,6 +84,7 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::post('storeDoctor' , [DoctorController::class, 'storeDoctor'])->middleware(['permission:create_doctor'])->name('store-doctor');
     Route::post('doctors-add' , [DoctorController::class, 'addDoctor'])->middleware(['permission:create_doctor'])->name('doctors-add');
     Route::get('doctors-view/{id}' , [DoctorController::class, 'viewDoctor'])->middleware(['permission:read_doctor'])->name('doctors-view');
+    Route::get('toggleDoctor/{id}' , [DoctorController::class, 'toggleDoctorStatus'])->middleware(['permission:update_admin'])->name('admin.toggle');
 
 
 });
@@ -110,6 +111,8 @@ Route::prefix('test')->group(function () {
     Route::post('storeAdmins' , [AuthController::class, 'storeAdmins']);
     Route::get('editAdmins/{id}' , [AuthController::class, 'editAdmins']);
     Route::get('doctors-view/{id}' , [DoctorController::class, 'viewDoctor']);
+    Route::get('toggleDoctor/{id}' , [DoctorController::class, 'toggleDoctorStatus'])->name('admin.toggle');
+
 
 
 

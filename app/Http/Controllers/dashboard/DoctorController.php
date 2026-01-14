@@ -162,5 +162,13 @@ class DoctorController extends Controller
 
 
     }
+    public function toggleDoctorStatus(Request $request,$id)
+    {
+        $doctor = DB::table('doctors')->where('id', $id);
+        $currentStatus = $doctor->value('status');
+        $newStatus = $currentStatus == 1 ? 0 : 1;
+        $doctor->update(['status' => $newStatus]);
+        return back();
+    }
 
 }

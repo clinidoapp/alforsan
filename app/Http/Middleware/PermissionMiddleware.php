@@ -19,7 +19,7 @@ class PermissionMiddleware
 
         $userId = session('logged_user_id');
         if (!$userId) {
-            return redirect('/login');
+            return redirect('admin/login');
         }
         $hasPermission = DB::table('user_role')
             ->join('role_permissions', 'user_role.role_id', '=', 'role_permissions.role_id')
