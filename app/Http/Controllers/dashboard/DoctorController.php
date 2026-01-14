@@ -16,7 +16,6 @@ class DoctorController extends Controller
     public function listDoctors(Request $request){
 
         $query= DB::table('doctors')
-            ->where('status', 1)
             ->where('is_deleted', 0)
             ->select('id','name_en' , 'name_ar' , 'email' ,'phone','status');
 
@@ -130,6 +129,10 @@ class DoctorController extends Controller
         });
 
         return view('********');
+    }
+    public function addDoctorMedia()
+    {
+
     }
     public function viewDoctor(Request $request,$id)
     {

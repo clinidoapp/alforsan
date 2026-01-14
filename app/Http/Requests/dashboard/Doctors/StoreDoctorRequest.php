@@ -39,7 +39,7 @@ class StoreDoctorRequest extends FormRequest
             'experiences_ar' => ['required', 'array'],
             'qualifications_en' => ['required', 'array'],
             'qualifications_ar' => ['required', 'array'],
-            
+
             /*  //'academic_title_ar'    => 'required|string|max:191',
 
 
@@ -75,55 +75,55 @@ class StoreDoctorRequest extends FormRequest
         return [
 
             // required
-            'name_en.required'            => 'The :name_en field is required.',
-            'name_ar.required'            => 'The :name_ar field is required.',
+            'name_en.required'            => 'The English Name field is required.',
+            'name_ar.required'            => 'The Arabic Name field is required.',
 
 
-            'academic_title_en.required'  => 'The :academic_title_en field is required.',
-            'academic_title_ar.required'  => 'The :academic_title_ar field is required.',
-            'main_speciality_en.required' => 'The :main_speciality_en field is required.',
-            'main_speciality_ar.required' => 'The :main_speciality_ar field is required.',
+            'academic_title_en.required'  => 'The English Academic Title field is required.',
+            'academic_title_ar.required'  => 'The Arabic Academic Title field is required.',
+            'main_speciality_en.required' => 'The English Main Speciality field is required.',
+            'main_speciality_ar.required' => 'The Arabic Main Speciality field is required.',
 
-            'bio_en.required'             => 'The :bio_en field is required.',
-            'bio_ar.required'             => 'The :bio_ar field is required.',
-            'experiences_en.required'     => 'The :experiences_en field is required.',
-            'experiences_ar.required'     => 'The :experiences_ar field is required.',
-            'qualifications_en.required'  => 'The :qualifications_en field is required.',
-            'qualifications_ar.required'  => 'The :qualifications_ar field is required.',
+            'bio_en.required'             => 'The English Bio field is required.',
+            'bio_ar.required'             => 'The Arabic Bio field is required.',
+            'experiences_en.required'     => 'The English Experiences field is required.',
+            'experiences_ar.required'     => 'The Arabic Experiences field is required.',
+            'qualifications_en.required'  => 'The English Qualifications field is required.',
+            'qualifications_ar.required'  => 'The Arabic Qualifications field is required.',
 
-            'image.required'              => 'The :image field is required.',
+            'image.required'              => 'The Image field is required.',
            // 'status.required'             => 'The :attribute field is required.',
 
             // string
-            'name_en.string'              => 'The :name_en must be a valid string.',
-            'name_ar.string'              => 'The :name_ar must be a valid string.',
+            'name_en.string'              => 'The English Name must be a valid string.',
+            'name_ar.string'              => 'The Arabic Name must be a valid string.',
 
-            'academic_title_en.string'    => 'The :academic_title_en must be a valid string.',
-            'academic_title_ar.string'    => 'The :academic_title_ar must be a valid string.',
-            'main_speciality_en.string'   => 'The :main_speciality_en must be a valid string.',
-            'main_speciality_ar.string'   => 'The :main_speciality_ar must be a valid string.',
+            'academic_title_en.string'    => 'The English Academic Title must be a valid string.',
+            'academic_title_ar.string'    => 'The Arabic Academic Title must be a valid string.',
+            'main_speciality_en.string'   => 'The English Main Speciality must be a valid string.',
+            'main_speciality_ar.string'   => 'The Arabic Main Speciality must be a valid string.',
 
-            'bio_en.string'               => 'The :bio_en must be a valid string.',
-            'bio_ar.string'               => 'The :bio_ar must be a valid string.',
-            'experiences_en.string'       => 'The :experiences_en must be a valid string.',
-            'experiences_ar.string'       => 'The :experiences_ar must be a valid string.',
-            'qualifications_en.string'    => 'The :qualifications_en must be a valid string.',
-            'qualifications_ar.string'    => 'The :qualifications_ar must be a valid string.',
+            'bio_en.string'               => 'The English Bio must be a valid string.',
+            'bio_ar.string'               => 'The Arabic Bio must be a valid string.',
+            'experiences_en.string'       => 'The English Experiences must be a valid string.',
+            'experiences_ar.string'       => 'The Arabic Experiences must be a valid string.',
+            'qualifications_en.string'    => 'The English Qualifications must be a valid string.',
+            'qualifications_ar.string'    => 'The Arabic Qualifications must be a valid string.',
 
             // image
-            'image.image'                 => 'The :image must be an image.',
-            'image.mimes'                 => 'The :image must be a file of type: :values.',
-            'image.max'                   => 'The :image may not be greater than :max kilobytes.',
+            'image.image'                 => 'The Attachment must be an image.',
+            'image.mimes'                 => 'The Image must be a type of jpg,jpeg,png,webp.',
+            'image.max'                   => 'The Image may not be greater than :max kilobytes.',
 
             // in
            // 'status.in'                   => __('validation.doctor.in'),
 
-            'services_ids.required'   => 'The :services_ids field is required.',
+            'services_ids.required'   => 'The Services field is required.',
             //'services_ids.array'      => __('validation.array'),
 
             // services_ids.*
-            'services_ids.*.required' => 'The :services_ids field is required.',
-            'services_ids.*.exists'   => 'The services_ids  is invalid.',
+           // 'services_ids.*.required' => 'The :services_ids field is required.',
+          //  'services_ids.*.exists'   => 'The services_ids  is invalid.',
 
             ];
     }
