@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\dashboard;
 
+use App\Enums\AcademicTitle;
 use App\Enums\ImagePaths;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Service\ImageHandlerService;
@@ -51,9 +52,12 @@ class DoctorController extends Controller
         return view('********', compact('doctors'));
 
     }
-
-
     public function addDoctor(Request $request){
+
+        $service = DB::table('services')
+            ->where('status', 1)
+            ->select('id','name_en as name' )
+            ->get();
 
         return view('********');
     }
@@ -61,32 +65,34 @@ class DoctorController extends Controller
 
         $data = $request->validated();
 
-        $image_name = null ;
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $image_name = ImageHandlerService::fileUploader(ImagePaths::DOCTOR_PHOTOS->value,$image,null);
-        }
-        DB::transaction(function () use ($data, $image_name) {
+        DB::transaction(function () use ($data, $request) {
+
+            $image_name = null ;
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $image_name = ImageHandlerService::fileUploader(ImagePaths::DOCTOR_PHOTOS->value,$image,null);
+            }
+            $academicTitle =  $data['academic_title'] ;
+            $obj = AcademicTitle::from($academicTitle);
             $doctor_id = DB::table('doctors')->insertGetId([
                 'name_en' => $data['name_en'],
                 'name_ar' => $data['name_ar'],
-
-                'academic_title_ar' => $data['academic_title_ar'],
-                'academic_title_en' => $data['academic_title_en'],
+                'email' => $data['email'],
+                'phone' => $data['phone'],
+                'academic_title_ar' => $obj->label('ar'),
+                'academic_title_en' =>  $obj->label('en'),
                 'main_speciality_ar' => $data['main_speciality_ar'],
                 'main_speciality_en' => $data['main_speciality_en'],
-
                 'bio_ar' => $data['bio_ar'],
                 'bio_en' => $data['bio_en'],
-                'experiences_ar' => $data['experiences_ar'],
-                'experiences_en' => $data['experiences_en'],
-                'qualifications_ar' => $data['qualifications_ar'],
-                'qualifications_en' => $data['qualifications_en'],
-
+                'experiences_ar' => implode(' , ', $data['experiences_ar']),
+                'experiences_en' => implode(' , ', $data['experiences_en']),
+                'qualifications_ar' => implode(' , ',  $data['qualifications_ar']),
+                'qualifications_en' => implode(' , ', $data['qualifications_en']),
                 'image' => $image_name,
-                'status' => $data['status'],
-
+                'status' => 1,
             ]);
+
             foreach ($data['services_ids'] as $serviceId) {
                 DB::table('doctor_service')->updateOrInsert(
                     [
@@ -99,6 +105,7 @@ class DoctorController extends Controller
                 );
 
             }
+
             /*
             foreach ($data['videos'] as $video) {
                 dd($video);
@@ -118,16 +125,11 @@ class DoctorController extends Controller
 
             }
             */
+
         });
 
-       // dd('Done');
         return view('********');
     }
-
-
-
-
-
 
 
 }

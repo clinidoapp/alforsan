@@ -32,7 +32,7 @@ return [
             'string' => 'The :attribute may not be greater than :max characters.',
             'file'   => 'The :attribute may not be greater than :max kilobytes.',
         ],
-        'exists' => 'The selected :attribute is invfffffffalid.',
+        'exists' => 'The selected :attribute is invalid.',
 
     ]
 ];
