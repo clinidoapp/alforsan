@@ -49,7 +49,12 @@ class DoctorController extends Controller
             });
         }
         $doctors =    $query->paginate(10);
-        return view('dashboard.pages.doctors.list', compact('doctors'));
+        $search = [
+            'doctor_id' => $request->doctor_id ?? null,
+            'doctor_name' => $request->doctor_name ?? null,
+            'doctor_phone' => $request->doctor_phone ?? null,
+        ];
+        return view('dashboard.pages.doctors.list', compact('doctors','search'));
 
     }
     public function addDoctor(Request $request){
