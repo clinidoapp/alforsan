@@ -79,8 +79,9 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('roles' , [RolesController::class, 'listRoles'])->middleware(['permission:read_roles'])->name('roles-list');
 
     /*** Doctors ***/
-    Route::get('listDoctors' , [DoctorController::class, 'listDoctors'])->middleware(['permission:read_doctor']);
+    Route::get('doctors-list' , [DoctorController::class, 'listDoctors'])->middleware(['permission:read_doctor']);
     Route::post('storeDoctor' , [DoctorController::class, 'storeDoctor'])->middleware(['permission:create_doctor']);
+    Route::post('doctors-add' , [DoctorController::class, 'addDoctor'])->middleware(['permission:create_doctor']);
 
 
 });

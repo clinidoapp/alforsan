@@ -16,10 +16,15 @@ class DoctorController extends Controller
         $query= DB::table('doctors')
             ->where('status', 1)
             ->where('is_deleted', 0)
-            //TODO SELECT
-            ->select('id','name_en' , 'name_ar' , 'image' ,'academic_title_ar','academic_title_en',
-                'main_speciality_en' , 'main_speciality_ar');
+            ->select('id','name_en' , 'name_ar' , 'email' ,'phone','status');
 
+        if ($request->filled('doctor_id')) {
+            $query->where('id', $request->doctor_id);
+        }
+
+        if ($request->filled('doctor_phone')) {
+            $query->where('phone', $request->doctor_phone);
+        }
 
         if ($request->filled('doctor_name')) {
             $search = trim($request->doctor_name);
@@ -46,6 +51,7 @@ class DoctorController extends Controller
         return view('********', compact('doctors'));
 
     }
+
 
     public function addDoctor(Request $request){
 
