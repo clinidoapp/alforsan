@@ -112,11 +112,7 @@ Route::prefix('test')->group(function () {
     Route::get('editAdmins/{id}' , [AuthController::class, 'editAdmins']);
     Route::get('doctors-view/{id}' , [DoctorController::class, 'viewDoctor']);
     Route::get('toggleDoctor/{id}' , [DoctorController::class, 'toggleDoctorStatus'])->name('admin.toggle');
-
-
-
-
-
+    Route::get('deleteDoctor/{id}' , [DoctorController::class, 'deleteDoctor'])->name('admin.toggle');
 
 });
 /************************* End Test *********************/

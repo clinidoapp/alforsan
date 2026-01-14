@@ -14,7 +14,7 @@ use function Laravel\Prompts\select;
 class AuthController extends Controller
 {
     public function index(){
-        return view('dashboard.pages.admins.login');
+        return view('dashboard.pages.login');
     }
     public function login(Request $request)
     {

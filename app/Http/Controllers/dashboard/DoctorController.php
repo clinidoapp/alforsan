@@ -7,6 +7,7 @@ use App\Enums\ImagePaths;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Service\ImageHandlerService;
 use App\Http\Requests\dashboard\Doctors\StoreDoctorRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -168,7 +169,19 @@ class DoctorController extends Controller
         $currentStatus = $doctor->value('status');
         $newStatus = $currentStatus == 1 ? 0 : 1;
         $doctor->update(['status' => $newStatus]);
-        return back();
+        return redirect()->route('doctors-list');
+    }
+    public function deleteDoctor(Request $request,$id)
+    {
+
+        DB::table('doctors')
+            ->where('id', $id)
+            ->update([
+                'is_deleted' => 1,
+                'deleted_at' => Carbon::now(),
+            ]);
+        return redirect()->route('doctors-list');
+
     }
 
 }
