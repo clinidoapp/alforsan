@@ -22,44 +22,49 @@
         </li>
 
         {{-- Doctors (with submenu) --}}
-        @if(\App\Helpers\Permissions::hasPermission('read_doctor'))
-        <li class="nav-item rounded-2 m-2">
+       @php
+    // Check if current route matches any of the doctor's submenu routes
+    $doctorRoutes = ['doctors-list', 'doctors-add'];
+    $doctorMenuOpen = in_array(Route::currentRouteName(), $doctorRoutes);
+@endphp
 
-            <a class="nav-link d-flex justify-content-between align-items-center  {{ Request::is(patterns: 'admin/doctors-*') ? 'active' : '' }}"
-               data-bs-toggle="collapse"
-               href="#doctorsMenu"
-               role="button"
-               aria-expanded="false"
-               aria-controls="doctorsMenu">
+@if(\App\Helpers\Permissions::hasPermission('read_doctor'))
+<li class="nav-item rounded-0 m-2">
 
-                <span>
-                    <img src="{{ asset('images/dashboard-icons/doctor.webp') }}">
-                    Doctors
-                </span>
+    <a class="nav-link d-flex justify-content-between align-items-center rounded-0 {{ Request::is('admin/doctors-*') ? 'active' : '' }}"
+       data-bs-toggle="collapse"
+       href="#doctorsMenu"
+       role="button"
+       aria-expanded="{{ $doctorMenuOpen ? 'true' : 'false' }}"
+       aria-controls="doctorsMenu">
 
-                <i class="fi fi-rr-angle-small-down"></i>
+        <span>
+            <img src="{{ asset('images/dashboard-icons/doctor.webp') }}">
+            Doctors
+        </span>
+
+        <i class="fi fi-rr-angle-small-down"></i>
+    </a>
+
+    <ul class="nav d-flex-inline collapse ps-4 rounded-2 bg-white {{ $doctorMenuOpen ? 'show' : '' }}" id="doctorsMenu">
+        <li class="nav-item">
+            <a href="{{ route('doctors-list') }}" class="nav-link {{ request()->routeIs('doctors-list') ? 'active' : '' }}">
+                Doctors List
             </a>
+        </li>
 
-            <ul class="nav flex-column collapse ps-4 mt-1" id="doctorsMenu">
-                <li class="nav-item">
-                    <a href="" class="nav-link {{ request()->routeIs('doctor') ? 'active' : '' }}">
-                        All Doctors
-                    </a>
-                </li>
-
-                @if(\App\Helpers\Permissions::hasPermission('create_doctor'))
-                <li class="nav-item">
-                    <a href="" class="nav-link {{ request()->routeIs('doctor') ? 'active' : '' }}">
-                        Add Doctor
-                    </a>
-                </li>
-                @endif
-
-
-            </ul>
-
+        @if(\App\Helpers\Permissions::hasPermission('create_doctor'))
+        <li class="nav-item">
+            <a href="{{ route('doctors-add') }}" class="nav-link {{ request()->routeIs('doctors-add') ? 'active' : '' }}">
+                Doctors Media
+            </a>
         </li>
         @endif
+    </ul>
+
+</li>
+@endif
+
 
         {{-- Services --}}
         <li class="nav-item rounded-2 m-2">

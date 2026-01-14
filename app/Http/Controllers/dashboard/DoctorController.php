@@ -50,17 +50,17 @@ class DoctorController extends Controller
             });
         }
         $doctors =    $query->paginate(10);
-        return view('********', compact('doctors'));
+        return view('dashboard.pages.doctors.list', compact('doctors'));
 
     }
     public function addDoctor(Request $request){
 
-        $service = DB::table('services')
+        $services = DB::table('services')
             ->where('status', 1)
             ->select('id','name_en as name' )
             ->get();
 
-        return view('********');
+        return view('dashboard.pages.doctors.add')->with('services',$services);
     }
     public function storeDoctor(StoreDoctorRequest $request){
 
@@ -159,7 +159,7 @@ class DoctorController extends Controller
         $doctor->qualifications_en = explode(',', $doctor->qualifications_en);
         $doctor->qualifications_ar = explode(',', $doctor->qualifications_ar);
 
-        return view('*********', compact('doctor'));
+        return view('dashboard.pages.doctors.details', compact('doctor'));
 
 
     }
