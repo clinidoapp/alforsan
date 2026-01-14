@@ -75,13 +75,15 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::post('storeAdmins' , [AuthController::class, 'createOrEditAdmin'])->middleware(['permission:create_admin'])->name('store-admin');
     Route::post('UpdateAdmins/{id}' , [AuthController::class, 'createOrEditAdmin'])->middleware(['permission:update_admin'])->name('Update-admin');
     Route::get('admin-edit/{id}' , [AuthController::class, 'editAdmin'])->middleware(['permission:update_admin'])->name('Edit-admin');;
-    /*** Doctors ***/
+    /*** Roles ***/
+    Route::get('roles' , [RolesController::class, 'listRoles'])->middleware(['permission:read_roles'])->name('roles-list');
     Route::get('roles' , [RolesController::class, 'listRoles'])->middleware(['permission:read_roles'])->name('roles-list');
 
     /*** Doctors ***/
-    Route::get('doctors-list' , [DoctorController::class, 'listDoctors'])->middleware(['permission:read_doctor']);
-    Route::post('storeDoctor' , [DoctorController::class, 'storeDoctor'])->middleware(['permission:create_doctor']);
-    Route::post('doctors-add' , [DoctorController::class, 'addDoctor'])->middleware(['permission:create_doctor']);
+    Route::get('doctors-list' , [DoctorController::class, 'listDoctors'])->middleware(['permission:read_doctor'])->name('doctors-list');
+    Route::post('storeDoctor' , [DoctorController::class, 'storeDoctor'])->middleware(['permission:create_doctor'])->name('store-doctor');
+    Route::post('doctors-add' , [DoctorController::class, 'addDoctor'])->middleware(['permission:create_doctor'])->name('doctors-add');
+    Route::get('doctors-view/{id}' , [DoctorController::class, 'viewDoctor'])->middleware(['permission:read_doctor'])->name('doctors-view');
 
 
 });
@@ -107,6 +109,7 @@ Route::prefix('test')->group(function () {
     Route::get('deleteAdmin/{id}' , [AuthController::class, 'deleteAdmin']);
     Route::post('storeAdmins' , [AuthController::class, 'storeAdmins']);
     Route::get('editAdmins/{id}' , [AuthController::class, 'editAdmins']);
+    Route::get('doctors-view/{id}' , [DoctorController::class, 'viewDoctor']);
 
 
 

@@ -130,6 +130,37 @@ class DoctorController extends Controller
 
         return view('********');
     }
+    public function viewDoctor(Request $request,$id)
+    {
+        $doctor = DB::table('doctors')
+            ->where('doctors.id', $id)
+            ->select(
+                'doctors.id',
+                'doctors.name_en', 'doctors.name_ar',
+                'doctors.image', 'doctors.status' ,
+                'doctors.main_speciality_en', 'doctors.main_speciality_ar',
+                'doctors.academic_title_en', 'doctors.academic_title_ar',
+                'doctors.bio_en', 'doctors.bio_ar',
+                'doctors.experiences_en' , 'doctors.experiences_ar',
+                'doctors.qualifications_en' , 'doctors.qualifications_ar',
+            )
+            ->first();
+        $service = DB::table('doctor_service')->where('doctor_service.doctor_id', $id)
+            ->join('services', 'doctor_service.service_id', '=', 'services.id')
+            ->where('services.status', 1)->whereNull('services.deleted_at')
+            ->distinct()
+            ->select(
+                'services.name_en as name')
+            ->get();
+        $doctor->services = $service;
+        $doctor->experiences_en = explode(',', $doctor->experiences_en);
+        $doctor->experiences_ar = explode(',', $doctor->experiences_ar);
+        $doctor->qualifications_en = explode(',', $doctor->qualifications_en);
+        $doctor->qualifications_ar = explode(',', $doctor->qualifications_ar);
 
+        return view('*********', compact('doctor'));
+
+
+    }
 
 }
