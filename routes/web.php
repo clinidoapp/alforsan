@@ -82,7 +82,7 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     /*** Doctors ***/
     Route::get('doctors-list' , [DoctorController::class, 'listDoctors'])->middleware(['permission:read_doctor'])->name('doctors-list');
     Route::post('storeDoctor' , [DoctorController::class, 'storeDoctor'])->middleware(['permission:create_doctor'])->name('store-doctor');
-    Route::post('doctors-add' , [DoctorController::class, 'addDoctor'])->middleware(['permission:create_doctor'])->name('doctors-add');
+    Route::gwt('doctors-add' , [DoctorController::class, 'addDoctor'])->middleware(['permission:create_doctor'])->name('doctors-add');
     Route::get('doctors-view/{id}' , [DoctorController::class, 'viewDoctor'])->middleware(['permission:read_doctor'])->name('doctors-view');
     Route::get('toggleDoctor/{id}' , [DoctorController::class, 'toggleDoctorStatus'])->middleware(['permission:update_admin'])->name('admin.toggle');
 

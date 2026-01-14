@@ -75,6 +75,7 @@ footer {
 
 .sidebar {
 	width: 260px;
+    flex-shrink: 0;
 	min-height: 100vh;
 	background-color: var(--primary-color);
 	transition: all 0.3s ease;
@@ -104,9 +105,22 @@ footer {
 .sidebar .nav-link.active {
 	background-color: #fff;
 	color: var(--primary-color);
-      border-radius: 8px;
-  background-color: #fff;
+    border-top-left-radius: 6px !important;
+    border-top-right-radius: 6px !important;
+    
+    background-color: #fff;
 
+}
+.sidebar #doctorsMenu .nav-item{
+    padding: 4px;
+    margin: 4px;
+}
+.sidebar #doctorsMenu .nav-link{
+    color:var(--primary-color);
+}
+.sidebar #doctorsMenu .nav-link.active{
+    color:#fff;
+    background-color:var(--primary-color);
 }
 .pagination {
     --bs-pagination-padding-x: 0.75rem;
