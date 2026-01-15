@@ -61,7 +61,7 @@ class DoctorsPageController extends Controller
                 'bio_en', 'bio_ar',
                 'experiences_en' , 'experiences_ar',
                 'qualifications_en' , 'qualifications_ar',
-
+                'speciality_ar', 'speciality_en',
             )->first();
         $videos = DB::table('doctor_videos')
             ->where('doctor_id', $id)

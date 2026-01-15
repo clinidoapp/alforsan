@@ -64,7 +64,6 @@ class DoctorsSeeder extends Seeder
                 'academic_title_en' => $title['en'],
                 'academic_title_ar' => $title['ar'],
 
-                // 👁️ Ophthalmology ONLY
                 'main_speciality_en' => 'Ophthalmology',
                 'main_speciality_ar' => 'طب العيون',
 
@@ -73,13 +72,11 @@ class DoctorsSeeder extends Seeder
                 'bio_ar' =>
                     'طبيب متخصص في تشخيص وعلاج أمراض العيون واضطرابات الإبصار وإجراء جراحات العيون.',
 
-                // 👁️ Comma-separated experiences (Eye related)
                 'experiences_en' =>
                     'Cataract surgery, Glaucoma management, LASIK procedures, Retina examination, Pediatric ophthalmology',
                 'experiences_ar' =>
                     'جراحات المياه البيضاء, علاج الجلوكوما, عمليات تصحيح الإبصار بالليزر, فحص الشبكية, طب عيون الأطفال',
 
-                // 👁️ Comma-separated qualifications (Eye related)
                 'qualifications_en' =>
                     'MBBS, Master of Ophthalmology, Fellowship in Retina, Board Certified Ophthalmologist',
                 'qualifications_ar' =>

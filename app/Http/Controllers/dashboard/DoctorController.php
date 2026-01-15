@@ -57,7 +57,7 @@ class DoctorController extends Controller
         return view('dashboard.pages.doctors.list', compact('doctors','search'));
 
     }
-    public function addDoctor(Request $request){
+    public function addDoctor(){
 
         $services = DB::table('services')
             ->where('status', 1)
@@ -66,7 +66,7 @@ class DoctorController extends Controller
 
         return view('dashboard.pages.doctors.add')->with('services',$services);
     }
-    public function updateDoctor(Request $request , $id){
+    public function updateDoctor($id){
 
         $doctor = DB::table('doctors')->where('id', $id)
             ->select(
@@ -78,6 +78,7 @@ class DoctorController extends Controller
                 'doctors.bio_en', 'doctors.bio_ar',
                 'doctors.experiences_en' , 'doctors.experiences_ar',
                 'doctors.qualifications_en' , 'doctors.qualifications_ar',
+                'doctors.speciality_ar', 'doctors.speciality_en',
             )->first();
 
         $selectedServices = DB::table('doctor_service')
@@ -119,6 +120,8 @@ class DoctorController extends Controller
                 'academic_title_en' =>  $obj->label('en'),
                 'main_speciality_ar' => $data['main_speciality_ar'],
                 'main_speciality_en' => $data['main_speciality_en'],
+                'speciality_ar' => $data['speciality_ar'],
+                'speciality_en' => $data['speciality_en'],
                 'bio_ar' => $data['bio_ar'],
                 'bio_en' => $data['bio_en'],
                 'experiences_ar' => implode(' , ', $data['experiences_ar']),
@@ -170,7 +173,7 @@ class DoctorController extends Controller
     {
 
     }
-    public function viewDoctor(Request $request,$id)
+    public function viewDoctor($id)
     {
         $doctor = DB::table('doctors')
             ->where('doctors.id', $id)
@@ -183,6 +186,7 @@ class DoctorController extends Controller
                 'doctors.bio_en', 'doctors.bio_ar',
                 'doctors.experiences_en' , 'doctors.experiences_ar',
                 'doctors.qualifications_en' , 'doctors.qualifications_ar',
+                'doctors.speciality_ar', 'doctors.speciality_en',
             )
             ->first();
         $service = DB::table('doctor_service')->where('doctor_service.doctor_id', $id)
@@ -202,7 +206,7 @@ class DoctorController extends Controller
 
 
     }
-    public function toggleDoctorStatus(Request $request,$id)
+    public function toggleDoctorStatus($id)
     {
         $doctor = DB::table('doctors')->where('id', $id);
         $currentStatus = $doctor->value('status');
@@ -210,7 +214,7 @@ class DoctorController extends Controller
         $doctor->update(['status' => $newStatus]);
         return redirect()->route('doctors-list');
     }
-    public function deleteDoctor(Request $request,$id)
+    public function deleteDoctor($id)
     {
 
         DB::table('doctors')
