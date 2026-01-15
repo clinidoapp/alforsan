@@ -1,0 +1,148 @@
+
+$(document).ready(function () {
+$('#services_ids').multiselect({
+    includeSelectAllOption: true,
+    buttonClass: 'btn btn-light w-100 text-start',
+    nonSelectedText: 'Select Services'
+});
+
+
+    /* ===========================
+     * BASIC FORM VALIDATION
+     * =========================== */
+    $('#add_doctor').on('submit', function (e) {
+        let valid = true;
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        $('.is-invalid').removeClass('is-invalid');
+
+        function invalidate(selector) {
+            $(selector).addClass('is-invalid');
+            valid = false;
+        }
+
+        if (!$('#name_en').val()) invalidate('#name_en');
+        if (!$('#name_ar').val()) invalidate('#name_ar');
+
+        if (!$('#email').val() || !emailPattern.test($('#email').val())) {
+            invalidate('#email');
+        }
+
+        if (!$('#phone').val()) invalidate('#phone');
+        if (!$('#academic_title').val()) invalidate('#academic_title');
+
+        if (!$('#services_ids').val()) invalidate('#services_ids');
+
+        if (!valid) {
+            e.preventDefault();
+            alert('Please fill all required fields correctly.');
+            return false;
+        }
+
+        // Before submit: collect dynamic inputs
+        collectValues('#doctor_qualification_en', 'qualifications_en[]');
+        collectValues('#doctor_qualification_ar', 'qualifications_ar[]');
+        collectValues('#doctor_experiences_en', 'experiences_en[]');
+        collectValues('#doctor_experiences_ar', 'experiences_ar[]');
+    });
+
+    /* ===========================
+     * DYNAMIC ADD / REMOVE
+     * =========================== */
+
+function dynamicBlock(placeholder, value = '') {
+    return `<input type="text" class="form-control value-input" placeholder="${placeholder}" value="${value}" >`;
+}
+
+
+    $('#add_qualification_en').on('click', function () {
+        const container = $('#doctor_qualification_en');
+        const lastInput = container.find('.value-input').first();
+        const value = lastInput.val().trim();
+        if (value === '') {
+            alert('Please enter a qualification first');
+            return;
+        }
+
+        container.append(
+            dynamicBlock('Enter Academic Qualification (EN)', value)
+        );
+
+        lastInput.val('');
+    });
+        $('#add_qualification_ar').on('click', function () {
+        const container = $('#doctor_qualification_ar');
+        const lastInput = container.find('.value-input').first();
+        const value = lastInput.val().trim();
+        if (value === '') {
+            alert('Please enter a qualification first');
+            return;
+        }
+
+        container.append(
+            dynamicBlock('Enter Academic Qualification (EN)', value)
+        );
+
+        lastInput.val('');
+    });
+        $('#add_experiences_en').on('click', function () {
+        const container = $('#doctor_experiences_en');
+        const lastInput = container.find('.value-input').first();
+        const value = lastInput.val().trim();
+        if (value === '') {
+            alert('Please enter a experiences first');
+            return;
+        }
+
+        container.append(
+            dynamicBlock('Enter Academic experiences (EN)', value)
+        );
+
+        lastInput.val('');
+    });
+     $('#add_experiences_ar').on('click', function () {
+        const container = $('#doctor_experiences_ar');
+        const lastInput = container.find('.value-input').first();
+        const value = lastInput.val().trim();
+        if (value === '') {
+            alert('Please enter a experiences first');
+            return;
+        }
+
+        container.append(
+            dynamicBlock('Enter Academic experiences (EN)', value)
+        );
+
+        lastInput.val('');
+    });
+
+
+    // Remove item
+    $(document).on('click', '.remove-item', function () {
+        $(this).closest('.item').remove();
+    });
+
+    /* ===========================
+     * COLLECT VALUES INTO HIDDEN INPUTS
+     * =========================== */
+    function collectValues(container, inputName) {
+        let values = [];
+
+        $(container).find('.value-input').each(function () {
+            if ($(this).val().trim() !== '') {
+                values.push($(this).val().trim());
+            }
+        });
+
+        // Remove old hidden inputs
+        $(container).find(`input[type="hidden"][name="${inputName}"]`).remove();
+
+        // Append fresh hidden inputs
+        values.forEach(function (value) {
+            $(container).append(
+                `<input type="hidden" name="${inputName}" value="${value}">`
+            );
+        });
+    }
+
+});
