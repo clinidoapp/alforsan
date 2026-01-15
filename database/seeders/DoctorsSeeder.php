@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class DoctorsSeeder extends Seeder
 {
@@ -20,14 +21,23 @@ class DoctorsSeeder extends Seeder
         ];
 
         $specialities = [
-            ['en' => 'Cardiology',        'ar' => 'أمراض القلب'],
-            ['en' => 'Dermatology',       'ar' => 'الجلدية'],
-            ['en' => 'Pediatrics',        'ar' => 'طب الأطفال'],
-            ['en' => 'Orthopedics',       'ar' => 'العظام'],
-            ['en' => 'Neurology',         'ar' => 'المخ والأعصاب'],
-            ['en' => 'Internal Medicine', 'ar' => 'الباطنة'],
-            ['en' => 'ENT',               'ar' => 'أنف وأذن'],
+            ['en' => 'Cataract',                 'ar' => 'المياه البيضاء'],
+            ['en' => 'Glaucoma',                 'ar' => 'الجلوكوما (المياه الزرقاء)'],
+            ['en' => 'Retinal Diseases',         'ar' => 'أمراض الشبكية'],
+            ['en' => 'Corneal Diseases',         'ar' => 'أمراض القرنية'],
+            ['en' => 'Refractive Errors',        'ar' => 'عيوب الإبصار'],
+            ['en' => 'Diabetic Retinopathy',     'ar' => 'اعتلال الشبكية السكري'],
+            ['en' => 'Macular Degeneration',     'ar' => 'الضمور البقعي'],
+            ['en' => 'Dry Eye Syndrome',          'ar' => 'جفاف العين'],
+            ['en' => 'Pediatric Ophthalmology',  'ar' => 'طب عيون الأطفال'],
+            ['en' => 'Ocular Infections',         'ar' => 'التهابات العين'],
+            ['en' => 'Uveitis',                  'ar' => 'التهاب القزحية'],
+            ['en' => 'Strabismus',               'ar' => 'الحول'],
+            ['en' => 'Optic Nerve Disorders',    'ar' => 'أمراض العصب البصري'],
+            ['en' => 'Eyelid Disorders',          'ar' => 'أمراض الجفون'],
+            ['en' => 'Lacrimal System Disorders','ar' => 'أمراض القنوات الدمعية'],
         ];
+
         $names = [
             ['en' => 'Ahmed Hassan',     'ar' => 'أحمد حسن'],
             ['en' => 'Mohamed Ali',      'ar' => 'محمد علي'],
@@ -56,13 +66,24 @@ class DoctorsSeeder extends Seeder
         for ($i = 0; $i <= 19; $i++) {
             $title = $academicTitles[array_rand($academicTitles)];
             $name  = $names[$i];
+            $speciality = $specialities[array_rand($specialities)];
+
+            $email = Str::slug($name['en'], '.') . ($i + 1) . '@alforsan.com';
+            $phone = '01' . rand(0, 2) . rand(10000000, 99999999);
+
 
             $rows[] = [
                 'name_en' => $name['en'],
                 'name_ar' => $name['ar'],
 
+                'email' => $email,
+                'phone' => $phone,
+
                 'academic_title_en' => $title['en'],
                 'academic_title_ar' => $title['ar'],
+
+                'speciality_en' => $speciality['en'],
+                'speciality_ar' => $speciality['ar'],
 
                 'main_speciality_en' => 'Ophthalmology',
                 'main_speciality_ar' => 'طب العيون',
