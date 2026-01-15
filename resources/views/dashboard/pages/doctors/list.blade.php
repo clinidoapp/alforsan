@@ -7,7 +7,7 @@
       <div class="row">
         <div class="d-flex mb-2 justify-content-between">
             <h3>Doctors</h3>
-            <a href="{{ route('doctors-add') }}" class="btn btn-primary-custom text-white">Add New Doctor</a>
+            <a href="{{ route('doctors-add') }}" class="btn btn-primary-custom text-white"> <i class="fa-solid fa-plus"></i> Add </a>
         </div>
         <div class="card p-0">
             <div class="card-header">
@@ -17,14 +17,14 @@
                <form action="" class="inline-form">
                   <div class="row">
                      <div class="col-md-9 d-flex gap-3">
-                      <input type="text" id="doctor_id" name="doctor_id" class="form-control" placeholder="doctor Id" value="{{ $search['doctor_id'] ?? '' }}">
-                        <input type="text"id="doctor_name"name="doctor_name"class="form-control"placeholder="doctor Name"value="{{ $search['doctor_name'] ?? '' }}">
-                        <input type="text"id="doctor_phone"name="doctor_phone"class="form-control"placeholder="doctor Name"value="{{ $search['doctor_phone'] ?? '' }}">
+                      <input type="text" id="doctor_id" name="doctor_id" class="form-control" placeholder="Doctor Id" value="{{ $search['doctor_id'] ?? '' }}">
+                        <input type="text"id="doctor_name"name="doctor_name"class="form-control"placeholder="Doctor Name"value="{{ $search['doctor_name'] ?? '' }}">
+                        <input type="text"id="doctor_phone"name="doctor_phone"class="form-control"placeholder="Doctor Phone"value="{{ $search['doctor_phone'] ?? '' }}">
 
                      </div>
                      <div class="col-md-3 d-flex gap-3 justify-content-end">
                         <button class="w-50 btn btn-primary-custom">Search</button>
-                        <a href="{{ route('admin-list') }}" class="w-50 btn btn-outline-primary">Reset</a>
+                        <a href="{{ route('doctors-list') }}" class="w-50 btn btn-outline-primary">Reset</a>
                      </div>
                   </div>
                </form>
@@ -57,7 +57,7 @@
                         <td class="py-2 text-center admin-actions">
                             <a href="{{ route('doctors-view', $doctor->id) }}" class="btn btn-primary-custom">View</a>
                             <a href="{{ route('Edit-admin', $doctor->id) }}" class="btn btn-outline-primary">Edit</a>
-                            <a href="{{ route('admin.toggle', $doctor->id) }}" class="toggle btn btn-outline-{{$doctor->status==1?'danger':'success'}}"onclick="return confirm('Are you sure you want to change this admin staus this admin?');">{{$doctor->status==1?'Deactivate':'Activate'}}</a>
+                            <a href="{{ route('doctor.toggle', $doctor->id) }}" class="toggle btn btn-{{$doctor->status==1?'danger':'success'}}"onclick="return confirm('Are you sure you want to change this doctor staus ?');">{{$doctor->status==1?'Deactivate':'Activate'}}</a>
                         </td>
                     </tr>
                     @endforeach
