@@ -38,6 +38,16 @@ class DoctorsSeeder extends Seeder
             ['en' => 'Lacrimal System Disorders','ar' => 'أمراض القنوات الدمعية'],
         ];
 
+        $mainSpecialities = [
+            ['en' => 'Ophthalmology',                'ar' => 'طب العيون'],
+            ['en' => 'Pediatric Ophthalmology',      'ar' => 'طب عيون الأطفال'],
+            ['en' => 'Retina and Vitreous',           'ar' => 'الشبكية والجسم الزجاجي'],
+            ['en' => 'Cornea and Refractive Surgery', 'ar' => 'القرنية وتصحيح الإبصار'],
+            ['en' => 'Glaucoma',                      'ar' => 'الجلوكوما'],
+            ['en' => 'Oculoplastic Surgery',          'ar' => 'جراحات تجميل العين'],
+            ['en' => 'Neuro-Ophthalmology',           'ar' => 'طب أعصاب العين'],
+        ];
+
         $names = [
             ['en' => 'Ahmed Hassan',     'ar' => 'أحمد حسن'],
             ['en' => 'Mohamed Ali',      'ar' => 'محمد علي'],
@@ -70,6 +80,8 @@ class DoctorsSeeder extends Seeder
 
             $email = Str::slug($name['en'], '.') . ($i + 1) . '@alforsan.com';
             $phone = '01' . rand(0, 2) . rand(10000000, 99999999);
+            $main = $mainSpecialities[array_rand($mainSpecialities)];
+
 
 
             $rows[] = [
@@ -85,9 +97,9 @@ class DoctorsSeeder extends Seeder
                 'speciality_en' => $speciality['en'],
                 'speciality_ar' => $speciality['ar'],
 
-                'main_speciality_en' => 'Ophthalmology',
-                'main_speciality_ar' => 'طب العيون',
-
+                'main_speciality_en' => $main['en'],
+                'main_speciality_ar' => $main['ar'],
+                
                 'bio_en' =>
                     'Ophthalmology specialist experienced in diagnosing and treating eye diseases, vision disorders, and performing eye surgeries.',
                 'bio_ar' =>
