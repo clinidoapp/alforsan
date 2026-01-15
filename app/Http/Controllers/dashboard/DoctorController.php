@@ -61,6 +61,37 @@ class DoctorController extends Controller
 
         return view('dashboard.pages.doctors.add')->with('services',$services);
     }
+    public function updateDoctor(Request $request , $id){
+
+        $doctor = DB::table('doctors')->where('id', $id)
+            ->select(
+                'doctors.id',
+                'doctors.name_en', 'doctors.name_ar',
+                'doctors.image', 'doctors.status' ,
+                'doctors.main_speciality_en', 'doctors.main_speciality_ar',
+                'doctors.academic_title_en', 'doctors.academic_title_ar',
+                'doctors.bio_en', 'doctors.bio_ar',
+                'doctors.experiences_en' , 'doctors.experiences_ar',
+                'doctors.qualifications_en' , 'doctors.qualifications_ar',
+            )->first();
+
+        $selectedServices = DB::table('doctor_service')
+            ->where('doctor_id', $id)
+            ->select('service_id')->get();
+
+        $doctor->selectedServices = $selectedServices;
+        $doctor->experiences_en = explode(',', $doctor->experiences_en);
+        $doctor->experiences_ar = explode(',', $doctor->experiences_ar);
+        $doctor->qualifications_en = explode(',', $doctor->qualifications_en);
+        $doctor->qualifications_ar = explode(',', $doctor->qualifications_ar);
+
+        $services = DB::table('services')
+            ->where('status', 1)
+            ->select('id','name_en as name' )
+            ->get();
+
+        return view('dashboard.pages.doctors.edit' , compact('doctor','services'));
+    }
     public function storeDoctor(StoreDoctorRequest $request){
 
         $data = $request->validated();
