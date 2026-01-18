@@ -80,6 +80,7 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('roles' , [RolesController::class, 'listRoles'])->middleware(['permission:read_role'])->name('roles-list');
     Route::get('role/{id}' , [RolesController::class, 'roleDetails'])->middleware(['permission:read_role'])->name('roles-details');
     Route::get('role-add' , [RolesController::class, 'addRole'])->middleware(['permission:create_role'])->name('roles-add');
+    Route::post('storeRole' , [RolesController::class, 'storeRole'])->middleware(['permission:create_role'])->name('store-role');
 
     /*** Doctors ***/
     Route::get('doctors-list' , [DoctorController::class, 'listDoctors'])->middleware(['permission:read_doctor'])->name('doctors-list');
@@ -122,6 +123,9 @@ Route::prefix('test')->group(function () {
     Route::get('deleteDoctor/{id}' , [DoctorController::class, 'deleteDoctor'])->name('admin.toggle');
     Route::get('role/{id}' , [RolesController::class, 'roleDetails']);
     Route::get('role-add' , [RolesController::class, 'addRole']);
+
+
+    Route::post('storeRole' , [RolesController::class, 'storeRole']);
 
 });
 /************************* End Test *********************/

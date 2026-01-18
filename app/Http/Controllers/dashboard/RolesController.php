@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\dashboard\Roles\StoreRoleRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use function Laravel\Prompts\select;
 
 class RolesController extends Controller
@@ -90,6 +92,31 @@ class RolesController extends Controller
                ];
            })->values();
        return view('********', compact('permissions'));
+   }
+    public function storeRole(StoreRoleRequest $request){
+
+        $data = $request->validated();
+        DB::transaction(function () use ($data) {
+
+            $baseSlug = Str::slug($data['name']);
+            $roleId = DB::table('roles')->insertGetId([
+                'name' => $data['name'],
+                'slug' => $baseSlug,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            $rows = array_map(function ($permissionId) use ($roleId) {
+                return [
+                    'role_id' => $roleId,
+                    'permission_id' => $permissionId,
+                    'created_at' => now(),
+                ];
+            }, $data['permissions_ids']);
+
+            DB::table('role_permissions')->insert($rows);
+        });
+       return view('********');
    }
     /***
     public function editRole(Request $request,$id){
