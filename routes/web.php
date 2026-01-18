@@ -75,9 +75,10 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::post('storeAdmins' , [AuthController::class, 'createOrEditAdmin'])->middleware(['permission:create_admin'])->name('store-admin');
     Route::post('UpdateAdmins/{id}' , [AuthController::class, 'createOrEditAdmin'])->middleware(['permission:update_admin'])->name('Update-admin');
     Route::get('admin-edit/{id}' , [AuthController::class, 'editAdmin'])->middleware(['permission:update_admin'])->name('Edit-admin');;
+
     /*** Roles ***/
     Route::get('roles' , [RolesController::class, 'listRoles'])->middleware(['permission:read_roles'])->name('roles-list');
-    Route::get('roles' , [RolesController::class, 'listRoles'])->middleware(['permission:read_roles'])->name('roles-list');
+    Route::get('role/{id}' , [RolesController::class, 'roleDetails'])->middleware(['permission:read_roles'])->name('roles-details');
 
     /*** Doctors ***/
     Route::get('doctors-list' , [DoctorController::class, 'listDoctors'])->middleware(['permission:read_doctor'])->name('doctors-list');
@@ -86,6 +87,10 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('doctors-list/view/{id}' , [DoctorController::class, 'viewDoctor'])->middleware(['permission:read_doctor'])->name('doctors-view');
     Route::get('toggleDoctor/{id}' , [DoctorController::class, 'toggleDoctorStatus'])->middleware(['permission:update_admin'])->name('doctor.toggle');
     Route::get('doctors-edit' , [DoctorController::class, 'updateDoctor'])->middleware(['permission:update_doctor'])->name('doctors-add');
+
+    /*** Services ***/
+
+    /*** Booking Services ***/
 
 
 });
@@ -114,6 +119,9 @@ Route::prefix('test')->group(function () {
     Route::get('doctors-view/{id}' , [DoctorController::class, 'viewDoctor']);
     Route::get('toggleDoctor/{id}' , [DoctorController::class, 'toggleDoctorStatus'])->name('admin.toggle');
     Route::get('deleteDoctor/{id}' , [DoctorController::class, 'deleteDoctor'])->name('admin.toggle');
+
+
+    Route::get('role/{id}' , [RolesController::class, 'roleDetails']);
 
 });
 /************************* End Test *********************/
