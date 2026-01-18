@@ -6,6 +6,7 @@ use App\Enums\AcademicTitle;
 use App\Enums\ImagePaths;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Service\ImageHandlerService;
+use App\Http\Requests\dashboard\Doctors\StoreDoctorMediaRequest;
 use App\Http\Requests\dashboard\Doctors\StoreDoctorRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -169,8 +170,28 @@ class DoctorController extends Controller
 
         return view('********');
     }
-    public function addDoctorMedia()
+    public function addDoctorMedia(StoreDoctorMediaRequest $request)
     {
+        $data = $request->validated();
+        $doctor_id = $data['doctor_id'];
+
+        DB::transaction(function () use ($data, $doctor_id) {
+            foreach ($data['videos'] as $video) {
+                DB::table('doctor_videos')->updateOrInsert(
+                    [
+                        'doctor_id'  => $doctor_id,
+                        'video_url' => $video['video_url'],
+                    ],
+                    [
+                        'title_en'  => $video['title_en'],
+                        'title_ar'  => $video['title_ar'],
+                        'status'    => 1,
+                        'created_at'=> now(),
+                        'updated_at'=> now(),
+                    ]
+                );
+            }
+        });
 
     }
     public function viewDoctor($id)

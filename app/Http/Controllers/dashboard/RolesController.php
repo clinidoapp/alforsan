@@ -31,7 +31,6 @@ class RolesController extends Controller
 
         return view('users.pages-role', compact('roles'));
     }
-
     public function roleDetails(Request $request ,  $id){
         $roleData = DB::table('roles')->where('id', $id)->
             select('name')->first();
@@ -53,7 +52,6 @@ class RolesController extends Controller
                         return [
                             'id' => $p->id,
                             'name' => $p->permission_name,
-                            //'checked' => in_array($p->id, $permissions_ids),
                         ];
                     })->values()
                 ];
@@ -65,10 +63,64 @@ class RolesController extends Controller
         ];
         return view('users.pages-role-details', compact('role'));
 
-
     }
+    /***
+    public function addRole(Request $request){
 
-  //  public function addRole(Request $request)
+       $permissions = DB::table('permissions')
+           ->join('permission_categories', 'permission_categories.id', '=', 'permissions.category_id')
+           ->select(
+               'permission_categories.id as category_id', 'permission_categories.name as category_name',
+               'permissions.name as permission_name' , 'permissions.id'
+           )->get();
+
+       $permissions = $permissions
+           ->groupBy('category_name')
+           ->map(function ($items)  {
+               return [
+                   'category_id' => $items->first()->category_id,
+                   'category_name' => $items->first()->category_name,
+                   'permissions' => $items->map(function ($p) {
+                       return [
+                           'id' => $p->id,
+                           'name' => $p->permission_name,
+                       ];
+                   })->values()
+               ];
+           })->values();
+   }
+    public function editRole(Request $request,$id){
+
+       $roleData = DB::table('roles')->where('id', $id)->
+       select('name')->first();
+
+       $selected_permissions_ids = DB::table('role_permissions')->where('role_id', $id)->pluck('permission_id')->toArray();
+       $permissions = DB::table('permissions')
+           ->join('permission_categories', 'permission_categories.id', '=', 'permissions.category_id')
+           ->select(
+               'permission_categories.id as category_id', 'permission_categories.name as category_name',
+               'permissions.name as permission_name' , 'permissions.id'
+           )->get();
+
+       $permissions = $permissions
+           ->groupBy('category_name')
+           ->map(function ($items) use ($selected_permissions_ids)  {
+               return [
+                   'category_id' => $items->first()->category_id,
+                   'category_name' => $items->first()->category_name,
+                   'permissions' => $items->map(function ($p) use ($selected_permissions_ids) {
+                       return [
+                           'id' => $p->id,
+                           'name' => $p->permission_name,
+                           'is_checked' => in_array($p->id, $selected_permissions_ids),
+                       ];
+                   })->values()
+               ];
+           })->values();
+
+
+   }
+    ***/
 
 
 }

@@ -24,6 +24,7 @@ class StoreDoctorMediaRequest extends FormRequest
     {
         return [
 
+            'doctor_id' => 'required|exists:doctors,id',
             'videos'               => 'required|array',
             'videos.*.video_url'   => 'required_with:videos|string|min:8',
             'videos.*.title_en'    => 'required_with:videos|string|min:8',
