@@ -62,7 +62,7 @@
       </li>
       {{-- Roles --}}
       <li class="nav-item rounded-2 m-2">
-         <a href="{{ route('roles-list') }}" class="nav-link {{ Request::is(patterns: 'admin/Roles*') ? 'active' : '' }}">
+         <a href="{{ route('roles-list') }}" class="nav-link {{ Request::is(patterns: 'admin/roles*') ? 'active' : '' }}">
          <img src="{{ asset('images/dashboard-icons/user-management.webp') }}">
          Roles
          </a>

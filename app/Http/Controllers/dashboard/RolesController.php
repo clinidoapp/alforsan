@@ -91,7 +91,7 @@ class RolesController extends Controller
                    })->values()
                ];
            })->values();
-       return view('********', compact('permissions'));
+       return view('dashboard.pages.roles.add', compact('permissions'));
    }
     public function storeRole(StoreRoleRequest $request){
 
