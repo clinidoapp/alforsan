@@ -7,7 +7,16 @@
    <div class="container-fluid">
       <h2>Add New Doctor</h2>
       <div class="card p-3">
-         <form id="add_doctor" action="{{ route('store-doctor') }}" method="POST">
+          @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul class="mb-0">
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
+         <form id="add_doctor" enctype="multipart/form-data" action="{{ route('store-doctor') }}" method="POST">
             @csrf
             <div class="row">
                <div class="col-md-6">
@@ -142,7 +151,7 @@
             </div>
             <div class="row">
                <div class="col-12">
-                  <input type="file" name="image" class="form-control">
+                  <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" >
                   @error('image')
                   <div class="invalid-feedback">{{ $message }}</div>
                   @enderror

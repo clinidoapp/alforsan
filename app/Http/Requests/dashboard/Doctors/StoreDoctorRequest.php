@@ -22,6 +22,7 @@ class StoreDoctorRequest extends FormRequest
      */
     public function rules(): array
     {
+       // dd(request()->all());
         return [
             'name_en'              => 'required|string|max:191',
             'name_ar'              => 'required|string|max:191',
@@ -29,7 +30,7 @@ class StoreDoctorRequest extends FormRequest
             'phone' => 'required|string|max:20|unique:doctors,phone',
             'academic_title'    => 'required|string|in:specialist,professor,consultant,lecturer,fellowship,assistantLecturer,assistantProfessor',
             'services_ids'         => 'required|array',
-            'services_ids.*'       => 'required|exists:services,id',
+            'services_ids.*'       => 'exists:services,id',
             'main_speciality_en'   => 'required|string|max:191',
             'main_speciality_ar'   => 'required|string|max:191',
             'speciality_en'   => 'required|string|max:191',
@@ -81,8 +82,7 @@ class StoreDoctorRequest extends FormRequest
             'name_ar.required'            => 'The Arabic Name field is required.',
 
 
-            'academic_title_en.required'  => 'The English Academic Title field is required.',
-            'academic_title_ar.required'  => 'The Arabic Academic Title field is required.',
+            'academic_title.required'  => 'The Academic Title field is required.',
             'main_speciality_en.required' => 'The English Main Speciality field is required.',
             'main_speciality_ar.required' => 'The Arabic Main Speciality field is required.',
 

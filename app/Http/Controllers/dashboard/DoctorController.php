@@ -149,28 +149,7 @@ class DoctorController extends Controller
                         'created_at' => now(),
                     ]
                 );
-
             }
-
-            /*
-            foreach ($data['videos'] as $video) {
-                dd($video);
-                DB::table('doctor_videos')->updateOrInsert(
-                    [
-                        'doctor_id'  => $doctor_id,
-                        'video_url' => $serviceId,
-                    ],
-                    [
-                        'title_en'  => $video['title_en'],
-                        'title_ar'  => $video['title_ar'],
-                        'status'    => 1,
-                        'created_at'=> now(),
-                        'updated_at'=> now(),
-                        ]
-                );
-
-            }
-            */
 
         });
 
