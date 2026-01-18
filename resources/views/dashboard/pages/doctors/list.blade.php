@@ -8,7 +8,7 @@
         <div class="d-flex mb-2 justify-content-between">
             <h3>Doctors</h3>
             <a href="{{ route('doctors-add') }}" class="btn btn-primary-custom text-white px-5"> <i class="fa-solid fa-plus text-white"></i> Add </a>
-        </div>white
+        </div>
         <div class="card p-0">
             <div class="card-header">
                <h4>Search</h4>

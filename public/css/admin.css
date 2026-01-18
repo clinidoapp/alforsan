@@ -191,6 +191,21 @@ footer {
         width: 75%;
     margin: 10px 0px;
  }
+ .View-doctor img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+ }
+ .View-doctor  strong{
+     font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: left;
+  color: #32519b;
+ }
 footer{
     position: sticky;
     top: 100%;
