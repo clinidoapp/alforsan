@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
-@section('title', 'Dashboard - Admins')
-@section('page-title', 'Admins')
+@section('title', 'Dashboard - Doctors')
+@section('page-title', 'Doctor Management')
 @section('content')
 <section class="listing">
    <div class="container-fluid">

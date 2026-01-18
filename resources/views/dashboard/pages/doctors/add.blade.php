@@ -53,7 +53,13 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="academic_title" class="form-label">Academic title</label>
-                     <input type="text" class="form-control" id="academic_title" name="academic_title" placeholder="Enter doctor Email">
+                     <select id="academic_title" name="academic_title" class="form-control">
+                        <option> Choose academic title</option>
+                        @foreach ($academicTitles as $academicTitle )
+                        <option value="{{$academicTitle['value']}}">{{ $academicTitle['key'] }}</option>
+
+                        @endforeach
+                     </select>
                      @error('academic_title')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
