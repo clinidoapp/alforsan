@@ -59,7 +59,7 @@ class DoctorController extends Controller
 
     }
     public function addDoctor(){
-        $academicTitles = $objects = collect(AcademicTitle::cases())
+        $academicTitles = collect(AcademicTitle::cases())
             ->map(fn ($case) => [
                 'key'   =>  $case->label('en'),
                 'value' => $case->value,
