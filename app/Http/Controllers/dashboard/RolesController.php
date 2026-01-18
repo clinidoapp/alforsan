@@ -31,7 +31,7 @@ class RolesController extends Controller
 
         $roles = $query->paginate(10);
 
-        return view('users.pages-role', compact('roles'));
+        return view('dashboard.pages.roles.list', compact('roles'));
     }
     public function roleDetails(Request $request ,  $id){
         $roleData = DB::table('roles')->where('id', $id)->
