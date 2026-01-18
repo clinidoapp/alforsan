@@ -107,6 +107,7 @@ class DoctorController extends Controller
     }
     public function storeDoctor(StoreDoctorRequest $request){
 
+
         $data = $request->validated();
 
         DB::transaction(function () use ($data, $request) {
@@ -153,7 +154,7 @@ class DoctorController extends Controller
 
         });
 
-        return view('********');
+        return redirect()->route('doctors-list');
     }
     public function addDoctorMedia(StoreDoctorMediaRequest $request)
     {
