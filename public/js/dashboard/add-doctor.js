@@ -1,11 +1,6 @@
 
 $(document).ready(function () {
-$('#services_ids').multiselect({
-    includeSelectAllOption: true,
-    buttonClass: 'btn btn-light w-100 text-start',
-    nonSelectedText: 'Select Services'
-});
-
+ $('.selectpicker').selectpicker();
 
     /* ===========================
      * BASIC FORM VALIDATION
@@ -56,7 +51,7 @@ function dynamicBlock(placeholder, value = '') {
 
 
     $('#add_qualification_en').on('click', function () {
-        const container = $('#doctor_qualification_en');
+        const container = $('#doctor_qualification_en .card');
         const lastInput = container.find('.value-input').first();
         const value = lastInput.val().trim();
         if (value === '') {
@@ -64,14 +59,14 @@ function dynamicBlock(placeholder, value = '') {
             return;
         }
 
-        container.append(
+        container.prepend(
             dynamicBlock('Enter Academic Qualification (EN)', value)
         );
 
         lastInput.val('');
     });
         $('#add_qualification_ar').on('click', function () {
-        const container = $('#doctor_qualification_ar');
+        const container = $('#doctor_qualification_ar .card');
         const lastInput = container.find('.value-input').first();
         const value = lastInput.val().trim();
         if (value === '') {
@@ -79,14 +74,14 @@ function dynamicBlock(placeholder, value = '') {
             return;
         }
 
-        container.append(
+        container.prepend(
             dynamicBlock('Enter Academic Qualification (EN)', value)
         );
 
         lastInput.val('');
     });
         $('#add_experiences_en').on('click', function () {
-        const container = $('#doctor_experiences_en');
+        const container = $('#doctor_experiences_en .card');
         const lastInput = container.find('.value-input').first();
         const value = lastInput.val().trim();
         if (value === '') {
@@ -94,14 +89,14 @@ function dynamicBlock(placeholder, value = '') {
             return;
         }
 
-        container.append(
+        container.prepend(
             dynamicBlock('Enter Academic experiences (EN)', value)
         );
 
         lastInput.val('');
     });
      $('#add_experiences_ar').on('click', function () {
-        const container = $('#doctor_experiences_ar');
+        const container = $('#doctor_experiences_ar .card');
         const lastInput = container.find('.value-input').first();
         const value = lastInput.val().trim();
         if (value === '') {
@@ -109,18 +104,13 @@ function dynamicBlock(placeholder, value = '') {
             return;
         }
 
-        container.append(
+        container.prepend(
             dynamicBlock('Enter Academic experiences (EN)', value)
         );
 
         lastInput.val('');
     });
 
-
-    // Remove item
-    $(document).on('click', '.remove-item', function () {
-        $(this).closest('.item').remove();
-    });
 
     /* ===========================
      * COLLECT VALUES INTO HIDDEN INPUTS
@@ -134,10 +124,7 @@ function dynamicBlock(placeholder, value = '') {
             }
         });
 
-        // Remove old hidden inputs
         $(container).find(`input[type="hidden"][name="${inputName}"]`).remove();
-
-        // Append fresh hidden inputs
         values.forEach(function (value) {
             $(container).append(
                 `<input type="hidden" name="${inputName}" value="${value}">`
