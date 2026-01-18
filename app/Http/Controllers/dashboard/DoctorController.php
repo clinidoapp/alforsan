@@ -194,6 +194,7 @@ class DoctorController extends Controller
                 'doctors.experiences_en' , 'doctors.experiences_ar',
                 'doctors.qualifications_en' , 'doctors.qualifications_ar',
                 'doctors.speciality_ar', 'doctors.speciality_en',
+                'doctors.phone', 'doctors.email' ,
             )
             ->first();
         $service = DB::table('doctor_service')->where('doctor_service.doctor_id', $id)
