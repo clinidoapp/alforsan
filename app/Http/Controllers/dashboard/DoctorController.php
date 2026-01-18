@@ -59,13 +59,19 @@ class DoctorController extends Controller
 
     }
     public function addDoctor(){
+        $academicTitles = $objects = collect(AcademicTitle::cases())
+            ->map(fn ($case) => [
+                'key'   =>  $case->label('en'),
+                'value' => $case->value,
+            ])
+            ->toArray();
 
         $services = DB::table('services')
             ->where('status', 1)
             ->select('id','name_en as name' )
             ->get();
 
-        return view('dashboard.pages.doctors.add')->with('services',$services);
+        return view('dashboard.pages.doctors.add')->with(['services' => $services , 'academicTitles' => $academicTitles]);
     }
     public function updateDoctor($id){
 

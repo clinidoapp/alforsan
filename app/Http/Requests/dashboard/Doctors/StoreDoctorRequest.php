@@ -27,7 +27,7 @@ class StoreDoctorRequest extends FormRequest
             'name_ar'              => 'required|string|max:191',
             'email' => ['required', 'email', 'unique:doctors,email'],
             'phone' => 'required|string|max:20|unique:doctors,phone',
-            'academic_title'    => 'required|string|in:specialist,professor,consultant',
+            'academic_title'    => 'required|string|in:specialist,professor,consultant,lecturer,fellowship,assistantLecturer,assistantProfessor',
             'services_ids'         => 'required|array',
             'services_ids.*'       => 'required|exists:services,id',
             'main_speciality_en'   => 'required|string|max:191',
