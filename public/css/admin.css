@@ -187,6 +187,10 @@ footer {
  .admin-actions .toggle{
     width: 100px;
  }
+ .value-input{
+        width: 75%;
+    margin: 10px 0px;
+ }
 footer{
     position: sticky;
     top: 100%;
