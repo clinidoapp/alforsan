@@ -64,7 +64,8 @@ class RolesController extends Controller
         return view('users.pages-role-details', compact('role'));
 
     }
-    /***
+
+
     public function addRole(Request $request){
 
        $permissions = DB::table('permissions')
@@ -88,7 +89,9 @@ class RolesController extends Controller
                    })->values()
                ];
            })->values();
+       return view('********', compact('permissions'));
    }
+    /***
     public function editRole(Request $request,$id){
 
        $roleData = DB::table('roles')->where('id', $id)->

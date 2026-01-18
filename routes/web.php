@@ -77,8 +77,9 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('admin-edit/{id}' , [AuthController::class, 'editAdmin'])->middleware(['permission:update_admin'])->name('Edit-admin');;
 
     /*** Roles ***/
-    Route::get('roles' , [RolesController::class, 'listRoles'])->middleware(['permission:read_roles'])->name('roles-list');
-    Route::get('role/{id}' , [RolesController::class, 'roleDetails'])->middleware(['permission:read_roles'])->name('roles-details');
+    Route::get('roles' , [RolesController::class, 'listRoles'])->middleware(['permission:read_role'])->name('roles-list');
+    Route::get('role/{id}' , [RolesController::class, 'roleDetails'])->middleware(['permission:read_role'])->name('roles-details');
+    Route::get('role-add' , [RolesController::class, 'addRole'])->middleware(['permission:create_role'])->name('roles-add');
 
     /*** Doctors ***/
     Route::get('doctors-list' , [DoctorController::class, 'listDoctors'])->middleware(['permission:read_doctor'])->name('doctors-list');
@@ -119,9 +120,8 @@ Route::prefix('test')->group(function () {
     Route::get('doctors-view/{id}' , [DoctorController::class, 'viewDoctor']);
     Route::get('toggleDoctor/{id}' , [DoctorController::class, 'toggleDoctorStatus'])->name('admin.toggle');
     Route::get('deleteDoctor/{id}' , [DoctorController::class, 'deleteDoctor'])->name('admin.toggle');
-
-
     Route::get('role/{id}' , [RolesController::class, 'roleDetails']);
+    Route::get('role-add' , [RolesController::class, 'addRole']);
 
 });
 /************************* End Test *********************/
