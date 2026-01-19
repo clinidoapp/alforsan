@@ -122,6 +122,7 @@ Route::prefix('test')->group(function () {
     Route::get('toggleDoctor/{id}' , [DoctorController::class, 'toggleDoctorStatus'])->name('admin.toggle');
     Route::get('deleteDoctor/{id}' , [DoctorController::class, 'deleteDoctor'])->name('admin.toggle');
     Route::get('role/{id}' , [RolesController::class, 'roleDetails']);
+    Route::get('role-edit/{id}' , [RolesController::class, 'editRole']);
     Route::get('role-add' , [RolesController::class, 'addRole']);
 
 

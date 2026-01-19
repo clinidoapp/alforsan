@@ -66,8 +66,6 @@ class RolesController extends Controller
         return view('users.pages-role-details', compact('role'));
 
     }
-
-
     public function addRole(Request $request){
 
        $permissions = DB::table('permissions')
@@ -118,11 +116,10 @@ class RolesController extends Controller
         });
        return view('********');
    }
-    /***
     public function editRole(Request $request,$id){
 
        $roleData = DB::table('roles')->where('id', $id)->
-       select('name')->first();
+       select('name', 'id')->first();
 
        $selected_permissions_ids = DB::table('role_permissions')->where('role_id', $id)->pluck('permission_id')->toArray();
        $permissions = DB::table('permissions')
@@ -147,10 +144,7 @@ class RolesController extends Controller
                    })->values()
                ];
            })->values();
-
-
-   }
-    ***/
-
+    return view('*********', compact('roleData', 'permissions'));
+    }
 
 }
