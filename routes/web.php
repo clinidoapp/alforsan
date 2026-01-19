@@ -81,6 +81,8 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('role/{id}' , [RolesController::class, 'roleDetails'])->middleware(['permission:read_role'])->name('roles-details');
     Route::get('role-add' , [RolesController::class, 'addRole'])->middleware(['permission:create_role'])->name('roles-add');
     Route::post('storeRole' , [RolesController::class, 'storeRole'])->middleware(['permission:create_role'])->name('store-role');
+    Route::get('role-edit/{id}' , [RolesController::class, 'editRole'])->middleware(['permission:update_role'])->name('edit-role');
+
 
     /*** Doctors ***/
     Route::get('doctors-list' , [DoctorController::class, 'listDoctors'])->middleware(['permission:read_doctor'])->name('doctors-list');
