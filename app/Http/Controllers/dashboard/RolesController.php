@@ -132,9 +132,14 @@ class RolesController extends Controller
        $permissions = $permissions
            ->groupBy('category_name')
            ->map(function ($items) use ($selected_permissions_ids)  {
+               $totalPermissions   = $items->count();
+               $selectedPermissions = $items->whereIn('id', $selected_permissions_ids)->count();
+
+              // dd($items , $totalPermissions , $selectedPermissions);
                return [
                    'category_id' => $items->first()->category_id,
                    'category_name' => $items->first()->category_name,
+                   'category_is_checked' => $totalPermissions === $selectedPermissions,
                    'permissions' => $items->map(function ($p) use ($selected_permissions_ids) {
                        return [
                            'id' => $p->id,
