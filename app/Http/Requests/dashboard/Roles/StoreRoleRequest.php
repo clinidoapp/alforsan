@@ -3,6 +3,7 @@
 namespace App\Http\Requests\dashboard\Roles;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreRoleRequest extends FormRequest
 {
@@ -21,8 +22,14 @@ class StoreRoleRequest extends FormRequest
      */
     public function rules(): array
     {
+        $id = $this->route('id');
+
         return [
-            'name' => 'required|string|unique:roles,name',
+            'name' => [
+                'required',
+                'string',
+                Rule::unique('roles', 'name')->ignore($id),
+            ],
             'permissions_ids' => 'required|array|min:1',
             'permissions_ids.*' => 'exists:permissions,id',
         ];

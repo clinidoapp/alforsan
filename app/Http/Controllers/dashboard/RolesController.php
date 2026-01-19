@@ -91,18 +91,37 @@ class RolesController extends Controller
            })->values();
        return view('dashboard.pages.roles.add', compact('permissions'));
    }
-    public function storeRole(StoreRoleRequest $request){
+    public function storeRole(StoreRoleRequest $request , $id = null){
 
         $data = $request->validated();
-        DB::transaction(function () use ($data) {
+        DB::transaction(function () use ($data , $id) {
+
+
 
             $baseSlug = Str::slug($data['name']);
-            $roleId = DB::table('roles')->insertGetId([
-                'name' => $data['name'],
-                'slug' => $baseSlug,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+
+            if (!$id) {
+
+                $roleId = DB::table('roles')->insertGetId([
+                    'name' => $data['name'],
+                    'slug' => $baseSlug,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+
+            }else {
+
+                DB::table('roles')->where('id', $id)->update([
+                    'name' => $data['name'],
+                    'slug' => $baseSlug,
+                    'updated_at' => now(),
+                ]);
+
+                DB::table('role_permissions')->where('role_id', $id)->delete();
+
+
+                $roleId = $id;
+            }
 
             $rows = array_map(function ($permissionId) use ($roleId) {
                 return [
