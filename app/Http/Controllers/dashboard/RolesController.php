@@ -63,7 +63,7 @@ class RolesController extends Controller
             'role_name' => $roleData->name,
             'permission_categories' => $grouped
         ];
-        return view('users.pages-role-details', compact('role'));
+        return view('dashboard.pages.roles.details', compact('role'));
 
     }
     public function addRole(Request $request){
@@ -133,7 +133,7 @@ class RolesController extends Controller
 
             DB::table('role_permissions')->insert($rows);
         });
-       return view('********');
+        return redirect()->route('roles-list');
    }
     public function editRole(Request $request,$id){
 
@@ -168,7 +168,7 @@ class RolesController extends Controller
                    })->values()
                ];
            })->values();
-    return view('*********', compact('roleData', 'permissions'));
+    return view('dashboard.pages.roles.edit', compact('roleData', 'permissions'));
     }
 
 }

@@ -49,7 +49,7 @@
                         <td class="py-2 text-center">{{ $role->users_count }}</td>
                         <td class="py-2 text-center admin-actions">
                             <a href="{{ route('roles-details', $role->id) }}" class="btn btn-primary-custom">View</a>
-                            <a href="{{ route('Edit-admin', parameters: $role->id) }}" class="btn btn-outline-primary">Edit</a>
+                            <a href="{{ route('edit-role',  $role->id) }}" class="btn btn-outline-primary">Edit</a>
                         </td>
                     </tr>
                     @endforeach

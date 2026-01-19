@@ -4,15 +4,15 @@
 @section('content')
 <section class="adding">
    <div class="container-fluid">
-      <h2>Add New Role</h2>
+      <h2>Edit role </h2>
       <div class="card p-3">
-         <form id="add_role" action="{{ route('store-role') }}" method="POST">
+         <form id="add_role" action="{{ route('update-role', $roleData->id) }}" method="POST">
             @csrf
             <div class="row">
                <div class="col-md-7">
                   <div class="mb-3">
                      <label for="Role_name" class="form-label">Role Name</label>
-                     <input type="text" class="form-control" id="Role_name" name="name" placeholder="Enter Role name">
+                     <input type="text" class="form-control" id="Role_name" name="name" value="{{ $roleData->name }}" placeholder="Enter Role name">
                   </div>
                </div>
             </div>
@@ -22,7 +22,7 @@
                <div class="card p-0 mb-3">
                   <div class="card-header fw-bold d-flex justify-content-between text-white bg-primary-custome">
                      <p class="m-0">{{ $category['category_name'] }}</p>
-                     <label class="fa-checkbox"><input class="select-all" type="checkbox" >
+                     <label class="fa-checkbox"><input class="select-all" type="checkbox" @checked($category['category_is_checked'])>
                            <span class="checkmark"></span>
                          Select all
                         </label>
@@ -37,6 +37,7 @@
                            name="permissions_ids[]"
                            value="{{ $permission['id'] }}"
                            id="perm_{{ $permission['id'] }}"
+                           @checked($permission['is_checked'])
                            >
                            <span class="checkmark"></span>
                         {{ $permission['name'] }}

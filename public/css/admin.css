@@ -206,6 +206,55 @@ footer {
   text-align: left;
   color: #32519b;
  }
+.fa-checkbox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Hide native checkbox */
+.fa-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Custom box */
+.fa-checkbox .checkmark {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #adb5bd;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all .2s ease;
+    background:#fff;
+}
+
+/* FontAwesome icon (hidden by default) */
+.fa-checkbox .checkmark::after {
+    content: "\f00c"; /* fa-check */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: var(--primary-color);
+    font-size: 13px;
+    display: none;
+}
+
+/* Checked state */
+.fa-checkbox input:checked + .checkmark {
+    background-color: #fff; /* Bootstrap primary */
+    border-color: var(--primary-color);
+}
+
+.fa-checkbox input:checked + .checkmark::after {
+    display: block;
+}
+
 footer{
     position: sticky;
     top: 100%;

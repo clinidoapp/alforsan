@@ -77,7 +77,7 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('admin-edit/{id}' , [AuthController::class, 'editAdmin'])->middleware(['permission:update_admin'])->name('Edit-admin');;
 
     /*** Roles ***/
-    Route::get('roles' , [RolesController::class, 'listRoles'])->middleware(['permission:read_role'])->name('roles-list');
+    Route::get('role-list' , [RolesController::class, 'listRoles'])->middleware(['permission:read_role'])->name('roles-list');
     Route::get('role/{id}' , [RolesController::class, 'roleDetails'])->middleware(['permission:read_role'])->name('roles-details');
     Route::get('role-add' , [RolesController::class, 'addRole'])->middleware(['permission:create_role'])->name('roles-add');
     Route::post('storeRole' , [RolesController::class, 'storeRole'])->middleware(['permission:create_role'])->name('store-role');
