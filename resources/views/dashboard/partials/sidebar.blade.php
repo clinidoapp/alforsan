@@ -76,7 +76,7 @@
       </li>
       {{-- Settings --}}
       <li class="nav-item rounded-2 m-2">
-         <a href="#" class="nav-link {{ Request::is(patterns: 'admin/setting*') ? 'active' : '' }}">
+         <a href="{{route('setting-list')}}" class="nav-link {{ Request::is(patterns: 'admin/setting*') ? 'active' : '' }}">
          <img src="{{ asset('images/dashboard-icons/setting.webp') }}">
          Settings
          </a>
