@@ -34,7 +34,8 @@
 
                </tbody>
             </table>
-            <div class="d-flex justify-content-end align-items-center px-3 py-3 text-align-right">
+           <div class="d-flex justify-content-end align-items-center px-3 py-3 text-align-right">
+                {{ $setting->links('pagination::bootstrap-5') }}
             </div>
          </div>
       </div>
