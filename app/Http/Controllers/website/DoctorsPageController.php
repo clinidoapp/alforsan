@@ -66,6 +66,8 @@ class DoctorsPageController extends Controller
         $videos = DB::table('doctor_videos')
             ->where('doctor_id', $id)
             ->where('status', 1)
+            ->where('is_deleted', 0)
+            ->whereNull('deleted_at')
             ->select('video_url' , 'title_ar' , 'title_en')
             ->get()->toArray();
 

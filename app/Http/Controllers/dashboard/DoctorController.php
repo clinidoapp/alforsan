@@ -300,7 +300,6 @@ class DoctorController extends Controller
        return view('dashboard.pages.doctors.doctorMediaList' , compact('doctors','selectedId','selectedDoctor'));
 
     }
-
     public function storeDoctorMedia(StoreDoctorMediaRequest $request)
     {
         $data = $request->validated();
@@ -327,6 +326,27 @@ class DoctorController extends Controller
         return redirect()->route('*********');
 
     }
+    public function toggleMediaStatus($id)
+    {
+        $video = DB::table('doctor_videos')->where('id', $id);
+        $currentStatus = $video->value('status');
+        $newStatus = $currentStatus == 1 ? 0 : 1;
+        $video->update(['status' => $newStatus]);
+        return redirect()->route('********');
+    }
+    public function deleteDoctorMedia($id)
+    {
+
+        DB::table('doctor_videos')
+            ->where('id', $id)
+            ->update([
+                'is_deleted' => 1,
+                'deleted_at' => Carbon::now(),
+            ]);
+        return redirect()->route('*******');
+
+    }
+
 
 
 }
