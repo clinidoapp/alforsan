@@ -100,6 +100,7 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('doctors-list-media/{id?}' , [DoctorController::class, 'listDoctorMedia'])->middleware(['permission:read_doctor_media'])->name('doctors-mediaList');
     Route::get('doctors-list-media-add/{id?}' , [DoctorController::class, 'addDoctorMedia'])->middleware(['permission:create_doctor_media'])->name('doctors-addMedia');
     Route::post('storeDoctorMedia' , [DoctorController::class, 'storeDoctorMedia'])->middleware(['permission:create_doctor_media'])->name('createOrEditDoctorMedia');
+    Route::post('UpdateDoctorMedia' , [DoctorController::class, 'UpdateDoctorMedia'])->middleware(['permission:update_doctor_media'])->name('UpdateDoctorMedia');
     Route::get('toggleMediaStatus/{id}' , [DoctorController::class, 'toggleMediaStatus'])->middleware(['permission:update_doctor_media'])->name('toggleMediaStatus');
     Route::get('deleteDoctorMedia/{id}' , [DoctorController::class, 'deleteDoctorMedia'])->middleware(['permission:delete_doctor_media'])->name('deleteDoctorMedia');
 

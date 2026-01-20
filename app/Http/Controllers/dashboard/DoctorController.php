@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Service\ImageHandlerService;
 use App\Http\Requests\dashboard\Doctors\StoreDoctorMediaRequest;
 use App\Http\Requests\dashboard\Doctors\StoreDoctorRequest;
+use App\Http\Requests\dashboard\Doctors\UpdateDoctorMediaRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -326,13 +327,31 @@ class DoctorController extends Controller
         return redirect()->route('*********');
 
     }
+    public function UpdateDoctorMedia(UpdateDoctorMediaRequest $request)
+    {
+        $data = $request->validated();
+        $video_id = $data['video_id'];
+        DB::transaction(function () use ($data, $video_id) {
+            DB::table('doctor_videos')->where('id' , $video_id )->update(
+                [
+                    'title_en'  => $data['title_en'],
+                    'title_ar'  => $data['title_ar'],
+                    'status'    => $data['status'],
+                    'updated_at'=> now(),
+                ]
+            );
+        });
+
+        return redirect()->back();
+
+    }
     public function toggleMediaStatus($id)
     {
         $video = DB::table('doctor_videos')->where('id', $id);
         $currentStatus = $video->value('status');
         $newStatus = $currentStatus == 1 ? 0 : 1;
         $video->update(['status' => $newStatus]);
-        return redirect()->route('********');
+        return redirect()->back();
     }
     public function deleteDoctorMedia($id)
     {
@@ -343,7 +362,7 @@ class DoctorController extends Controller
                 'is_deleted' => 1,
                 'deleted_at' => Carbon::now(),
             ]);
-        return redirect()->route('*******');
+        return redirect()->back();
 
     }
 
