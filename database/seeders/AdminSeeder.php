@@ -22,7 +22,8 @@ class AdminSeeder extends Seeder
             ['name' => 'Role Management', 'slug' => 'role_management'],
             ['name' => 'Doctor Management', 'slug' => 'doctor_management'],
             ['name' => 'Settings Management', 'slug' => 'settings_management'],
-            ['name' => 'Booking Requests Management', 'slug' => 'booking_requests'],
+            ['name' => 'Booking Requests Management', 'slug' => 'booking_requests_management'],
+            ['name' => 'Doctor Media Management', 'slug' => 'doctor_media_management'],
         ];
         foreach ($categories as $category) {
 
@@ -71,7 +72,14 @@ class AdminSeeder extends Seeder
             ['name' => 'Update Settings', 'slug' => 'update_settings', 'category_slug' => 'settings_management'],
 
             /*** Booking Requests Management ***/
-            ['name' => 'Read Booking Request',   'slug' => 'read_booking_request',   'category_slug' => 'booking_requests'],
+            ['name' => 'Read Booking Request',   'slug' => 'read_booking_request',   'category_slug' => 'booking_requests_management'],
+
+            /*** Doctor Media Management ***/
+            ['name' => 'Create Doctor Media', 'slug' => 'create_doctor_media', 'category_slug' => 'doctor_media_management'],
+            ['name' => 'Read Doctor Media',   'slug' => 'read_doctor_media',   'category_slug' => 'doctor_media_management'],
+            ['name' => 'Update Doctor Media', 'slug' => 'update_doctor_media', 'category_slug' => 'doctor_media_management'],
+            ['name' => 'Delete Doctor Media', 'slug' => 'delete_doctor_media', 'category_slug' => 'doctor_media_management'],
+
 
         ];
 

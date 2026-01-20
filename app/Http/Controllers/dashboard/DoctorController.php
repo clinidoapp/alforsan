@@ -11,9 +11,11 @@ use App\Http\Requests\dashboard\Doctors\StoreDoctorRequest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use function Laravel\Prompts\select;
 
 class DoctorController extends Controller
 {
+    /*** Doctor ***/
     public function listDoctors(Request $request){
 
         $query= DB::table('doctors')
@@ -156,30 +158,6 @@ class DoctorController extends Controller
 
         return redirect()->route('doctors-list');
     }
-    public function addDoctorMedia(StoreDoctorMediaRequest $request)
-    {
-        $data = $request->validated();
-        $doctor_id = $data['doctor_id'];
-
-        DB::transaction(function () use ($data, $doctor_id) {
-            foreach ($data['videos'] as $video) {
-                DB::table('doctor_videos')->updateOrInsert(
-                    [
-                        'doctor_id'  => $doctor_id,
-                        'video_url' => $video['video_url'],
-                    ],
-                    [
-                        'title_en'  => $video['title_en'],
-                        'title_ar'  => $video['title_ar'],
-                        'status'    => 1,
-                        'created_at'=> now(),
-                        'updated_at'=> now(),
-                    ]
-                );
-            }
-        });
-
-    }
     public function viewDoctor($id)
     {
         $doctor = DB::table('doctors')
@@ -234,5 +212,110 @@ class DoctorController extends Controller
         return redirect()->route('doctors-list');
 
     }
+
+    /*** Doctor Media ***/
+    public function listDoctorMediaCount(Request $request){
+
+        $query = DB::table('doctors')
+            ->leftJoin('doctor_videos', 'doctors.id', '=', 'doctor_videos.doctor_id')
+            ->where('doctors.is_deleted', 0)->whereNull('doctors.deleted_at')
+            ->where('doctor_videos.is_deleted', 0)->whereNull('doctor_videos.deleted_at')
+            ->select('doctors.id','doctors.name_en as doctor_name',
+                DB::raw('COUNT(doctor_videos.id) as videos_count')
+            )
+            ->groupBy('doctors.id', 'doctors.name_en');
+
+        if ($request->filled('doctor_id')) {
+            $query->where('doctors.id', $request->doctor_id);
+        }
+
+        if ($request->filled('doctor_name')) {
+            $search = trim($request->doctor_name);
+            $search = str_replace(['أ','إ','آ'], 'ا', $search);
+            $search = str_replace(['ى','ي'], 'ي', $search);
+            $search = str_replace('ة', 'ه', $search);
+            $query->where( function ($q) use ($search) {
+                $q->where('doctors.name_en', 'like', '%' . $search . '%')
+                    ->orWhereRaw("
+        REPLACE(
+          REPLACE(
+            REPLACE(
+              REPLACE(
+                REPLACE(doctors.name_ar,'أ','ا'),
+              'إ','ا'),
+            'آ','ا'),
+          'ى','ي'),
+        'ة','ه')
+        LIKE ?
+      ", ["%{$search}%"]);
+            });
+        }
+
+        $doctors = $query->paginate(10);
+
+        $search = [
+            'doctor_id' => $request->doctor_id ?? null,
+            'doctor_name' => $request->doctor_name ?? null,
+        ];
+        return view('dashboard.pages.******', compact('doctors','search'));
+
+    }
+    public function listDoctorMedia(Request $request , $id){
+
+        $doctor = DB::table('doctors')
+            ->where('id', $id)
+            ->where('is_deleted', 0)
+            ->whereNull('deleted_at')
+            ->select('id', 'name_en')
+            ->first();
+
+        $videos = DB::table('doctor_videos')->where('doctor_id', $id)
+            ->where('doctor_videos.is_deleted', 0)->whereNull('doctor_videos.deleted_at')
+            ->select(
+                'doctor_videos.title_en as video_title_en',
+                'doctor_videos.title_ar as video_title_ar',
+                'doctor_videos.id as video_id' ,
+                'doctor_videos.video_url'
+            )->paginate(10);
+
+        return view('dashboard.pages.******', compact('doctor','videos'));
+    }
+    public function addDoctorMedia($id = null){
+        $doctors = DB::table('doctors')
+            //->where('status', 1)
+            ->where('is_deleted', 0)->whereNull('deleted_at')
+            ->select('id','name_en',
+                DB::raw("CONCAT(id, '-', name_en) as identifier"))
+            ->get();
+        $selectedId = $id ;
+       return view('*********' , compact('doctors','selectedId'));
+
+    }
+
+    public function storeDoctorMedia(StoreDoctorMediaRequest $request)
+    {
+        $data = $request->validated();
+        $doctor_id = $data['doctor_id'];
+
+        DB::transaction(function () use ($data, $doctor_id) {
+            foreach ($data['videos'] as $video) {
+                DB::table('doctor_videos')->updateOrInsert(
+                    [
+                        'doctor_id'  => $doctor_id,
+                        'video_url' => $video['video_url'],
+                    ],
+                    [
+                        'title_en'  => $video['title_en'],
+                        'title_ar'  => $video['title_ar'],
+                        'status'    => 1,
+                        'created_at'=> now(),
+                        'updated_at'=> now(),
+                    ]
+                );
+            }
+        });
+
+    }
+
 
 }

@@ -95,15 +95,19 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('toggleDoctor/{id}' , [DoctorController::class, 'toggleDoctorStatus'])->middleware(['permission:update_admin'])->name('doctor.toggle');
     Route::get('doctors-edit' , [DoctorController::class, 'updateDoctor'])->middleware(['permission:update_doctor'])->name('doctors-add');
 
+    /*** Doctor Media ***/
+    Route::get('doctors-media' , [DoctorController::class, 'listDoctorMediaCount'])->middleware(['permission:read_doctor_media'])->name('doctors-mediaList');
+    Route::get('doctors-media' , [DoctorController::class, 'listDoctorMedia'])->middleware(['permission:read_doctor_media'])->name('doctors-mediaList');
+    //Route::get('addDoctorMedia/{id?}' , [DoctorController::class, 'addDoctorMedia'])->middleware(['permission:create_doctor_media'])->name('doctors-addMedia');
+
     /*** Settings ***/
     Route::get('setting' , [SettingsController::class, 'setting'])->middleware(['permission:read_settings'])->name('setting');
     Route::post('setSetting' , [SettingsController::class, 'setSetting'])->middleware(['permission:update_settings'])->name('set-setting');
 
     /*** Booking Requests ***/
-    Route::get('booking-requests' ,[BookingController::class, 'BookingController'])->middleware(['permission:read_booking_request'])->name('booking-requests');
-    
-    /*** Services ***/
+    Route::get('booking-requests' ,[BookingController::class, 'listBookingRequests'])->middleware(['permission:read_booking_request'])->name('booking-requests');
 
+    /*** Services ***/
     /*** Booking Services ***/
     /*** Settings ***/
     Route::get('settings' , function(){return view('dashboard.pages.settings.list');})->name('settings-list');
@@ -137,6 +141,9 @@ Route::prefix('test')->group(function () {
     Route::get('doctors-view/{id}' , [DoctorController::class, 'viewDoctor']);
     Route::get('toggleDoctor/{id}' , [DoctorController::class, 'toggleDoctorStatus'])->name('admin.toggle');
     Route::get('deleteDoctor/{id}' , [DoctorController::class, 'deleteDoctor'])->name('admin.toggle');
+    Route::get('addDoctorMedia/{id?}' , [DoctorController::class, 'addDoctorMedia']);
+    Route::get('listDoctorMediaCount' , [DoctorController::class, 'listDoctorMedia']);
+    Route::get('listDoctorMedia/{id}' , [DoctorController::class, 'listDoctorMedia']);
     Route::get('role/{id}' , [RolesController::class, 'roleDetails']);
     Route::get('role-edit/{id}' , [RolesController::class, 'editRole']);
     Route::get('role-add' , [RolesController::class, 'addRole']);

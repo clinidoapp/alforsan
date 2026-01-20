@@ -75,7 +75,7 @@ class AuthController extends Controller
             'users.is_deleted',
             'users.name',
             'users.email',
-            'roles.name as role_name');
+            'roles.name as role_name')->orderBy('id');
 
         if ($request->filled('admin_id')) {
             $query->where('users.id', $request->admin_id);

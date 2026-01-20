@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class SettingsController extends Controller
 {
     public function setting(Request $request){
-        $setting =  DB::table('settings')->select('id' , 'key' , 'value')->get();
+        $setting =  DB::table('settings')->select('id' , 'key' , 'value')->paginate(10);
         return view('*********', compact('setting'));
     }
     public function setSetting(Request $request)
