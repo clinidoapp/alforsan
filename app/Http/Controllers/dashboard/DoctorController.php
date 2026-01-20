@@ -298,7 +298,7 @@ class DoctorController extends Controller
                 ->select('id','name_en',)
                 ->first();
         }
-       return view('dashboard.pages.doctors.doctorMediaList' , compact('doctors','selectedId','selectedDoctor'));
+       return view('dashboard.pages.doctors.addMedia' , compact('doctors','selectedId','selectedDoctor'));
 
     }
     public function storeDoctorMedia(StoreDoctorMediaRequest $request)
@@ -324,7 +324,7 @@ class DoctorController extends Controller
             }
         });
 
-        return redirect()->route('*********');
+        return redirect()->route('doctors-list-media');
 
     }
     public function UpdateDoctorMedia(UpdateDoctorMediaRequest $request)

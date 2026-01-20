@@ -7,7 +7,7 @@
       <div class="row">
         <div class="d-flex mb-2 justify-content-between">
             <h3>Doctors Media</h3>
-            <a href="{{ route('doctors-add') }}" class="btn btn-primary-custom text-white px-5"> <i class="fa-solid fa-plus text-white"></i> Add </a>
+            <a href="{{ route('doctors-addMedia') }}" class="btn btn-primary-custom text-white px-5"> <i class="fa-solid fa-plus text-white"></i> Add </a>
         </div>
         <div class="card p-0">
             <div class="card-header">
@@ -48,7 +48,7 @@
                             <td>{{ $doctor->doctor_name }}</td>
                             <td>{{ $doctor->videos_count }}</td>
                             <td>
-                                <a class="btn btn-primary-custom">Add</a>
+                                <a href="{{ route('doctors-addMedia', $doctor->id) }}"class="btn btn-primary-custom">Add</a>
                                 <a href="{{ route('doctors-mediaList', $doctor->id) }}" class="btn btn-outline-primary">View</a>
                             </td>
                         </tr>

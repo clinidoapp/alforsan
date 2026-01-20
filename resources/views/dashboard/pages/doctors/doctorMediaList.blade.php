@@ -7,7 +7,7 @@
       <div class="row">
         <div class="d-flex mb-2 justify-content-between">
             <h3>Doctors Name: <span class="text-dark">{{ $doctor->name_en }}</span></h3>
-            <a href="{{ route('doctors-add') }}" class="btn btn-primary-custom text-white px-5"> <i class="fa-solid fa-plus text-white"></i> Add </a>
+            <a href="{{ route('doctors-addMedia', $doctor->id) }}" class="btn btn-primary-custom text-white px-5"> <i class="fa-solid fa-plus text-white"></i> Add </a>
         </div>
 
       </div>
@@ -32,9 +32,9 @@
                             <td>{{ $video->video_url }}</td>
                             <td><span class="w-100 rounded-pill badge bg-{{$video->status==1?'success':'danger'}}">{{$video->status==1?'Active':'InActive'}}</span></td>
                             <td>
-                                <a class="btn btn-primary-custom">Edit</a>
-                                <a class="btn btn-danger">Delete</a>
-                                <a href="{{ route('doctor.toggle', $doctor->id) }}" class="toggle btn btn-outline-{{$video->status==1?'danger':'success'}}"onclick="return confirm('Are you sure you want to change this doctor staus ?');">{{$video->status==1?'Deactivate':'Activate'}}</a>
+                                <a href="{{ route('doctor.toggle', $video->video_id) }}" class="btn btn-primary-custom">Edit</a>
+                                <a href="{{ route('deleteDoctorMedia', $video->video_id) }}" class="btn btn-danger"onclick="return confirm('Are you sure you want to delete this video  ?');">Delete</a>
+                                <a href="{{ route('toggleMediaStatus', $video->video_id) }}" class="toggle btn btn-outline-{{$video->status==1?'danger':'success'}}"onclick="return confirm('Are you sure you want to change this video staus ?');">{{$video->status==1?'Deactivate':'Activate'}}</a>
                             </td>
                         </tr>
                     @endforeach
