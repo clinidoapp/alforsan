@@ -20,7 +20,7 @@
       {{-- Doctors (with submenu) --}}
       @php
       // Check if current route matches any of the doctor's submenu routes
-      $doctorRoutes = ['doctors-list', 'doctors-add','doctors-view','doctors-edit','doctors-list-media'];
+      $doctorRoutes = ['doctors-list', 'doctors-add','doctors-view','doctors-edit','doctors-list-media','doctors-mediaList','doctors-addMedia'];
       $doctorMenuOpen = in_array(Route::currentRouteName(), $doctorRoutes);
       @endphp
       @if(\App\Helpers\Permissions::hasPermission('read_doctor'))
