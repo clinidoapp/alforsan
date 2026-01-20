@@ -308,7 +308,7 @@ class DoctorController extends Controller
                     [
                         'title_en'  => $video['title_en'],
                         'title_ar'  => $video['title_ar'],
-                        'status'    => 1,
+                        'status'    => $video['status'],
                         'created_at'=> now(),
                         'updated_at'=> now(),
                     ]

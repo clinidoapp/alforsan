@@ -5,6 +5,7 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class BookingController extends Controller
 {
@@ -16,7 +17,7 @@ class BookingController extends Controller
             'book_requests.name','book_requests.email',
             'book_requests.phone' ,'book_requests.id',
             'booking_services.name_en as service_name',
-            'book_requests.created_at');
+            'book_requests.created_at')->orderBy('book_requests.id','DESC');
 
 
         if ($request->filled('patient_name')) {
@@ -46,4 +47,80 @@ class BookingController extends Controller
         return view('dashboard.pages.bookings.list', compact('BookRequests' , 'search' , 'bookingServices'));
 
     }
+    public function bookingServicesList(Request $request){
+
+        $query = DB::table('booking_services')
+            ->select('id' , 'name_en' , 'name_ar' , 'status');
+
+        if ($request->filled('service_id')) {
+            $query->where('id', $request->service_id);
+        }
+
+        if ($request->filled('service_name')) {
+            $search = trim($request->service_name);
+            $search = str_replace(['أ','إ','آ'], 'ا', $search);
+            $search = str_replace(['ى','ي'], 'ي', $search);
+            $search = str_replace('ة', 'ه', $search);
+            $query->where( function ($q) use ($search) {
+                $q->where('name_en', 'like', '%' . $search . '%')
+                    ->orWhereRaw("
+        REPLACE(
+          REPLACE(
+            REPLACE(
+              REPLACE(
+                REPLACE(name_ar,'أ','ا'),
+              'إ','ا'),
+            'آ','ا'),
+          'ى','ي'),
+        'ة','ه')
+        LIKE ?
+      ", ["%{$search}%"]);
+            });
+        }
+
+        $services = $query->paginate(10);
+        $search = [
+            'service_id' => $request->service_id ?? null,
+            'service_name' => $request->service_name ?? null,
+        ];
+        return view('dashboard.pages.********', compact('search' , 'services'));
+    }
+    public function toggleBookingServicesStatus($id)
+    {
+        $service = DB::table('booking_services')->where('id', $id);
+        $currentStatus = $service->value('status');
+        $newStatus = $currentStatus == 1 ? 0 : 1;
+        $service->update(['status' => $newStatus]);
+        return redirect()->route('********');
+    }
+    public function createOrUpdateService(Request $request , $id = null){
+
+        $data = $request->validate([
+            'name_ar' => ['required', 'string', 'max:191', 'regex:/^[\p{Arabic}\s]+$/u',
+                Rule::unique('booking_services', 'name_ar')->ignore($id)
+            ],
+            'name_en' => ['required', 'string', 'max:191', 'regex:/^[A-Za-z\s]+$/',
+                Rule::unique('booking_services', 'name_en')->ignore($id),
+            ],
+        ]);
+
+        if (!$id) {
+            DB::table('booking_services')->insert([
+                'name_ar' => $data['name_ar'],
+                'name_en' => $data['name_en'],
+                'status' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }else {
+            DB::table('booking_services')->where('id', $id)->update([
+                'name_ar' => $data['name_ar'],
+                'name_en' => $data['name_en'],
+                'updated_at' => now(),
+            ]);
+        }
+        return redirect()->route('booking-requests');
+
+    }
+
 }

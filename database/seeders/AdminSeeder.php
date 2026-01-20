@@ -24,6 +24,7 @@ class AdminSeeder extends Seeder
             ['name' => 'Settings Management', 'slug' => 'settings_management'],
             ['name' => 'Booking Requests Management', 'slug' => 'booking_requests_management'],
             ['name' => 'Doctor Media Management', 'slug' => 'doctor_media_management'],
+            ['name' => 'Booking Services Management', 'slug' => 'booking_services_management'],
         ];
         foreach ($categories as $category) {
 
@@ -80,6 +81,11 @@ class AdminSeeder extends Seeder
             ['name' => 'Update Doctor Media', 'slug' => 'update_doctor_media', 'category_slug' => 'doctor_media_management'],
             ['name' => 'Delete Doctor Media', 'slug' => 'delete_doctor_media', 'category_slug' => 'doctor_media_management'],
 
+            /*** Booking Services Management ***/
+            ['name' => 'Create Booking Service', 'slug' => 'create_booking_service', 'category_slug' => 'booking_services_management'],
+            ['name' => 'Read Booking Service',   'slug' => 'read_booking_service',   'category_slug' => 'booking_services_management'],
+            ['name' => 'Update Booking Service', 'slug' => 'update_booking_service', 'category_slug' => 'booking_services_management'],
+            ['name' => 'Delete Booking Service', 'slug' => 'delete_booking_service', 'category_slug' => 'booking_services_management'],
 
         ];
 

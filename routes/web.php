@@ -106,6 +106,9 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
 
     /*** Booking Requests ***/
     Route::get('booking-requests' ,[BookingController::class, 'listBookingRequests'])->middleware(['permission:read_booking_request'])->name('booking-requests');
+    Route::get('booking-services' ,[BookingController::class, 'listBookingRequests'])->middleware(['permission:read_booking_service'])->name('booking-services');
+    Route::get('toggleBookingServicesStatus/{id}' ,[BookingController::class, 'toggleBookingServicesStatus'])->middleware(['permission:update_booking_service'])->name('toggleBookingServicesStatus');
+    Route::get('createOrUpdateService/{id?}' ,[BookingController::class, 'createOrUpdateService'])->middleware(['permission:update_booking_service'])->name('createOrUpdateService');
 
     /*** Services ***/
     /*** Booking Services ***/
@@ -149,6 +152,8 @@ Route::prefix('test')->group(function () {
 
     Route::get('setting' , [SettingsController::class, 'setting']);
     Route::post('setSetting' , [SettingsController::class, 'setSetting']);
+
+    Route::post('createOrUpdateService/{id?}' , [BookingController::class, 'createOrUpdateService']);
 });
 /************************* End Test *********************/
 
