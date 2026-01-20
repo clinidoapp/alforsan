@@ -105,6 +105,9 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     /*** Services ***/
 
     /*** Booking Services ***/
+    /*** Settings ***/
+    Route::get('settings' , function(){return view('dashboard.pages.settings.list');})->name('settings-list');
+    Route::get('bookings' , function(){return view('dashboard.pages.bookings.list');})->name('bookings-list');
 
 
 
