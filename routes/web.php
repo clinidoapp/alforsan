@@ -96,8 +96,8 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('doctors-edit' , [DoctorController::class, 'updateDoctor'])->middleware(['permission:update_doctor'])->name('doctors-add');
 
     /*** Doctor Media ***/
-    Route::get('doctors-media' , [DoctorController::class, 'listDoctorMediaCount'])->middleware(['permission:read_doctor_media'])->name('doctors-mediaList');
-    Route::get('doctors-media' , [DoctorController::class, 'listDoctorMedia'])->middleware(['permission:read_doctor_media'])->name('doctors-mediaList');
+    Route::get('doctors-list-media' , [DoctorController::class, 'listDoctorMediaCount'])->middleware(['permission:read_doctor_media'])->name('doctors-list-media');
+    Route::get('doctors-list-media/{id?}' , [DoctorController::class, 'listDoctorMedia'])->middleware(['permission:read_doctor_media'])->name('doctors-mediaList');
     //Route::get('addDoctorMedia/{id?}' , [DoctorController::class, 'addDoctorMedia'])->middleware(['permission:create_doctor_media'])->name('doctors-addMedia');
 
     /*** Settings ***/
@@ -109,11 +109,6 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
 
     /*** Services ***/
     /*** Booking Services ***/
-    /*** Settings ***/
-    Route::get('settings' , function(){return view('dashboard.pages.settings.list');})->name('settings-list');
-    Route::get('bookings' , function(){return view('dashboard.pages.bookings.list');})->name('bookings-list');
-
-
 
 });
 

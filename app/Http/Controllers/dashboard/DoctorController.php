@@ -257,7 +257,7 @@ class DoctorController extends Controller
             'doctor_id' => $request->doctor_id ?? null,
             'doctor_name' => $request->doctor_name ?? null,
         ];
-        return view('dashboard.pages.******', compact('doctors','search'));
+        return view('dashboard.pages.doctors.mediaList', compact('doctors','search'));
 
     }
     public function listDoctorMedia(Request $request , $id){
@@ -275,10 +275,11 @@ class DoctorController extends Controller
                 'doctor_videos.title_en as video_title_en',
                 'doctor_videos.title_ar as video_title_ar',
                 'doctor_videos.id as video_id' ,
+                'doctor_videos.status',
                 'doctor_videos.video_url'
             )->paginate(10);
 
-        return view('dashboard.pages.******', compact('doctor','videos'));
+        return view('dashboard.pages.doctors.doctorMediaList', compact('doctor','videos'));
     }
     public function addDoctorMedia($id = null){
         $doctors = DB::table('doctors')
@@ -288,7 +289,7 @@ class DoctorController extends Controller
                 DB::raw("CONCAT(id, '-', name_en) as identifier"))
             ->get();
         $selectedId = $id ;
-       return view('*********' , compact('doctors','selectedId'));
+       return view('dashboard.pages.doctors.doctorMediaList' , compact('doctors','selectedId'));
 
     }
 

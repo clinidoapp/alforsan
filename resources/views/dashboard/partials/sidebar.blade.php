@@ -20,7 +20,7 @@
       {{-- Doctors (with submenu) --}}
       @php
       // Check if current route matches any of the doctor's submenu routes
-      $doctorRoutes = ['doctors-list', 'doctors-add','doctors-view','doctors-edit'];
+      $doctorRoutes = ['doctors-list', 'doctors-add','doctors-view','doctors-edit','doctors-list-media'];
       $doctorMenuOpen = in_array(Route::currentRouteName(), $doctorRoutes);
       @endphp
       @if(\App\Helpers\Permissions::hasPermission('read_doctor'))
@@ -39,13 +39,13 @@
          </a>
          <ul class="nav w-100 d-flex-inline collapse ps-4 rounded-top-0 rounded-bottom-2 bg-white {{ $doctorMenuOpen ? 'show' : '' }}" id="doctorsMenu">
             <li class="nav-item">
-               <a href="{{ route('doctors-list') }}" class="nav-link {{Request::is('admin/doctors-list*') ? 'active' : ''}}">
+               <a href="{{ route('doctors-list') }}" class="nav-link {{Request::is('admin/doctors-list') ? 'active' : ''}}">
                Doctors List
                </a>
             </li>
             @if(\App\Helpers\Permissions::hasPermission('create_doctor'))
             <li class="nav-item">
-               <a href="{{ route('doctors-mediaList') }}" class="nav-link ">
+               <a href="{{ route('doctors-list-media') }}" class="nav-link {{Request::is('admin/doctors-list-media*') ? 'active' : ''}}">
                Doctors Media
                </a>
             </li>
