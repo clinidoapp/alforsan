@@ -14,6 +14,7 @@ class SettingsController extends Controller
     }
     public function setSetting(Request $request)
     {
+        // dd($request->all());
 
         $data = $request->validate([
             'key' => 'required|string|exists:settings,key',
@@ -42,6 +43,6 @@ class SettingsController extends Controller
             file_put_contents($envPath, $content);
 
         });
-        return redirect()->route('********');
+        return redirect()->route('setting');
     }
 }

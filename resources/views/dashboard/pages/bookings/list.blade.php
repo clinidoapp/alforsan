@@ -14,13 +14,17 @@
             <form action="" class="inline-form">
                <div class="row">
                   <div class="col-md-9 d-flex gap-3">
-                     <input type="text" id="booking_id" name="booking_id" class="form-control" placeholder="Booking Id" value="">
-                     <input type="text" id="patient_name"name="patient_name"class="form-control"placeholder="Patient Name"value="">
-                     <input type="text" id="patient_phone"name="patient_phone"class="form-control"placeholder="Patient Phone"value="">
-                  </div>
+                     <input type="text" id="request_id" name="request_id" class="form-control" placeholder="Booking Id" value="{{ $search['request_id'] ?? '' }}">
+                     <input type="text" id="patient_name"name="patient_name"class="form-control"placeholder="Patient Name"value="{{ $search['patient_name'] ?? '' }}">
+                     <input type="text" id="patient_phone"name="patient_phone"class="form-control"placeholder="Patient Phone"value="{{ $search['patient_phone'] ?? '' }}">
+                     <select class="form-select" name="service_id">
+                           <option selected disabled>{{__('words.service label')}}</option>
+                           
+                        </select>
+                    </div>
                   <div class="col-md-3 d-flex gap-3 justify-content-end">
                      <button class="w-50 btn btn-primary-custom">Search</button>
-                     <a href="{{ route('bookings-list') }}" class="w-50 btn btn-outline-primary">Reset</a>
+                     <a href="{{ route('booking-requests') }}" class="w-50 btn btn-outline-primary">Reset</a>
                   </div>
                </div>
             </form>
@@ -40,27 +44,24 @@
                      <th class="py-2 text-center">Date</th>
                   </tr>
                </thead>
-               <tbody>
-                  <tr>
-                     <td>1</td>
-                     <td>Ahmed ali</td>
-                     <td>01003332121</td>
-                     <td>info@user.com</td>
-                     <td>catract </td>
-                     <td>15/1/2026</td>
+               <tbody class="text-center">
+                @foreach ($BookRequests as $request)
+                    <tr>
+                     <td>{{$request->id}}</td>
+                     <td>{{$request->name}}</td>
+                     <td>{{$request->phone}}</td>
+                     <td>{{$request->email}}</td>
+                     <td>{{$request->service_name}}</td>
+                     <td>{{date('d/m/Y', strtotime($request->created_at))}}</td>
                   </tr>
-                  <tr>
-                     <td>1</td>
-                     <td>Ahmed ali</td>
-                     <td>01003332121</td>
-                     <td>info@user.com</td>
-                     <td>catract </td>
-                     <td>15/1/2026</td>
-                  </tr>
+                @endforeach
+
                </tbody>
             </table>
-            <div class="d-flex justify-content-end align-items-center px-3 py-3 text-align-right">
+             <div class="d-flex justify-content-end align-items-center px-3 py-3 text-align-right">
+                {{ $BookRequests->links('pagination::bootstrap-5') }}
             </div>
+
          </div>
    </div>
 </section>

@@ -12,7 +12,7 @@
       </li>
       {{-- Bookings --}}
       <li class="nav-item rounded-2 m-2">
-         <a href="{{route('bookings-list')}}" class="nav-link {{ Request::is(patterns: 'admin/booking*') ? 'active' : '' }}">
+         <a href="{{route('booking-requests')}}" class="nav-link {{ Request::is(patterns: 'admin/booking*') ? 'active' : '' }}">
          <img src="{{ asset('images/dashboard-icons/booking.webp') }}">
          Bookings
          </a>
@@ -45,7 +45,7 @@
             </li>
             @if(\App\Helpers\Permissions::hasPermission('create_doctor'))
             <li class="nav-item">
-               <a href="" class="nav-link ">
+               <a href="{{ route('doctors-mediaList') }}" class="nav-link ">
                Doctors Media
                </a>
             </li>
@@ -76,7 +76,7 @@
       </li>
       {{-- Settings --}}
       <li class="nav-item rounded-2 m-2">
-         <a href="{{route('settings-list')}}" class="nav-link {{ Request::is(patterns: 'admin/setting*') ? 'active' : '' }}">
+         <a href="{{route('setting')}}" class="nav-link {{ Request::is(patterns: 'admin/setting*') ? 'active' : '' }}">
          <img src="{{ asset('images/dashboard-icons/setting.webp') }}">
          Settings
          </a>
