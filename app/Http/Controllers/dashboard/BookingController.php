@@ -25,17 +25,25 @@ class BookingController extends Controller
         if ($request->filled('request_id')) {
             $query->where('book_requests.id', $request->request_id);
         }
+        if ($request->filled('service_id')) {
+            $query->where('booking_services.id', $request->service_id);
+        }
         if ($request->filled('patient_phone')) {
             $query->where('book_requests.phone', $request->patient_phone);
         }
 
+
         $BookRequests = $query->paginate(10);
+        $bookingServices = DB::table('booking_services')->select('id' , 'name_en as service_name')->get();
+
         $search = [
             'request_id' => $request->request_id ?? null,
             'patient_phone' => $request->patient_phone ?? null,
-            'patient_name' => $request->patient_name ?? null
+            'patient_name' => $request->patient_name ?? null,
+            'service_id' => $request->service_id ?? null,
+
         ];
-        return view('dashboard.pages.bookings.list', compact('BookRequests' , 'search'));
+        return view('dashboard.pages.bookings.list', compact('BookRequests' , 'search' , 'bookingServices'));
 
     }
 }
