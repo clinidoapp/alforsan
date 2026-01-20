@@ -336,6 +336,7 @@ class DoctorController extends Controller
                 [
                     'title_en'  => $data['title_en'],
                     'title_ar'  => $data['title_ar'],
+                    'video_url'  => $data['video_url'],
                     'status'    => $data['status'],
                     'updated_at'=> now(),
                 ]
