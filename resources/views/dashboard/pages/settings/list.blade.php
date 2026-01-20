@@ -18,16 +18,20 @@
                   </tr>
                </thead>
                <tbody>
-                  <tr>
-                     <td>1</td>
-                     <td>Email</td>
-                     <td>info@example.com</td>
+                @foreach ($setting as $set )
+                <tr>
+                     <td>{{$set->id}}</td>
+                     <td>{{$set->key}}</td>
+                     <td>{{$set->value}}</td>
                      <td><a class="btn btn-primary-custom edit-setting"
                         data-bs-toggle="modal"
                         data-bs-target="#editSettingModal"
-                        data-id=""
-                        data-name="">Edit</a></td>
+                        data-id="{{$set->id}}"
+                        data-set_value="{{$set->value}}"
+                        data-name="{{$set->key}}">Edit</a></td>
                   </tr>
+                @endforeach
+
                </tbody>
             </table>
             <div class="d-flex justify-content-end align-items-center px-3 py-3 text-align-right">
@@ -39,17 +43,16 @@
 <div class="modal fade" id="editSettingModal" tabindex="-1">
    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
-         <form id="edit_setting_form" method="POST">
+         <form id="edit_setting_form" method="POST" action="{{ route('set-setting') }}">
             @csrf
             <div class="modal-header bg-light-gray">
-               <h5 class="modal-title">Edit setting</h5>
+               <h5 class="modal-title" id="modal_title">Edit setting</h5>
                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                <div class="mb-3">
-                  <label class="form-label">setting Name</label>
-                  <input type="text" class="form-control" name="name" id="edit_setting_name">
-                  <input type="hidden" class="form-control" name="id" id="setting_id">
+                  <input type="hidden" class="form-control" name="key" id="edit_setting_name">
+                  <input type="text" class="form-control" name="value" id="setting_val">
                </div>
                <div id="permissions_container">
                   <!-- permissions will be loaded here -->
@@ -68,7 +71,10 @@
 
    const settingId   = $(this).data('id');
    const settingName = $(this).data('name');
-
+   const settingValue= $(this).data('set_value')
+   $('#modal_title').text('Alforsan '+ settingName)
+    $('#edit_setting_name').val(settingName);
+    $('#setting_val').val(settingValue);
 
 
    });

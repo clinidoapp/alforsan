@@ -10,10 +10,11 @@ class SettingsController extends Controller
 {
     public function setting(Request $request){
         $setting =  DB::table('settings')->select('id' , 'key' , 'value')->get();
-        return view('*********', compact('setting'));
+        return view('dashboard.pages.settings.list', compact('setting'));
     }
     public function setSetting(Request $request)
     {
+        // dd($request->all());
 
         $data = $request->validate([
             'key' => 'required|string|exists:settings,key',
@@ -42,6 +43,6 @@ class SettingsController extends Controller
             file_put_contents($envPath, $content);
 
         });
-        return redirect()->route('********');
+        return redirect()->route('setting');
     }
 }

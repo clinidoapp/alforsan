@@ -24,7 +24,7 @@
                      </div>
                      <div class="col-md-3 d-flex gap-3 justify-content-end">
                         <button class="w-50 btn btn-primary-custom">Search</button>
-                        <a href="{{ route('doctors-list') }}" class="w-50 btn btn-outline-primary">Reset</a>
+                        <a href="{{ route('doctors-mediaList') }}" class="w-50 btn btn-outline-primary">Reset</a>
                      </div>
                   </div>
                </form>
