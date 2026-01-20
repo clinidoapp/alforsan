@@ -16,12 +16,8 @@ class DoctorServiceSeeder extends Seeder
         $doctorIds  = DB::table('doctors')->pluck('id')->toArray();
         $serviceIds = DB::table('services')->pluck('id')->toArray();
         $rows = [];
-
-        $rows = [];
-
         foreach ($doctorIds as $doctorId) {
 
-            // كل دكتور يقدم من 3 إلى 6 خدمات
             $randomServices = collect($serviceIds)
                 ->shuffle()
                 ->take(rand(3, 6));

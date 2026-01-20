@@ -2,9 +2,11 @@
 
 
 use App\Http\Controllers\dashboard\AuthController;
+use App\Http\Controllers\dashboard\BookingController;
 use App\Http\Controllers\dashboard\DoctorController;
 use App\Http\Controllers\dashboard\PermissionsController;
 use App\Http\Controllers\dashboard\RolesController;
+use App\Http\Controllers\dashboard\SettingsController;
 use App\Http\Controllers\website\ContactPageController;
 use App\Http\Controllers\website\DoctorsPageController;
 use App\Http\Controllers\website\HomePageController;
@@ -93,9 +95,17 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('toggleDoctor/{id}' , [DoctorController::class, 'toggleDoctorStatus'])->middleware(['permission:update_admin'])->name('doctor.toggle');
     Route::get('doctors-edit' , [DoctorController::class, 'updateDoctor'])->middleware(['permission:update_doctor'])->name('doctors-add');
 
+    /*** Settings ***/
+    Route::get('setting' , [SettingsController::class, 'setting'])->middleware(['permission:read_settings'])->name('setting');
+    Route::post('setSetting' , [SettingsController::class, 'setSetting'])->middleware(['permission:update_settings'])->name('set-setting');
+
+    /*** Booking Requests ***/
+    Route::get('booking-requests' ,[BookingController::class, 'BookingController'])->middleware(['permission:read_booking_request'])->name('booking-requests');
+    
     /*** Services ***/
 
     /*** Booking Services ***/
+
 
 
 });
@@ -132,6 +142,8 @@ Route::prefix('test')->group(function () {
     Route::post('storeRole' , [RolesController::class, 'storeRole']);
     Route::post('updateRole/{id}' , [RolesController::class, 'storeRole']);
 
+    Route::get('setting' , [SettingsController::class, 'setting']);
+    Route::post('setSetting' , [SettingsController::class, 'setSetting']);
 });
 /************************* End Test *********************/
 

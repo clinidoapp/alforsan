@@ -21,6 +21,8 @@ class AdminSeeder extends Seeder
             ['name' => 'Permission Management', 'slug' => 'permission_management'],
             ['name' => 'Role Management', 'slug' => 'role_management'],
             ['name' => 'Doctor Management', 'slug' => 'doctor_management'],
+            ['name' => 'Settings Management', 'slug' => 'settings_management'],
+            ['name' => 'Booking Requests Management', 'slug' => 'booking_requests'],
         ];
         foreach ($categories as $category) {
 
@@ -63,6 +65,14 @@ class AdminSeeder extends Seeder
             ['name' => 'Read Admin',   'slug' => 'read_admin',   'category_slug' => 'admin_management'],
             ['name' => 'Update Admin', 'slug' => 'update_admin', 'category_slug' => 'admin_management'],
             ['name' => 'Delete Admin', 'slug' => 'delete_admin', 'category_slug' => 'admin_management'],
+
+            /*** Settings Management ***/
+            ['name' => 'Read Settings',   'slug' => 'read_settings',   'category_slug' => 'settings_management'],
+            ['name' => 'Update Settings', 'slug' => 'update_settings', 'category_slug' => 'settings_management'],
+
+            /*** Booking Requests Management ***/
+            ['name' => 'Read Booking Request',   'slug' => 'read_booking_request',   'category_slug' => 'booking_requests'],
+
         ];
 
         $permissionIds = [];

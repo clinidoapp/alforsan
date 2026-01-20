@@ -99,7 +99,7 @@ class DoctorsSeeder extends Seeder
 
                 'main_speciality_en' => $main['en'],
                 'main_speciality_ar' => $main['ar'],
-                
+
                 'bio_en' =>
                     'Ophthalmology specialist experienced in diagnosing and treating eye diseases, vision disorders, and performing eye surgeries.',
                 'bio_ar' =>
@@ -123,8 +123,12 @@ class DoctorsSeeder extends Seeder
             ];
         }
 
-        DB::table('doctors')->insert($rows);
-
+        foreach ($rows as $row) {
+            DB::table('doctors')->updateOrInsert(
+                ['email' => $row['email']],
+                $row
+            );
+        }
 
 
     }

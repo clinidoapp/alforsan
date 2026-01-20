@@ -95,34 +95,23 @@ class RolesController extends Controller
 
         $data = $request->validated();
         DB::transaction(function () use ($data , $id) {
-
-
-
             $baseSlug = Str::slug($data['name']);
-
             if (!$id) {
-
                 $roleId = DB::table('roles')->insertGetId([
                     'name' => $data['name'],
                     'slug' => $baseSlug,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]);
-
             }else {
-
                 DB::table('roles')->where('id', $id)->update([
                     'name' => $data['name'],
                     'slug' => $baseSlug,
                     'updated_at' => now(),
                 ]);
-
                 DB::table('role_permissions')->where('role_id', $id)->delete();
-
-
                 $roleId = $id;
             }
-
             $rows = array_map(function ($permissionId) use ($roleId) {
                 return [
                     'role_id' => $roleId,
@@ -130,7 +119,6 @@ class RolesController extends Controller
                     'created_at' => now(),
                 ];
             }, $data['permissions_ids']);
-
             DB::table('role_permissions')->insert($rows);
         });
         return redirect()->route('roles-list');

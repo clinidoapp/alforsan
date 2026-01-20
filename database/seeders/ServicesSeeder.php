@@ -144,8 +144,12 @@ class ServicesSeeder extends Seeder
             ],
         ];
         foreach ($services as $service) {
-            DB::table('services')->insert([
-                'slug' => Str::slug($service['name_en']),
+            DB::table('services')->updateOrInsert(
+                [
+                    'slug' => Str::slug($service['name_en']),
+
+                ],
+                [
                 'name_en' => $service['name_en'],
                 'name_ar' => $service['name_ar'],
                 'description_en' => $service['description_en'],
