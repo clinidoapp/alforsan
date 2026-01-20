@@ -16,7 +16,7 @@ class BookingController extends Controller
             'book_requests.name','book_requests.email',
             'book_requests.phone' ,'book_requests.id',
             'booking_services.name_en as service_name',
-            'booking_services.created_at');
+            'book_requests.created_at');
 
 
         if ($request->filled('patient_name')) {
