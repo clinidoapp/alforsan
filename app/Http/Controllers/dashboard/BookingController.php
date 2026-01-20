@@ -15,7 +15,8 @@ class BookingController extends Controller
             ->select(
             'book_requests.name','book_requests.email',
             'book_requests.phone' ,'book_requests.id',
-            'booking_services.name_en as service_name');
+            'booking_services.name_en as service_name',
+            'booking_services.created_at');
 
 
         if ($request->filled('patient_name')) {
@@ -34,7 +35,7 @@ class BookingController extends Controller
             'patient_phone' => $request->patient_phone ?? null,
             'patient_name' => $request->patient_name ?? null
         ];
-        return view('*************', compact('BookRequests' , 'search'));
+        return view('dashboard.pages.bookings.list', compact('BookRequests' , 'search'));
 
     }
 }
