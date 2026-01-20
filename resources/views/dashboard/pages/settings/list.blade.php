@@ -19,7 +19,7 @@
                </thead>
                <tbody>
                 @foreach ($setting as $set )
-                <tr>
+                <tr class="text-center">
                      <td>{{$set->id}}</td>
                      <td>{{$set->key}}</td>
                      <td>{{$set->value}}</td>
