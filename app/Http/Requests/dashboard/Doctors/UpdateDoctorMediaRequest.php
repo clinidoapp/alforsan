@@ -25,8 +25,8 @@ class UpdateDoctorMediaRequest extends FormRequest
             'video_id' => 'required|exists:doctor_videos,id',
             'video_url'   => 'required|string|min:8',
             'title_en'    => 'required|string|min:8',
-            'title_ar'    => 'required_|string|min:8',
-            'status'      => 'require|in:0,1',
+            'title_ar'    => 'required|string|min:8',
+            'status'      => 'required|in:0,1',
 
         );
     }
