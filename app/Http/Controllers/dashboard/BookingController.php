@@ -21,16 +21,20 @@ class BookingController extends Controller
         if ($request->filled('patient_name')) {
             $query->where('book_requests.name', 'like', '%' . $request->patient_name . '%');
         }
-        if ($request->filled('patient_id')) {
-            $query->where('book_requests.id', $request->patient_id);
+        if ($request->filled('request_id')) {
+            $query->where('book_requests.id', $request->request_id);
         }
         if ($request->filled('patient_phone')) {
             $query->where('book_requests.phone', $request->patient_phone);
         }
 
         $BookRequests = $query->paginate(10);
-
-        return view('*************', compact('BookRequests'));
+        $search = [
+            'request_id' => $request->request_id ?? null,
+            'patient_phone' => $request->patient_phone ?? null,
+            'patient_name' => $request->patient_name ?? null
+        ];
+        return view('*************', compact('BookRequests' , 'search'));
 
     }
 }
