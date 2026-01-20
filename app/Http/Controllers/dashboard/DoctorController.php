@@ -288,8 +288,16 @@ class DoctorController extends Controller
             ->select('id','name_en',
                 DB::raw("CONCAT(id, '-', name_en) as identifier"))
             ->get();
-        $selectedId = $id ;
-       return view('dashboard.pages.doctors.doctorMediaList' , compact('doctors','selectedId'));
+        $selectedId = $id ?? null;
+        $selectedDoctor = null;
+        if ($selectedId){
+            $selectedDoctor = DB::table('doctors')
+                ->where('id', $selectedId)
+                ->where('is_deleted', 0)->whereNull('deleted_at')
+                ->select('id','name_en',)
+                ->first();
+        }
+       return view('dashboard.pages.doctors.doctorMediaList' , compact('doctors','selectedId','selectedDoctor'));
 
     }
 

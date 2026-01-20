@@ -98,8 +98,8 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     /*** Doctor Media ***/
     Route::get('doctors-list-media' , [DoctorController::class, 'listDoctorMediaCount'])->middleware(['permission:read_doctor_media'])->name('doctors-list-media');
     Route::get('doctors-list-media/{id?}' , [DoctorController::class, 'listDoctorMedia'])->middleware(['permission:read_doctor_media'])->name('doctors-mediaList');
-    //Route::get('addDoctorMedia/{id?}' , [DoctorController::class, 'addDoctorMedia'])->middleware(['permission:create_doctor_media'])->name('doctors-addMedia');
-
+    Route::get('doctors-list-media-add/{id?}' , [DoctorController::class, 'addDoctorMedia'])->middleware(['permission:create_doctor_media'])->name('doctors-addMedia');
+    Route::post('storeDoctorMedia' , [DoctorController::class, 'storeDoctorMedia'])->middleware(['permission:create_doctor_media'])->name('createOrEditDoctorMedia');
     /*** Settings ***/
     Route::get('setting' , [SettingsController::class, 'setting'])->middleware(['permission:read_settings'])->name('setting');
     Route::post('setSetting' , [SettingsController::class, 'setSetting'])->middleware(['permission:update_settings'])->name('set-setting');
