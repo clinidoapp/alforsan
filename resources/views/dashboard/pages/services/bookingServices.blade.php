@@ -74,7 +74,7 @@
          <form id="edit_service_form" method="POST" action="">
             @csrf
             <div class="modal-header bg-light-gray">
-               <h5 class="modal-title" id="modal_title">Edit Service</h5>
+               <h5 class="modal-title" id="modal_title">Edit</h5>
                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
