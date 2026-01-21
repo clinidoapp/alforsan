@@ -122,7 +122,7 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     /*** Booking Services ***/
     Route::get('booking-services' ,[BookingController::class, 'bookingServicesList'])->middleware(['permission:read_booking_service'])->name('booking-services');
     Route::get('toggleBookingServicesStatus/{id}' ,[BookingController::class, 'toggleBookingServicesStatus'])->middleware(['permission:update_booking_service'])->name('toggleBookingServicesStatus');
-    Route::get('createOrUpdateService/{id?}' ,[BookingController::class, 'createOrUpdateService'])->middleware(['permission:update_booking_service'])->name('createOrUpdateService');
+    Route::post('createOrUpdateBookingService/{id?}' ,[BookingController::class, 'createOrUpdateService'])->middleware(['permission:update_booking_service'])->name('createOrUpdateBookingService');
 
 
 });
