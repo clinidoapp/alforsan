@@ -6,6 +6,7 @@ use App\Http\Controllers\dashboard\BookingController;
 use App\Http\Controllers\dashboard\DoctorController;
 use App\Http\Controllers\dashboard\PermissionsController;
 use App\Http\Controllers\dashboard\RolesController;
+use App\Http\Controllers\dashboard\ServicesController;
 use App\Http\Controllers\dashboard\SettingsController;
 use App\Http\Controllers\website\ContactPageController;
 use App\Http\Controllers\website\DoctorsPageController;
@@ -86,7 +87,6 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('role-edit/{id}' , [RolesController::class, 'editRole'])->middleware(['permission:update_role'])->name('edit-role');
     Route::post('updateRole/{id}' , [RolesController::class, 'storeRole'])->middleware(['permission:update_role'])->name('update-role');;
 
-
     /*** Doctors ***/
     Route::get('doctors-list' , [DoctorController::class, 'listDoctors'])->middleware(['permission:read_doctor'])->name('doctors-list');
     Route::post('storeDoctor' , [DoctorController::class, 'storeDoctor'])->middleware(['permission:create_doctor'])->name('store-doctor');
@@ -104,19 +104,26 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('toggleMediaStatus/{id}' , [DoctorController::class, 'toggleMediaStatus'])->middleware(['permission:update_doctor_media'])->name('toggleMediaStatus');
     Route::get('deleteDoctorMedia/{id}' , [DoctorController::class, 'deleteDoctorMedia'])->middleware(['permission:delete_doctor_media'])->name('deleteDoctorMedia');
 
-
     /*** Settings ***/
     Route::get('setting' , [SettingsController::class, 'setting'])->middleware(['permission:read_settings'])->name('setting');
     Route::post('setSetting' , [SettingsController::class, 'setSetting'])->middleware(['permission:update_settings'])->name('set-setting');
 
     /*** Booking Requests ***/
     Route::get('booking-requests' ,[BookingController::class, 'listBookingRequests'])->middleware(['permission:read_booking_request'])->name('booking-requests');
+
+    /*** Services ***/
+    Route::get('services-list' , [ServicesController::class, 'servicesList'])->middleware(['permission:read_service'])->name('doctors-list');
+    Route::get('services-add' , [ServicesController::class, 'addServices'])->middleware(['permission:create_service'])->name('store-doctor');
+    Route::get('services-edit' , [ServicesController::class, 'editServices'])->middleware(['permission:update_service'])->name('store-doctor');
+    Route::get('services-details/{id}' , [ServicesController::class, 'serviceDetails'])->middleware(['permission:update_service'])->name('store-doctor');
+    Route::post('storeService/{id?}' , [ServicesController::class, 'createOrEditService'])->middleware(['permission:create_service'])->name('store-doctor');
+    Route::get('toggleServicesStatus/{id}' , [ServicesController::class, 'toggleServicesStatus'])->middleware(['permission:update_service'])->name('toggleMediaStatus');
+
+    /*** Booking Services ***/
     Route::get('booking-services' ,[BookingController::class, 'listBookingRequests'])->middleware(['permission:read_booking_service'])->name('booking-services');
     Route::get('toggleBookingServicesStatus/{id}' ,[BookingController::class, 'toggleBookingServicesStatus'])->middleware(['permission:update_booking_service'])->name('toggleBookingServicesStatus');
     Route::get('createOrUpdateService/{id?}' ,[BookingController::class, 'createOrUpdateService'])->middleware(['permission:update_booking_service'])->name('createOrUpdateService');
 
-    /*** Services ***/
-    /*** Booking Services ***/
 
 });
 
