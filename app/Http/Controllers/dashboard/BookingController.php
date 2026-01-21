@@ -91,7 +91,7 @@ class BookingController extends Controller
         $currentStatus = $service->value('status');
         $newStatus = $currentStatus == 1 ? 0 : 1;
         $service->update(['status' => $newStatus]);
-        return redirect()->route('********');
+        return redirect()->back();
     }
     public function createOrUpdateService(Request $request , $id = null){
 
