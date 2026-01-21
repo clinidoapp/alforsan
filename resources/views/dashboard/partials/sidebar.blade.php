@@ -35,7 +35,7 @@
          <img src="{{ asset('images/dashboard-icons/doctor.webp') }}">
          Doctors
          </span>
-         <i class="fi fi-rr-angle-small-down"></i>
+         <i class="fa fa-rr-angle-small-down"></i>
          </a>
          <ul class="nav w-100 d-flex-inline collapse ps-4 rounded-top-0 rounded-bottom-2 bg-white {{ $doctorMenuOpen ? 'show' : '' }}" id="doctorsMenu">
             <li class="nav-item">
@@ -54,12 +54,46 @@
       </li>
       @endif
       {{-- Services --}}
-      <li class="nav-item rounded-2 m-2">
+       @php
+      // Check if current route matches any of the doctor's submenu routes
+      $serviceRoutes = ['booking-services', 'createOrUpdateService'];
+      $serviceMenuOpen = in_array(Route::currentRouteName(), $serviceRoutes);
+      @endphp
+      @if(\App\Helpers\Permissions::hasPermission('read_doctor'))
+      <li class="nav-item rounded-0 m-2">
+         <a class="nav-link d-flex justify-content-between align-items-center rounded-0 {{ Request::is('admin/service-*') ? 'active' : '' }}"
+            data-bs-toggle="collapse"
+            href="#servicesMenu"
+            role="button"
+            aria-expanded="{{ $serviceMenuOpen ? 'true' : 'false' }}"
+            aria-controls="servicesMenu">
+         <span>
+         <img src="{{ asset('images/dashboard-icons/services.webp') }}">
+         Services
+         </span>
+         <i class="fa fa-rr-angle-small-down"></i>
+         </a>
+         <ul class="nav w-100 d-flex-inline collapse ps-4 rounded-top-0 rounded-bottom-2 bg-white {{ $serviceMenuOpen ? 'show' : '' }}" id="servicesMenu">
+            <li class="nav-item">
+               <a  class="nav-link {{Request::is('admin/service-list') ? 'active' : ''}}">
+               </a>
+            </li>
+            @if(\App\Helpers\Permissions::hasPermission('create_doctor'))
+            <li class="nav-item">
+               <a href="{{ route('booking-services') }}" class="nav-link {{Request::is('admin/booking-services*') ? 'active' : ''}}">
+               Booking services
+               </a>
+            </li>
+            @endif
+         </ul>
+      </li>
+      @endif
+      {{-- <li class="nav-item rounded-2 m-2">
          <a href="#" class="nav-link {{ Request::is(patterns: 'admin/services*') ? 'active' : '' }}">
          <img src="{{ asset('images/dashboard-icons/services.webp') }}">
          Services
          </a>
-      </li>
+      </li> --}}
       {{-- Roles --}}
       <li class="nav-item rounded-2 m-2">
          <a href="{{ route('roles-list') }}" class="nav-link {{ Request::is(patterns: 'admin/role*') ? 'active' : '' }}">

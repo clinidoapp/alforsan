@@ -96,10 +96,10 @@ class BookingController extends Controller
     public function createOrUpdateService(Request $request , $id = null){
 
         $data = $request->validate([
-            'name_ar' => ['required', 'string', 'max:191', 'regex:/^[\p{Arabic}\s]+$/u',
+            'name_ar' => ['required', 'string', 'max:191',
                 Rule::unique('booking_services', 'name_ar')->ignore($id)
             ],
-            'name_en' => ['required', 'string', 'max:191', 'regex:/^[A-Za-z\s]+$/',
+            'name_en' => ['required', 'string', 'max:191', 
                 Rule::unique('booking_services', 'name_en')->ignore($id),
             ],
         ]);
