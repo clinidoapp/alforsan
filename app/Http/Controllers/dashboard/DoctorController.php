@@ -21,7 +21,8 @@ class DoctorController extends Controller
 
         $query= DB::table('doctors')
             ->where('is_deleted', 0)
-            ->select('id','name_en' , 'name_ar' , 'email' ,'phone','status')->orderBy('created_at' , 'DESC');
+            ->select('id','name_en' , 'name_ar' , 'email' ,'phone','status')
+            ->orderBy('id' , 'DESC');
 
         if ($request->filled('doctor_id')) {
             $query->where('id', $request->doctor_id);
