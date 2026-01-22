@@ -4,12 +4,21 @@
 @section('content')
 <section class="listing">
    <div class="container-fluid">
-   <div class="row ">
-      <h3 class="mb-2">Booking Services</h3>
+       <div class="row ">
+        <div class="d-flex mb-2 justify-content-between">
+            <h3>Booking Services</h3>
+            {{-- <a href="{{ route('createOrUpdateBookingService') }}" class="btn btn-primary-custom text-white px-5"> <i class="fa-solid fa-plus text-white"></i> Add </a> --}}
+            <a href="javascript:void(0)"
+   class="btn btn-primary-custom text-white px-5 add-service"
+   data-bs-toggle="modal"
+   data-bs-target="#editServiceModal">
+   <i class="fa-solid fa-plus text-white"></i> Add
+</a>
+
+        </div>
       <div class="card p-0 mb-3">
          <div class="card-header">
             <h4>Search</h4>
-            <a href="{{ route('doctors-add') }}" class="btn btn-primary-custom text-white px-5"> <i class="fa-solid fa-plus text-white"></i> Add </a>
          </div>
          <div class="card-body">
             <form action="" class="inline-form">
@@ -62,7 +71,8 @@
 
                </tbody>
             </table>
-             <div class="d-flex justify-content-end align-items-center px-3 py-3 text-align-right">
+              <div class="d-flex justify-content-end align-items-center px-3 py-3 text-align-right">
+                {{ $services->links('pagination::bootstrap-5') }}
             </div>
 
          </div>
@@ -74,7 +84,7 @@
          <form id="edit_service_form" method="POST" action="">
             @csrf
             <div class="modal-header bg-light-gray">
-               <h5 class="modal-title" id="modal_title">Edit</h5>
+            <h5 class="modal-title" id="modal_title"></h5>
                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
@@ -90,29 +100,49 @@
                </div>
             </div>
             <div class="modal-footer justify-content-center">
-               <button type="submit" class="btn btn-primary-custom px-3">Save</button>
-            </div>
+            <button type="submit"
+                    class="btn btn-primary-custom px-3"
+                    id="modal_submit_btn">
+                Save
+            </button>
+                 </div>
          </form>
       </div>
    </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-   $(document).on('click', '.edit-service', function () {
-       const serviceId   = $(this).data('id');
-       const serviceName = $(this).data('name_en');
-       const serviceNameAr = $(this).data('name_ar');
 
-    var actionUrl = "{{ url('admin/createOrUpdateBookingService') }}/" + $(this).data('id');
+    $(document).on('click', '.add-service', function () {
+    // Add service
+        const actionUrl = "{{ route('createOrUpdateBookingService') }}";
+
     $('#edit_service_form').attr('action', actionUrl);
 
-   $('#modal_title').text('Edit '+ serviceName + ' service')
+    $('#modal_title').text('Add New Service');
+    $('#modal_submit_btn').text('Create');
+
+    $('#service_name_en').val('');
+    $('#service_name_ar').val('');
+    $('#modal_service_id').val('');
+
+   });
+$(document).on('click', '.edit-service', function () {
+    const serviceId     = $(this).data('id');
+    const serviceName   = $(this).data('name_en');
+    const serviceNameAr = $(this).data('name_ar');
+
+    const actionUrl = "{{ route('createOrUpdateBookingService') }}/" + serviceId;
+
+    $('#edit_service_form').attr('action', actionUrl);
+
+    $('#modal_title').text('Edit ' + serviceName + ' service');
+    $('#modal_submit_btn').text('Update');
+
     $('#service_name_en').val(serviceName);
     $('#service_name_ar').val(serviceNameAr);
     $('#modal_service_id').val(serviceId);
-
-
-   });
+});
 
 </script>
 @endsection
