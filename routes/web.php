@@ -113,9 +113,9 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
 
     /*** Services ***/
     Route::get('services-list' , [ServicesController::class, 'servicesList'])->middleware(['permission:read_service'])->name('service-list');
-    Route::get('services-add' , [ServicesController::class, 'addServices'])->middleware(['permission:create_service'])->name('store-service');
+    Route::get('services-add' , [ServicesController::class, 'addServices'])->middleware(['permission:create_service'])->name('service-add');
     Route::get('services-edit/{id}' , [ServicesController::class, 'editServices'])->middleware(['permission:update_service'])->name('store-service');
-    Route::get('services-details/{id}' , [ServicesController::class, 'serviceDetails'])->middleware(['permission:update_service'])->name('store-service');
+    Route::get('services-details/{id}' , [ServicesController::class, 'serviceDetails'])->middleware(['permission:update_service'])->name('view-service');
     Route::post('storeService/{id?}' , [ServicesController::class, 'createOrEditService'])->middleware(['permission:create_service'])->name('store-service');
     Route::get('toggleServicesStatus/{id}' , [ServicesController::class, 'toggleServicesStatus'])->middleware(['permission:update_service'])->name('toggleServiceStatus');
 

@@ -56,7 +56,7 @@
       {{-- Services --}}
        @php
       // Check if current route matches any of the doctor's submenu routes
-      $serviceRoutes = ['booking-services', 'createOrUpdateService'];
+      $serviceRoutes = ['booking-services', 'createOrUpdateService','service-list','view-service','edit-service'];
       $serviceMenuOpen = in_array(Route::currentRouteName(), $serviceRoutes);
       @endphp
       @if(\App\Helpers\Permissions::hasPermission('read_doctor'))
@@ -69,22 +69,26 @@
             aria-controls="servicesMenu">
          <span>
          <img src="{{ asset('images/dashboard-icons/services.webp') }}">
-         Services
+         Service
          </span>
          <i class="fa fa-rr-angle-small-down"></i>
          </a>
          <ul class="nav w-100 d-flex-inline collapse ps-4 rounded-top-0 rounded-bottom-2 bg-white {{ $serviceMenuOpen ? 'show' : '' }}" id="servicesMenu">
+            @if(\App\Helpers\Permissions::hasPermission('read_service'))
             <li class="nav-item">
-               <a  class="nav-link {{Request::is('admin/service-list') ? 'active' : ''}}">
+               <a href="{{ route('service-list') }}" class="nav-link {{Request::is('admin/service-list*') ? 'active' : ''}}">
+                    service List
                </a>
             </li>
-            @if(\App\Helpers\Permissions::hasPermission('create_doctor'))
+            @endif
+            @if(\App\Helpers\Permissions::hasPermission('read_booking_service'))
             <li class="nav-item">
                <a href="{{ route('booking-services') }}" class="nav-link {{Request::is('admin/booking-services*') ? 'active' : ''}}">
                Booking services
                </a>
             </li>
             @endif
+
          </ul>
       </li>
       @endif

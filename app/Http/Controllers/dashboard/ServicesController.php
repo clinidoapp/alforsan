@@ -51,7 +51,7 @@ class ServicesController extends Controller
             'service_name' => $request->service_name ?? null,
         ];
 
-        return view('dashboard.***********' , compact('services' , 'search'));
+        return view('dashboard.pages.services.list' , compact('services' , 'search'));
 
 
 
@@ -112,11 +112,11 @@ class ServicesController extends Controller
             ->get();
 
         $result = ServiceDto::toJson($service , $faqs , $symptoms , $techniques );
-        return view('dashboard.********' , compact('result'));
+        return view('dashboard.pages.services.details' , compact('result'));
     }
     public function addServices(Request $request){
 
-        return view('dashboard.********');
+        return view('dashboard.pgaes.services.add');
     }
     public function editServices(Request $request , $id){
         $service = DB::table('services')
@@ -174,7 +174,7 @@ class ServicesController extends Controller
 
         $result = ServiceDto::toJson($service , $faqs , $symptoms , $techniques );
 
-        return view('dashboard.********' , compact('result'));
+        return view('dashboard.pages.services.edit' , compact('result'));
     }
     public function createOrEditService(CreateOrEditServiceRequest $request , $id = null){
 
@@ -312,6 +312,6 @@ class ServicesController extends Controller
         $currentStatus = $service->value('status');
         $newStatus = $currentStatus == 1 ? 0 : 1;
         $service->update(['status' => $newStatus]);
-        return redirect()->route('********');
+        return redirect()->back();
     }
 }
