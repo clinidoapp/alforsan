@@ -95,7 +95,6 @@ class BookingController extends Controller
     }
     public function createOrUpdateService(Request $request , $id = null){
 
-        $id = $request->route('id');
         $data = $request->validate([
             'name_ar' => ['required', 'string', 'max:191',
                 Rule::unique('booking_services', 'name_ar')->ignore($id ,'id')

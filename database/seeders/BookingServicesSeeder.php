@@ -57,9 +57,12 @@ class BookingServicesSeeder extends Seeder
         ];
 
         foreach ($services as $service) {
-            DB::table('booking_services')->insert([
-                'name_en' => $service['name_en'],
-                'name_ar' => $service['name_ar'],
+            DB::table('booking_services')->updateOrInsert(
+                [
+                    'name_en' => $service['name_en'],
+                    'name_ar' => $service['name_ar'],
+                ],[
+
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
