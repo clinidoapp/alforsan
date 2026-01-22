@@ -103,7 +103,7 @@
        const serviceName = $(this).data('name_en');
        const serviceNameAr = $(this).data('name_ar');
 
-    var actionUrl = "{{ url('admin/createOrUpdateService') }}/" + $(this).data('id');
+    var actionUrl = "{{ url('admin/createOrUpdateBookingService') }}/" + $(this).data('id');
     $('#edit_service_form').attr('action', actionUrl);
 
    $('#modal_title').text('Edit '+ serviceName + ' service')

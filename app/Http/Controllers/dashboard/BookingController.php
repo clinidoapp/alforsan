@@ -83,7 +83,7 @@ class BookingController extends Controller
             'service_id' => $request->service_id ?? null,
             'service_name' => $request->service_name ?? null,
         ];
-        return view('dashboard.pages.********', compact('search' , 'services'));
+        return view('dashboard.pages.services.bookingServices', compact('search' , 'services'));
     }
     public function toggleBookingServicesStatus($id)
     {
@@ -95,12 +95,13 @@ class BookingController extends Controller
     }
     public function createOrUpdateService(Request $request , $id = null){
 
+        $id = $request->route('id');
         $data = $request->validate([
             'name_ar' => ['required', 'string', 'max:191',
-                Rule::unique('booking_services', 'name_ar')->ignore($id)
+                Rule::unique('booking_services', 'name_ar')->ignore($id ,'id')
             ],
-            'name_en' => ['required', 'string', 'max:191', 
-                Rule::unique('booking_services', 'name_en')->ignore($id),
+            'name_en' => ['required', 'string', 'max:191',
+                Rule::unique('booking_services', 'name_en')->ignore($id , 'id'),
             ],
         ]);
 
@@ -119,7 +120,7 @@ class BookingController extends Controller
                 'updated_at' => now(),
             ]);
         }
-        return redirect()->route('booking-requests');
+        return redirect()->back();
 
     }
 
