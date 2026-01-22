@@ -181,7 +181,7 @@ class ServicesController extends Controller
         $data = $request->validated();
         DB::transaction(function () use($data , $request , $id){
 
-            //                $image_name = ImageHandlerService::fileUploader(ImagePaths::DOCTOR_PHOTOS->value,$image,null);
+            //$image_name = ImageHandlerService::fileUploader(ImagePaths::DOCTOR_PHOTOS->value,$image,null);
             $baseSlug = Str::slug($data['name_en']);
 
             $imagePath = null;
@@ -287,19 +287,7 @@ class ServicesController extends Controller
                     ])->toArray()
                 );
             }
-
-
-
-
         });
-
-
-
-
-
-
-
-
         return view('dashboard.********');
     }
 
