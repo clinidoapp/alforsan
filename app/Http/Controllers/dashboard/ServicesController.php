@@ -67,6 +67,7 @@ class ServicesController extends Controller
                 'name_en',
                 'name_ar',
                 'icon',
+                'status',
                 'brief_en',
                 'brief_ar',
                 'description_en',
@@ -116,7 +117,7 @@ class ServicesController extends Controller
     }
     public function addServices(Request $request){
 
-        return view('dashboard.pgaes.services.add');
+        return view('dashboard.pages.services.add');
     }
     public function editServices(Request $request , $id){
         $service = DB::table('services')

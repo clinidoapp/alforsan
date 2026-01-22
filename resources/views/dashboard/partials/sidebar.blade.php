@@ -12,7 +12,7 @@
       </li>
       {{-- Bookings --}}
       <li class="nav-item rounded-2 m-2">
-         <a href="{{route('booking-requests')}}" class="nav-link {{ Request::is(patterns: 'admin/booking*') ? 'active' : '' }}">
+         <a href="{{route('booking-requests')}}" class="nav-link {{ Request::is(patterns: 'admin/booking-requests') ? 'active' : '' }}">
          <img src="{{ asset('images/dashboard-icons/booking.webp') }}">
          Bookings
          </a>
@@ -61,7 +61,7 @@
       @endphp
       @if(\App\Helpers\Permissions::hasPermission('read_doctor'))
       <li class="nav-item rounded-0 m-2">
-         <a class="nav-link d-flex justify-content-between align-items-center rounded-0 {{ Request::is('admin/service-*') ? 'active' : '' }}"
+         <a class="nav-link d-flex justify-content-between align-items-center rounded-0 {{ Request::is('admin/services-*') ? 'active' : '' }}"
             data-bs-toggle="collapse"
             href="#servicesMenu"
             role="button"
@@ -76,7 +76,7 @@
          <ul class="nav w-100 d-flex-inline collapse ps-4 rounded-top-0 rounded-bottom-2 bg-white {{ $serviceMenuOpen ? 'show' : '' }}" id="servicesMenu">
             @if(\App\Helpers\Permissions::hasPermission('read_service'))
             <li class="nav-item">
-               <a href="{{ route('service-list') }}" class="nav-link {{Request::is('admin/service-list*') ? 'active' : ''}}">
+               <a href="{{ route('service-list') }}" class="nav-link {{Request::is('admin/services-list*') ? 'active' : ''}}">
                     service List
                </a>
             </li>
