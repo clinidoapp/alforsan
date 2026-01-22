@@ -67,6 +67,7 @@ class ServicesController extends Controller
                 'name_en',
                 'name_ar',
                 'icon',
+                'status',
                 'brief_en',
                 'brief_ar',
                 'description_en',

@@ -38,6 +38,7 @@ class ServiceDto extends Controller
         $result->description_ar = $service->description_ar;
         $result->description_en = $service->description_en;
         $result->icon = $service->icon;
+        $result->status = $service->status;
         $result->image = $service->image;
         if ($faqs) {
             foreach ($faqs as $faq) {

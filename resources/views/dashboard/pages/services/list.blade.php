@@ -7,7 +7,7 @@
    <div class="container-fluid">
       <div class="row">
         <div class="d-flex mb-2 justify-content-between">
-            <h3>Services</h3>
+            <h3>Doctor services</h3>
             <a href="{{ route('service-add') }}" class="btn btn-primary-custom text-white px-5"> <i class="fa-solid fa-plus text-white"></i> Add </a>
         </div>
         <div class="card p-0">
@@ -53,7 +53,7 @@
                      <td><img src="{{ asset('images/services_icons'.$service->icon) }}"></td>
                      <td class="py-2 text-center"><span class="w-100 rounded-pill badge bg-{{$service->status==1?'success':'danger'}}">{{$service->status==1?'Active':'InActive'}}</span></td>
                      <td>
-                        <a class="btn btn-primary-custom">View</a>
+                        <a href="{{ route('view-service', $service->id) }}" class="btn btn-primary-custom">View</a>
                         <a class="btn btn-outline-primary">Edit</a>
                         <a href="{{ route('toggleServiceStatus', $service->id) }}" class="toggle btn btn-{{$service->status==1?'danger':'success'}}"onclick="return confirm('Are you sure you want to change this service staus ?');">{{$service->status==1?'Deactivate':'Activate'}}</a>
 
