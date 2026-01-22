@@ -22,12 +22,21 @@ class StoreDoctorRequest extends FormRequest
      */
     public function rules(): array
     {
-       // dd(request()->all());
+
+        $id = $this->route('id');
         return [
             'name_en'              => 'required|string|max:191',
             'name_ar'              => 'required|string|max:191',
-            'email' => ['required', 'email', 'unique:doctors,email'],
-            'phone' => 'required|string|max:20|unique:doctors,phone',
+            'email' => ['required', 'email',
+                Rule::unique('doctors', 'email')->ignore($id ,'id')
+        //'unique:doctors,email'
+        ],
+            'phone' =>
+                ['required', 'string', 'max:20' ,
+                    Rule::unique('doctors', 'phone')->ignore($id ,'id')
+                    //'unique:doctors,email'
+                ],
+               // 'required|string|max:20|unique:doctors,phone',
             'academic_title'    => 'required|string|in:specialist,professor,consultant,lecturer,fellowship,assistantLecturer,assistantProfessor',
             'services_ids'         => 'required|array',
             'services_ids.*'       => 'exists:services,id',

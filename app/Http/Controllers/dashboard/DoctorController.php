@@ -108,40 +108,71 @@ class DoctorController extends Controller
 
         return view('dashboard.pages.doctors.edit' , compact('doctor','services'));
     }
-    public function storeDoctor(StoreDoctorRequest $request){
+    public function storeDoctor(StoreDoctorRequest $request , $id = null){
 
 
         $data = $request->validated();
 
-        DB::transaction(function () use ($data, $request) {
+        DB::transaction(function () use ($data, $request , $id) {
 
             $image_name = null ;
+            $doctorData = DB::table('doctors')->where('id', $id)->first();
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
-                $image_name = ImageHandlerService::fileUploader(ImagePaths::DOCTOR_PHOTOS->value,$image,null);
+                $image_name = ImageHandlerService::fileUploader(ImagePaths::DOCTOR_PHOTOS->value,$image,$doctorData ? $doctorData->image : null);
             }
+
             $academicTitle =  $data['academic_title'] ;
             $obj = AcademicTitle::from($academicTitle);
-            $doctor_id = DB::table('doctors')->insertGetId([
-                'name_en' => $data['name_en'],
-                'name_ar' => $data['name_ar'],
-                'email' => $data['email'],
-                'phone' => $data['phone'],
-                'academic_title_ar' => $obj->label('ar'),
-                'academic_title_en' =>  $obj->label('en'),
-                'main_speciality_ar' => $data['main_speciality_ar'],
-                'main_speciality_en' => $data['main_speciality_en'],
-                'speciality_ar' => $data['speciality_ar'],
-                'speciality_en' => $data['speciality_en'],
-                'bio_ar' => $data['bio_ar'],
-                'bio_en' => $data['bio_en'],
-                'experiences_ar' => implode(' , ', $data['experiences_ar']),
-                'experiences_en' => implode(' , ', $data['experiences_en']),
-                'qualifications_ar' => implode(' , ',  $data['qualifications_ar']),
-                'qualifications_en' => implode(' , ', $data['qualifications_en']),
-                'image' => $image_name,
-                'status' => 1,
-            ]);
+
+            if ($id){
+
+                DB::table('doctors')->where('id', $id)->update([
+                    'name_ar' => $data['name_ar'],
+                    'name_en' => $data['name_en'],
+                    'email' => $data['email'],
+                    'phone' => $data['phone'],
+                    'academic_title_ar' => $obj->label('ar'),
+                    'academic_title_en' =>  $obj->label('en'),
+                    'main_speciality_ar' => $data['main_speciality_ar'],
+                    'main_speciality_en' => $data['main_speciality_en'],
+                    'speciality_ar' => $data['speciality_ar'],
+                    'speciality_en' => $data['speciality_en'],
+                    'bio_ar' => $data['bio_ar'],
+                    'bio_en' => $data['bio_en'],
+                    'experiences_ar' => implode(' , ', $data['experiences_ar']),
+                    'experiences_en' => implode(' , ', $data['experiences_en']),
+                    'qualifications_ar' => implode(' , ',  $data['qualifications_ar']),
+                    'qualifications_en' => implode(' , ', $data['qualifications_en']),
+                    'image' => $image_name ?? $doctorData->image,
+                    'updated_at' => Carbon::now(),
+
+                ]);
+                $doctor_id = $id ;
+            }else{
+                $doctor_id = DB::table('doctors')->insertGetId([
+                    'name_en' => $data['name_en'],
+                    'name_ar' => $data['name_ar'],
+                    'email' => $data['email'],
+                    'phone' => $data['phone'],
+                    'academic_title_ar' => $obj->label('ar'),
+                    'academic_title_en' =>  $obj->label('en'),
+                    'main_speciality_ar' => $data['main_speciality_ar'],
+                    'main_speciality_en' => $data['main_speciality_en'],
+                    'speciality_ar' => $data['speciality_ar'],
+                    'speciality_en' => $data['speciality_en'],
+                    'bio_ar' => $data['bio_ar'],
+                    'bio_en' => $data['bio_en'],
+                    'experiences_ar' => implode(' , ', $data['experiences_ar']),
+                    'experiences_en' => implode(' , ', $data['experiences_en']),
+                    'qualifications_ar' => implode(' , ',  $data['qualifications_ar']),
+                    'qualifications_en' => implode(' , ', $data['qualifications_en']),
+                    'image' => $image_name,
+                    'status' => 1,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now(),
+                ]);
+            }
 
             foreach ($data['services_ids'] as $serviceId) {
                 DB::table('doctor_service')->updateOrInsert(
@@ -151,6 +182,7 @@ class DoctorController extends Controller
                     ],
                     [
                         'created_at' => now(),
+                        'updated_at' => now(),
                     ]
                 );
             }
