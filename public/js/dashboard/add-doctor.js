@@ -45,10 +45,22 @@ $(document).ready(function () {
      * DYNAMIC ADD / REMOVE
      * =========================== */
 
-function dynamicBlock(placeholder, value = '') {
-    return `<input type="text" class="form-control value-input" placeholder="${placeholder}" value="${value}" >`;
-}
+    function dynamicBlock(placeholder, value = '') {
+        return `<input type="text" class="form-control value-input" placeholder="${placeholder}" value="${value}" >`;
+    }
+    function appendExisting(containerId, placeholder, values = []) {
+        const container = $(containerId + ' .card');
 
+        values.forEach(value => {
+            container.prepend(
+                dynamicBlock(placeholder, value)
+            );
+        });
+    }
+    appendExisting('#doctor_qualification_en', 'Enter Academic Qualification (EN)', qualificationsEn);
+    appendExisting('#doctor_qualification_ar', 'Enter Academic Qualification (AR)', qualificationsAr);
+    appendExisting('#doctor_experiences_en', 'Enter Practical Experience (EN)', experiencesEn);
+    appendExisting('#doctor_experiences_ar', 'Enter Practical Experience (AR)', experiencesAr);
 
     $('#add_qualification_en').on('click', function () {
         const container = $('#doctor_qualification_en .card');

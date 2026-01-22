@@ -1,0 +1,160 @@
+@extends('layouts.dashboard')
+@section('title', 'Dashboard - Doctors')
+@section('page-title', 'Doctors Management')
+@section('content')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
+<section class="listing">
+   <div class="container-fluid">
+      <h2>Add New Service</h2>
+      <div class="card p-3">
+          @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul class="mb-0">
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
+         <form id="add_doctor" enctype="multipart/form-data" action="{{ route('add-service') }}" method="POST">
+            @csrf
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="mb-3">
+                     <label for="name_en" class="form-label">Name(EN)</label>
+                     <input type="text" class="form-control" id="name_en" name="name_en" placeholder="Enter service name">
+                     @error('name_en')
+                     <div class="invalid-feedback">{{ $message }}</div>
+                     @enderror
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="mb-3">
+                     <label for="name_ar" class="form-label">Name(AR)</label>
+                     <input type="text" class="form-control" id="name_ar" name="name_ar" placeholder="Enter service name">
+                     @error('name_ar')
+                     <div class="invalid-feedback">{{ $message }}</div>
+                     @enderror
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="mb-3">
+                     <label for="bio_en" class="form-label">Bio (EN)</label>
+                     <textarea type="text" class="form-control" id="bio_en" name="bio_en" placeholder="Enter doctor "></textarea>
+                     @error('bio_en')
+                     <div class="invalid-feedback">{{ $message }}</div>
+                     @enderror
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="mb-3">
+                     <label for="bio_ar" class="form-label">Bio (AR)</label>
+                     <textarea type="text" class="form-control" id="bio_ar" name="bio_ar" placeholder="Enter doctor name"></textarea>
+                     @error('bio_ar')
+                     <div class="invalid-feedback">{{ $message }}</div>
+                     @enderror
+                  </div>
+               </div>
+            </div>
+            <div class="row mb-3">
+               <div class="col-6">
+                  <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" >
+                  @error('image')
+                  <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
+               </div>
+                <div class="col-6">
+                  <input type="file" name="icon" class="form-control @error('image') is-invalid @enderror" >
+                  @error('image')
+                  <div class="invalid-feedback">{{ $message }}</div>
+                  @enderror
+               </div>
+            </div>
+                <div id="symptoms-wrapper">
+                    <h5>Service Symptoms</h5>
+                  <div class="card bg-light-gray p-4 mb-3 symptoms-card" data-index="0">
+                     <div class="row mb-3">
+                        <div class="col-md-6">
+                           <label for="title_en" class="form-label">symptoms title(En)</label>
+                           <input type="text" class="form-control-lg w-100 d-block border-0" id="title_en" name="symptoms[0][title_en]" placeholder="Enter symptoms title(En)">
+                        </div>
+                        <div class="col-md-6">
+                           <label for="title_ar" class="form-label">symptoms title(Ar)</label>
+                           <input type="text" class="form-control-lg w-100 d-block border-0" id="title_ar" name="symptoms[0][title_ar]" placeholder="Enter symptoms title(Ar)">
+                        </div>
+                     </div>
+                     <div class="row mb-3">
+                        <div class="col-md-6">
+                           <label for="description_en" class="form-label">Description(En)</label>
+                           <textarea type="text" class="form-control-lg w-100 d-block border-0" id="description_en" name="symptoms[0][description_en]" placeholder="Enter symptoms description en"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="description_ar" class="form-label">Description(Ar)</label>
+                           <textarea type="text" class="form-control-lg w-100 d-block border-0" id="description_ar" name="symptoms[0][description_en]" placeholder="Enter symptoms description en"></textarea>
+
+                        </div>
+                        <div class="text-center mt-4 add-btn-wrapper">
+                           <button type="button"
+                              class="btn btn-outline-primary p-3 w-50 add-symptoms-btn">
+                           <i class="fa fa-plus"></i> Add another service symptoms
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+                               <div id="techniques-wrapper">
+                    <h5>Service techniques</h5>
+                  <div class="card bg-light-gray p-4 mb-3 techniques-card" data-index="0">
+                     <div class="row mb-3">
+                        <div class="col-md-6">
+                           <label for="title_en" class="form-label">techniques title(En)</label>
+                           <input type="text" class="form-control-lg w-100 d-block border-0" id="title_en" name="techniques[0][title_en]" placeholder="Enter techniques title(En)">
+                        </div>
+                        <div class="col-md-6">
+                           <label for="title_ar" class="form-label">techniques title(Ar)</label>
+                           <input type="text" class="form-control-lg w-100 d-block border-0" id="title_ar" name="techniques[0][title_ar]" placeholder="Enter techniques title(Ar)">
+                        </div>
+                     </div>
+                     <div class="row mb-3">
+                        <div class="col-md-6">
+                           <label for="description_en" class="form-label">Description(En)</label>
+                           <textarea type="text" class="form-control-lg w-100 d-block border-0" id="description_en" name="techniques[0][description_en]" placeholder="Enter techniques description en"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="description_ar" class="form-label">Description(Ar)</label>
+                           <textarea type="text" class="form-control-lg w-100 d-block border-0" id="description_ar" name="techniques[0][description_en]" placeholder="Enter techniques description en"></textarea>
+
+                        </div>
+                                      <div class="col-md-6">
+                           <label for="description_en" class="form-label">Who is it suitable for?(En)(En)</label>
+                           <textarea type="text" class="form-control-lg w-100 d-block border-0" id="description_en" name="techniques[0][description_en]" placeholder="Enter techniques description en"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="description_ar" class="form-label">Who is it suitable for?(En)(Ar)</label>
+                           <textarea type="text" class="form-control-lg w-100 d-block border-0" id="description_ar" name="techniques[0][description_en]" placeholder="Enter techniques description en"></textarea>
+
+                        </div>
+                        <div class="text-center mt-4 add-btn-wrapper">
+                           <button type="button"
+                              class="btn btn-outline-primary p-3 w-50 add-techniques-btn">
+                           <i class="fa fa-plus"></i> Add another service techniques
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            <div class="row justify-centent-center">
+               <div class="col-5">
+                  <button type="submit" class="w-100 btn btn-primary-custom text-white"> <i class="fa fa-plus text-white"></i> Add</button>
+               </div>
+            </div>
+         </form>
+      </div>
+   </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+<script src="{{ asset('js/dashboard/add-doctor.js') }}"></script>
+@endsection
