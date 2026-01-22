@@ -116,7 +116,7 @@ class ServicesController extends Controller
     }
     public function addServices(Request $request){
 
-        return view('dashboard.pgaes.services.add');
+        return view('dashboard.pages.services.add');
     }
     public function editServices(Request $request , $id){
         $service = DB::table('services')
