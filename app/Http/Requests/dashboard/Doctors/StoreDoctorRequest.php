@@ -46,7 +46,14 @@ class StoreDoctorRequest extends FormRequest
             'speciality_ar'   => 'required|string|max:191',
             'bio_en'               => 'required|string',
             'bio_ar'               => 'required|string',
-            'image'                => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+
+
+            'image'                => [
+                $id ? 'nullable' : 'required',
+                'image',
+                'mimes:jpg,jpeg,png,webp',
+                'max:2048'
+            ],
             'experiences_en' => ['required', 'array'],
             'experiences_ar' => ['required', 'array'],
             'qualifications_en' => ['required', 'array'],
