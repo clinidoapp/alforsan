@@ -80,7 +80,7 @@ class DoctorController extends Controller
 
         $doctor = DB::table('doctors')->where('id', $id)
             ->select(
-                'doctors.id',
+                'doctors.id', 'doctors.phone' , 'doctors.email',
                 'doctors.name_en', 'doctors.name_ar',
                 'doctors.image', 'doctors.status' ,
                 'doctors.main_speciality_en', 'doctors.main_speciality_ar',
@@ -106,7 +106,14 @@ class DoctorController extends Controller
             ->select('id','name_en as name' )
             ->get();
 
-        return view('dashboard.pages.doctors.edit' , compact('doctor','services'));
+        $academicTitles = collect(AcademicTitle::cases())
+            ->map(fn ($case) => [
+                'key'   =>  $case->label('en'),
+                'value' => $case->value,
+            ])
+            ->toArray();
+
+        return view('dashboard.pages.doctors.edit' , compact('doctor','services' , 'academicTitles'));
     }
     public function storeDoctor(StoreDoctorRequest $request , $id = null){
 
