@@ -15,6 +15,7 @@ class DoctorsPageController extends Controller
         $query= DB::table('doctors')
             ->where('status', 1)
             ->where('is_deleted', 0)
+            ->whereNull('deleted_at')
             ->select('id','name_en' , 'name_ar' , 'image' ,'academic_title_ar','academic_title_en',
                 'main_speciality_en' , 'main_speciality_ar');
 
