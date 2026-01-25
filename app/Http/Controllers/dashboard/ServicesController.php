@@ -260,7 +260,7 @@ class ServicesController extends Controller
             }
 
             if ($data['symptoms']) {
-                DB::table('service_symptoms')->insert(
+                DB::table('service_symptom')->insert(
                     collect($data['symptoms'])->map(fn ($symptom) => [
                         'service_id' => $serviceId,
                         'description_en' => $symptom['description_en'],
@@ -289,7 +289,7 @@ class ServicesController extends Controller
                 );
             }
         });
-        return view('dashboard.pages.services.list');
+        return redirect()->route('service-list');
     }
 
     public static function Create()
