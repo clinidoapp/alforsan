@@ -7,7 +7,7 @@
       <div class="card p-3">
          <div class="row">
             <div class="col-md-4">
-               <img src="{{ asset('images/doctor_photos/' . ($result->icon ?? 'alternative.jpg')) }}" class="rounded-circle">
+               <img src="{{ asset( \App\Enums\ImagePaths::SERVICES_ICONS->value . ($result->icon ?? 'alternative.jpg')) }}" class="rounded-circle">
             </div>
             <div class="col-md-4">
                <label class="form-label">
@@ -62,7 +62,7 @@
          <hr>
          <div class="row mb-3">
             <div class="col-3"> <strong>Image</strong></div>
-            <div class="col-9">  <img src="{{ asset('images/service_image/' . ($result->image ? $result->image : 'image.png')) }}" class="img-fluid"> </div>
+            <div class="col-9">  <img src="{{ asset(\App\Enums\ImagePaths::SERVICES_IMAGES->value . ($result->image ? $result->image : 'image.png')) }}" class="img-fluid"> </div>
          </div>
          <hr>
         <div class="row mb-3">
