@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\dashboard\ArtisanController;
 use App\Http\Controllers\dashboard\AuthController;
 use App\Http\Controllers\dashboard\BookingController;
 use App\Http\Controllers\dashboard\DoctorController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\website\DoctorsPageController;
 use App\Http\Controllers\website\HomePageController;
 use App\Http\Controllers\website\ServicesPageController;
 use App\Http\Middleware\AuthMiddleware;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -64,7 +66,13 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     /*** Dashboard ***/
     Route::get('dashboard' , function ()
     {
-        return view('dashboard.pages.home');
+        $doctor_count = DB::table('doctors')->where('is_deleted' , 0)
+            ->whereNull('deleted_at')
+            ->count();
+        $services_count = DB::table('services')->whereNull('deleted_at')->count();
+        $bookings_count = DB::table('book_requests')->whereNull('deleted_at')->count();
+
+        return view('dashboard.pages.home' , compact('doctor_count' ,'services_count' , 'bookings_count'));
     })->name('dashboard');
 
     /*** Auth ***/
@@ -124,6 +132,14 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('toggleBookingServicesStatus/{id}' ,[BookingController::class, 'toggleBookingServicesStatus'])->middleware(['permission:update_booking_service'])->name('toggleBookingServicesStatus');
     Route::post('createOrUpdateBookingService/{id?}' ,[BookingController::class, 'createOrUpdateService'])->middleware(['permission:update_booking_service'])->name('createOrUpdateBookingService');
 
+    /*** Developers ***/
+    Route::get('developer' , [ArtisanController::class, 'index'])->middleware(['permission:view_page'])->name('developer');
+    Route::get('clearCache' , [ArtisanController::class, 'clearCache'])->middleware(['permission:clear_cache'])->name('clearCache');
+    Route::get('runSeeder' , [ArtisanController::class, 'runSeeder'])->middleware(['permission:run_seeder'])->name('runSeeder');
+    Route::get('clearView' , [ArtisanController::class, 'clearView'])->middleware(['permission:clear_view'])->name('clearView');
+    Route::get('clearConfig' , [ArtisanController::class, 'clearConfig'])->middleware(['permission:clear_config'])->name('clearConfig');
+    Route::get('clearRoute' , [ArtisanController::class, 'clearRoute'])->middleware(['permission:clear_route'])->name('clearRoute');
+    Route::get('clearOptimize' , [ArtisanController::class, 'clearOptimize'])->middleware(['permission:clear_optimize'])->name('clearOptimize');
 
 });
 
@@ -167,6 +183,13 @@ Route::prefix('test')->group(function () {
     Route::get('services-details/{id}' , [ServicesController::class, 'serviceDetails']);
 
     Route::post('createOrUpdateService/{id?}' , [BookingController::class, 'createOrUpdateService']);
+
+    Route::get('clearCache' , [ArtisanController::class, 'clearCache']);
+    Route::get('runSeeder' , [ArtisanController::class, 'runSeeder']);
+    Route::get('clearView' , [ArtisanController::class, 'clearView']);
+    Route::get('clearConfig' , [ArtisanController::class, 'clearConfig']);
+    Route::get('clearRoute' , [ArtisanController::class, 'clearRoute']);
+    Route::get('clearOptimize' , [ArtisanController::class, 'clearOptimize']);
 });
 /************************* End Test *********************/
 
