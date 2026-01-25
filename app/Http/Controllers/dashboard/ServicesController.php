@@ -289,7 +289,7 @@ class ServicesController extends Controller
                 );
             }
         });
-        return view('dashboard.********');
+        return view('dashboard.pages.services.list');
     }
 
     public static function Create()
