@@ -97,10 +97,12 @@ class DoctorController extends Controller
             ->select('service_id')->get();
 
         $doctor->selectedServices = $selectedServices;
-        $doctor->experiences_en = explode(',', $doctor->experiences_en);
-        $doctor->experiences_ar = explode(',', $doctor->experiences_ar);
-        $doctor->qualifications_en = explode(',', $doctor->qualifications_en);
-        $doctor->qualifications_ar = explode(',', $doctor->qualifications_ar);
+        $selectedServiceIds = $doctor->selectedServices->pluck('service_id')->toArray();
+            $doctor->experiences_en     = array_filter(explode(',', $doctor->experiences_en ?? ''));
+            $doctor->experiences_ar     = array_filter(explode(',', $doctor->experiences_ar ?? ''));
+            $doctor->qualifications_en  = array_filter(explode(',', $doctor->qualifications_en ?? ''));
+            $doctor->qualifications_ar  = array_filter(explode(',', $doctor->qualifications_ar ?? ''));
+
 
         $services = DB::table('services')
             ->where('status', 1)
@@ -114,7 +116,7 @@ class DoctorController extends Controller
             ])
             ->toArray();
 
-        return view('dashboard.pages.doctors.edit' , compact('doctor','services' , 'academicTitles'));
+        return view('dashboard.pages.doctors.edit' , compact('doctor','services' , 'academicTitles','selectedServiceIds'));
     }
     public function storeDoctor(StoreDoctorRequest $request , $id = null){
 

@@ -24,7 +24,7 @@
                      </div>
                      <div class="col-md-3 d-flex gap-3 justify-content-end">
                         <button class="w-50 btn btn-primary-custom">Search</button>
-                        <a href="{{ route('doctors-mediaList') }}" class="w-50 btn btn-outline-primary">Reset</a>
+                        <a href="{{ route('doctors-list') }}" class="w-50 btn btn-outline-primary">Reset</a>
                      </div>
                   </div>
                </form>
@@ -56,7 +56,7 @@
                         <td class="py-2 text-center"><span class="w-100 rounded-pill badge bg-{{$doctor->status==1?'success':'danger'}}">{{$doctor->status==1?'Active':'InActive'}}</span></td>
                         <td class="py-2 text-center admin-actions">
                             <a href="{{ route('doctors-view', $doctor->id) }}" class="btn btn-primary-custom">View</a>
-                            <a href="{{ route('Edit-admin', $doctor->id) }}" class="btn btn-outline-primary">Edit</a>
+                            <a href="{{ route('doctors-edit', $doctor->id) }}" class="btn btn-outline-primary">Edit</a>
                             <a href="{{ route('doctor.toggle', $doctor->id) }}" class="toggle btn btn-{{$doctor->status==1?'danger':'success'}}"onclick="return confirm('Are you sure you want to change this doctor staus ?');">{{$doctor->status==1?'Deactivate':'Activate'}}</a>
                         </td>
                     </tr>

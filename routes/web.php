@@ -101,7 +101,7 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('doctors-list/add' , [DoctorController::class, 'addDoctor'])->middleware(['permission:create_doctor'])->name('doctors-add');
     Route::get('doctors-list/view/{id}' , [DoctorController::class, 'viewDoctor'])->middleware(['permission:read_doctor'])->name('doctors-view');
     Route::get('toggleDoctor/{id}' , [DoctorController::class, 'toggleDoctorStatus'])->middleware(['permission:update_admin'])->name('doctor.toggle');
-    Route::get('doctors-edit' , [DoctorController::class, 'updateDoctor'])->middleware(['permission:update_doctor'])->name('doctors-add');
+    Route::get('doctors-edit/{id}' , [DoctorController::class, 'updateDoctor'])->middleware(['permission:update_doctor'])->name('doctors-edit');
 
     /*** Doctor Media ***/
     Route::get('doctors-list-media' , [DoctorController::class, 'listDoctorMediaCount'])->middleware(['permission:read_doctor_media'])->name('doctors-list-media');
@@ -124,7 +124,7 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('services-add' , [ServicesController::class, 'addServices'])->middleware(['permission:create_service'])->name('service-add');
     Route::get('services-edit/{id}' , [ServicesController::class, 'editServices'])->middleware(['permission:update_service'])->name('store-service');
     Route::get('services-details/{id}' , [ServicesController::class, 'serviceDetails'])->middleware(['permission:update_service'])->name('view-service');
-    Route::post('storeService/{id?}' , [ServicesController::class, 'createOrEditService'])->middleware(['permission:create_service'])->name('store-service');
+    Route::post('storeService/{id?}' , [ServicesController::class, 'createOrEditService'])->middleware(['permission:create_service'])->name('add-service');
     Route::get('toggleServicesStatus/{id}' , [ServicesController::class, 'toggleServicesStatus'])->middleware(['permission:update_service'])->name('toggleServiceStatus');
 
     /*** Booking Services ***/

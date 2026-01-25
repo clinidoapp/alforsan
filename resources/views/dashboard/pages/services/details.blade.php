@@ -125,7 +125,7 @@
             <div class="col-9">
                <div class="d-flex">
                   <a class="btn btn-lg mx-2 btn-primary-custom">Edit</a>
-                  <a class="btn btn-lg mx-2 btn-danger">Delete</a>
+                        <a href="{{ route('toggleServiceStatus', $result->id) }}" class="toggle btn btn-{{$result->status==1?'danger':'success'}}"onclick="return confirm('Are you sure you want to change this service staus ?');">{{$result->status==1?'Deactivate':'Activate'}}</a>
                </div>
             </div>
          </div>
