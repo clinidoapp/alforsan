@@ -122,7 +122,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="main_speciality_ar" class="form-label float-end">التخصص الرئيسى</label>
-                     <input type="text" class="form-control" id="main_speciality_ar" name="main_speciality_ar" placeholder="Enter doctor main speciality (AR)">
+                     <input type="text" class="form-control text-end" id="main_speciality_ar" name="main_speciality_ar" placeholder="اكتب التخصص الرئيسى للطبيب باللغة العربية">
                      @error('main_speciality_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -133,7 +133,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="bio_en" class="form-label">Bio (EN)</label>
-                     <textarea type="text" class="form-control" id="bio_en" name="bio_en" placeholder="Enter doctor "></textarea>
+                     <textarea type="text" class="form-control" id="bio_en" name="bio_en" placeholder="Enter bio about doctor "></textarea>
                      @error('bio_en')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -141,8 +141,8 @@
                </div>
                <div class="col-md-6">
                   <div class="mb-3">
-                     <label for="bio_ar" class="form-label">Bio (AR)</label>
-                     <textarea type="text" class="form-control" id="bio_ar" name="bio_ar" placeholder="Enter doctor name"></textarea>
+                     <label for="bio_ar" class="form-label float-end">نبده عن الطبيب</label>
+                     <textarea type="text" class="form-control text-end" id="bio_ar" name="bio_ar" placeholder="اكتب نبذه مختصره عن الطبيب"></textarea>
                      @error('bio_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -151,6 +151,7 @@
             </div>
             <div class="row">
                <div class="col-12">
+                     <label for="image" class="form-label">Doctor photo</label>
                   <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" >
                   @error('image')
                   <div class="invalid-feedback">{{ $message }}</div>
@@ -166,14 +167,14 @@
                   @enderror
                   <div class="card bg-light-gray p-4 mb-3 border-0 rounded-1">
                      <div class="d-flex justify-content-between">
-                        <input type="text" class="form-control w-75 value-input" id="qual_val" name="" placeholder="Enter doctor Qualification (AR)">
+                        <input type="text" class="form-control w-75 value-input" id="qual_val" name="" placeholder="Enter doctor Qualification (EN)">
                         <button type="button" id="add_qualification_en" class="btn btn-outline-primary bg-white px-3 m-auto"><i class="fa fa-plus"></i>Add</button>
                      </div>
                   </div>
                </div>
             </div>
             <div class="row">
-               <b>Academic Qualification (AR)</b>
+               <b>المؤهلات العلميه للطبيب باللغة العربية</b>
                <div class="col-12" id="doctor_qualification_ar">
                   <input type="hidden" name="qualifications_ar[]">
                   @error('qualifications_ar')
@@ -181,7 +182,7 @@
                   @enderror
                   <div class="card bg-light-gray p-4 mb-3 border-0 rounded-1">
                      <div class="d-flex justify-content-between">
-                        <input type="text" class="form-control w-75 value-input" id="" name="" placeholder="Enter doctor Qualification (AR)">
+                        <input type="text" class="form-control w-75 value-input" id="" name="" placeholder="ادخل المؤهل باللغة العربية">
                         <button type="button" id="add_qualification_ar" class="btn btn-outline-primary bg-white px-3 m-auto"><i class="fa fa-plus"></i>Add</button>
                      </div>
                   </div>
@@ -203,7 +204,7 @@
                </div>
             </div>
             <div class="row">
-               <b>Practical Experience (AR)</b>
+               <b>الخبرة العملية</b>
                <div class="col-12" id="doctor_experiences_ar">
                   <input type="hidden" name="experiences_ar[]">
                   @error('experiences_ar')
@@ -211,7 +212,7 @@
                   @enderror
                   <div class="card bg-light-gray p-4 mb-3 border-0 rounded-1">
                      <div class="d-flex justify-content-between">
-                        <input type="text" class="form-control w-75 value-input" id="" name="" placeholder="Enter doctor Qualification (AR)">
+                        <input type="text" class="form-control w-75 value-input" id="" name="" placeholder="ادخل الخبرة باللغة العربية">
                         <button type="button" id="add_experiences_ar" class="btn btn-outline-primary bg-white px-3 m-auto"><i class="fa fa-plus"></i>Add</button>
                      </div>
                   </div>
@@ -229,4 +230,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
 <script src="{{ asset('js/dashboard/add-doctor.js?v='.env('App_Version').'') }}"></script>
+<script>
+    const edit=false;
+
+</script>
 @endsection

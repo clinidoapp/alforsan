@@ -48,6 +48,8 @@ $(document).ready(function () {
     function dynamicBlock(placeholder, value = '') {
         return `<input type="text" class="form-control value-input" placeholder="${placeholder}" value="${value}" >`;
     }
+    if(edit == true)
+    {
     function appendExisting(containerId, placeholder, values = []) {
         const container = $(containerId + ' .card');
 
@@ -57,14 +59,16 @@ $(document).ready(function () {
             );
         });
     }
-    appendExisting('#doctor_qualification_en', 'Enter Academic Qualification (EN)', qualificationsEn);
-    appendExisting('#doctor_qualification_ar', 'Enter Academic Qualification (AR)', qualificationsAr);
-    appendExisting('#doctor_experiences_en', 'Enter Practical Experience (EN)', experiencesEn);
-    appendExisting('#doctor_experiences_ar', 'Enter Practical Experience (AR)', experiencesAr);
+
+        appendExisting('#doctor_qualification_en', 'Enter Academic Qualification (EN)', qualificationsEn);
+        appendExisting('#doctor_qualification_ar', 'Enter Academic Qualification (AR)', qualificationsAr);
+        appendExisting('#doctor_experiences_en', 'Enter Practical Experience (EN)', experiencesEn);
+        appendExisting('#doctor_experiences_ar', 'Enter Practical Experience (AR)', experiencesAr);
+    }
 
     $('#add_qualification_en').on('click', function () {
         const container = $('#doctor_qualification_en .card');
-        const lastInput = container.find('.value-input').first();
+        const lastInput = container.find('.value-input').last();
         const value = lastInput.val().trim();
         if (value === '') {
             alert('Please enter a qualification first');
@@ -79,7 +83,7 @@ $(document).ready(function () {
     });
         $('#add_qualification_ar').on('click', function () {
         const container = $('#doctor_qualification_ar .card');
-        const lastInput = container.find('.value-input').first();
+        const lastInput = container.find('.value-input').last();
         const value = lastInput.val().trim();
         if (value === '') {
             alert('Please enter a qualification first');
@@ -87,14 +91,14 @@ $(document).ready(function () {
         }
 
         container.prepend(
-            dynamicBlock('Enter Academic Qualification (EN)', value)
+            dynamicBlock('ادخل المؤهل باللغة العربية', value)
         );
 
         lastInput.val('');
     });
         $('#add_experiences_en').on('click', function () {
         const container = $('#doctor_experiences_en .card');
-        const lastInput = container.find('.value-input').first();
+        const lastInput = container.find('.value-input').last();
         const value = lastInput.val().trim();
         if (value === '') {
             alert('Please enter a experiences first');
@@ -109,7 +113,7 @@ $(document).ready(function () {
     });
      $('#add_experiences_ar').on('click', function () {
         const container = $('#doctor_experiences_ar .card');
-        const lastInput = container.find('.value-input').first();
+        const lastInput = container.find('.value-input').last();
         const value = lastInput.val().trim();
         if (value === '') {
             alert('Please enter a experiences first');
@@ -117,7 +121,7 @@ $(document).ready(function () {
         }
 
         container.prepend(
-            dynamicBlock('Enter Academic experiences (EN)', value)
+            dynamicBlock('ادخل الخبرة باللغة العربية', value)
         );
 
         lastInput.val('');

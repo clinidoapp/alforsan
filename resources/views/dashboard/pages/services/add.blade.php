@@ -30,8 +30,8 @@
                </div>
                <div class="col-md-6">
                   <div class="mb-3">
-                     <label for="name_ar" class="form-label">Name(AR)</label>
-                     <input type="text" class="form-control" id="name_ar" name="name_ar" placeholder="Enter service name">
+                     <label for="name_ar" class="form-label float-end">اسم الخدمة</label>
+                     <input type="text" class="form-control text-end" id="name_ar" name="name_ar" placeholder="ادخل اسم الخدمة باللغة العربية">
                      @error('name_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -50,8 +50,8 @@
                </div>
                <div class="col-md-6">
                   <div class="mb-3">
-                     <label for="description_ar" class="form-label">description (AR)</label>
-                     <textarea type="text" class="form-control" id="description_ar" name="description_ar" placeholder="Enter service description Ar"></textarea>
+                     <label for="description_ar" class="form-label float-end">وصف الخدمة باللغة العربية</label>
+                     <textarea type="text" class="form-control text-end" id="description_ar" name="description_ar" placeholder="ادخل وصف للخدمة باللغة العربية"></textarea>
                      @error('description_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -60,12 +60,14 @@
             </div>
             <div class="row mb-3">
                <div class="col-6">
+                    <label for="image" class="form-label">Service photo</label>
                   <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" >
                   @error('image')
                   <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
                </div>
                <div class="col-6">
+                    <label for="icon" class="form-label">Service icon</label>
                   <input type="file" name="icon" class="form-control @error('image') is-invalid @enderror" >
                   @error('image')
                   <div class="invalid-feedback">{{ $message }}</div>
@@ -81,8 +83,8 @@
                         <input type="text" class="form-control-lg w-100 d-block border-0" id="title_en" name="symptoms[0][title_en]" placeholder="Enter symptoms title(En)">
                      </div>
                      <div class="col-md-6">
-                        <label for="title_ar" class="form-label">symptoms title(Ar)</label>
-                        <input type="text" class="form-control-lg w-100 d-block border-0" id="title_ar" name="symptoms[0][title_ar]" placeholder="Enter symptoms title(Ar)">
+                        <label for="title_ar" class="form-label float-end">وصف العرض</label>
+                        <input type="text" class="form-control-lg text-end w-100 d-block border-0" id="title_ar" name="symptoms[0][title_ar]" placeholder="ادخل وصف العرض باللغة العربية">
                      </div>
                   </div>
                   <div class="row mb-3">
@@ -91,8 +93,8 @@
                         <textarea type="text" class="form-control-lg w-100 d-block border-0" id="description_en" name="symptoms[0][description_en]" placeholder="Enter symptoms description en"></textarea>
                      </div>
                      <div class="col-md-6">
-                        <label for="description_ar" class="form-label">Description(Ar)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="description_ar" name="symptoms[0][description_ar]" placeholder="Enter symptoms description en"></textarea>
+                        <label for="description_ar" class="form-label float-end">وصف العرض</label>
+                        <textarea type="text" class="form-control-lg text-end w-100 d-block border-0" id="description_ar" name="symptoms[0][description_ar]" placeholder="ادخل وصف العرض باللغة العربية"></textarea>
                      </div>
                      <div class="text-center mt-4 add-btn-wrapper">
                         <button type="button"
@@ -112,8 +114,8 @@
                         <input type="text" class="form-control-lg w-100 d-block border-0" id="title_en" name="techniques[0][title_en]" placeholder="Enter techniques title(En)">
                      </div>
                      <div class="col-md-6">
-                        <label for="title_ar" class="form-label">techniques title(Ar)</label>
-                        <input type="text" class="form-control-lg w-100 d-block border-0" id="title_ar" name="techniques[0][title_ar]" placeholder="Enter techniques title(Ar)">
+                        <label for="title_ar" class="form-label float-end">اسم التقنية</label>
+                        <input type="text" class="form-control-lg text-end w-100 d-block border-0" id="title_ar" name="techniques[0][title_ar]" placeholder="ادخل اسم التقنية باللغة العربية">
                      </div>
                   </div>
                   <div class="row mb-3">
@@ -122,16 +124,16 @@
                         <textarea type="text" class="form-control-lg w-100 d-block border-0" id="description_en" name="techniques[0][description_en]" placeholder="Enter techniques description en"></textarea>
                      </div>
                      <div class="col-md-6">
-                        <label for="description_ar" class="form-label">Description(Ar)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="description_ar" name="techniques[0][description_ar]" placeholder="Enter techniques description en"></textarea>
+                        <label for="description_ar" class="form-label float-end">وصف التقنية</label>
+                        <textarea type="text" class="form-control-lg w-100 d-block text-end border-0" id="description_ar" name="techniques[0][description_ar]" placeholder="ادخل وصف التقنية باللغة العربية"></textarea>
                      </div>
                      <div class="col-md-6">
-                        <label for="suitable_for_en" class="form-label">Who is it suitable for?(En)(En)</label>
+                        <label for="suitable_for_en" class="form-label">Who is it suitable for?(En)</label>
                         <textarea type="text" class="form-control-lg w-100 d-block border-0" id="suitable_for_en" name="techniques[0][suitable_for_en]" placeholder="Enter techniques description en"></textarea>
                      </div>
                      <div class="col-md-6">
-                        <label for="suitable_for_ar" class="form-label">Who is it suitable for?(En)(Ar)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="suitable_for_ar" name="techniques[0][suitable_for_ar]" placeholder="Enter techniques description en"></textarea>
+                        <label for="suitable_for_ar" class="form-label float-end">لمن تناسب هذه التقنية</label>
+                        <textarea type="text" class="form-control-lg w-100 text-end d-block border-0" id="suitable_for_ar" name="techniques[0][suitable_for_ar]" placeholder="ادخل وصف الاشخاص الذين تناسبهم هذه التقنية"></textarea>
                      </div>
                   </div>
                   <div class="text-center mt-4 add-btn-wrapper">
@@ -148,8 +150,8 @@
                   <textarea type="text" class="form-control-lg w-100 d-block" id="brief_en" name="brief_en" placeholder="Enter techniques description en"></textarea>
                </div>
                <div class="col-md-6">
-                  <label for="brief_ar" class="form-label">Why Alforsan(Ar)</label>
-                  <textarea type="text" class="form-control-lg w-100 d-block" id="brief_ar" name="brief_ar" placeholder="Enter techniques description en"></textarea>
+                  <label for="brief_ar" class="form-label float-end">لماذا تختار مركز الفرسان</label>
+                  <textarea type="text" class="form-control-lg text-end w-100 d-block" id="brief_ar" name="brief_ar" placeholder="اكتب اسباب لماذا يختار المريض مركز الفرسان لهذه الخدمة؟"></textarea>
                </div>
             </div>
             <div id="faq-wrapper">
@@ -158,21 +160,21 @@
                   <div class="row mb-3">
                      <div class="col-md-6">
                         <label for="question_en" class="form-label">FAQ question (En)</label>
-                        <input type="text" class="form-control-lg w-100 d-block border-0" id="question_en" name="faqs[0][question_en]" placeholder="Enter faq (En)">
+                        <input type="text" class="form-control-lg w-100 d-block border-0" id="question_en" name="faqs[0][question_en]" placeholder="Enter question (En)">
                      </div>
                      <div class="col-md-6">
-                        <label for="question_ar" class="form-label">FAQ question (Ar)</label>
-                        <input type="text" class="form-control-lg w-100 d-block border-0" id="question_ar" name="faqs[0][question_ar]" placeholder="Enter faq (Ar)">
+                        <label for="question_ar" class="form-label float-end">السؤال باللغة العربية</label>
+                        <input type="text" class="form-control-lg text-end w-100 d-block border-0" id="question_ar" name="faqs[0][question_ar]" placeholder="ادخل السؤال باللغة العربية">
                      </div>
                   </div>
                   <div class="row mb-3">
                      <div class="col-md-6">
                         <label for="answer_en" class="form-label">Answer(En)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="answer_en" name="faqs[0][answer_en]" placeholder="Enter faq answer en"></textarea>
+                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="answer_en" name="faqs[0][answer_en]" placeholder="Enter answer en"></textarea>
                      </div>
                      <div class="col-md-6">
-                        <label for="answer_ar" class="form-label">Answer(Ar)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="answer_ar" name="faqs[0][answer_ar]" placeholder="Enter faq answer en"></textarea>
+                        <label for="answer_ar" class="form-label float-end">الاجابة باللغة العربية</label>
+                        <textarea type="text" class="form-control-lg w-100 text-end d-block border-0" id="answer_ar" name="faqs[0][answer_ar]" placeholder="ادخل الاجابة باللغة العربية"></textarea>
                      </div>
                      <div class="text-center mt-4 add-btn-wrapper">
                         <button type="button"
