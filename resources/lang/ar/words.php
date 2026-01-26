@@ -81,6 +81,7 @@ return [
     'doctor qualification'=>'المؤهلات العلمية',
     'doctor experience'=>'الخبرات العملية',
     'doctor videos'=>'فيديوهات الطبيب',
+    'specialized in'=>'متخصص فى',
 
     // service details
     'about service title'=>'نبذة عن الخدمة',

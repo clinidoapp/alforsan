@@ -85,7 +85,7 @@ return [
     'doctor qualification'=>'Academic qualifications',
     'doctor experience'=>'Practical experience',
     'doctor videos'=>'Doctor Videos',
-
+    'specialized in'=>'Specialized in',
     // service details
     'about service title'=>'About service',
     'service symptoms'=>'Service Symptoms',

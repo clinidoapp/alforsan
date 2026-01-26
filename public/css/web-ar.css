@@ -402,6 +402,11 @@ footer {
 .search-box.rtl .btn {
     border-radius: 8px 0 0 8px !important;
 }
+.doctor-card .doctorimg{
+        height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
 .pagination {
     direction: ltr;
 }
@@ -429,6 +434,9 @@ footer {
 /* ===========================
         Doctor profile
 ===============================*/
+.doctor-personal-data img{
+    width: 270px;
+}
 .doctor-personal-data h1{
     font-size: 30px;
 }
