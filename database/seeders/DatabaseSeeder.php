@@ -26,8 +26,8 @@ class DatabaseSeeder extends Seeder
         //    ServiceTechniquesSeeder::class,
         //    DoctorVideosSeeder::class,
         //    BookingServicesSeeder::class,
-            AdminSeeder::class,
-        //    SettingsSeeder::class,
+        //   AdminSeeder::class,
+            SettingsSeeder::class,
         ]);
     }
 }

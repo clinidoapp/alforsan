@@ -19,16 +19,29 @@ class SettingsSeeder extends Seeder
                 'value' => 'info@alforsan.com',
             ],
             [
-                'key' => 'site_phone',
+                'key' => 'site_phone_1',
+                'value' => '+201000000000',
+            ],[
+                'key' => 'site_phone_2',
+                'value' => '+201000000000',
+            ],[
+                'key' => 'site_phone_3',
+                'value' => '+201000000000',
+            ],[
+                'key' => 'site_phone_4',
                 'value' => '+201000000000',
             ],
             [
-                'key' => 'site_address',
+                'key' => 'site_whatsapp',
+                'value' => '+201000000000',
+            ],
+            [
+                'key' => 'site_address_en',
                 'value' => 'Cairo, Egypt',
             ],
             [
-                'key' => 'default_language',
-                'value' => 'en',
+                'key' => 'site_address_ar',
+                'value' => 'Cairo, Egypt',
             ],
             [
                 'key' => 'facebook_url',
@@ -47,10 +60,17 @@ class SettingsSeeder extends Seeder
                 'value' => 'https://www.youtube.com/alforsan',
             ],
             [
-                'key' => 'linkedin_url',
+                'key' => 'tiktok_url',
+                'value' => 'https://www.linkedin.com/in/alforsan',
+            ],
+            [
+                'key' => 'work_hours_en',
+                'value' => 'https://www.linkedin.com/in/alforsan',
+            ],
+            [
+                'key' => 'work_hours_ar',
                 'value' => 'https://www.linkedin.com/in/alforsan',
             ]
-
         ];
 
         foreach ($settings as $setting) {

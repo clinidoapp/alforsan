@@ -21,6 +21,9 @@ class SettingsController extends Controller
             'value' => 'required|string|max:255',
         ]);
 
+        $value = preg_replace('/^\+?2/', '', $data['value']);
+        $data['value'] = $value;
+
         DB::transaction(function () use ($data) {
             DB::table('settings')->updateOrInsert(
                 ['key' => $data['key']],
