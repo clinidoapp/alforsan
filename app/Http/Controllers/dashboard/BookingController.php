@@ -30,7 +30,7 @@ class BookingController extends Controller
             $query->where('booking_services.id', $request->service_id);
         }
         if ($request->filled('patient_phone')) {
-            $query->where('book_requests.phone', $request->patient_phone);
+            $query->where('book_requests.phone','like' , '%' .  $request->patient_phone . '%');
         }
 
 
