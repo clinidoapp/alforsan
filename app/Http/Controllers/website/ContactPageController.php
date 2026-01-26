@@ -45,7 +45,7 @@ class ContactPageController extends Controller
             ''
         ];
 
-        Mail::send('************', ['data' => $response], function ($mail) use ($response) {
+        Mail::send('website.pages.bookingMail', ['data' => $response], function ($mail) use ($response) {
             $mail->to(env('MAIL_FROM_ADDRESS'))
                 ->subject('New Booking Request - ' .now()->toDateString());
         });
