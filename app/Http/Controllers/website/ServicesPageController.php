@@ -32,6 +32,7 @@ class ServicesPageController extends Controller
                  'icon',
                  'brief_en',
                  'brief_ar',
+                 'status',
                  'description_en',
                  'description_ar',
                  'image',

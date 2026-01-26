@@ -9,12 +9,12 @@ $local=app()->getLocale();
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-3">
-                <img src="{{ asset('images/doctor_photos/' . ($doctor->image ? $doctor->image : 'alternative.jpg')) }}" class="w-100 rounded mb-3">
+                <img src="{{ asset('images/doctor_photos/' . ($doctor->image ? $doctor->image : 'alternative.jpg')) }}" class="rounded mb-3">
             </div>
-            <div class="col-md-9">
-                <h1>{{ $local=='ar'?'د. ':'Dr. ' }}{{ $doctor->{'name_'.$local} }}</h1>
-                <h2 class="lh-lg">{{ $doctor->{'academic_title_'.$local} }} </h2>
-                <p>{{ $doctor->{'main_speciality_'.$local} }}</p>
+            <div class="col-md-9 align-content-center">
+                <h1 class="lh-lg">{{ $local=='ar'?'د. ':'Dr. ' }}{{ $doctor->{'name_'.$local} }}</h1>
+                <h2 class="lh-lg">{{ $doctor->{'academic_title_'.$local} }} {{ $doctor->{'speciality_'.$local} }} </h2>
+                <p class="lh-lg">{{ __('words.specialized in') }} {{ $doctor->{'main_speciality_'.$local} }}</p>
             </div>
         </div>
     </div>
@@ -56,11 +56,12 @@ $local=app()->getLocale();
             @foreach($doctor->videos as $video)
             <div class="col-md-4 px-2 mb-3">
                 <div class="card rounded-2">
-                    <video  controls class="w-100 rounded-top-2">
+                    {{-- <video  controls class="w-100 rounded-top-2">
                         <source src="{{  $video->video_url }}" type="video/mp4">
                         Your browser does not support the video tag.
-                    </video>
-                    <div class="py-3 text-primary px-2 text-center bg-white rounded-2"> {{$video->{'title_'.$local} }}</div>
+                    </video> --}}
+                    <iframe width="100%" height="130%" src={{  $video->video_url }} title=" {{$video->{'title_'.$local} }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="py-3 text-primary px-2 text-center bg-white rounded-2 text-dark"> {{$video->{'title_'.$local} }}</div>
                 </div>
             </div>
             @endforeach

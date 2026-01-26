@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>New Booking Request</title>
 </head>
-<body style="margin:0; padding:0; background-color:#f5f5f5; font-family: Arial, Helvetica, sans-serif;">
+<body style="margin:0; padding:0; background-color:#f5f5f5; font-family: Arial, Helvetica, sans-serif;  padding:20px">
 
 <div style="max-width:600px; margin:30px auto; background:#ffffff; border-radius:8px; overflow:hidden;">
 

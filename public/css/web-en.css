@@ -498,6 +498,11 @@ footer {
 .search-box.ltr .btn {
     border-radius: 0 8px 8px 0;
 }
+.doctor-card .doctorimg{
+        height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
 .page-link{
     color: var(--primary-color);
     margin: 0 20px;
@@ -510,6 +515,9 @@ footer {
 /* ===========================
         Doctor profile
 ===============================*/
+.doctor-personal-data img{
+    width: 270px;
+}
 .doctor-personal-data h1{
     font-size: 30px;
 }
