@@ -42,7 +42,7 @@ class DoctorsPageController extends Controller
       ", ["%{$search}%"]);
             });
         }
-        $doctors =    $query->paginate(10);
+        $doctors =    $query->paginate(12);
         return view('website.pages.doctors', compact('doctors'));
 
     }
