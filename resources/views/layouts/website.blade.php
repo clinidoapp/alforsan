@@ -19,9 +19,9 @@
     @endphp
 
    @if($isArabic)
-   <link href="{{ asset('css/web-ar.css') }}" rel="stylesheet">
+   <link href="{{ asset('css/web-ar.css?v='.env('App_Version').'') }}" rel="stylesheet">
    @else
-   <link href="{{ asset('css/web-en.css') }}" rel="stylesheet">
+   <link href="{{ asset('css/web-en.css?v='.env('App_Version').'') }}" rel="stylesheet">
 
    @endif
 </head>

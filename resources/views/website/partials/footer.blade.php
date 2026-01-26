@@ -39,15 +39,15 @@
                 <button class="footer-toggle" data-bs-toggle="collapse" data-bs-target="#footerContact"> {{__('words.Call us')}} </button>
 
                 <div id="footerContact" class="collapse d-md-block">
-                    <p class="mb-1"><i class="fa-solid fa-phone-volume"></i> +20 100 000 0000</p>
-                    <p class="mb-1"><i class="fa-solid fa-envelope"></i> info@alforsan.com</p>
+                    <p class="mb-1"><i class="fa-solid fa-phone-volume"></i> {{env('site_phone')}}</p>
+                    <p class="mb-1"><i class="fa-solid fa-envelope"></i> {{env('site_email')}}</p>
                 </div>
                 <div id="socialLinks">
                     <div class="d-flex">
                         <a href="#" class="text-dark"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#" class="text-dark"><i class="fa-brands fa-twitter"></i></a>
                         <a href="#" class="text-dark"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="text-dark"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="text-dark"><i class="fa-brands fa-tiktok"></i></a>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
     </div>
         @php
         $isArabic = app()->getLocale() === 'ar';
-        $whatsappNumber = '201006067573';
+        $whatsappNumber = env('site_whatsapp');
         @endphp
 
         <a href="https://wa.me/{{ $whatsappNumber }}"target="_blank"class="whatsapp-float {{ $isArabic ? 'rtl' : 'ltr' }}"aria-label="WhatsApp Chat" title="{{ $isArabic ? 'تواصل معنا عبر واتساب' : 'Chat with us on WhatsApp' }}">

@@ -6,13 +6,13 @@
    <div class="container">
       <div class="d-flex justify-content-between w-100">
           <div class="social-links">
-             <a href="#" class="mx-2"><i class="fa-brands fa-facebook-f"></i></a>
-             <a href="#" class="mx-2"><i class="fa-brands fa-twitter"></i></a>
-             <a href="#" class="mx-2"><i class="fa-brands fa-instagram"></i></a>
+             <a href="{{env('facebook_url')}}" class="mx-2"><i class="fa-brands fa-facebook-f"></i></a>
+             <a href="{{env('twitter_url')}}" class="mx-2"><i class="fa-brands fa-twitter"></i></a>
+             <a href="{{env('instagram_url')}}" class="mx-2"><i class="fa-brands fa-instagram"></i></a>
           </div>
          <div class="contact-info">
-            <span class="m-0 m-md-3"><i class="px-2 fa-solid fa-phone-volume"></i> +201234567890</span>
-            <span class="m-0 m-md-3"><i class="px-2 fa-solid fa-envelope"></i>info@alforsan.com</span>
+            <span class="m-0 m-md-3"><i class="px-2 fa-solid fa-phone-volume"></i> {{ env('site_phone_1') }}</span>
+            <span class="m-0 m-md-3"><i class="px-2 fa-solid fa-envelope"></i>{{env('site_email')}}</span>
          </div>
       </div>
    </div>
@@ -33,8 +33,7 @@
       <div class="collapse navbar-collapse" id="mainNavbar">
          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 py-2">
             <li class="nav-item">
-               <a class="nav-link  {{ request()->is('/') ? 'active' : '' }}"
-                  href="{{ url('/') }}">
+               <a class="nav-link  {{ request()->is('/') ? 'active' : '' }}">
                {{ __('words.home') }}
                </a>
             </li>

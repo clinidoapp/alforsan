@@ -235,5 +235,5 @@ const experiencesEn    = @json($doctor->experiences_en ?? []);
 const experiencesAr    = @json($doctor->experiences_ar ?? []);
 
 </script>
-<script src="{{ asset('js/dashboard/add-doctor.js') }}"></script>
+<script src="{{ asset('js/dashboard/add-doctor.js?v='.env('App_Version').'') }}"></script>
 @endsection
