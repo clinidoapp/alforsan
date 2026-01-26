@@ -54,13 +54,15 @@ $local=app()->getLocale();
         <h2 class="lh-lg">{{ __('words.doctor videos') }}</h2>
         <div class="row">
             @foreach($doctor->videos as $video)
+            <?php
+                $url = $video->video_url;
+                parse_str(parse_url($url)['query'], $params);
+                $yt_id=$params['v'];
+            ?>
             <div class="col-md-4 px-2 mb-3">
                 <div class="card rounded-2">
-                    {{-- <video  controls class="w-100 rounded-top-2">
-                        <source src="{{  $video->video_url }}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video> --}}
-                    <iframe width="100%" height="130%" src={{  $video->video_url }} title=" {{$video->{'title_'.$local} }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    {{-- <iframe width="100%" height="130%" src="https://youtube.com/embed/{{$yt_id}}" title=" {{$video->{'title_'.$local} }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+                    <iframe width="100%" height="130%" src="https://youtube.com/embed/{{$yt_id}}" title=" {{$video->{'title_'.$local} }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe>
                     <div class="py-3 text-primary px-2 text-center bg-white rounded-2 text-dark"> {{$video->{'title_'.$local} }}</div>
                 </div>
             </div>

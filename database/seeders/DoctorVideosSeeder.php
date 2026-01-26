@@ -23,22 +23,22 @@ class DoctorVideosSeeder extends Seeder
             [
                 'title_en' => 'Laser Vision Correction Explained',
                 'title_ar' => 'شرح عملية تصحيح الإبصار بالليزر',
-                'video_url' => 'https://www.youtube.com/watch?v=Uto36GI6HIg',
+                'video_url' => 'https://www.youtube.com/embed/XEpcowvr9GQ?si=lPO9dZfzWk3eshei',
             ],
             [
                 'title_en' => 'Cataract Surgery Overview',
                 'title_ar' => 'شرح عملية المياه البيضاء',
-                'video_url' => 'https://www.youtube.com/watch?v=Uto36GI6HIg',
+                'video_url' => 'https://www.youtube.com/embed/XEpcowvr9GQ?si=lPO9dZfzWk3eshei',
             ],
             [
                 'title_en' => 'Glaucoma Symptoms and Treatment',
                 'title_ar' => 'أعراض وعلاج الجلوكوما',
-                'video_url' => 'https://www.youtube.com/watch?v=Uto36GI6HIg',
+                'video_url' => 'https://www.youtube.com/embed/XEpcowvr9GQ?si=lPO9dZfzWk3eshei',
             ],
             [
                 'title_en' => 'Retina Diseases Explained',
                 'title_ar' => 'شرح أمراض الشبكية',
-                'video_url' => 'https://www.youtube.com/watch?v=Uto36GI6HIg',
+                'video_url' => 'https://www.youtube.com/embed/XEpcowvr9GQ?si=lPO9dZfzWk3eshei',
             ],
         ];
 
