@@ -41,8 +41,7 @@ class ContactPageController extends Controller
             'patient_phone' => $data['phone'],
             'service_name_en' => $service->name_en,
             'service_name_ar' => $service->name_ar,
-            'patient_notes' =>$data['notes'],
-            ''
+            'patient_notes' =>$data['notes']
         ];
 
         Mail::send('website.pages.bookingMail', ['data' => $response], function ($mail) use ($response) {
