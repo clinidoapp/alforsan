@@ -18,28 +18,31 @@
                   <img src="{{ asset('images/contacts/address@2x.webp') }}">
                   <h2>{{ __('words.address') }}</h2>
                </div>
-               <p>أسيوط شارع النميس امام كنيسة الملاك</p>
+               <p>{{ env('site_address_'.$local) }}</p>
             </div>
             <div class="d-block">
                <div class="d-flex mb-2 align-items-center">
                   <img src="{{ asset('images/contacts/call@2x.webp') }}">
                   <h2>{{ __('words.contact') }}</h2>
                </div>
-               <p>+201006067878</p>
+               <p>{{ env('site_phone_1') }}</p>
+               <p>{{ env('site_phone_2') }}</p>
+               <p>{{ env('site_phone_3') }}</p>
+               <p>{{ env('site_phone_4') }}</p>
             </div>
             <div class="d-block">
                <div class="d-flex mb-2 align-items-center">
                   <img src="{{ asset('images/contacts/email@2x.webp') }}">
                   <h2>{{__('words.email')}}</h2>
                </div>
-               <p>info@alforsan.com</p>
+               <p>{{env('site_email')}}</p>
             </div>
             <div class="d-block">
                <div class="d-flex mb-2 align-items-center">
                   <img src="{{ asset('images/contacts/hours@2x.webp') }}">
                   <h2>{{ __('words.Working hours') }}</h2>
                </div>
-               <p>السبت - الخميس 10:00 صباحاً - 10:00 مساءً</p>
+               <p>{{ env('work_hours_'.$local) }}</p>
             </div>
          </div>
          <div class="col-lg-6 col-md-12">

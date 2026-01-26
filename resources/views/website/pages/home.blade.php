@@ -230,24 +230,22 @@
             <div class="card mb-2 p-3">
                <img src="{{ asset('images/contacts/call@2x.webp') }}">
                <h2>{{ __('words.contact') }}</h2>
-               <p>01003333333</p>
-               <p>01110000000</p>
+               <p>{{ env('site_phone_1') }}</p>
+               <p>{{ env('site_phone_2') }}</p>
             </div>
          </div>
          <div class="col-md-4">
             <div class="card mb-2 p-3">
                <img src="{{ asset('images/contacts/hours@2x.webp') }}">
                <h2>{{ __('words.Working hours') }}</h2>
-               <p>السبت - الخميس</p>
-               <p>10:00 صباحاً - 10:00 مساءً</p>
+               <p>{{ env('work_hours_'.$local) }}</p>
             </div>
          </div>
          <div class="col-md-4">
             <div class="card mb-2 p-3">
                <img src="{{ asset('images/contacts/address@2x.webp') }}">
                <h2>{{ __('words.address') }}</h2>
-               <p>أسيوط شارع النميس</p>
-               <p>امام كنيسة الملاك</p>
+               <p>{{ env('site_address_'.$local) }} </p>
             </div>
          </div>
       </div>

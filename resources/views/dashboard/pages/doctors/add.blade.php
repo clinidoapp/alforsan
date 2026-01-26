@@ -30,8 +30,8 @@
                </div>
                <div class="col-md-6">
                   <div class="mb-3">
-                     <label for="name_ar" class="form-label">Name(AR)</label>
-                     <input type="text" class="form-control" id="name_ar" name="name_ar" placeholder="Enter doctor name">
+                     <label for="name_ar" class="form-label float-end">اسم الطبيب</label>
+                     <input type="text" class="form-control text-end" id="name_ar" name="name_ar" placeholder="اكتب اسم الطبيب باللغة العربية">
                      @error('name_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -93,7 +93,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="speciality_en" class="form-label"> Speciality (EN)</label>
-                     <input type="text" class="form-control" id="speciality_en" name="speciality_en" placeholder="Enter doctor main speciality (EN)">
+                     <input type="text" class="form-control" id="speciality_en" name="speciality_en" placeholder="Enter doctor  speciality (EN)">
                      @error('speciality_en')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -101,8 +101,8 @@
                </div>
                <div class="col-md-6">
                   <div class="mb-3">
-                     <label for="speciality_ar" class="form-label"> Speciality (AR)</label>
-                     <input type="text" class="form-control" id="speciality_ar" name="speciality_ar" placeholder="Enter doctor main speciality (AR)">
+                     <label for="speciality_ar" class="form-label float-end"> التخصص </label>
+                     <input type="text" class="form-control text-end" id="speciality_ar" name="speciality_ar" placeholder="اكتب تخصص الطبيب باللغة العربية">
                      @error('speciality_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -121,7 +121,7 @@
                </div>
                <div class="col-md-6">
                   <div class="mb-3">
-                     <label for="main_speciality_ar" class="form-label">Main Speciality (AR)</label>
+                     <label for="main_speciality_ar" class="form-label float-end">التخصص الرئيسى</label>
                      <input type="text" class="form-control" id="main_speciality_ar" name="main_speciality_ar" placeholder="Enter doctor main speciality (AR)">
                      @error('main_speciality_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
@@ -228,5 +228,5 @@
 </section>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
-<script src="{{ asset('js/dashboard/add-doctor.js') }}"></script>
+<script src="{{ asset('js/dashboard/add-doctor.js?v='.env('App_Version').'') }}"></script>
 @endsection

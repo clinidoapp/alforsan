@@ -195,5 +195,5 @@
 </section>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
-<script src="{{ asset('js/dashboard/add-service.js') }}"></script>
+<script src="{{ asset('js/dashboard/add-service.js?v='.env('App_Version').'') }}"></script>
 @endsection

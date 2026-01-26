@@ -50,7 +50,7 @@
    </div>
 </section>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{{ asset('js/dashboard/add-admin.js') }}"></script>
+<script src="{{ asset('js/dashboard/add-admin.js?v='.env('App_Version').'') }}"></script>
 
 
 @endsection
