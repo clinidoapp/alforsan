@@ -32,8 +32,8 @@ class CreateOrEditServiceRequest extends FormRequest
                 [ 'required', 'string',  Rule::unique('services' , 'name_en')->ignore($id)],
             'name_ar' =>
                 [ 'required', 'string',  Rule::unique('services' , 'name_ar')->ignore($id)],
-            'bio_ar'  => 'required|string',
-            'bio_en'  => 'required|string',
+            'description_ar'  => 'required|string',
+            'description_en'  => 'required|string',
             'image' => [
                 $id ? 'nullable' : 'required',
                 'image',

@@ -134,6 +134,7 @@ class ServicesController extends Controller
                 'description_en',
                 'description_ar',
                 'image',
+                'status',
                 'slug'
             )->first();
 
@@ -216,8 +217,8 @@ class ServicesController extends Controller
                         'slug' => $baseSlug,
                         'name_en' => $data['name_en'],
                         'name_ar' => $data['name_ar'],
-                        'description_en' => $data['bio_en'],
-                        'description_ar' => $data['bio_ar'],
+                        'description_en' => $data['description_en'],
+                        'description_ar' => $data['description_ar'],
                         'brief_en' => $data['brief_en'],
                         'brief_ar' => $data['brief_ar'],
                         'image' => $imagePath ?? $service->image,
@@ -236,8 +237,8 @@ class ServicesController extends Controller
                     'slug' => $baseSlug,
                     'name_en' => $data['name_en'],
                     'name_ar' => $data['name_ar'],
-                    'description_en' => $data['bio_en'],
-                    'description_ar' => $data['bio_ar'],
+                    'description_en' => $data['description_en'],
+                    'description_ar' => $data['description_ar'],
                     'brief_en' => $data['brief_en'],
                     'brief_ar' => $data['brief_ar'],
                     'image' => $imagePath,

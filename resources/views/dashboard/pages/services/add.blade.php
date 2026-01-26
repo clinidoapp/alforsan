@@ -41,18 +41,18 @@
             <div class="row">
                <div class="col-md-6">
                   <div class="mb-3">
-                     <label for="bio_en" class="form-label">Bio (EN)</label>
-                     <textarea type="text" class="form-control" id="bio_en" name="bio_en" placeholder="Enter doctor "></textarea>
-                     @error('bio_en')
+                     <label for="description_en" class="form-label">description (EN)</label>
+                     <textarea type="text" class="form-control" id="description_en" name="description_en" placeholder="Enter service description En "></textarea>
+                     @error('description_en')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
                   </div>
                </div>
                <div class="col-md-6">
                   <div class="mb-3">
-                     <label for="bio_ar" class="form-label">Bio (AR)</label>
-                     <textarea type="text" class="form-control" id="bio_ar" name="bio_ar" placeholder="Enter doctor name"></textarea>
-                     @error('bio_ar')
+                     <label for="description_ar" class="form-label">description (AR)</label>
+                     <textarea type="text" class="form-control" id="description_ar" name="description_ar" placeholder="Enter service description Ar"></textarea>
+                     @error('description_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
                   </div>
@@ -133,29 +133,27 @@
                         <label for="suitable_for_ar" class="form-label">Who is it suitable for?(En)(Ar)</label>
                         <textarea type="text" class="form-control-lg w-100 d-block border-0" id="suitable_for_ar" name="techniques[0][suitable_for_ar]" placeholder="Enter techniques description en"></textarea>
                      </div>
-                </div>
-
-
-                     <div class="text-center mt-4 add-btn-wrapper">
-                        <button type="button"
-                           class="btn btn-outline-primary p-3 w-50 add-techniques-btn">
-                        <i class="fa fa-plus"></i> Add another service techniques
-                        </button>
-                     </div>
+                  </div>
+                  <div class="text-center mt-4 add-btn-wrapper">
+                     <button type="button"
+                        class="btn btn-outline-primary p-3 w-50 add-techniques-btn">
+                     <i class="fa fa-plus"></i> Add another service techniques
+                     </button>
                   </div>
                </div>
-               <div class="row mb-3">
-                   <div class="col-md-6">
-                       <label for="brief_en" class="form-label">why Alforsan(En)</label>
-                       <textarea type="text" class="form-control-lg w-100 d-block" id="brief_en" name="brief_en" placeholder="Enter techniques description en"></textarea>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="brief_ar" class="form-label">Why Alforsan(Ar)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block" id="brief_ar" name="brief_ar" placeholder="Enter techniques description en"></textarea>
-                    </div>
-                </div>
-                <div id="faq-wrapper">
-                    <h5>Service FAQ</h5>
+            </div>
+            <div class="row mb-3">
+               <div class="col-md-6">
+                  <label for="brief_en" class="form-label">why Alforsan(En)</label>
+                  <textarea type="text" class="form-control-lg w-100 d-block" id="brief_en" name="brief_en" placeholder="Enter techniques description en"></textarea>
+               </div>
+               <div class="col-md-6">
+                  <label for="brief_ar" class="form-label">Why Alforsan(Ar)</label>
+                  <textarea type="text" class="form-control-lg w-100 d-block" id="brief_ar" name="brief_ar" placeholder="Enter techniques description en"></textarea>
+               </div>
+            </div>
+            <div id="faq-wrapper">
+               <h5>Service FAQ</h5>
                <div class="card bg-light-gray p-4 mb-3 faq-card" data-index="0">
                   <div class="row mb-3">
                      <div class="col-md-6">
@@ -179,21 +177,21 @@
                      <div class="text-center mt-4 add-btn-wrapper">
                         <button type="button"
                            class="btn btn-outline-primary p-3 w-50 add-faq-btn">
-                           <i class="fa fa-plus"></i> Add another service faq
+                        <i class="fa fa-plus"></i> Add another service faq
                         </button>
-                    </div>
-                </div>
+                     </div>
                   </div>
                </div>
-               <div class="row justify-centent-center">
-                   <div class="col-5">
-                       <button type="submit" class="w-100 btn btn-primary-custom text-white"> <i class="fa fa-plus text-white"></i> Add</button>
-                    </div>
-                </div>
             </div>
-         </form>
-      </div>
+            <div class="row justify-centent-center">
+               <div class="col-5">
+                  <button type="submit" class="w-100 btn btn-primary-custom text-white"> <i class="fa fa-plus text-white"></i> Add</button>
+               </div>
+            </div>
+        </form>
+    </div>
    </div>
+
 </section>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
