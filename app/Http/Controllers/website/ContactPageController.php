@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\website\BookRequest\StoreBookRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class ContactPageController extends Controller
 {
@@ -33,6 +34,7 @@ class ContactPageController extends Controller
         $service = DB::table('booking_services')->where('id' , '=' , $data['service_id'])
         ->select("id" , 'name_en' , 'name_ar')->
         first();
+
         $response = [
             'patient_name' => $data['full_name'],
             'patient_email' => $data['email'],
@@ -41,6 +43,13 @@ class ContactPageController extends Controller
             'service_name_ar' => $service->name_ar,
             'patient_notes' =>$data['notes']
         ];
+
+        Mail::send('************', ['data' => $data], function ($mail) use ($response) {
+            $mail->to(env('MAIL_FROM_ADDRESS'))
+                ->subject("New Booking Request");
+        });
+
+
         return view('website.pages.thank-you' ,  compact('response'));
     }
 }
