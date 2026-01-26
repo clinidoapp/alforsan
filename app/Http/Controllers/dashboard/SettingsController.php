@@ -14,7 +14,6 @@ class SettingsController extends Controller
     }
     public function setSetting(Request $request)
     {
-        // dd($request->all());
 
         $data = $request->validate([
             'key' => 'required|string|exists:settings,key',
@@ -48,4 +47,5 @@ class SettingsController extends Controller
         });
         return redirect()->route('setting');
     }
+
 }

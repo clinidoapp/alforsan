@@ -41,12 +41,13 @@ class ContactPageController extends Controller
             'patient_phone' => $data['phone'],
             'service_name_en' => $service->name_en,
             'service_name_ar' => $service->name_ar,
-            'patient_notes' =>$data['notes']
+            'patient_notes' =>$data['notes'],
+            ''
         ];
 
-        Mail::send('************', ['data' => $data], function ($mail) use ($response) {
+        Mail::send('************', ['data' => $response], function ($mail) use ($response) {
             $mail->to(env('MAIL_FROM_ADDRESS'))
-                ->subject("New Booking Request");
+                ->subject('New Booking Request - ' .now()->toDateString());
         });
 
 
