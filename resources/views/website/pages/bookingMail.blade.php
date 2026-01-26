@@ -28,14 +28,14 @@
                 Request date :
             </label>
             <span style="font-size:15px; color:#333333; font-weight:600;">
-                {{ $data->created_at->format('d-m-Y H:i') }}
+                {{ $data['request_date'] }}
             </span>
         </div>        <div style="margin-bottom:15px;">
             <label style="display:inline; font-size:13px; color:#666666; margin-bottom:4px;">
                 Patient Name :
             </label>
             <span style="font-size:15px; color:#333333; font-weight:600;">
-                {{ $data->patient_name }}
+                {{ $data['patient_name'] }}
             </span>
         </div>
 
@@ -44,7 +44,7 @@
                 Email Address :
             </label>
             <span style="font-size:15px; color:#333333;">
-                    {{ $data->patient_email }}
+                    {{ $data['patient_email'] }}
             </span>
         </div>
 
@@ -53,7 +53,7 @@
                 Phone Number :
             </label>
             <span style="font-size:15px; color:#333333;">
-                {{ $data->patient_phone }}
+                {{ $data['patient_phone'] }}
             </span>
         </div>
 
@@ -62,11 +62,11 @@
                 Service name :
             </label>
             <span style="font-size:15px; color:#333333;">
-                 {{ $data->service_name_en }} -  {{ $data->service_name_ar }}
+                 {{ $data['service_name_en'] }} -  {{ $data['service_name_ar'] }}
             </span>
         </div>
 
-        @if(!empty(  $data->patient_notes ))
+        @if(!empty(  $data['patient_notes'] ))
         <div style="margin-bottom:20px;">
             <label style="display:block; font-size:13px; color:#666666; margin-bottom:6px;">
                 Notes :
@@ -79,7 +79,7 @@
                 padding:12px;
                 border-radius:6px;
                 line-height:1.6;">
-                {{ $data['notes'] }}
+                {{ $data['patient_notes'] }}
             </span>
         </div>
         @endif
