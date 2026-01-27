@@ -26,7 +26,6 @@ class AdminSeeder extends Seeder
             ['name' => 'Doctor Media Management', 'slug' => 'doctor_media_management'],
             ['name' => 'Booking Services Management', 'slug' => 'booking_services_management'],
             ['name' => 'Services Management', 'slug' => 'services_management'],
-            ['name' => 'Developers Management', 'slug' => 'developers_management'],
         ];
         foreach ($categories as $category) {
 
@@ -95,15 +94,6 @@ class AdminSeeder extends Seeder
             ['name' => 'Update Service', 'slug' => 'update_service', 'category_slug' => 'services_management'],
             ['name' => 'Delete Service', 'slug' => 'delete_service', 'category_slug' => 'services_management'],
 
-            /*** developers Management ***/
-            ['name' => 'View_Page', 'slug' => 'view_page', 'category_slug' => 'developers_management'],
-            ['name' => 'Clear Cache', 'slug' => 'clear_cache', 'category_slug' => 'developers_management'],
-            ['name' => 'Clear Config',   'slug' => 'clear_config',   'category_slug' => 'developers_management'],
-            ['name' => 'Run Seeder', 'slug' => 'run_seeder', 'category_slug' => 'developers_management'],
-            ['name' => 'Clear View', 'slug' => 'clear_view', 'category_slug' => 'developers_management'],
-            ['name' => 'Clear Route', 'slug' => 'clear_route', 'category_slug' => 'developers_management'],
-            ['name' => 'Clear Optimize', 'slug' => 'clear_optimize', 'category_slug' => 'developers_management'],
-
         ];
 
         $permissionIds = [];
@@ -139,7 +129,7 @@ class AdminSeeder extends Seeder
             ->where('slug', 'admin')
             ->value('id');
 
-        DB::table('roles')->updateOrInsert(
+        /*DB::table('roles')->updateOrInsert(
             ['slug' => 'developer'],
             [
                 'name'       => 'Developer',
@@ -150,7 +140,7 @@ class AdminSeeder extends Seeder
 
         $developerRoleId = DB::table('roles')
             ->where('slug', 'developer')
-            ->value('id');
+            ->value('id');*/
 
         foreach ($permissionIds as $permissionId) {
             DB::table('role_permissions')->updateOrInsert(
@@ -163,15 +153,6 @@ class AdminSeeder extends Seeder
                 ]
             );
 
-            DB::table('role_permissions')->updateOrInsert(
-                [
-                    'role_id'       => $developerRoleId,
-                    'permission_id' => $permissionId,
-                ],
-                [
-                    'created_at' => now(),
-                ]
-            );
         }
 
         DB::table('users')->updateOrInsert(
@@ -198,6 +179,81 @@ class AdminSeeder extends Seeder
                 'created_at' => now(),
             ]
         );
+
+        $developerPermissionCategory = [
+            ['name' => 'Developers Management', 'slug' => 'developers_management'],
+        ];
+
+        foreach ($developerPermissionCategory as $category) {
+            DB::table('permission_categories')->updateOrInsert(
+                ['slug' => $category['slug']],
+                [
+                    'name'       => $category['name'],
+                    'slug'       => $category['slug'],
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]
+            );
+        }
+
+        $developerPermissions = [
+            /*** developers Management ***/
+            ['name' => 'View_Page', 'slug' => 'view_page', 'category_slug' => 'developers_management'],
+            ['name' => 'Clear Cache', 'slug' => 'clear_cache', 'category_slug' => 'developers_management'],
+            ['name' => 'Clear Config',   'slug' => 'clear_config',   'category_slug' => 'developers_management'],
+            ['name' => 'Run Seeder', 'slug' => 'run_seeder', 'category_slug' => 'developers_management'],
+            ['name' => 'Clear View', 'slug' => 'clear_view', 'category_slug' => 'developers_management'],
+            ['name' => 'Clear Route', 'slug' => 'clear_route', 'category_slug' => 'developers_management'],
+            ['name' => 'Clear Optimize', 'slug' => 'clear_optimize', 'category_slug' => 'developers_management'],
+
+        ];
+        $newCategories = DB::table('permission_categories')
+            ->pluck('id', 'slug');
+
+        foreach ($developerPermissions as $permission) {
+
+            DB::table('permissions')->updateOrInsert(
+                ['slug' => $permission['slug']],
+                [
+                    'name'        => $permission['name'],
+                    'slug'        => $permission['slug'],
+                    'category_id' => $newCategories[$permission['category_slug']],
+                    'updated_at'  => now(),
+                    'created_at'  => now(),
+                ]
+            );
+
+            $permissionIds[] = DB::table('permissions')
+                ->where('slug', $permission['slug'])
+                ->value('id');
+        }
+
+
+
+        DB::table('roles')->updateOrInsert(
+            ['slug' => 'developer'],
+            [
+                'name'       => 'Developer',
+                'updated_at' => now(),
+                'created_at' => now(),
+            ]
+        );
+
+        $developerRoleId = DB::table('roles')
+            ->where('slug', 'developer')
+            ->value('id');
+
+        foreach ($permissionIds as $permissionId) {
+            DB::table('role_permissions')->updateOrInsert(
+                [
+                    'role_id'       => $developerRoleId,
+                    'permission_id' => $permissionId,
+                ],
+                [
+                    'created_at' => now(),
+                ]
+            );
+        }
 
         DB::table('users')->updateOrInsert(
             ['email' => 'developer@example.com'],

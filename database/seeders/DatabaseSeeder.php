@@ -16,17 +16,17 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-           DoctorsSeeder::class,
-           ServicesSeeder::class,
-           DoctorServiceSeeder::class,
-           BookRequestsSeeder::class,
-           ReviewsSeeder::class,
-           ServiceFaqsSeeder::class,
-           ServiceSymptomsSeeder::class,
-           ServiceTechniquesSeeder::class,
-           DoctorVideosSeeder::class,
-           BookingServicesSeeder::class,
-          AdminSeeder::class,
+            DoctorsSeeder::class,
+            ServicesSeeder::class,
+            DoctorServiceSeeder::class,
+            BookRequestsSeeder::class,
+            ReviewsSeeder::class,
+            ServiceFaqsSeeder::class,
+            ServiceSymptomsSeeder::class,
+            ServiceTechniquesSeeder::class,
+            DoctorVideosSeeder::class,
+            BookingServicesSeeder::class,
+            AdminSeeder::class,
             SettingsSeeder::class,
         ]);
     }
