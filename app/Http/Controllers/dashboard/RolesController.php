@@ -13,6 +13,57 @@ class RolesController extends Controller
 {
     public function listRoles(Request $request)
     {
+
+        $roles = DB::table('roles')->
+            select('id', 'name' , 'slug')
+        ->get();
+
+        $permissions = DB::table('permissions')
+            ->join('permission_categories', 'permission_categories.id', '=', 'permissions.category_id')
+            ->select(
+                'permission_categories.id as category_id', 'permission_categories.name as category_name',
+                'permissions.name as permission_name' , 'permissions.id' , 'permissions.slug as permission_slug'
+            )->get();
+
+        $permissions = $permissions
+            ->groupBy('category_name')
+            ->map(function ($items)  {
+                return [
+                    'category_id' => $items->first()->category_id,
+                    'category_name' => $items->first()->category_name,
+                    'permissions' => $items->map(function ($p) {
+                        return [
+                            'id' => $p->id,
+                            'name' => $p->permission_name,
+                            'slug' => $p->permission_slug,
+                        ];
+                    })->values()
+                ];
+            })->values();
+
+
+
+        $rolePermissions = DB::table('roles')
+            ->leftJoin('role_permissions', 'roles.id', '=', 'role_permissions.role_id')
+            ->leftJoin('permissions', 'permissions.id', '=', 'role_permissions.permission_id')
+            ->select(
+                'roles.slug as role_slug',
+                'permissions.slug as permission_slug'
+            )
+            ->get()
+            ->groupBy('role_slug')
+            ->map(function ($items) {
+                return $items
+                    ->pluck('permission_slug')
+                    ->filter()     
+                    ->values()
+                    ->toArray();
+            })
+            ->toArray();
+
+        /*
+             // dd($roles, $permissions , $rolePermissions );
+
         $query = DB::table('roles')
             ->leftJoin('user_role', 'roles.id', '=', 'user_role.role_id')
 
@@ -29,9 +80,9 @@ class RolesController extends Controller
             $query->where('roles.id', $request->role_id);
         }
 
-        $roles = $query->paginate(10);
+        $roles = $query->paginate(10);*/
 
-        return view('dashboard.pages.roles.list', compact('roles'));
+        return view('dashboard.pages.roles.list', compact('roles' , 'permissions' , 'rolePermissions'));
     }
     public function roleDetails(Request $request ,  $id){
         $roleData = DB::table('roles')->where('id', $id)->
