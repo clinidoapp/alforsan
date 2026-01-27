@@ -55,7 +55,7 @@ class RolesController extends Controller
             ->map(function ($items) {
                 return $items
                     ->pluck('permission_slug')
-                    ->filter()     
+                    ->filter()
                     ->values()
                     ->toArray();
             })
@@ -142,11 +142,42 @@ class RolesController extends Controller
            })->values();
        return view('dashboard.pages.roles.add', compact('permissions'));
    }
-    public function storeRole(StoreRoleRequest $request , $id = null){
+    public function storeRole(StoreRoleRequest $request){
 
         $data = $request->validated();
-        DB::transaction(function () use ($data , $id) {
-            $baseSlug = Str::slug($data['name']);
+        DB::transaction(function () use ( $data ) {
+
+            $existing = DB::table('role_permissions')
+                ->get()
+                ->groupBy('role_id')
+                ->map(fn ($items) => $items->pluck('permission_id')->toArray());
+
+            foreach ($data as $roleId => $newPermissionIds) {
+                $newPermissionIds = array_map('intval', $newPermissionIds);
+                $oldPermissionIds = $existing[$roleId] ?? [];
+
+                $toInsert = array_diff($newPermissionIds, $oldPermissionIds);
+                $toDelete = array_diff($oldPermissionIds, $newPermissionIds);
+
+                if ($toDelete) {
+                    DB::table('role_permissions')
+                        ->where('role_id', $roleId)
+                        ->whereIn('permission_id', $toDelete)
+                        ->delete();
+                }
+                if ($toInsert) {
+                    DB::table('role_permissions')->insert(
+                        collect($toInsert)->map(fn ($pid) => [
+                            'role_id'       => $roleId,
+                            'permission_id' => $pid,
+                            'created_at'    => now(),
+                        ])->toArray()
+                    );
+                }
+            }
+
+                //////////////////////////////
+           /* $baseSlug = Str::slug($data['name']);
             if (!$id) {
                 $roleId = DB::table('roles')->insertGetId([
                     'name' => $data['name'],
@@ -170,7 +201,7 @@ class RolesController extends Controller
                     'created_at' => now(),
                 ];
             }, $data['permissions_ids']);
-            DB::table('role_permissions')->insert($rows);
+            DB::table('role_permissions')->insert($rows);*/
         });
         return redirect()->route('roles-list');
    }
