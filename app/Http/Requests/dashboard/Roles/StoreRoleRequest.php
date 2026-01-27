@@ -22,29 +22,29 @@ class StoreRoleRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->route('id');
-
         return [
-            '*'   => ['array'],
-            '*.*' => ['integer', 'exists:permissions,id'],
-           /*
+
             'name' => [
                 'required',
                 'string',
-                Rule::unique('roles', 'name')->ignore($id),
+                'unique:roles,name',
+                //Rule::unique('roles', 'name')->ignore($id),
             ],
             'permissions_ids' => 'required|array|min:1',
             'permissions_ids.*' => 'exists:permissions,id',
-           */
+
         ];
     }
 
     public function messages(): array
     {
         return [
-            '*.array' => 'Permissions must be sent as arrays.',
-            '*.*.integer' => 'Permission ID must be an integer.',
-            '*.*.exists' => 'Invalid permission selected.',
+
+            'name.required' => 'Role name is required.',
+            'name.unique' => 'This role name already exists.',
+            'permissions_ids.required' => 'At least one permission must be selected.',
+            'permissions_ids.array' => 'Permissions must be an array.',
+            'permissions_ids.*.exists' => 'Invalid permission selected.'
 
             ];
     }

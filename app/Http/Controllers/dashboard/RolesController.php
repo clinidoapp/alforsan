@@ -4,6 +4,7 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\dashboard\Roles\StoreRoleRequest;
+use App\Http\Requests\dashboard\Roles\UpdateRoleRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -142,7 +143,7 @@ class RolesController extends Controller
            })->values();
        return view('dashboard.pages.roles.add', compact('permissions'));
    }
-    public function storeRole(StoreRoleRequest $request){
+    public function editeRole(UpdateRoleRequest $request){
 
         $data = $request->validated();
         DB::transaction(function () use ( $data ) {
@@ -205,6 +206,41 @@ class RolesController extends Controller
         });
         return redirect()->route('roles-list');
    }
+    public function storeRole(StoreRoleRequest $request){
+
+        $data = $request->validated();
+        DB::transaction(function () use ($data ) {
+            $baseSlug = Str::slug($data['name']);
+            $roleId = DB::table('roles')->insertGetId([
+                'name' => $data['name'],
+                'slug' => $baseSlug,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+            /*  if (!$id) {
+
+              }
+            /*else {
+                  DB::table('roles')->where('id', $id)->update([
+                      'name' => $data['name'],
+                      'slug' => $baseSlug,
+                      'updated_at' => now(),
+                  ]);
+                  DB::table('role_permissions')->where('role_id', $id)->delete();
+                  $roleId = $id;
+              }*/
+            $rows = array_map(function ($permissionId) use ($roleId) {
+                return [
+                    'role_id' => $roleId,
+                    'permission_id' => $permissionId,
+                    'created_at' => now(),
+                ];
+            }, $data['permissions_ids']);
+
+            DB::table('role_permissions')->insert($rows);
+        });
+        return redirect()->route('roles-list');
+    }
     public function editRole(Request $request,$id){
 
        $roleData = DB::table('roles')->where('id', $id)->
