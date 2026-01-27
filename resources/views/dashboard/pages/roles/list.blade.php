@@ -21,6 +21,16 @@
                      <button type="submit" class="btn btn-success px-4">Save Changes</button>
                   </div>
 
+                   @if ($errors->any())
+                       <div class="alert alert-danger">
+                           <ul class="mb-0">
+                               @foreach ($errors->all() as $error)
+                                   <li>{{ $error }}</li>
+                               @endforeach
+                           </ul>
+                       </div>
+                   @endif
+
                   <table class="table border-0 align-middle text-center">
                      <thead class="table-primary">
                         <tr>
@@ -50,7 +60,7 @@
                             <label class="fa-checkbox">
                                 <input
                                     type="checkbox"
-                                    name="{{ $role->id }}[]"
+                                    name="permissions[{{ $role->id }}][]"
                                     value="{{ $permission['id'] }}"
                                     {{ in_array($permission['slug'], $rolePermissions[$role->slug] ?? []) ? 'checked' : '' }}
                                 >

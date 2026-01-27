@@ -23,9 +23,11 @@ class UpdateRoleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            '*'   => ['array'],
-            '*.*' => ['integer', 'exists:permissions,id'],
-        ];
+            'permissions'     => ['required', 'array'],
+            'permissions.*'   => ['array'], // role_id => []
+            'permissions.*.*' => ['integer', 'exists:permissions,id'],
+
+             ];
     }
 
     public function messages(): array

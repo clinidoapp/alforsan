@@ -146,6 +146,7 @@ class RolesController extends Controller
     public function editeRole(UpdateRoleRequest $request){
 
         $data = $request->validated();
+        $data = $data['permissions'];
         DB::transaction(function () use ( $data ) {
 
             $existing = DB::table('role_permissions')
