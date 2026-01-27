@@ -143,12 +143,12 @@ document.addEventListener('click', function (e) {
                 <div class="col-md-6">
                     <label class="form-label">Question (EN)</label>
                     <input type="text" name="faqs[${faqIndex}][question_en]"
-                        class="form-control form-control-lg border-0">
+                        class="form-control form-control-lg border-0" placeholder="Enter question in english">
                 </div>
                 <div class="col-md-6">
-                    <label class="form-label">Question (AR)</label>
+                    <label class="form-label float-end">السوال باللغة العربية</label>
                     <input type="text" name="faqs[${faqIndex}][question_ar]"
-                        class="form-control form-control-lg border-0">
+                        class="form-control text-end form-control-lg border-0" placeholder="ادخل السؤال باللغة العربية">
                 </div>
             </div>
 
@@ -156,12 +156,12 @@ document.addEventListener('click', function (e) {
                 <div class="col-md-6">
                     <label class="form-label">Answer (EN)</label>
                     <textarea name="faqs[${faqIndex}][answer_en]"
-                        class="form-control form-control-lg border-0"></textarea>
+                        class="form-control form-control-lg border-0" placeholder="Enter answer in english"></textarea>
                 </div>
                 <div class="col-md-6">
-                    <label class="form-label">Answer (AR)</label>
+                    <label class="form-label float-end">الاجابة باللغة العربية</label>
                     <textarea name="faqs[${faqIndex}][answer_ar]"
-                        class="form-control form-control-lg border-0"></textarea>
+                        class="form-control form-control-lg border-0 text-end" placeholder="ادخل الاجابة باللغة العربية"></textarea>
                 </div>
             </div>
 

@@ -30,8 +30,8 @@
                </div>
                <div class="col-md-6">
                   <div class="mb-3">
-                     <label for="name_ar" class="form-label">Name(AR)</label>
-                     <input type="text" class="form-control" id="name_ar" name="name_ar" placeholder="Enter doctor name" value="{{ $doctor->name_ar}}">
+                     <label for="name_ar" class="form-label float-end">اسم الطبيب</label>
+                     <input type="text" class="form-control text-end" id="name_ar" name="name_ar" placeholder="Enter doctor name" value="{{ $doctor->name_ar}}">
                      @error('name_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -101,8 +101,8 @@
                </div>
                <div class="col-md-6">
                   <div class="mb-3">
-                     <label for="speciality_ar" class="form-label"> Speciality (AR)</label>
-                     <input type="text" class="form-control" id="speciality_ar" name="speciality_ar" placeholder="Enter doctor main speciality (AR)" value="{{ $doctor->speciality_ar}}">
+                     <label for="speciality_ar" class="form-label float-end"> التخصص باللغة العربية</label>
+                     <input type="text" class="form-control text-end" id="speciality_ar" name="speciality_ar" placeholder="ادخل تخصص الطبيب باللغة العربية" value="{{ $doctor->speciality_ar}}">
                      @error('speciality_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -121,8 +121,8 @@
                </div>
                <div class="col-md-6">
                   <div class="mb-3">
-                     <label for="main_speciality_ar" class="form-label">Main Speciality (AR)</label>
-                     <input type="text" class="form-control" id="main_speciality_ar" name="main_speciality_ar" placeholder="Enter doctor main speciality (AR)"value="{{ $doctor->main_speciality_ar}}">
+                     <label for="main_speciality_ar" class="form-label float-end">التخصص الرئيسى للطبيب</label>
+                     <input type="text" class="form-control text-end" id="main_speciality_ar" name="main_speciality_ar" placeholder="ادخل التخصص الرئيسى للطبيب"value="{{ $doctor->main_speciality_ar}}">
                      @error('main_speciality_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -141,8 +141,8 @@
                </div>
                <div class="col-md-6">
                   <div class="mb-3">
-                     <label for="bio_ar" class="form-label">Bio (AR)</label>
-                     <textarea type="text" class="form-control" id="bio_ar" name="bio_ar" placeholder="Enter doctor name">{{ $doctor->bio_ar}}</textarea>
+                     <label for="bio_ar" class="form-label float-end">نبذه عن الطبيب</label>
+                     <textarea type="text" class="form-control text-end" id="bio_ar" name="bio_ar" placeholder="ادخل نبذه مختصره عن الطبيب">{{ $doctor->bio_ar}}</textarea>
                      @error('bio_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -173,7 +173,7 @@
                </div>
             </div>
             <div class="row">
-               <b>Academic Qualification (AR)</b>
+               <b>المؤهلات العلميه للطبيب باللغة العربية</b>
                <div class="col-12" id="doctor_qualification_ar">
                   <input type="hidden" name="qualifications_ar[]">
                   @error('qualifications_ar')
@@ -203,7 +203,7 @@
                </div>
             </div>
             <div class="row">
-               <b>Practical Experience (AR)</b>
+               <b>الخبرة العملية</b>
                <div class="col-12" id="doctor_experiences_ar">
                   <input type="hidden" name="experiences_ar[]">
                   @error('experiences_ar')
@@ -229,6 +229,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
 <script>
+    const edit=true;
     const qualificationsEn = @json($doctor->qualifications_en ?? []);
 const qualificationsAr = @json($doctor->qualifications_ar ?? []);
 const experiencesEn    = @json($doctor->experiences_en ?? []);
