@@ -28,8 +28,11 @@
     <div class="flex-grow-1">
         @include('dashboard.partials.header')
 
-        <main class="p-4">
-            @yield('content')
+        <main class="p-4 content-scroll">
+            <div class="row">
+
+                @yield('content')
+            </div>
         </main>
 
         @include('dashboard.partials.footer')
