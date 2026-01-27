@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<style>
+    @media (max-width: 768px) {
+        img{
+            width: 70%;
+        }
+    }
+</style>
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 </head>
 <body class="min-vh-100 bg-white" style="align-content: center; justify-items: anchor-center;">
     <img src="{{ asset('images/logo@3x.webp') }}" alt="Logo" class="d-block py-2">
-    <div class="col-md-6">
+    <div class="col-md-6 col-sm-8 p-3">
     <h1 class="mb-4 fw-bold">Login</h1>
 
 <div class="card shadow border-0 mt-4 p-4 rounded-4">
