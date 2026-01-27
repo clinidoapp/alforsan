@@ -83,8 +83,8 @@
                         <input type="text" class="form-control-lg w-100 d-block border-0" id="title_en" name="symptoms[0][title_en]" placeholder="Enter symptoms title(En)">
                      </div>
                      <div class="col-md-6">
-                        <label for="title_ar" class="form-label float-end">وصف العرض</label>
-                        <input type="text" class="form-control-lg text-end w-100 d-block border-0" id="title_ar" name="symptoms[0][title_ar]" placeholder="ادخل وصف العرض باللغة العربية">
+                        <label for="title_ar" class="form-label float-end">اسم العرض</label>
+                        <input type="text" class="form-control-lg text-end w-100 d-block border-0" id="title_ar" name="symptoms[0][title_ar]" placeholder="ادخل اسم العرض باللغة العربية">
                      </div>
                   </div>
                   <div class="row mb-3">
@@ -129,7 +129,7 @@
                      </div>
                      <div class="col-md-6">
                         <label for="suitable_for_en" class="form-label">Who is it suitable for?(En)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="suitable_for_en" name="techniques[0][suitable_for_en]" placeholder="Enter techniques description en"></textarea>
+                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="suitable_for_en" name="techniques[0][suitable_for_en]" placeholder="Enter who is suitable for en"></textarea>
                      </div>
                      <div class="col-md-6">
                         <label for="suitable_for_ar" class="form-label float-end">لمن تناسب هذه التقنية</label>

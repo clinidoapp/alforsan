@@ -30,8 +30,8 @@
                </div>
                <div class="col-md-6">
                   <div class="mb-3">
-                     <label for="name_ar" class="form-label">Name(AR)</label>
-                     <input type="text" class="form-control" id="name_ar" name="name_ar" placeholder="Enter service name" value="{{ $result->name_ar }}">
+                     <label for="name_ar" class="form-label float-end">اسم الخدمة</label>
+                     <input type="text" class="form-control text-end" id="name_ar" name="name_ar" placeholder="ادخل اسم الخدمة باللغة العربية"value="{{ $result->name_ar }}">
                      @error('name_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -50,8 +50,8 @@
                </div>
                <div class="col-md-6">
                   <div class="mb-3">
-                     <label for="description_ar" class="form-label">Description (AR)</label>
-                     <textarea type="text" class="form-control" id="description_ar" name="description_ar" placeholder="Enter doctor name">{{ $result->description_ar }}</textarea>
+                     <label for="description_ar" class="form-label float-end">وصف الخدمة باللغة العربية</label>
+                     <textarea type="text" class="form-control text-end" id="description_ar" name="description_ar" placeholder="ادخل وصف للخدمة باللغة العربية">{{ $result->description_ar }}</textarea>
                      @error('description_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -84,8 +84,8 @@
                         <input type="text" class="form-control-lg w-100 d-block border-0" id="title_en" name="symptoms[0][title_en]" value="{{ $symptom->title_en }}"  placeholder="Enter symptoms title(En)">
                      </div>
                      <div class="col-md-6">
-                        <label for="title_ar" class="form-label">symptoms title(Ar)</label>
-                        <input type="text" class="form-control-lg w-100 d-block border-0" id="title_ar" name="symptoms[0][title_ar]" value="{{ $symptom->title_ar }}"  placeholder="Enter symptoms title(Ar)">
+                        <label for="title_ar" class="form-label float-end">اسم العرض</label>
+                        <input type="text" class="form-control-lg text-end w-100 d-block border-0" id="title_ar" name="symptoms[0][title_ar]" value="{{ $symptom->title_ar }}"  placeholder="ادخل اسم العرض باللغة العربية">
                      </div>
                   </div>
                   <div class="row mb-3">
@@ -94,8 +94,8 @@
                         <textarea type="text" class="form-control-lg w-100 d-block border-0" id="description_en" name="symptoms[0][description_en]"  placeholder="Enter symptoms description en">{{ $symptom->description_en }}</textarea>
                      </div>
                      <div class="col-md-6">
-                        <label for="description_ar" class="form-label">Description(Ar)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="description_ar" name="symptoms[0][description_ar]"   placeholder="Enter symptoms description en">{{ $symptom->description_ar }}</textarea>
+                        <label for="description_ar" class="form-label float-end">وصف العرض</label>
+                        <textarea type="text" class="form-control-lg w-100 text-end d-block border-0" id="description_ar" name="symptoms[0][description_ar]"   placeholder="ادخل وصف العرض باللغة العربية">{{ $symptom->description_ar }}</textarea>
                      </div>
                       @if($loop->last)
         <div class="text-center mt-4 add-btn-wrapper">
@@ -119,8 +119,8 @@
                         <input type="text" class="form-control-lg w-100 d-block border-0" id="title_en" name="techniques[0][title_en]" placeholder="Enter techniques title(En)" value="{{ $technique->title_en }}">
                      </div>
                      <div class="col-md-6">
-                        <label for="title_ar" class="form-label">techniques title(Ar)</label>
-                        <input type="text" class="form-control-lg w-100 d-block border-0" id="title_ar" name="techniques[0][title_ar]" placeholder="Enter techniques title(Ar)"value="{{ $technique->title_ar }}">
+                        <label for="title_ar" class="form-label float-end">اسم التقنية</label>
+                        <input type="text" class="form-control-lg w-100 d-block border-0 text-end" id="title_ar" name="techniques[0][title_ar]" placeholder="ادخل اسم التقنية باللغة العربية" value="{{ $technique->title_ar }}">
                      </div>
                   </div>
                   <div class="row mb-3">
@@ -129,16 +129,16 @@
                         <textarea type="text" class="form-control-lg w-100 d-block border-0" id="description_en" name="techniques[0][description_en]" placeholder="Enter techniques description en">{{ $technique->description_en }}</textarea>
                      </div>
                      <div class="col-md-6">
-                        <label for="description_ar" class="form-label">Description(Ar)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="description_ar" name="techniques[0][description_ar]" placeholder="Enter techniques description en">{{ $technique->description_ar }}</textarea>
+                        <label for="description_ar" class="form-label float-end">وصف التقنية</label>
+                        <textarea type="text" class="form-control-lg text-end w-100 d-block border-0" id="description_ar" name="techniques[0][description_ar]" placeholder="ادخل وصف التقنية باللغة العربية">{{ $technique->description_ar }}</textarea>
                      </div>
                      <div class="col-md-6">
-                        <label for="suitable_for_en" class="form-label">Who is it suitable for?(En)(En)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="suitable_for_en" name="techniques[0][suitable_for_en]" placeholder="Enter techniques description en">{{ $technique->suitable_for_en }}</textarea>
+                        <label for="suitable_for_en" class="form-label">Who is it suitable for?(En)</label>
+                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="suitable_for_en" name="techniques[0][suitable_for_en]" placeholder="Enter who is suitable for en">{{ $technique->suitable_for_en }}</textarea>
                      </div>
                      <div class="col-md-6">
-                        <label for="suitable_for_ar" class="form-label">Who is it suitable for?(En)(Ar)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="suitable_for_ar" name="techniques[0][suitable_for_ar]" placeholder="Enter techniques description en">{{ $technique->suitable_for_ar }}</textarea>
+                        <label for="suitable_for_ar" class="form-label float-end">لمن تناسب هذه التقنية</label>
+                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="suitable_for_ar" name="techniques[0][suitable_for_ar]"  placeholder="ادخل وصف الاشخاص الذين تناسبهم هذه التقنية">{{ $technique->suitable_for_ar }}</textarea>
                      </div>
                   </div>
                    @if($loop->last)
@@ -157,11 +157,11 @@
             <div class="row mb-3">
                <div class="col-md-6">
                   <label for="brief_en" class="form-label">why Alforsan(En)</label>
-                  <textarea type="text" class="form-control-lg w-100 d-block" id="brief_en" name="brief_en" placeholder="Enter techniques description en">{{ $result->brief_en }}</textarea>
+                  <textarea type="text" class="form-control-lg w-100 d-block" id="brief_en" name="brief_en" placeholder="Enter why Alforsan center en">{{ $result->brief_en }}</textarea>
                </div>
                <div class="col-md-6">
-                  <label for="brief_ar" class="form-label">Why Alforsan(Ar)</label>
-                  <textarea type="text" class="form-control-lg w-100 d-block" id="brief_ar" name="brief_ar" placeholder="Enter techniques description en">{{ $result->brief_ar }}</textarea>
+                  <label for="brief_ar" class="form-label float-end">لماذا تختار مركز الفرسان</label>
+                  <textarea type="text" class="form-control-lg w-100 d-block text-end" id="brief_ar" name="brief_ar" placeholder="اكتب اسباب لماذا يختار المريض مركز الفرسان لهذه الخدمة؟">{{ $result->brief_ar }}</textarea>
                </div>
             </div>
             <div id="faq-wrapper">
@@ -172,21 +172,21 @@
                   <div class="row mb-3">
                      <div class="col-md-6">
                         <label for="question_en" class="form-label">FAQ question (En)</label>
-                        <input type="text" class="form-control-lg w-100 d-block border-0" id="question_en" name="faqs[0][question_en]" placeholder="Enter faq (En)" value="{{ $question->question_en }}">
+                        <input type="text" class="form-control-lg w-100 d-block border-0" id="question_en" name="faqs[0][question_en]" placeholder="Enter question (En)" value="{{ $question->question_en }}">
                      </div>
                      <div class="col-md-6">
-                        <label for="question_ar" class="form-label">FAQ question (Ar)</label>
-                        <input type="text" class="form-control-lg w-100 d-block border-0" id="question_ar" name="faqs[0][question_ar]" placeholder="Enter faq (Ar)" value="{{ $question->question_ar }}">
+                        <label for="question_ar" class="form-label float-end">السؤال باللغة العربية</label>
+                        <input type="text" class="text-end form-control-lg w-100 d-block border-0" id="question_ar" name="faqs[0][question_ar]" placeholder="ادخل السؤال باللغة العربية" value="{{ $question->question_ar }}">
                      </div>
                   </div>
                   <div class="row mb-3">
                      <div class="col-md-6">
                         <label for="answer_en" class="form-label">Answer(En)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="answer_en" name="faqs[0][answer_en]" placeholder="Enter faq answer en">{{ $question->answer_en }}</textarea>
+                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="answer_en" name="faqs[0][answer_en]" placeholder="Enter question answer en">{{ $question->answer_en }}</textarea>
                      </div>
                      <div class="col-md-6">
-                        <label for="answer_ar" class="form-label">Answer(Ar)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="answer_ar" name="faqs[0][answer_ar]" placeholder="Enter faq answer en">{{ $question->answer_ar }}</textarea>
+                        <label for="answer_ar" class="form-label float-end">الاجابة باللغة العربية</label>
+                        <textarea type="text" class="form-control-lg w-100 d-block border-0 text-end" id="answer_ar" name="faqs[0][answer_ar]" placeholder="ادخل الاجابة باللغة العربية">{{ $question->answer_ar }}</textarea>
                      </div>
                       @if($loop->last)
                     <div class="text-center mt-4 add-btn-wrapper">
@@ -201,7 +201,7 @@
             </div>
             <div class="row justify-centent-center">
                <div class="col-5">
-                  <button type="submit" class="w-100 btn btn-primary-custom text-white"> <i class="fa fa-plus text-white"></i> Add</button>
+                  <button type="submit" class="w-100 btn btn-primary-custom text-white">  Update</button>
                </div>
             </div>
          </form>

@@ -18,9 +18,9 @@ document.addEventListener('click', function (e) {
                 </div>
 
                 <div class="col-md-6">
-                    <label class="form-label">Video title (AR)</label>
+                    <label class="form-label float-end">عنوان الفيديو باللغة العربية</label>
                     <input type="text" name="videos[${videoIndex}][title_ar]"
-                           class="form-control form-control-lg border-0">
+                           class="form-control form-control-lg border-0 text-end" placeholder="اكتب عنوان الفيديو باللغة العربية">
                 </div>
             </div>
 

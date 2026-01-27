@@ -32,12 +32,12 @@ document.addEventListener('click', function (e) {
                 <div class="col-md-6">
                     <label class="form-label">Symptoms title (EN)</label>
                     <input type="text" name="symptoms[${symptomIndex}][title_en]"
-                        class="form-control form-control-lg border-0">
+                        class="form-control form-control-lg border-0" placeholder="Enter symptoms title(En)">
                 </div>
                 <div class="col-md-6">
-                    <label class="form-label">Symptoms title (AR)</label>
+                    <label class="form-label float-end">اسم العرض</label>
                     <input type="text" name="symptoms[${symptomIndex}][title_ar]"
-                        class="form-control form-control-lg border-0">
+                        class="form-control text-end form-control-lg border-0" placeholder="ادخل اسم العرض باللغة العربية">
                 </div>
             </div>
 
@@ -45,12 +45,12 @@ document.addEventListener('click', function (e) {
                 <div class="col-md-6">
                     <label class="form-label">Description (EN)</label>
                     <textarea name="symptoms[${symptomIndex}][description_en]"
-                        class="form-control form-control-lg border-0"></textarea>
+                        class="form-control form-control-lg border-0" placeholder="Enter symptoms description en"></textarea>
                 </div>
                 <div class="col-md-6">
-                    <label class="form-label">Description (AR)</label>
+                    <label class="form-label float-end">وصف العرض</label>
                     <textarea name="symptoms[${symptomIndex}][description_ar]"
-                        class="form-control form-control-lg border-0"></textarea>
+                        class="form-control text-end form-control-lg border-0" placeholder="ادخل وصف العرض باللغة العربية"></textarea>
                 </div>
             </div>
 
@@ -81,12 +81,12 @@ document.addEventListener('click', function (e) {
                 <div class="col-md-6">
                     <label class="form-label">Techniques title (EN)</label>
                     <input type="text" name="techniques[${techniqueIndex}][title_en]"
-                        class="form-control form-control-lg border-0">
+                        class="form-control form-control-lg border-0" placeholder="Enter techniques title(En)">
                 </div>
                 <div class="col-md-6">
-                    <label class="form-label">Techniques title (AR)</label>
+                    <label class="form-label float-end">اسم التقنية</label>
                     <input type="text" name="techniques[${techniqueIndex}][title_ar]"
-                        class="form-control form-control-lg border-0">
+                        class="form-control text-end form-control-lg border-0"  placeholder="ادخل اسم التقنية باللغة العربية">
                 </div>
             </div>
 
@@ -94,12 +94,12 @@ document.addEventListener('click', function (e) {
                 <div class="col-md-6">
                     <label class="form-label">Description (EN)</label>
                     <textarea name="techniques[${techniqueIndex}][description_en]"
-                        class="form-control form-control-lg border-0"></textarea>
+                        class="form-control form-control-lg border-0" placeholder="Enter techniques description en"></textarea>
                 </div>
                 <div class="col-md-6">
-                    <label class="form-label">Description (AR)</label>
+                    <label class="form-label float-end">وصف التقنية</label>
                     <textarea name="techniques[${techniqueIndex}][description_ar]"
-                        class="form-control form-control-lg border-0"></textarea>
+                        class="form-control text-end form-control-lg border-0" placeholder="ادخل وصف التقنية باللغة العربية"></textarea>
                 </div>
             </div>
 
@@ -107,12 +107,12 @@ document.addEventListener('click', function (e) {
                 <div class="col-md-6">
                     <label class="form-label">Suitable for (EN)</label>
                     <textarea name="techniques[${techniqueIndex}][suitable_for_en]"
-                        class="form-control form-control-lg border-0"></textarea>
+                        class="form-control form-control-lg border-0" placeholder="Enter who is suitable for en"></textarea>
                 </div>
                 <div class="col-md-6">
-                    <label class="form-label">Suitable for (AR)</label>
+                    <label class="form-label float-end">لمن تناسب هذه التقنية</label>
                     <textarea name="techniques[${techniqueIndex}][suitable_for_ar]"
-                        class="form-control form-control-lg border-0"></textarea>
+                        class="form-control form-control-lg border-0 text-end" placeholder="ادخل وصف الاشخاص الذين تناسبهم هذه التقنية"></textarea>
                 </div>
             </div>
 

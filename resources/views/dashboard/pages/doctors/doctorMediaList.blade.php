@@ -73,8 +73,8 @@
                            <input type="text" class="form-control w-100 d-block border-0" id="edit_video_title_en" name="title_en" placeholder="Enter Video title(En)">
                         </div>
                         <div class="col-md-6">
-                           <label for="title_ar" class="form-label">Video title(Ar)</label>
-                           <input type="text" class="form-control w-100 d-block border-0" id="edit_video_title_ar" name="title_ar" placeholder="Enter Video title(Ar)">
+                           <label for="title_ar" class="form-label">عنوان الفيديو باللغة العربية</label>
+                           <input type="text" class="form-control w-100 d-block border-0" id="edit_video_title_ar" name="title_ar" placeholder="ادخل عنوان الفيديو باللغة العربية">
                         </div>
                      </div>
                      <div class="row p-3">

@@ -10,7 +10,7 @@ class ArtisanController extends Controller
 {
 
     public function index(){
-        return view('dashboard.**********');
+        return view('dashboard.pages.developer.tools');
     }
     public function clearCache()
     {
