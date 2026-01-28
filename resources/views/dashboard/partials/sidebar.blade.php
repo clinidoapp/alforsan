@@ -129,7 +129,7 @@
          </a>
       </li>
       @endif
-    @if(\App\Helpers\Permissions::hasPermission('read_settings') )
+    @if(\App\Helpers\Permissions::hasPermission('view_page') )
 
 
       {{-- developer tools --}}
