@@ -22,8 +22,8 @@
                         <input type="text"id="service_name"name="service_name"class="form-control mb-3"placeholder="Service Name"value="{{ $search['service_name'] ?? '' }}">
 
                      </div>
-                     <div class="col-md-3 d-flex gap-3 justify-content-end">
-                        <button class="w-50 btn btn-primary-custom">Search</button>
+                     <div class="col-md-3 d-flex gap-3 justify-content-end mb-3">
+                        <button class="w-50 btn btn-primary-custom" >Search</button>
                         <a href="{{ route('service-list') }}" class="w-50 btn btn-outline-primary">Reset</a>
                      </div>
                   </div>
@@ -50,7 +50,7 @@
                      <td>{{$service->id}}</td>
                      <td>{{$service->name_en}}</td>
                      <td>{{$service->name_ar}}</td>
-                     <td><img src="{{ asset('images/services_icons'.$service->icon) }}"></td>
+                     <td><img src="{{ asset('images/services_icons/'.$service->icon) }}"></td>
                      <td class="py-2 text-center"><span class="w-100 rounded-pill badge bg-{{$service->status==1?'success':'danger'}}">{{$service->status==1?'Active':'InActive'}}</span></td>
                      <td>
                         <a href="{{ route('view-service', $service->id) }}" class="mb-1 btn btn-primary-custom">View</a>
