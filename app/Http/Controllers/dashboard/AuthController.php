@@ -45,6 +45,7 @@ class AuthController extends Controller
             session([
                 'logged_user' => $user,
                 'logged_user_id' => $user->id,
+                'logged_user_name' => $user->name,
 
             ]);
 
@@ -168,5 +169,5 @@ class AuthController extends Controller
         return redirect()->route('admin.admins');
 
     }
-    
+
 }

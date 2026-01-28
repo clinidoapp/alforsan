@@ -15,10 +15,10 @@
            aria-expanded="false">
 
             <span class="me-2 text-muted small">
-                {{ auth()->user()->name ?? 'Admin' }}
+                {{ session('logged_user_name') ?? 'Admin' }}
             </span>
 
-            <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name ?? 'Admin') }}"
+            <img src="https://ui-avatars.com/api/?name={{ session('logged_user_name') ?? 'Admin' }}"
                  class="rounded-circle"
                  width="35"
                  height="35">
@@ -27,7 +27,7 @@
         <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
             <li class="dropdown-header text-muted small">
                 Signed in as <br>
-                <strong>{{ auth()->user()->name ?? 'Admin' }}</strong>
+                <strong>{{ session('logged_user_name') ?? 'Admin' }}</strong>
             </li>
 
             <li><hr class="dropdown-divider"></li>
