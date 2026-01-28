@@ -53,9 +53,9 @@
                             <td class="py-2 text-center">{{$admin->role_name }}</td>
                             <td class="py-2 text-center"><span class="w-100 rounded-pill badge bg-{{$admin->status==1?'success':'danger'}}">{{$admin->status==1?'Active':'InActive'}}</span></td>
                             <td class="py-2 text-center admin-actions">
-                                <a href="{{ route('Edit-admin', $admin->id) }}" class="btn btn-primary-custom">Edit</a>
+                                <a href="{{ route('Edit-admin', $admin->id) }}" class="btn btn-primary-custom mb-1">Edit</a>
+                                <a href="{{ route('admin.delete', $admin->id) }}"class="btn btn-danger mb-1" onclick="return confirm('Are you sure you want to delete this admin?');">Delete</a>
                                 <a href="{{ route('admin.toggle', $admin->id) }}" class="toggle btn btn-outline-{{$admin->status==1?'danger':'success'}}"onclick="return confirm('Are you sure you want to change this admin staus ?');">{{$admin->status==1?'Deactivate':'Activate'}}</a>
-                                <a href="{{ route('admin.delete', $admin->id) }}"class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this admin?');">Delete</a>
                             </td>
                         </tr>
                         @endforeach

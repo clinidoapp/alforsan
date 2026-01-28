@@ -56,7 +56,7 @@
                            <td class="text-start border-0">{{ $permission['name'] }}</td>
 
                            @foreach ($roles as $role)
-                          <td class="border-0">
+                          <td class="border-0" style="justify-items: center;">
                             <label class="fa-checkbox">
                                 <input
                                     type="checkbox"

@@ -13,11 +13,11 @@
          <div class="card-body">
             <form action="" class="inline-form">
                <div class="row">
-                  <div class="col-md-9 d-flex gap-3">
-                     <input type="text" id="request_id" name="request_id" class="form-control" placeholder="Booking Id" value="{{ $search['request_id'] ?? '' }}">
-                     <input type="text" id="patient_name"name="patient_name"class="form-control"placeholder="Patient Name"value="{{ $search['patient_name'] ?? '' }}">
-                     <input type="text" id="patient_phone"name="patient_phone"class="form-control"placeholder="Patient Phone"value="{{ $search['patient_phone'] ?? '' }}">
-                     <select class="form-select" name="service_id">
+                  <div class="col-md-9 d-block d-md-flex gap-3">
+                     <input type="text" id="request_id" name="request_id" class="form-control mb-3" placeholder="Booking Id" value="{{ $search['request_id'] ?? '' }}">
+                     <input type="text" id="patient_name"name="patient_name"class="form-control mb-3"placeholder="Patient Name"value="{{ $search['patient_name'] ?? '' }}">
+                     <input type="text" id="patient_phone"name="patient_phone"class="form-control mb-3"placeholder="Patient Phone"value="{{ $search['patient_phone'] ?? '' }}">
+                     <select class="form-select mb-3" name="service_id">
                            <option selected disabled>{{__('words.service label')}}</option>
                         @foreach ($bookingServices as $service )
                         <option value="{{$service->id}}" {{$service->id == $search['service_id']?'selected':''}}>{{ $service->service_name }}</option>
@@ -25,7 +25,7 @@
                         @endforeach
                         </select>
                     </div>
-                  <div class="col-md-3 d-flex gap-3 justify-content-end">
+                  <div class="col-md-3 d-flex gap-3 justify-content-end mb-3">
                      <button class="w-50 btn btn-primary-custom">Search</button>
                      <a href="{{ route('booking-requests') }}" class="w-50 btn btn-outline-primary">Reset</a>
                   </div>
@@ -35,7 +35,7 @@
       </div>
       </div>
       <div class="row">
-         <div class="w-100 card p-0">
+         <div class="w-100 card p-0 table-responsive">
             <table class="rounded-2 table table-striped ">
                <thead class="table-primary py-2 text-white rounded-2" style="background-color: #32519b;">
                   <tr>

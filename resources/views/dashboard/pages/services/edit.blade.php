@@ -201,7 +201,7 @@
             </div>
             <div class="row justify-centent-center">
                <div class="col-5">
-                  <button type="submit" class="w-100 btn btn-primary-custom text-white">  Update</button>
+                  <button type="submit" class="w-100 btn btn-primary-custom text-white"><i class="fa fa-save text-white"></i>  Save</button>
                </div>
             </div>
          </form>

@@ -99,7 +99,7 @@
          </a>
       </li> --}}
       {{-- Roles --}}
-      @if(\App\Helpers\Permissions::hasPermission('read_permission') || \App\Helpers\Permissions::hasPermission('read_role'))
+      @if( \App\Helpers\Permissions::hasPermission('read_role'))
 
       <li class="nav-item rounded-2 m-2">
          <a href="{{ route('roles-list') }}" class="nav-link {{ Request::is(patterns: 'admin/role*') ? 'active' : '' }}">
@@ -143,18 +143,44 @@
    </ul>
 </aside>
 <script>
-document.addEventListener('click', function(event) {
-    // List of all collapse menus in sidebar
-    const collapses = document.querySelectorAll('#sidebar .collapse.show');
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    let overlay = document.querySelector('.sidebar-overlay');
 
-    collapses.forEach(function(collapseEl) {
-        // Check if the clicked element is NOT inside this collapse or its toggle button
-        const toggleBtn = document.querySelector(`[data-bs-target="#${collapseEl.id}"]`);
-        if (!collapseEl.contains(event.target) && !toggleBtn.contains(event.target)) {
-            // Hide collapse using Bootstrap API
-            const bsCollapse = bootstrap.Collapse.getInstance(collapseEl);
-            if(bsCollapse) bsCollapse.hide();
-        }
-    });
+    if (!sidebar) return;
+
+    sidebar.classList.toggle('show');
+
+    // Create overlay if not exists
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'sidebar-overlay';
+        document.body.appendChild(overlay);
+
+        overlay.addEventListener('click', closeSidebar);
+    }
+}
+
+function closeSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.querySelector('.sidebar-overlay');
+
+    sidebar?.classList.remove('show');
+    overlay?.remove();
+}
+
+// Close sidebar when clicking outside (mobile only)
+document.addEventListener('click', function (e) {
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = e.target.closest('[onclick="toggleSidebar()"]');
+
+    if (
+        window.innerWidth < 768 &&
+        sidebar?.classList.contains('show') &&
+        !sidebar.contains(e.target) &&
+        !toggleBtn
+    ) {
+        closeSidebar();
+    }
 });
 </script>

@@ -9,11 +9,11 @@
             <h3>Booking Services</h3>
             {{-- <a href="{{ route('createOrUpdateBookingService') }}" class="btn btn-primary-custom text-white px-5"> <i class="fa-solid fa-plus text-white"></i> Add </a> --}}
             <a href="javascript:void(0)"
-   class="btn btn-primary-custom text-white px-5 add-service"
-   data-bs-toggle="modal"
-   data-bs-target="#editServiceModal">
-   <i class="fa-solid fa-plus text-white"></i> Add
-</a>
+                class="btn btn-primary-custom text-white px-5 add-service"
+                data-bs-toggle="modal"
+                data-bs-target="#editServiceModal">
+                <i class="fa-solid fa-plus text-white"></i> Add
+                </a>
 
         </div>
       <div class="card p-0 mb-3">
@@ -23,7 +23,7 @@
          <div class="card-body">
             <form action="" class="inline-form">
                <div class="row">
-                  <div class="col-md-9 d-flex gap-3">
+                  <div class="col-md-9 d-flex gap-3 mb-3">
                      <input type="text" id="service_id" name="service_id" class="form-control" placeholder="Service Id" value="{{ $search['service_id'] ?? '' }}">
                      <input type="text" id="service_name"name="service_name"class="form-control"placeholder="Service Name"value="{{ $search['service_name'] ?? '' }}">
 
@@ -38,7 +38,7 @@
       </div>
       </div>
       <div class="row">
-         <div class="w-100 card p-0">
+         <div class="w-100 card p-0 table-responsive">
             <table class="rounded-2 table table-striped ">
                <thead class="table-primary py-2 text-white rounded-2" style="background-color: #32519b;">
                   <tr>
@@ -57,13 +57,13 @@
                     <td>{{ $service->name_ar }}</td>
                     <td class="py-2 text-center"><span class="w-100 rounded-pill badge bg-{{$service->status==1?'success':'danger'}}">{{$service->status==1?'Active':'InActive'}}</span></td>
                     <td class="py-2 text-center admin-actions">
-                            <a class="btn btn-primary-custom edit-service"
+                            <a class="btn btn-primary-custom edit-service mb-1"
                                 data-bs-toggle="modal"
                                 data-bs-target="#editServiceModal"
                                 data-id="{{$service->id}}"
                                 data-name_en="{{$service->name_en}}"
                                 data-name_ar="{{$service->name_ar}}">Edit</a>
-                            <a href="{{ route('toggleBookingServicesStatus', $service->id) }}" class="toggle btn btn-{{$service->status==1?'danger':'success'}}"onclick="return confirm('Are you sure you want to change this service staus ?');">{{$service->status==1?'Deactivate':'Activate'}}</a>
+                            <a href="{{ route('toggleBookingServicesStatus', $service->id) }}" class="mb-1 toggle btn btn-{{$service->status==1?'danger':'success'}}"onclick="return confirm('Are you sure you want to change this service staus ?');">{{$service->status==1?'Deactivate':'Activate'}}</a>
                         </td>
                 </tr>
 

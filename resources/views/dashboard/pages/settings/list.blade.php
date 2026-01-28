@@ -7,7 +7,7 @@
    <div class="row ">
       <h3 class="mb-2">Settings</h3>
       <div class="row">
-         <div class="w-100 card p-0">
+         <div class="w-100 card p-0 table-responsive">
             <table class="rounded-2 table table-striped ">
                <thead class="table-primary py-2 text-white rounded-2" style="background-color: #32519b;">
                   <tr>

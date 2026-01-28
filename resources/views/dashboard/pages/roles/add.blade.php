@@ -27,9 +27,9 @@
                          Select all
                         </label>
                   </div>
-                  <div class="card-body d-flex justify-content-between bg-light-gray">
+                  <div class="card-body justify-content-between bg-light-gray d-block d-md-flex">
                      @foreach($category['permissions'] as $permission)
-                     <div class="form-check px-0">
+                     <div class="form-check px-0 ">
                          <label class="fa-checkbox" for="perm_{{ $permission['id'] }}">
                         <input
                            class="form-check-input"
