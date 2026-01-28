@@ -137,7 +137,7 @@ class AdminSeeder extends Seeder
 
             ['name' => 'Role Management', 'slug' => 'role_management'],
 
-            ['name' => 'Permission Management', 'slug' => 'permission_management'],
+            //['name' => 'Permission Management', 'slug' => 'permission_management'],
         ];
         foreach ($categories as $category) {
 
@@ -206,11 +206,12 @@ class AdminSeeder extends Seeder
 
 
             /*** Permission Management ***/
+            /*
             ['name' => 'Create Permission', 'slug' => 'create_permission', 'category_slug' => 'permission_management'],
             ['name' => 'Read Permission',   'slug' => 'read_permission',   'category_slug' => 'permission_management'],
             ['name' => 'Update Permission', 'slug' => 'update_permission', 'category_slug' => 'permission_management'],
             ['name' => 'Delete Permission', 'slug' => 'delete_permission', 'category_slug' => 'permission_management'],
-
+            */
         ];
 
         $permissionIds = [];
