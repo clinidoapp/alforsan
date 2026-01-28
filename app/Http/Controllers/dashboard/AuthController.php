@@ -66,6 +66,7 @@ class AuthController extends Controller
     public function listAdmins(Request $request){
 
         $query = DB::table('users')
+            ->whereNot('users.id', 1)
             ->where('is_deleted', 0)->whereNull('deleted_at')
             ->join('user_role', 'users.id', '=', 'user_role.user_id')
             ->join('roles', 'user_role.role_id', '=', 'roles.id')
@@ -167,7 +168,5 @@ class AuthController extends Controller
         return redirect()->route('admin.admins');
 
     }
-
-
-
+    
 }

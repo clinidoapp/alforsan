@@ -15,7 +15,8 @@ class RolesController extends Controller
     public function listRoles(Request $request)
     {
 
-        $roles = DB::table('roles')->whereNot('slug' , 'developer')
+        $roles = DB::table('roles')
+            ->whereNot('slug' , 'developer')
             ->select('id', 'name' , 'slug')
             ->get();
 
