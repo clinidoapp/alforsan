@@ -220,7 +220,7 @@
             </div>
             <div class="row justify-centent-center">
                <div class="col-5">
-                  <button type="submit" class="w-100 btn btn-primary-custom text-white"> <i class="fa fa-plus text-white"></i> Add</button>
+                  <button type="submit" class="w-100 btn btn-primary-custom text-white"> <i class="fa fa-plus text-white"></i> Add a new doctor</button>
                </div>
             </div>
          </form>

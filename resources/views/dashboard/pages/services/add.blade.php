@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
-@section('title', 'Dashboard - Doctors')
-@section('page-title', 'Doctors Management')
+@section('title', 'Dashboard - services')
+@section('page-title', 'servic Management')
 @section('content')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
 <section class="listing">
@@ -187,7 +187,7 @@
             </div>
             <div class="row justify-centent-center">
                <div class="col-5">
-                  <button type="submit" class="w-100 btn btn-primary-custom text-white"> <i class="fa fa-plus text-white"></i> Add</button>
+                  <button type="submit" class="w-100 btn btn-primary-custom text-white"> <i class="fa fa-plus text-white"></i> Add a new service</button>
                </div>
             </div>
         </form>

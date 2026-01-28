@@ -18,8 +18,8 @@
                <form action="" class="inline-form">
                   <div class="row">
                      <div class="col-md-9 d-flex gap-3">
-                      <input type="text" id="service_id" name="service_id" class="form-control" placeholder="Service Id" value="{{ $search['service_id'] ?? '' }}">
-                        <input type="text"id="service_name"name="service_name"class="form-control"placeholder="Service Name"value="{{ $search['service_name'] ?? '' }}">
+                      <input type="text" id="service_id" name="service_id" class="form-control mb-3" placeholder="Service Id" value="{{ $search['service_id'] ?? '' }}">
+                        <input type="text"id="service_name"name="service_name"class="form-control mb-3"placeholder="Service Name"value="{{ $search['service_name'] ?? '' }}">
 
                      </div>
                      <div class="col-md-3 d-flex gap-3 justify-content-end">
@@ -32,7 +32,7 @@
          </div>
       </div>
       <div class="row py-5">
-        <div class="w-100 card p-0">
+        <div class="w-100 card p-0 table-responsive">
             <table class="rounded-2 table table-striped ">
                <thead class="table-primary py-2 text-white rounded-2" style="background-color: #32519b;">
                   <tr>
@@ -53,8 +53,8 @@
                      <td><img src="{{ asset('images/services_icons'.$service->icon) }}"></td>
                      <td class="py-2 text-center"><span class="w-100 rounded-pill badge bg-{{$service->status==1?'success':'danger'}}">{{$service->status==1?'Active':'InActive'}}</span></td>
                      <td>
-                        <a href="{{ route('view-service', $service->id) }}" class="btn btn-primary-custom">View</a>
-                        <a href="{{ route('edit-service', $service->id) }}" class="btn btn-outline-primary">Edit</a>
+                        <a href="{{ route('view-service', $service->id) }}" class="mb-1 btn btn-primary-custom">View</a>
+                        <a href="{{ route('edit-service', $service->id) }}" class="mb-1 btn btn-outline-primary">Edit</a>
                         <a href="{{ route('toggleServiceStatus', $service->id) }}" class="toggle btn btn-{{$service->status==1?'danger':'success'}}"onclick="return confirm('Are you sure you want to change this service staus ?');">{{$service->status==1?'Deactivate':'Activate'}}</a>
 
                     </td>

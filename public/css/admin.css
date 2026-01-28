@@ -28,11 +28,24 @@
 body {
     background-color: #f8fcfd;
 }
+/* Main content horizontal scroll */
 .content-scroll {
-    max-width: 100%;
+    width: 100%;
     overflow-x: auto;
-    overflow-y: visible;
+    overflow-y: hidden;
 }
+
+/* Force children to exceed width when needed */
+.content-inner {
+    min-width: 100%;
+}
+
+/* Prevent flex parent from blocking overflow */
+.flex-grow-1 {
+    min-width: 0;
+}
+
+
 .table {
     background-color: var(--table-bg);
 }
@@ -208,7 +221,7 @@ footer {
     font-size: 16px;
 } */
 .admin-actions .toggle {
-    width: 100px;
+    width: 102px;
 }
 .value-input {
     width: 75%;
