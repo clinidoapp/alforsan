@@ -695,6 +695,11 @@ z-index: 1055;
 
     place-items: center;
 }
+.thank-you h2{
+    color: #000;
+    line-height: 3;
+    font-size: 1.9rem;
+}
 .thank-you .card p{
     font-size: 20px;
 }

@@ -1,3 +1,6 @@
+@php
+    $lang_is_ar = app()->getLocale();
+@endphp
 <footer class="text-dark mt-4">
     <div class="container">
         <div class="row">
@@ -5,9 +8,8 @@
             <!-- 1. Logo & About (NO title / always visible) -->
             <div class="col-md-3 mb-3">
                 <img src="{{asset('images/logo@3x.webp')}}" class="mb-2" style="max-width:140px;">
-                <p class="small">
-                    المركز الرائد والموثوق به في مجال طب وجراحة العيون، من خلال تقديم رعاية طبية استثنائية تضاهي المعايير العالمية، مع الحفاظ على القيم الإنسانية في التعامل مع مرضانا
-                </p>
+                <p class="small">{{ $lang_is_ar=='ar'?'المركز الرائد في مجال طب وجراحة العيون، لتقديم رعاية استثنائية على أعلى المعايير الطبية العالمية، ممزوجة بقيمنا الإنسانية الراسخة في التعامل مع مرضانا
+':'A leading center in the field of ophthalmology and surgery, providing exceptional care of the highest international medical standards, combined with our deeply held humanitarian values in dealing with our patients.' }}</p>
             </div>
 
             <!-- 2. Quick Links -->

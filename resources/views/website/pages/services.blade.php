@@ -8,8 +8,8 @@
 <section class="services py-5 mt-5 bg-light-blue">
    <div class="container mt-4">
       <div class="text-center">
-         <h1>{{ __('words.services_title') }}</h1>
-         <p>{{ __('words.services_subtitle') }}</p>
+         <h1>{{ __('words.Services-page-title') }}</h1>
+         <p>{{ __('words.Services-page-subtitle') }}</p>
       </div>
       <div class="row">
          @foreach($services as $service)

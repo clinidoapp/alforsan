@@ -33,7 +33,7 @@
       <div class="collapse navbar-collapse" id="mainNavbar">
          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 py-2">
             <li class="nav-item">
-               <a class="nav-link  {{ request()->is('/') ? 'active' : '' }}">
+               <a href="{{ url('/') }}" class="nav-link  {{ request()->is('/') ? 'active' : '' }}">
                {{ __('words.home') }}
                </a>
             </li>
