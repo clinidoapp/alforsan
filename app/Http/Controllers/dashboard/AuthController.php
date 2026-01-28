@@ -67,8 +67,9 @@ class AuthController extends Controller
     public function listAdmins(Request $request){
 
         $query = DB::table('users')
-            ->whereNot('users.id', 1)
+            //->whereNot('users.id', 1)
             ->where('is_deleted', 0)->whereNull('deleted_at')
+            ->whereNot('roles.slug' , 'developer')
             ->join('user_role', 'users.id', '=', 'user_role.user_id')
             ->join('roles', 'user_role.role_id', '=', 'roles.id')
             ->select(
@@ -94,7 +95,9 @@ class AuthController extends Controller
     }
     public function addAdmin(Request $request)
     {
-        $roles = DB::table('roles')->select('id' , 'name')->get();
+        $roles = DB::table('roles')
+            ->whereNot('slug' , 'developer')
+            ->select('id' , 'name')->get();
         return view('dashboard.pages.admins.addAdmin' , compact('roles'));
     }
     public function createOrEditAdmin(StoreAdminRequest $request , $id = null)
@@ -145,7 +148,9 @@ class AuthController extends Controller
                 'users.email',
                 'user_role.role_id')
             ->first();
-        $roles = DB::table('roles')->select('id' , 'name')->get();
+        $roles = DB::table('roles')
+            ->whereNot('slug' , 'developer')
+            ->select('id' , 'name')->get();
         return view('dashboard.pages.admins.editAdmin' , compact('roles','admin'));
     }
     public function toggleAdminStatus(Request $request,$id)
