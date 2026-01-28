@@ -62,7 +62,7 @@ $local=app()->getLocale();
             </div>
          </div>
          <div class="col-12 mt-4">
-            <h2 class="lh-lg">{{ __('words.why Alforsan for') }}</h2>
+            <h2 class="lh-lg">{{ __('words.why Alforsan for') }} {{ $result->{'name_'.$local} }}</h2>
             <div class="card p-3">
                <p>{{ $result->{'brief_'.$local} }}</p>
             </div>

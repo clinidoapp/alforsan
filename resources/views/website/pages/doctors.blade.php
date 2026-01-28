@@ -24,7 +24,7 @@
             <input type="text"
                    name="doctor_name"
                    class="form-control"
-                   placeholder="{{ $isArabic ? 'ابحث هنا...' : 'Search here...' }}"
+                   placeholder="{{ $isArabic ? ' اكتب اسم الطبيب...' : 'Write the doctor\'s name...' }}"
                    aria-label="Search">
 
             <button class="btn btn-primary-custom px-5" type="submit">
