@@ -15,12 +15,13 @@ class RolesController extends Controller
     public function listRoles(Request $request)
     {
 
-        $roles = DB::table('roles')->
-            select('id', 'name' , 'slug')
-        ->get();
+        $roles = DB::table('roles')->whereNot('slug' , 'developer')
+            ->select('id', 'name' , 'slug')
+            ->get();
 
         $permissions = DB::table('permissions')
             ->join('permission_categories', 'permission_categories.id', '=', 'permissions.category_id')
+            ->where('permission_categories.slug' , '!=' , 'developers_management')
             ->select(
                 'permission_categories.id as category_id', 'permission_categories.name as category_name',
                 'permissions.name as permission_name' , 'permissions.id' , 'permissions.slug as permission_slug'
