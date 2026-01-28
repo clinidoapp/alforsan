@@ -77,14 +77,14 @@
             @if(\App\Helpers\Permissions::hasPermission('read_service'))
             <li class="nav-item">
                <a href="{{ route('service-list') }}" class="nav-link {{Request::is('admin/services/list*') ? 'active' : ''}}">
-                    service List
+                    Service List
                </a>
             </li>
             @endif
             @if(\App\Helpers\Permissions::hasPermission('read_booking_service'))
             <li class="nav-item">
                <a href="{{ route('booking-services') }}" class="nav-link {{Request::is('admin/services/booking-services*') ? 'active' : ''}}">
-               Booking services
+               Booking Services
                </a>
             </li>
             @endif
