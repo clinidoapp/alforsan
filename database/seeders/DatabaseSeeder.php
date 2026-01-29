@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            DoctorsSeeder::class,
+        /*    DoctorsSeeder::class,
             ServicesSeeder::class,
             DoctorServiceSeeder::class,
             BookRequestsSeeder::class,
@@ -25,9 +25,9 @@ class DatabaseSeeder extends Seeder
             ServiceSymptomsSeeder::class,
             ServiceTechniquesSeeder::class,
             DoctorVideosSeeder::class,
-            BookingServicesSeeder::class,
+            BookingServicesSeeder::class,*/
             AdminSeeder::class,
-            SettingsSeeder::class,
+        //    SettingsSeeder::class,
         ]);
     }
 }
