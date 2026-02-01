@@ -203,7 +203,7 @@ footer {
 .services .card {
 	border: none;
 	align-items: center;
-	min-height: 124px;
+	min-height: 130px;
 }
 
 .services .card img {
@@ -279,6 +279,7 @@ footer {
 .ourTeam .card {
 	border: none;
 	border-bottom: 8px solid var(--primary-color);
+    min-height: 345px;
 }
 
 .ourTeam .card img {
@@ -345,6 +346,9 @@ footer {
 }
 
 /* _________________contact us____________________ */
+.contactUs .card {
+    min-height: 190px;
+}
 .contactUs .card img {
 	width: 50px;
 	align-self: anchor-center;
@@ -536,6 +540,10 @@ footer {
 /* ===========================
         About us
 ===============================*/
+.vm-container .card{
+    min-height: 330px;
+}
+
 .vm-container .card h2{
     font-size: 1.5rem;
     line-height: 2.3;
@@ -546,6 +554,7 @@ footer {
 }
 .our-story .card{
     text-align: center;
+    min-height: 144px;
 }
 .our-story .card h2{
     color:var(--secondary-color);

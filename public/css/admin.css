@@ -88,6 +88,13 @@ i {
     border-color: var(--primary-color);
     color: var(--primary-color);
 }
+.btn-outline-primary:focus, .btn-outline-primary:focus i{
+    color:#fff;
+}
+.btn-outline-primary:hover{
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
 .btn-outline-primary:focus,
 .btn-outline-primary:active,
 .btn-outline-primary:focus-visible {

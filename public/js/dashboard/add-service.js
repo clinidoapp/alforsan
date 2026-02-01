@@ -179,4 +179,55 @@ document.addEventListener('click', function (e) {
 
 });
 
+document.getElementById('add_doctor').addEventListener('submit', function (e) {
+
+    let errors = [];
+
+    if (!hasValidItem('#symptoms-wrapper .symptoms-card', [
+        'input[name*="[title_en]"]',
+        'input[name*="[title_ar]"]',
+        'textarea[name*="[description_en]"]',
+        'textarea[name*="[description_ar]"]'
+    ])) {
+        errors.push('At least one Symptom is required');
+    }
+
+    if (!hasValidItem('#techniques-wrapper .techniques-card', [
+        'input[name*="[title_en]"]',
+        'input[name*="[title_ar]"]',
+        'textarea[name*="[description_en]"]',
+        'textarea[name*="[description_ar]"]',
+        'textarea[name*="[suitable_for_en]"]',
+        'textarea[name*="[suitable_for_ar]"]'
+    ])) {
+        errors.push('At least one Technique is required');
+    }
+
+    if (!hasValidItem('#faq-wrapper .faq-card', [
+        'input[name*="[question_en]"]',
+        'input[name*="[question_ar]"]',
+        'textarea[name*="[answer_en]"]',
+        'textarea[name*="[answer_ar]"]'
+    ])) {
+        errors.push('At least one FAQ is required');
+    }
+
+    if (errors.length) {
+        e.preventDefault();
+        alert(errors.join('\n'));
+    }
+
+});
+function hasValidItem(cardSelector, fields) {
+
+    const cards = document.querySelectorAll(cardSelector);
+    if (!cards.length) return false;
+
+    return Array.from(cards).some(card => {
+        return fields.every(selector => {
+            const field = card.querySelector(selector);
+            return field && field.value.trim() !== '';
+        });
+    });
+}
 

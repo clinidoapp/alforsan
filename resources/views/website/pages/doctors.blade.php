@@ -9,6 +9,7 @@
 @section('content')
 <section class="services py-5 mt-5 bg-light-blue">
    <div class="container mt-4">
+       @if($doctors->count() > 0)
 
       <div class="text-center">
          <h1>{{ __('words.doctors title') }}</h1>
@@ -51,6 +52,12 @@
     <div class="mt-4 d-flex justify-content-center pagination">
        {{ $doctors->links('pagination::bootstrap-5') }}
     </div>
+    @else
+    <div class="text-center py-5">
+        <i class="fs-1 lh-lg fa-solid fa-house-medical-circle-xmark"></i>
+        <h2>{{ __('words.no doctors found') }}</h2>
+    </div>
+    @endif
    </div>
 </section>
 @endsection

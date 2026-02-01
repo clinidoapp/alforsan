@@ -65,12 +65,12 @@
                      <!-- Name -->
                      <div class="mb-3">
                         <label class="form-label">{{__('words.name label')}} <i class="fa-solid fa-asterisk text-dark fs-6"></i></label>
-                        <input type="text" name="full_name" class="form-control" placeholder="{{__('words.name placeholder')}}">
+                        <input type="text" name="full_name" class="form-control" placeholder="{{__('words.name placeholder')}}" required>
                      </div>
                      <!-- Mobile -->
                      <div class="mb-3">
                         <label class="form-label">{{__('words.mobile label')}} <i class="fa-solid fa-asterisk text-dark fs-6"></i></label>
-                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="{{__('words.mobile placeholder')}}">
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="{{__('words.mobile placeholder')}}" required>
                           <input type="hidden" name="phone_full" id="phone_full">
 
                      </div>
@@ -82,12 +82,13 @@
                      <!-- Service Dropdown -->
                      <div class="mb-3">
                         <label class="form-label">{{__('words.service label')}} <i class="fa-solid fa-asterisk text-dark fs-6"></i></label>
-                        <select class="form-select" name="service_id">
+                        <select class="form-select" name="service_id" required>
                            <option selected disabled>{{__('words.service label')}}</option>
-                           @foreach ($services as $service)
-                            <option value="{{ $service->id }}"> {{ $service->{'name_'.$local} }}</option>
-                           @endforeach
-
+                            @if($services)
+                                @foreach ($services as $service)
+                                    <option value="{{ $service->id }}"> {{ $service->{'name_'.$local} }}</option>
+                                @endforeach
+                            @endif
                         </select>
                      </div>
                      <!-- Message -->
