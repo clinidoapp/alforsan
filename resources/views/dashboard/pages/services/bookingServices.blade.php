@@ -96,10 +96,10 @@
             <div class="modal-body">
                     <input type="hidden" id="modal_service_id" name="id">
                <div class="mb-3">
-                    <input type="text" class="form-control" name="name_en" id="service_name_en" placeholder="Service name (En)">
+                    <input type="text" class="form-control" name="name_en" id="service_name_en" placeholder="Service name (En)" required>
                </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control" name="name_ar" id="service_name_ar" placeholder="اسم الخدمه باللغة العربية">
+                    <input type="text" class="form-control" name="name_ar" id="service_name_ar" placeholder="اسم الخدمه باللغة العربية" required>
                </div>
                <div id="permissions_container">
                   <!-- permissions will be loaded here -->
