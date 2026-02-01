@@ -153,8 +153,8 @@ $(document).on('click', '.edit-service', function () {
 </script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    @if ($errors->any())
-        DashboardAlert.error("{{ $errors->first() }}");
+  @if (session('error'))
+          DashboardAlert.error("{{ session('error') }}");
     @endif
 
     @if (session('success'))
