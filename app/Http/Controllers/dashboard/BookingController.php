@@ -5,6 +5,7 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 class BookingController extends Controller
@@ -95,15 +96,32 @@ class BookingController extends Controller
     }
     public function createOrUpdateService(Request $request , $id = null){
 
-        $data = $request->validate([
+        $data = Validator::make($request->all(), [
+            'name_ar' => [
+                'required',
+                'string',
+                'max:191',
+                Rule::unique('booking_services', 'name_ar')->ignore($id, 'id'),
+            ],
+            'name_en' => [
+                'required',
+                'string',
+                'max:191',
+                Rule::unique('booking_services', 'name_en')->ignore($id, 'id'),
+            ],
+        ]);
+
+        if ($data->fails()) {
+            return redirect()->back()->with('error', $data->errors()->first());
+        }
+        /*$data = $request->validate([
             'name_ar' => ['required', 'string', 'max:191',
                 Rule::unique('booking_services', 'name_ar')->ignore($id ,'id')
             ],
             'name_en' => ['required', 'string', 'max:191',
                 Rule::unique('booking_services', 'name_en')->ignore($id , 'id'),
             ],
-        ]);
-
+        ]);*/
         if (!$id) {
             DB::table('booking_services')->insert([
                 'name_ar' => $data['name_ar'],
