@@ -52,10 +52,6 @@ class RolesController extends Controller
                     })->values()
                 ];
             })->values();
-        dd($permissions);
-
-
-
         $rolePermissions = DB::table('roles')
             ->leftJoin('role_permissions', 'roles.id', '=', 'role_permissions.role_id')
             ->leftJoin('permissions', 'permissions.id', '=', 'role_permissions.permission_id')
