@@ -54,7 +54,7 @@
     </div>
     @else
     <div class="text-center py-5">
-        <i class="fs-1 lh-lg fa-solid fa-house-medical-circle-xmark text-black-50"></i>
+        <i class="fs-1 lh-lg fa-solid fa-house-medical-circle-xmark"></i>
         <h2>{{ __('words.no doctors found') }}</h2>
     </div>
     @endif

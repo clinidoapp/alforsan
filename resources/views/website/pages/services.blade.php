@@ -26,7 +26,7 @@
             </div>
             @else
             <div class="text-center py-5">
-                <i class="fs-1 lh-lg fa-solid fa-house-medical-circle-xmark text-black-50"></i>
+                <i class="fs-1 lh-lg fa-solid fa-house-medical-circle-xmark"></i>
                 <h2>{{ __('words.no medical service found') }}</h2>
             </div>
       @endif
