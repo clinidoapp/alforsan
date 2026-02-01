@@ -22,7 +22,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="name_en" class="form-label">Name(EN)</label>
-                     <input type="text" class="form-control" id="name_en" name="name_en" placeholder="Enter service name" value="{{ $result->name_en }}">
+                     <input type="text" class="form-control" id="name_en" name="name_en" placeholder="Enter service name" value="{{ $result->name_en }}"required>
                      @error('name_en')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -31,7 +31,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="name_ar" class="form-label float-end">اسم الخدمة</label>
-                     <input type="text" class="form-control text-end" id="name_ar" name="name_ar" placeholder="ادخل اسم الخدمة باللغة العربية"value="{{ $result->name_ar }}">
+                     <input type="text" class="form-control text-end" id="name_ar" name="name_ar" placeholder="ادخل اسم الخدمة باللغة العربية"value="{{ $result->name_ar }}" required>
                      @error('name_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -42,7 +42,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="description_en" class="form-label">Description (EN)</label>
-                     <textarea type="text" class="form-control" id="description_en" name="description_en" placeholder="Enter doctor ">{{ $result->description_en }}</textarea>
+                     <textarea type="text" class="form-control" id="description_en" name="description_en" placeholder="Enter doctor " required>{{ $result->description_en }}</textarea>
                      @error('description_en')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -51,7 +51,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="description_ar" class="form-label float-end">وصف الخدمة باللغة العربية</label>
-                     <textarea type="text" class="form-control text-end" id="description_ar" name="description_ar" placeholder="ادخل وصف للخدمة باللغة العربية">{{ $result->description_ar }}</textarea>
+                     <textarea type="text" class="form-control text-end" id="description_ar" name="description_ar" placeholder="ادخل وصف للخدمة باللغة العربية" required>{{ $result->description_ar }}</textarea>
                      @error('description_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -157,11 +157,11 @@
             <div class="row mb-3">
                <div class="col-md-6">
                   <label for="brief_en" class="form-label">why Alforsan(En)</label>
-                  <textarea type="text" class="form-control-lg w-100 d-block" id="brief_en" name="brief_en" placeholder="Enter why Alforsan center en">{{ $result->brief_en }}</textarea>
+                  <textarea type="text" class="form-control-lg w-100 d-block" id="brief_en" name="brief_en" placeholder="Enter why Alforsan center en" required>{{ $result->brief_en }}</textarea>
                </div>
                <div class="col-md-6">
                   <label for="brief_ar" class="form-label float-end">لماذا تختار مركز الفرسان</label>
-                  <textarea type="text" class="form-control-lg w-100 d-block text-end" id="brief_ar" name="brief_ar" placeholder="اكتب اسباب لماذا يختار المريض مركز الفرسان لهذه الخدمة؟">{{ $result->brief_ar }}</textarea>
+                  <textarea type="text" class="form-control-lg w-100 d-block text-end" id="brief_ar" name="brief_ar" placeholder="اكتب اسباب لماذا يختار المريض مركز الفرسان لهذه الخدمة؟" required>{{ $result->brief_ar }}</textarea>
                </div>
             </div>
             <div id="faq-wrapper">

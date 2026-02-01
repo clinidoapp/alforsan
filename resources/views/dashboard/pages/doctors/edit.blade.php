@@ -22,7 +22,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="name_en" class="form-label">Name(EN)</label>
-                     <input type="text" class="form-control" id="name_en" name="name_en" placeholder="Enter doctor name" value="{{ $doctor->name_en}}">
+                     <input type="text" class="form-control" id="name_en" name="name_en" placeholder="Enter doctor name" value="{{ $doctor->name_en}}" required>
                      @error('name_en')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -31,7 +31,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="name_ar" class="form-label float-end">اسم الطبيب</label>
-                     <input type="text" class="form-control text-end" id="name_ar" name="name_ar" placeholder="Enter doctor name" value="{{ $doctor->name_ar}}">
+                     <input type="text" class="form-control text-end" id="name_ar" name="name_ar" placeholder="Enter doctor name" value="{{ $doctor->name_ar}}"required>
                      @error('name_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -42,7 +42,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="email" class="form-label">Email</label>
-                     <input type="text" class="form-control" id="email" name="email" placeholder="Enter doctor Email" value="{{ $doctor->email}}">
+                     <input type="text" class="form-control" id="email" name="email" placeholder="Enter doctor Email" value="{{ $doctor->email}}"required>
                      @error('email')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -51,7 +51,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="phone" class="form-label">Phone Number</label>
-                     <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter doctor phone" value="{{ $doctor->phone}}">
+                     <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter doctor phone" value="{{ $doctor->phone}}" required>
                      @error('phone')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -62,7 +62,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="academic_title" class="form-label">Academic title</label>{{ $doctor->academic_title_en }}
-                     <select id="academic_title" name="academic_title" class="form-control">
+                     <select id="academic_title" name="academic_title" class="form-control" required>
                         <option> Choose academic title</option>
                         @foreach ($academicTitles as $academicTitle )
                         <option value="{{$academicTitle['value']}}" {{ $doctor->academic_title_en == $academicTitle['key']?'selected':'' }}>{{ $academicTitle['key'] }}</option>
@@ -77,7 +77,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="services_ids" class="form-label d-block">services</label>
-                     <select id="services_ids" name="services_ids[]" multiple class="w-100 selectpicker" data-live-search="true" cou>
+                     <select id="services_ids" name="services_ids[]" multiple class="w-100 selectpicker" data-live-search="true"  data-selected-text-format="count" required >
                         <option value="" disabled >Select Services</option>
                         @foreach ($services as $service )
                         <option value="{{ $service->id }}" {{ in_array($service->id, $selectedServiceIds) ? 'selected' : '' }}>{{ $service->name }}</option>
@@ -93,7 +93,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="speciality_en" class="form-label"> Speciality (EN)</label>
-                     <input type="text" class="form-control" id="speciality_en" name="speciality_en" placeholder="Enter doctor main speciality (EN)" value="{{ $doctor->speciality_en}}">
+                     <input type="text" class="form-control" id="speciality_en" name="speciality_en" placeholder="Enter doctor main speciality (EN)" value="{{ $doctor->speciality_en}}" required>
                      @error('speciality_en')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -102,7 +102,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="speciality_ar" class="form-label float-end"> التخصص باللغة العربية</label>
-                     <input type="text" class="form-control text-end" id="speciality_ar" name="speciality_ar" placeholder="ادخل تخصص الطبيب باللغة العربية" value="{{ $doctor->speciality_ar}}">
+                     <input type="text" class="form-control text-end" id="speciality_ar" name="speciality_ar" placeholder="ادخل تخصص الطبيب باللغة العربية" value="{{ $doctor->speciality_ar}}"required>
                      @error('speciality_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -113,7 +113,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="main_speciality_en" class="form-label">Main Speciality (EN)</label>
-                     <input type="text" class="form-control" id="main_speciality_en" name="main_speciality_en" placeholder="Enter doctor main speciality (EN)" value="{{ $doctor->main_speciality_en}}">
+                     <input type="text" class="form-control" id="main_speciality_en" name="main_speciality_en" placeholder="Enter doctor main speciality (EN)" value="{{ $doctor->main_speciality_en}}"required>
                      @error('main_speciality_en')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -122,7 +122,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="main_speciality_ar" class="form-label float-end">التخصص الرئيسى للطبيب</label>
-                     <input type="text" class="form-control text-end" id="main_speciality_ar" name="main_speciality_ar" placeholder="ادخل التخصص الرئيسى للطبيب"value="{{ $doctor->main_speciality_ar}}">
+                     <input type="text" class="form-control text-end" id="main_speciality_ar" name="main_speciality_ar" placeholder="ادخل التخصص الرئيسى للطبيب"value="{{ $doctor->main_speciality_ar}}" required>
                      @error('main_speciality_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -133,7 +133,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="bio_en" class="form-label">Bio (EN)</label>
-                     <textarea type="text" class="form-control" id="bio_en" name="bio_en" placeholder="Enter doctor " >{{ $doctor->bio_en}}</textarea>
+                     <textarea type="text" class="form-control" id="bio_en" name="bio_en" placeholder="Enter doctor " required>{{ $doctor->bio_en}}</textarea>
                      @error('bio_en')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -142,7 +142,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="bio_ar" class="form-label float-end">نبذه عن الطبيب</label>
-                     <textarea type="text" class="form-control text-end" id="bio_ar" name="bio_ar" placeholder="ادخل نبذه مختصره عن الطبيب">{{ $doctor->bio_ar}}</textarea>
+                     <textarea type="text" class="form-control text-end" id="bio_ar" name="bio_ar" placeholder="ادخل نبذه مختصره عن الطبيب" required>{{ $doctor->bio_ar}}</textarea>
                      @error('bio_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror

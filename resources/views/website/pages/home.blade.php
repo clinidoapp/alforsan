@@ -56,6 +56,7 @@
       </div>
    </div>
 </section>
+@if($services)
 <section class="services pt-5 bg-light-blue">
    <div class="container">
       <div class="text-center">
@@ -66,7 +67,7 @@
          @foreach($services as $service)
          <div class="col-md-2 col-6">
             <a href="{{ route('serviceDetails', $service->slug) }}" class="text-decoration-none">
-            <div class="card mb-2 p-3 text-center">
+            <div class="card mb-2 p-2 text-center">
                <img src="{{ asset('images/services_icons/'.$service->icon) }}">
                <h3>{{ $service->{'name_'.$local} }} </h3>
             </div>
@@ -79,6 +80,7 @@
       </div>
    </div>
 </section>
+@endif
 <section class="why_choose_us py-5">
    <div class="container">
       <div class="row text-center">
@@ -119,6 +121,7 @@
       </div>
    </div>
 </section>
+@if($doctors)
 <section class="ourTeam bg-light-blue pt-5">
    <div class="container">
    <div class="container">
@@ -148,7 +151,8 @@
       </div>
    </div>
 </section>
-
+@endif
+@if($reviews)
 <section class="Testimonials py-5">
    <div class="container text-center">
       <h1>{{ __('words.Testimonials title') }}</h1>
@@ -217,6 +221,7 @@
       </div>
    </div>
 </section>
+@endif
 <section class="contactUs py-5 bg-light-blue">
    <div class="container">
       <div class="row text-center">

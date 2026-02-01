@@ -22,7 +22,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="name_en" class="form-label">Name(EN)</label>
-                     <input type="text" class="form-control" id="name_en" name="name_en" placeholder="Enter doctor name">
+                     <input type="text" class="form-control" id="name_en" name="name_en" placeholder="Enter doctor name" required>
                      @error('name_en')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -31,7 +31,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="name_ar" class="form-label float-end">اسم الطبيب</label>
-                     <input type="text" class="form-control text-end" id="name_ar" name="name_ar" placeholder="اكتب اسم الطبيب باللغة العربية">
+                     <input type="text" class="form-control text-end" id="name_ar" name="name_ar"  placeholder="اكتب اسم الطبيب باللغة العربية"required>
                      @error('name_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -42,7 +42,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="email" class="form-label">Email</label>
-                     <input type="text" class="form-control" id="email" name="email" placeholder="Enter doctor Email">
+                     <input type="text" class="form-control" id="email" name="email"  placeholder="Enter doctor Email" required>
                      @error('email')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -51,7 +51,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="phone" class="form-label">Phone Number</label>
-                     <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter doctor phone">
+                     <input type="text" class="form-control" id="phone"  name="phone" placeholder="Enter doctor phone" required>
                      @error('phone')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -62,7 +62,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="academic_title" class="form-label">Academic title</label>
-                     <select id="academic_title" name="academic_title" class="form-control">
+                     <select id="academic_title" name="academic_title" class="form-control" required>
                         <option> Choose academic title</option>
                         @foreach ($academicTitles as $academicTitle )
                         <option value="{{$academicTitle['value']}}">{{ $academicTitle['key'] }}</option>
@@ -77,7 +77,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="services_ids" class="form-label d-block">services</label>
-                     <select id="services_ids" name="services_ids[]" multiple class="w-100 selectpicker" data-live-search="true" cou>
+                     <select id="services_ids" name="services_ids[]" multiple class="w-100 selectpicker" data-selected-text-format="count"  data-live-search="true"  required>
                         <option value="" disabled >Select Services</option>
                         @foreach ($services as $service )
                         <option value="{{ $service->id }}">{{ $service->name }}</option>
@@ -93,7 +93,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="speciality_en" class="form-label"> Speciality (EN)</label>
-                     <input type="text" class="form-control" id="speciality_en" name="speciality_en" placeholder="Enter doctor  speciality (EN)">
+                     <input type="text" class="form-control" id="speciality_en" name="speciality_en" placeholder="Enter doctor  speciality (EN)" required>
                      @error('speciality_en')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -102,7 +102,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="speciality_ar" class="form-label float-end"> التخصص </label>
-                     <input type="text" class="form-control text-end" id="speciality_ar" name="speciality_ar" placeholder="اكتب تخصص الطبيب باللغة العربية">
+                     <input type="text" class="form-control text-end" id="speciality_ar" name="speciality_ar" placeholder="اكتب تخصص الطبيب باللغة العربية" required>
                      @error('speciality_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -113,7 +113,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="main_speciality_en" class="form-label">Main Speciality (EN)</label>
-                     <input type="text" class="form-control" id="main_speciality_en" name="main_speciality_en" placeholder="Enter doctor main speciality (EN)">
+                     <input type="text" class="form-control" id="main_speciality_en" name="main_speciality_en" placeholder="Enter doctor main speciality (EN)" required>
                      @error('main_speciality_en')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -122,7 +122,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="main_speciality_ar" class="form-label float-end">التخصص الرئيسى</label>
-                     <input type="text" class="form-control text-end" id="main_speciality_ar" name="main_speciality_ar" placeholder="اكتب التخصص الرئيسى للطبيب باللغة العربية">
+                     <input type="text" class="form-control text-end" id="main_speciality_ar" name="main_speciality_ar" placeholder="اكتب التخصص الرئيسى للطبيب باللغة العربية" required>
                      @error('main_speciality_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -133,7 +133,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="bio_en" class="form-label">Bio (EN)</label>
-                     <textarea type="text" class="form-control" id="bio_en" name="bio_en" placeholder="Enter bio about doctor "></textarea>
+                     <textarea type="text" class="form-control" id="bio_en" name="bio_en" placeholder="Enter bio about doctor " required></textarea>
                      @error('bio_en')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -142,7 +142,7 @@
                <div class="col-md-6">
                   <div class="mb-3">
                      <label for="bio_ar" class="form-label float-end">نبده عن الطبيب</label>
-                     <textarea type="text" class="form-control text-end" id="bio_ar" name="bio_ar" placeholder="اكتب نبذه مختصره عن الطبيب"></textarea>
+                     <textarea type="text" class="form-control text-end" id="bio_ar" name="bio_ar" placeholder="اكتب نبذه مختصره عن الطبيب" required></textarea>
                      @error('bio_ar')
                      <div class="invalid-feedback">{{ $message }}</div>
                      @enderror
@@ -152,7 +152,7 @@
             <div class="row">
                <div class="col-12">
                      <label for="image" class="form-label">Doctor photo</label>
-                  <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" >
+                  <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" required>
                   @error('image')
                   <div class="invalid-feedback">{{ $message }}</div>
                   @enderror

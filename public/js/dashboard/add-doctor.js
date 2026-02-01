@@ -147,5 +147,39 @@ $(document).ready(function () {
             );
         });
     }
+function hasAtLeastOneValue(inputSelector) {
+    const inputs = document.querySelectorAll(inputSelector);
+
+    return Array.from(inputs).some(input =>
+        input.value && input.value.trim() !== ''
+    );
+}
+document.getElementById('add_doctor').addEventListener('submit', function (e) {
+
+    let errors = [];
+
+    /* ================= Academic Qualification ================= */
+    if (!hasAtLeastOneValue('input[name="qualifications_en[]"]')) {
+        errors.push('At least one Academic Qualification (EN) is required');
+    }
+
+    if (!hasAtLeastOneValue('input[name="qualifications_ar[]"]')) {
+        errors.push('At least one Academic Qualification (AR) is required');
+    }
+
+    /* ================= Practical Experience ================= */
+    if (!hasAtLeastOneValue('input[name="experiences_en[]"]')) {
+        errors.push('At least one Practical Experience (EN) is required');
+    }
+
+    if (!hasAtLeastOneValue('input[name="experiences_ar[]"]')) {
+        errors.push('At least one Practical Experience (AR) is required');
+    }
+
+    if (errors.length) {
+        e.preventDefault();
+        alert(errors.join('\n'));
+    }
+});
 
 });
