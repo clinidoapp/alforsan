@@ -14,19 +14,28 @@ class RolesController extends Controller
 {
     public function listRoles(Request $request)
     {
-
+        $user_id = session('logged_user_id');
+        $isDeveloper = DB::table('user_role')
+            ->join('roles', 'roles.id', '=', 'user_role.role_id')
+            ->where('user_role.user_id', $user_id)
+            ->where('roles.slug', 'developer')
+            ->exists();
         $roles = DB::table('roles')
-            ->whereNot('slug' , 'developer')
+            ->when(!$isDeveloper, function ($query) {
+                $query->where('slug', '!=', 'developer');
+            })
             ->select('id', 'name' , 'slug')
             ->get();
-
         $permissions = DB::table('permissions')
             ->join('permission_categories', 'permission_categories.id', '=', 'permissions.category_id')
-            ->where('permission_categories.slug' , '!=' , 'developers_management')
+            ->when(!$isDeveloper, function ($query) {
+                $query->where('permission_categories.slug', '!=', 'developers_management');
+            })
             ->select(
                 'permission_categories.id as category_id', 'permission_categories.name as category_name',
                 'permissions.name as permission_name' , 'permissions.id' , 'permissions.slug as permission_slug'
             )->get();
+
 
         $permissions = $permissions
             ->groupBy('category_name')
@@ -43,6 +52,7 @@ class RolesController extends Controller
                     })->values()
                 ];
             })->values();
+        dd($permissions);
 
 
 
@@ -122,8 +132,17 @@ class RolesController extends Controller
     }
     public function addRole(Request $request){
 
+        $user_id = session('logged_user_id');
+        $isDeveloper = DB::table('user_role')
+            ->join('roles', 'roles.id', '=', 'user_role.role_id')
+            ->where('user_role.user_id', $user_id)
+            ->where('roles.slug', 'developer')
+            ->exists();
        $permissions = DB::table('permissions')
            ->join('permission_categories', 'permission_categories.id', '=', 'permissions.category_id')
+           ->when(!$isDeveloper, function ($query) {
+               $query->where('permission_categories.slug', '!=', 'developers_management');
+           })
            ->select(
                'permission_categories.id as category_id', 'permission_categories.name as category_name',
                'permissions.name as permission_name' , 'permissions.id'

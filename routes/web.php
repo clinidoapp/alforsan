@@ -103,6 +103,7 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('doctors/list/view/{id}' , [DoctorController::class, 'viewDoctor'])->middleware(['permission:read_doctor'])->name('doctors-view');
     Route::get('toggleDoctor/{id}' , [DoctorController::class, 'toggleDoctorStatus'])->middleware(['permission:update_admin'])->name('doctor.toggle');
     Route::get('doctors/list/edit/{id}' , [DoctorController::class, 'updateDoctor'])->middleware(['permission:update_doctor'])->name('doctors-edit');
+    Route::get('deleteDoctor/{id}' , [DoctorController::class, 'deleteDoctor'])->middleware(['permission:delete_doctor'])->name('doctors-delete');
 
     /*** Doctor Media ***/
     Route::get('doctors/media/add/{id?}' , [DoctorController::class, 'addDoctorMedia'])->middleware(['permission:create_doctor_media'])->name('doctors-addMedia');
@@ -146,6 +147,7 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
 
 /**************** End Dashboard **********************/
 /************************* Test lamiaa *********************/
+/*
 Route::prefix('test')->group(function () {
     Route::get('listDoctors' , [HomePageController::class, 'listDoctors']);
     Route::get('listServices' , [HomePageController::class, 'listServices']);
@@ -192,6 +194,7 @@ Route::prefix('test')->group(function () {
     Route::get('clearRoute' , [ArtisanController::class, 'clearRoute']);
     Route::get('clearOptimize' , [ArtisanController::class, 'clearOptimize']);
 });
+*/
 /************************* End Test *********************/
 
 
