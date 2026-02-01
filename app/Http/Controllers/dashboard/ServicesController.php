@@ -290,30 +290,14 @@ class ServicesController extends Controller
                 );
             }
         });
-        return redirect()->route('service-list');
+        return redirect()->route('service-list')->with('success', $id ? 'Service updated successfully' : 'Service added successfully');
     }
-
-    public static function Create()
-    {
-
-    }
-
-    public static function Update()
-    {
-
-
-    }
-
-
-
-
-
     public function toggleServicesStatus($id)
     {
         $service = DB::table('services')->where('id', $id);
         $currentStatus = $service->value('status');
         $newStatus = $currentStatus == 1 ? 0 : 1;
         $service->update(['status' => $newStatus]);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Service status updated successfully');
     }
 }

@@ -91,7 +91,7 @@ class BookingController extends Controller
         $currentStatus = $service->value('status');
         $newStatus = $currentStatus == 1 ? 0 : 1;
         $service->update(['status' => $newStatus]);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Service status Updated successfully');
     }
     public function createOrUpdateService(Request $request , $id = null){
 
@@ -119,7 +119,7 @@ class BookingController extends Controller
                 'updated_at' => now(),
             ]);
         }
-        return redirect()->back();
+        return redirect()->back()->with('success', $id ? 'Service updated successfully' : 'Service added successfully');
 
     }
 

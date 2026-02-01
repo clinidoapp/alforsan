@@ -199,7 +199,7 @@ class DoctorController extends Controller
 
         });
 
-        return redirect()->route('doctors-list');
+        return redirect()->route('doctors-list')->with('success', 'Doctor added successfully');
     }
     public function viewDoctor($id)
     {
@@ -241,7 +241,7 @@ class DoctorController extends Controller
         $currentStatus = $doctor->value('status');
         $newStatus = $currentStatus == 1 ? 0 : 1;
         $doctor->update(['status' => $newStatus]);
-        return redirect()->route('doctors-list');
+        return redirect()->route('doctors-list')->with('success', 'Doctor status updated successfully');
     }
     public function deleteDoctor($id)
     {
@@ -252,7 +252,7 @@ class DoctorController extends Controller
                 'is_deleted' => 1,
                 'deleted_at' => Carbon::now(),
             ]);
-        return redirect()->route('doctors-list');
+        return redirect()->route('doctors-list')->with('success', 'Doctor deleted successfully');
 
     }
 
@@ -366,7 +366,7 @@ class DoctorController extends Controller
             }
         });
 
-        return redirect()->route('doctors-list-media');
+        return redirect()->route('doctors-list-media')->with('success', 'Video added successfully');
 
     }
     public function UpdateDoctorMedia(UpdateDoctorMediaRequest $request)
@@ -385,7 +385,7 @@ class DoctorController extends Controller
             );
         });
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Video updated successfully');
 
     }
     public function toggleMediaStatus($id)
@@ -394,7 +394,7 @@ class DoctorController extends Controller
         $currentStatus = $video->value('status');
         $newStatus = $currentStatus == 1 ? 0 : 1;
         $video->update(['status' => $newStatus]);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Video status Updated successfully');
     }
     public function deleteDoctorMedia($id)
     {
@@ -405,7 +405,7 @@ class DoctorController extends Controller
                 'is_deleted' => 1,
                 'deleted_at' => Carbon::now(),
             ]);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Video deleted successfully');
 
     }
 
