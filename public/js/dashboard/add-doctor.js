@@ -178,7 +178,7 @@ document.getElementById('add_doctor').addEventListener('submit', function (e) {
 
     if (errors.length) {
         e.preventDefault();
-        alert(errors.join('\n'));
+        DashboardAlert.error(errors.join('\n'));
     }
 });
 

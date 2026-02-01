@@ -222,7 +222,7 @@ class RolesController extends Controller
             }, $data['permissions_ids']);
             DB::table('role_permissions')->insert($rows);*/
         });
-        return redirect()->route('roles-list');
+        return redirect()->route('roles-list')->with('success', 'Permissions updated successfully');
    }
     public function storeRole(StoreRoleRequest $request){
 

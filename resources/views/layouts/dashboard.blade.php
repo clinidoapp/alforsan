@@ -41,6 +41,53 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-multiselect@1.1.2/dist/js/bootstrap-multiselect.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    window.DashboardAlert = {
+        error(message) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops!',
+                text: message,
+                confirmButtonColor: '#3085d6'
+            });
+        },
+
+        success(message) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: message,
+                confirmButtonColor: '#3085d6'
+            });
+        },
+
+        warning(message) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Warning',
+                text: message,
+                confirmButtonColor: '#3085d6'
+            });
+        },
+
+        confirm(message, callback) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: message,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) callback();
+            });
+        }
+    };
+</script>
+
 <script>
     function toggleSidebar() {
         document.getElementById('sidebar').classList.toggle('show');

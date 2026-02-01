@@ -13,12 +13,12 @@
          </div>
 
          <div class="card p-3">
-            <form method="POST" action="{{ route('update-role') }}">
+            <form method="POST" action="{{ route('update-role') }}" id="rolesForm">
                @csrf
                <div class="table-responsive">
                   <div class="d-flex justify-content-between mb-3">
                      <h3>Permissions</h3>
-                     <button type="submit" class="btn btn-success px-4">Save Changes</button>
+                     <button id="saveRoles" type="submit" class="btn btn-success px-4">Save Changes</button>
                   </div>
 
                    @if ($errors->any())
@@ -86,4 +86,15 @@
       </div>
    </div>
 </section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    @if ($errors->any())
+        DashboardAlert.error("{{ $errors->first() }}");
+    @endif
+
+    @if (session('success'))
+        DashboardAlert.success("{{ session('success') }}");
+    @endif
+});
+</script>
 @endsection
