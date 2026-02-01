@@ -5,6 +5,7 @@
 
 @section('content')
 <div class="row g-4 dashboard-counters">
+ @if(\App\Helpers\Permissions::hasPermission('read_doctor'))
     <div class="col-md-4">
         <a class="text-decoration-none" href="{{ route('doctors-list') }}">
         <div class="card shadow-sm">
@@ -20,7 +21,8 @@
                 </div>
             </a>
     </div>
-
+@endif
+@if(\App\Helpers\Permissions::hasPermission('read_service'))
     <div class="col-md-4">
             <a class="text-decoration-none" href="{{ route('service-list') }}">
         <div class="card shadow-sm">
@@ -36,6 +38,8 @@
         </div>
         </a>
     </div>
+@endif
+@if(\App\Helpers\Permissions::hasPermission('read_booking_request'))
 
     <div class="col-md-4">
         <a class="text-decoration-none" href="{{ route('booking-requests') }}">
@@ -52,5 +56,6 @@
         </a>
 
     </div>
+    @endif
 </div>
 @endsection
