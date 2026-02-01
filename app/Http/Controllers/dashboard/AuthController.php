@@ -66,12 +66,20 @@ class AuthController extends Controller
     }
     public function listAdmins(Request $request){
 
+        $user_id = session('logged_user_id');
+        $isDeveloper = DB::table('user_role')
+            ->join('roles', 'roles.id', '=', 'user_role.role_id')
+            ->where('user_role.user_id', $user_id)
+            ->where('roles.slug', 'developer')
+            ->exists();
+
         $query = DB::table('users')
-            //->whereNot('users.id', 1)
             ->where('is_deleted', 0)->whereNull('deleted_at')
-            ->whereNot('roles.slug' , 'developer')
             ->join('user_role', 'users.id', '=', 'user_role.user_id')
             ->join('roles', 'user_role.role_id', '=', 'roles.id')
+            ->when(!$isDeveloper, function ($query) {
+                return $query->where('roles.slug', '!=', 'developer');
+            })
             ->select(
             'users.id',
             'users.status',
@@ -95,8 +103,17 @@ class AuthController extends Controller
     }
     public function addAdmin(Request $request)
     {
+        $user_id = session('logged_user_id');
+        $isDeveloper = DB::table('user_role')
+            ->join('roles', 'roles.id', '=', 'user_role.role_id')
+            ->where('user_role.user_id', $user_id)
+            ->where('roles.slug', 'developer')
+            ->exists();
+
         $roles = DB::table('roles')
-            ->whereNot('slug' , 'developer')
+            ->when(!$isDeveloper, function ($query) {
+                return $query->where('roles.slug', '!=', 'developer');
+            })
             ->select('id' , 'name')->get();
         return view('dashboard.pages.admins.addAdmin' , compact('roles'));
     }
@@ -141,6 +158,14 @@ class AuthController extends Controller
     }
     public function editAdmin(Request $request , $id)
     {
+
+        $user_id = session('logged_user_id');
+        $isDeveloper = DB::table('user_role')
+            ->join('roles', 'roles.id', '=', 'user_role.role_id')
+            ->where('user_role.user_id', $user_id)
+            ->where('roles.slug', 'developer')
+            ->exists();
+
         $admin = DB::table('users')->where('users.id', $id)
             ->join('user_role', 'users.id', '=', 'user_role.user_id')
             ->select('users.id',
@@ -149,7 +174,9 @@ class AuthController extends Controller
                 'user_role.role_id')
             ->first();
         $roles = DB::table('roles')
-            ->whereNot('slug' , 'developer')
+            ->when(!$isDeveloper, function ($query) {
+                return $query->where('slug', '!=', 'developer');
+            })
             ->select('id' , 'name')->get();
         return view('dashboard.pages.admins.editAdmin' , compact('roles','admin'));
     }
