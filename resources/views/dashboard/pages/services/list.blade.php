@@ -102,6 +102,17 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+    @if ($errors->any())
+        DashboardAlert.error("{{ $errors->first() }}");
+    @endif
+
+    @if (session('success'))
+        DashboardAlert.success("{{ session('success') }}");
+    @endif
+});
+</script>
+<script>
    $(document).on('click', '.edit-setting', function () {
 
    const settingId   = $(this).data('id');

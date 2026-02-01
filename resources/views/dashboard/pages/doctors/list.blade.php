@@ -79,4 +79,15 @@
       </div>
    </div>
 </section>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    @if ($errors->any())
+        DashboardAlert.error("{{ $errors->first() }}");
+    @endif
+
+    @if (session('success'))
+        DashboardAlert.success("{{ session('success') }}");
+    @endif
+});
+</script>
 @endsection
