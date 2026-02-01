@@ -8,7 +8,7 @@ $local=app()->getLocale();
 <section class="doctor-personal-data  py-5 mt-5 bg-white">
     <div class="container mt-4">
         <div class="row">
-            <div class="col-md-3">
+            <div class="text-center col-md-3">
                 <img src="{{ asset('images/doctor_photos/' . ($doctor->image ? $doctor->image : 'alternative.jpg')) }}" class="rounded mb-3">
             </div>
             <div class="col-md-9 align-content-center">
@@ -19,7 +19,7 @@ $local=app()->getLocale();
         </div>
     </div>
 </section>
-<section class="doctor-professional-data bg-light-blue py-5">
+<section class="doctor-professional-data bg-light-blue pb-5">
     <div class="container">
         <h2 class="lh-lg">{{ __('words.about doctor') }}</h2>
         <div class="card p-3">
@@ -51,6 +51,7 @@ $local=app()->getLocale();
                 @endforeach
             </div>
         </div>
+        @if($doctor->videos)
         <h2 class="lh-lg">{{ __('words.doctor videos') }}</h2>
         <div class="row">
             @foreach($doctor->videos as $video)
@@ -68,6 +69,7 @@ $local=app()->getLocale();
             </div>
             @endforeach
         </div>
+        @endif
     </div>
 </section>
 @endsection

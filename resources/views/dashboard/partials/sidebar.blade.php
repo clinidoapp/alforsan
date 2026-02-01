@@ -11,12 +11,15 @@
          </a>
       </li>
       {{-- Bookings --}}
+      @if(\App\Helpers\Permissions::hasPermission('read_booking_request'))
+
       <li class="nav-item rounded-2 m-2">
          <a href="{{route('booking-requests')}}" class="nav-link {{ Request::is(patterns: 'admin/booking-requests') ? 'active' : '' }}">
          <img src="{{ asset('images/dashboard-icons/booking.webp') }}">
          Bookings
          </a>
       </li>
+      @endif
       {{-- Doctors (with submenu) --}}
       @php
       // Check if current route matches any of the doctor's submenu routes

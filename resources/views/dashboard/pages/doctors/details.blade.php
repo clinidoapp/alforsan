@@ -107,7 +107,7 @@
         <div class="col-9">
             <div class="d-flex">
                 <a href="{{ route('doctors-edit', $doctor->id) }}" class="btn btn-lg mx-2 btn-primary-custom">Edit</a>
-                <a href="{{ route('doctors-edit', $doctor->id) }}"  class="btn btn-lg mx-2 btn-danger">Delete</a>
+                <a href="{{ route('doctors-delete', $doctor->id) }}"  class="btn btn-lg mx-2 btn-danger">Delete</a>
             </div>
         </div>
    </div>

@@ -7,7 +7,9 @@
       <div class="row">
         <div class="d-flex mb-2 justify-content-between">
             <h3>Doctors</h3>
+             @if(\App\Helpers\Permissions::hasPermission('create_doctor'))
             <a href="{{ route('doctors-add') }}" class="btn btn-primary-custom text-white px-5"> <i class="fa-solid fa-plus text-white"></i> Add </a>
+            @endif
         </div>
         <div class="card p-0">
             <div class="card-header">
@@ -55,9 +57,15 @@
                         <td class="py-2 text-center">{{$doctor->phone}}</td>
                         <td class="py-2 text-center"><span class="w-100 rounded-pill badge bg-{{$doctor->status==1?'success':'danger'}}">{{$doctor->status==1?'Active':'InActive'}}</span></td>
                         <td class="py-2 text-center admin-actions">
+                             @if(\App\Helpers\Permissions::hasPermission('read_doctor'))
                             <a href="{{ route('doctors-view', $doctor->id) }}" class="btn btn-primary-custom">View</a>
+                            @endif
+                             @if(\App\Helpers\Permissions::hasPermission('update_doctor'))
                             <a href="{{ route('doctors-edit', $doctor->id) }}" class="btn btn-outline-primary">Edit</a>
+                            @endif
+                             @if(\App\Helpers\Permissions::hasPermission('update_doctor'))
                             <a href="{{ route('doctor.toggle', $doctor->id) }}" class="toggle btn btn-{{$doctor->status==1?'danger':'success'}}"onclick="return confirm('Are you sure you want to change this doctor staus ?');">{{$doctor->status==1?'Deactivate':'Activate'}}</a>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

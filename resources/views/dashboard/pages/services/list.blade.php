@@ -8,7 +8,9 @@
       <div class="row">
         <div class="d-flex mb-2 justify-content-between">
             <h3>Doctor services</h3>
+             @if(\App\Helpers\Permissions::hasPermission('create_service'))
             <a href="{{ route('service-add') }}" class="btn btn-primary-custom text-white px-5"> <i class="fa-solid fa-plus text-white"></i> Add </a>
+            @endif
         </div>
         <div class="card p-0">
             <div class="card-header">
@@ -53,10 +55,13 @@
                      <td><img src="{{ asset('images/services_icons/'.$service->icon) }}"></td>
                      <td class="py-2 text-center"><span class="w-100 rounded-pill badge bg-{{$service->status==1?'success':'danger'}}">{{$service->status==1?'Active':'InActive'}}</span></td>
                      <td>
-                        <a href="{{ route('view-service', $service->id) }}" class="mb-1 btn btn-primary-custom">View</a>
-                        <a href="{{ route('edit-service', $service->id) }}" class="mb-1 btn btn-outline-primary">Edit</a>
-                        <a href="{{ route('toggleServiceStatus', $service->id) }}" class="toggle btn btn-{{$service->status==1?'danger':'success'}}"onclick="return confirm('Are you sure you want to change this service staus ?');">{{$service->status==1?'Deactivate':'Activate'}}</a>
-
+                        @if(\App\Helpers\Permissions::hasPermission('read_service'))
+                            <a href="{{ route('view-service', $service->id) }}" class="mb-1 btn btn-primary-custom">View</a>
+                        @endif
+                        @if(\App\Helpers\Permissions::hasPermission('update_service'))
+                            <a href="{{ route('edit-service', $service->id) }}" class="mb-1 btn btn-outline-primary">Edit</a>
+                            <a href="{{ route('toggleServiceStatus', $service->id) }}" class="toggle btn btn-{{$service->status==1?'danger':'success'}}"onclick="return confirm('Are you sure you want to change this service staus ?');">{{$service->status==1?'Deactivate':'Activate'}}</a>
+                        @endif
                     </td>
                   </tr>
                 @endforeach

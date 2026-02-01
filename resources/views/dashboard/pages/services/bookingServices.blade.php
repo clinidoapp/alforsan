@@ -7,14 +7,14 @@
        <div class="row ">
         <div class="d-flex mb-2 justify-content-between">
             <h3>Booking Services</h3>
-            {{-- <a href="{{ route('createOrUpdateBookingService') }}" class="btn btn-primary-custom text-white px-5"> <i class="fa-solid fa-plus text-white"></i> Add </a> --}}
+            @if(\App\Helpers\Permissions::hasPermission('create_booking_service'))
             <a href="javascript:void(0)"
                 class="btn btn-primary-custom text-white px-5 add-service"
                 data-bs-toggle="modal"
                 data-bs-target="#editServiceModal">
                 <i class="fa-solid fa-plus text-white"></i> Add
                 </a>
-
+                @endif
         </div>
       <div class="card p-0 mb-3">
          <div class="card-header">
@@ -29,8 +29,8 @@
 
                     </div>
                   <div class="col-md-3 d-flex gap-3 justify-content-end">
-                     <button class="w-50 btn btn-primary-custom">Search</button>
-                     <a href="{{ route('booking-services') }}" class="w-50 btn btn-outline-primary">Reset</a>
+                     <button class="w-50 btn btn-primary-custom mb-3">Search</button>
+                     <a href="{{ route('booking-services') }}" class="w-50 btn btn-outline-primary mb-3">Reset</a>
                   </div>
                </div>
             </form>
@@ -46,7 +46,10 @@
                      <th class="py-2 text-center">Name (EN)</th>
                      <th class="py-2 text-center">Name (AR)</th>
                      <th class="py-2 text-center">Status</th>
+                         @if(\App\Helpers\Permissions::hasPermission('update_booking_service'))
+
                      <th class="py-2 text-center">Actions</th>
+                     @endif
                   </tr>
                </thead>
                <tbody class="text-center">
@@ -56,7 +59,9 @@
                     <td>{{ $service->name_en }}</td>
                     <td>{{ $service->name_ar }}</td>
                     <td class="py-2 text-center"><span class="w-100 rounded-pill badge bg-{{$service->status==1?'success':'danger'}}">{{$service->status==1?'Active':'InActive'}}</span></td>
+                    @if(\App\Helpers\Permissions::hasPermission('update_booking_service'))
                     <td class="py-2 text-center admin-actions">
+
                             <a class="btn btn-primary-custom edit-service mb-1"
                                 data-bs-toggle="modal"
                                 data-bs-target="#editServiceModal"
@@ -65,6 +70,7 @@
                                 data-name_ar="{{$service->name_ar}}">Edit</a>
                             <a href="{{ route('toggleBookingServicesStatus', $service->id) }}" class="mb-1 toggle btn btn-{{$service->status==1?'danger':'success'}}"onclick="return confirm('Are you sure you want to change this service staus ?');">{{$service->status==1?'Deactivate':'Activate'}}</a>
                         </td>
+                        @endif
                 </tr>
 
                 @endforeach

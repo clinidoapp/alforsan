@@ -14,7 +14,9 @@
                      <th class="py-2 text-center">ID</th>
                      <th class="py-2 text-center">Key Name</th>
                      <th class="py-2 text-center">Value</th>
+                    @if(\App\Helpers\Permissions::hasPermission('update_settings'))
                      <th class="py-2 text-center">Actions</th>
+                     @endif
                   </tr>
                </thead>
                <tbody>
@@ -23,12 +25,15 @@
                      <td>{{$set->id}}</td>
                      <td>{{$set->key}}</td>
                      <td>{{$set->value}}</td>
+                    @if(\App\Helpers\Permissions::hasPermission('update_settings'))
+
                      <td><a class="btn btn-primary-custom edit-setting"
                         data-bs-toggle="modal"
                         data-bs-target="#editSettingModal"
                         data-id="{{$set->id}}"
                         data-set_value="{{$set->value}}"
                         data-name="{{$set->key}}">Edit</a></td>
+                        @endif
                   </tr>
                 @endforeach
 
