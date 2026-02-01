@@ -257,7 +257,7 @@ class RolesController extends Controller
 
             DB::table('role_permissions')->insert($rows);
         });
-        return redirect()->route('roles-list');
+        return redirect()->route('roles-list')->with('success', 'Role created successfully');
     }
     public function editRole(Request $request,$id){
 

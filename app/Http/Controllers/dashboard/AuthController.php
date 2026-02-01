@@ -154,7 +154,7 @@ class AuthController extends Controller
         }
 
         DB::commit();
-        return redirect()->route('admin-list');
+        return redirect()->route('admin-list')->with('success', $id ? 'User updated successfully' : 'User added successfully');
     }
     public function editAdmin(Request $request , $id)
     {
@@ -187,18 +187,17 @@ class AuthController extends Controller
         $currentStatus = $admin->value('status');
         $newStatus = $currentStatus == 1 ? 0 : 1;
         $admin->update(['status' => $newStatus]);
-        return redirect()->route('admin-list');
+        return redirect()->route('admin-list')->with('success', 'User status updated successfully');
     }
     public function deleteAdmin(Request $request,$id)
     {
-
         DB::table('users')
             ->where('id', $id)
             ->update([
                 'is_deleted' => 1,
                 'deleted_at' => Carbon::now(),
             ]);
-        return redirect()->route('admin.admins');
+        return redirect()->route('admin.admins')->with('success', 'User deleted successfully');
 
     }
 

@@ -45,7 +45,7 @@ class SettingsController extends Controller
             file_put_contents($envPath, $content);
 
         });
-        return redirect()->route('setting');
+        return redirect()->route('setting')->with('success', 'Value updated successfully.');
     }
 
 }
