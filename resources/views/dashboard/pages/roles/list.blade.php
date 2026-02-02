@@ -34,9 +34,9 @@
                   <table class="table border-0 align-middle text-center">
                      <thead class="table-primary">
                         <tr>
-                           <th class="text-start">Permission</th>
+                           <th class="text-start sticky-col">Permission</th>
                            @foreach ($roles as $role)
-                              <th>{{ $role->name }}</th>
+                              <th class="sticky-col">{{ $role->name }}</th>
                            @endforeach
                         </tr>
                      </thead>

@@ -12,7 +12,7 @@
 
       </div>
       <div class="row">
-        <div class="w-100 card p-3">
+        <div class="w-100 card p-3 table-responsive">
             <h4>Media</h4>
             <table class="rounded-2 table table-striped ">
                 <thead class="table-primary py-2 text-white rounded-2" style="background-color: #32519b;">
