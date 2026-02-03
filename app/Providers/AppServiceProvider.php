@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
             Schema::defaultStringLength(191);
 
             view()->composer('*', function ($view) {
-        $locale = Session::get('locale', 'en');
+        $locale = Session::get('locale', 'ar');
         App::setLocale($locale);
         $view->with('current_locale', $locale);
     });
