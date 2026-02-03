@@ -101,6 +101,10 @@ i {
     border-color: var(--primary-color) !important;
     background: var(--primary-color) !important;
 }
+.is-invalid {
+    border: 2px solid #dc3545 !important;
+    background-color: #fff5f5;
+}
 /* Footer */
 footer {
     /* background-color: #f0f2f5; */

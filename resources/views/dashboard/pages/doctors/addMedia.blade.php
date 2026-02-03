@@ -21,7 +21,7 @@
                @else
                <div class="form-group mb-3 col-md-6">
                    <label for="doctor_id" class="form-label">Doctor name</label>
-                   <select class="form-select" id="doctor_id" name="doctor_id">
+                   <select class="form-select" id="doctor_id" name="doctor_id" required>
                        <option value="" disabled selected>Choose doctor</option>
                        @foreach($doctors as $doctor)
                        <option value="{{$doctor->id}}">{{$doctor->identifier}}</option>
@@ -35,17 +35,17 @@
                      <div class="row mb-3">
                         <div class="col-md-6">
                            <label for="title_en" class="form-label">Video title(En)</label>
-                           <input type="text" class="form-control-lg w-100 d-block border-0" id="title_en" name="videos[0][title_en]" placeholder="Enter Video title(En)">
+                           <input type="text" class="form-control-lg w-100 d-block border-0" id="title_en" name="videos[0][title_en]" placeholder="Enter Video title(En)" required minlength="8">
                         </div>
                         <div class="col-md-6">
                            <label for="title_ar" class="form-label float-end">عنوان الفيديو باللغة العربية</label>
-                           <input type="text" class="form-control-lg text-end w-100 d-block border-0" id="title_ar" name="videos[0][title_ar]" placeholder="اكتب عنوان الفيديو باللغة العربية">
+                           <input type="text" class="form-control-lg text-end w-100 d-block border-0" id="title_ar" name="videos[0][title_ar]" placeholder="اكتب عنوان الفيديو باللغة العربية" required minlength="8">
                         </div>
                      </div>
                      <div class="row mb-3">
                         <div class="col-md-6">
                            <label for="video_url" class="form-label">Video Link</label>
-                           <input type="text" class="form-control-lg w-100 d-block border-0" id="video_url" name="videos[0][video_url]" placeholder="Enter Video link">
+                           <input type="text" class="form-control-lg w-100 d-block border-0" id="video_url" name="videos[0][video_url]" placeholder="Enter Video link" required minlength="8">
                         </div>
                         <div class="col-md-6">
                            <label for="status" class="form-label">Video status</label>
