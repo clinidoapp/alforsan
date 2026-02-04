@@ -350,12 +350,10 @@ class DoctorController extends Controller
 
         DB::transaction(function () use ($data, $doctor_id) {
             foreach ($data['videos'] as $video) {
-                DB::table('doctor_videos')->updateOrInsert(
+                DB::table('doctor_videos')->insert(
                     [
                         'doctor_id'  => $doctor_id,
                         'video_url' => $video['video_url'],
-                    ],
-                    [
                         'title_en'  => $video['title_en'],
                         'title_ar'  => $video['title_ar'],
                         'status'    => $video['status'],

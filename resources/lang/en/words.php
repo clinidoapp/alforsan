@@ -38,7 +38,7 @@ return [
     'no medical service found'=>'No medical services available at the moment',
     'contactUs title'=>'Here to serve you',
     'contactUs subtitle'=>'Contact us to book an appointment or inquire about our services.',
-    'Call us'=>'contact Us',
+    'Call us'=>'Contact Us',
     'Contact-p'=>'We are here to serve you. Contact us to book an appointment or inquire about our services.',
     'Working hours'=>'Working hours',
     'address'=>'Address',
