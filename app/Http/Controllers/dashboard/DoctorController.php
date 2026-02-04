@@ -159,6 +159,8 @@ class DoctorController extends Controller
 
                 ]);
                 $doctor_id = $id ;
+                DB::table('doctor_service')->where('doctor_id', $doctor_id)->delete();
+
             }else{
                 $doctor_id = DB::table('doctors')->insertGetId([
                     'name_en' => $data['name_en'],
