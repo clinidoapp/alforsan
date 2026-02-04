@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('title', 'Dashboard - services')
-@section('page-title', 'servic Management')
+@section('page-title', 'service Management')
 @section('content')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
 <section class="listing">

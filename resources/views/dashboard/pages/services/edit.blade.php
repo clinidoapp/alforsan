@@ -1,11 +1,11 @@
 @extends('layouts.dashboard')
-@section('title', 'Dashboard - Doctors')
-@section('page-title', 'Doctors Management')
+@section('title', 'Dashboard - Services')
+@section('page-title', 'Service Management')
 @section('content')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
 <section class="listing">
    <div class="container-fluid">
-      <h2>Add New Service</h2>
+      <h2>Edit Service</h2>
       <div class="card p-3">
          @if ($errors->any())
          <div class="alert alert-danger">

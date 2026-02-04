@@ -96,7 +96,7 @@ class BookingController extends Controller
     }
     public function createOrUpdateService(Request $request , $id = null){
 
-        $data = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'name_ar' => [
                 'required',
                 'string',
@@ -111,9 +111,10 @@ class BookingController extends Controller
             ],
         ]);
 
-        if ($data->fails()) {
-            return redirect()->back()->with('error', $data->errors()->first());
+        if ($validator->fails()) {
+            return redirect()->back()->with('error', $validator->errors()->first());
         }
+        $data = $validator->validated();
         /*$data = $request->validate([
             'name_ar' => ['required', 'string', 'max:191',
                 Rule::unique('booking_services', 'name_ar')->ignore($id ,'id')

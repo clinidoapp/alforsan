@@ -11,7 +11,7 @@
              <a href="{{env('instagram_url')}}" class="mx-2"><i class="fa-brands fa-instagram"></i></a>
           </div>
          <div class="contact-info">
-            <span class="m-0 m-md-3"><i class="px-2 fa-solid fa-phone-volume"></i> {{ env('site_phone_1') }}</span>
+            <span class="m-0 m-md-3"><i class="px-2 fa-solid fa-phone-volume"></i>   <span dir="ltr">+2  {{ env('site_phone_1') }}  </span> </span>
             <span class="m-0 m-md-3"><i class="px-2 fa-solid fa-envelope"></i>{{env('site_email')}}</span>
          </div>
       </div>

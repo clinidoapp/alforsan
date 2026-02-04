@@ -25,10 +25,10 @@
                   <img src="{{ asset('images/contacts/call@2x.webp') }}">
                   <h2>{{ __('words.contact') }}</h2>
                </div>
-               <p>{{ env('site_phone_1') }}</p>
-               <p>{{ env('site_phone_2') }}</p>
-               <p>{{ env('site_phone_3') }}</p>
-               <p>{{ env('site_phone_4') }}</p>
+               <p>  <span dir="ltr">+2 {{ env('site_phone_1') }}</p>
+               <p>  <span dir="ltr">+2 {{ env('site_phone_2') }}</p>
+               <p>  <span dir="ltr">+2 {{ env('site_phone_3') }}</p>
+               <p>  <span dir="ltr">+2 {{ env('site_phone_4') }}</p>
             </div>
             <div class="d-block">
                <div class="d-flex mb-2 align-items-center">

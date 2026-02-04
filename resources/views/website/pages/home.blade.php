@@ -235,8 +235,8 @@
             <div class="card mb-2 p-3">
                <img src="{{ asset('images/contacts/call@2x.webp') }}">
                <h2>{{ __('words.contact') }}</h2>
-               <p>{{ env('site_phone_1') }}</p>
-               <p>{{ env('site_phone_2') }}</p>
+                <p> <span dir="ltr">+2 {{ env('site_phone_1') }} </span> </p>
+                <p>  <span dir="ltr">+2 {{ env('site_phone_2') }}  </span> </p>
             </div>
          </div>
          <div class="col-md-4">

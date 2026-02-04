@@ -41,15 +41,18 @@
                 <button class="footer-toggle" data-bs-toggle="collapse" data-bs-target="#footerContact"> {{__('words.Call us')}} </button>
 
                 <div id="footerContact" class="collapse d-md-block">
-                    <p class="mb-1"><i class="fa-solid fa-phone-volume"></i> {{env('site_phone')}}</p>
+                    <p class="mb-1"><i class="fa-solid fa-phone-volume"></i>
+                        <span dir="ltr">+2  {{env('site_phone_1')}}</span>
+
+                        </p>
                     <p class="mb-1"><i class="fa-solid fa-envelope"></i> {{env('site_email')}}</p>
                 </div>
                 <div id="socialLinks">
                     <div class="d-flex">
-                        <a href="#" class="text-dark"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="text-dark"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#" class="text-dark"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="text-dark"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="{{env('facebook_url')}}" class="text-dark"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="{{env('twitter_url')}}" class="text-dark"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="{{env('instagram_url')}}" class="text-dark"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="{{env('tiktok_url')}}" class="text-dark"><i class="fa-brands fa-tiktok"></i></a>
                     </div>
                 </div>
             </div>
