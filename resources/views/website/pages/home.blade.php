@@ -34,9 +34,9 @@
          </div>
          <div class="col-lg-3 col-6">
             <div class="text-center card mb-2 p-2 rounded-2">
-               <img src="{{ asset('images/counters/eye@2x.webp') }}"/>
-               <h2>+1000</h2>
-               <span>{{ __('words.Successful surgery') }}</span>
+               <img src="{{ asset('images/counters/years@2x.webp') }}"/>
+               <h2>+15</h2>
+               <span>{{ __('words.experience') }}</span>
             </div>
          </div>
          <div class="col-lg-3 col-6">
@@ -56,7 +56,7 @@
       </div>
    </div>
 </section>
-@if($services)
+@if(count($services) > 0)
 <section class="services pt-5 bg-light-blue">
    <div class="container">
       <div class="text-center">
@@ -121,7 +121,7 @@
       </div>
    </div>
 </section>
-@if($doctors)
+@if(count($doctors) > 0)
 <section class="ourTeam bg-light-blue pt-5">
    <div class="container">
    <div class="container">
@@ -152,7 +152,7 @@
    </div>
 </section>
 @endif
-@if($reviews)
+@if(count($reviews) > 0)
 <section class="Testimonials py-5">
    <div class="container text-center">
       <h1>{{ __('words.Testimonials title') }}</h1>
