@@ -60,14 +60,14 @@
             </div>
             <div class="row mb-3">
                <div class="col-6">
-                     <label for="image" class="form-label">Service Image</label>
+                  <label for="image" class="form-label">Service Image</label>
                   <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" >
                   @error('image')
                   <div class="invalid-feedback">{{ $message }}</div>
                   @enderror
                </div>
                <div class="col-6">
-                     <label for="icon" class="form-label">Service Icon</label>
+                  <label for="icon" class="form-label">Service Icon</label>
                   <input type="file" name="icon" class="form-control @error('image') is-invalid @enderror" >
                   @error('image')
                   <div class="invalid-feedback">{{ $message }}</div>
@@ -81,79 +81,78 @@
                   <div class="row mb-3">
                      <div class="col-md-6">
                         <label for="title_en" class="form-label">symptoms title(En)</label>
-                        <input type="text" class="form-control-lg w-100 d-block border-0" id="title_en" name="symptoms[0][title_en]" value="{{ $symptom->title_en }}"  placeholder="Enter symptoms title(En)">
+                        <input class="form-control-lg w-100 d-block border-0" type="text" name="symptoms[{{ $i }}][title_en]" value="{{ $symptom->title_en }}">
                      </div>
                      <div class="col-md-6">
                         <label for="title_ar" class="form-label float-end">اسم العرض</label>
-                        <input type="text" class="form-control-lg text-end w-100 d-block border-0" id="title_ar" name="symptoms[0][title_ar]" value="{{ $symptom->title_ar }}"  placeholder="ادخل اسم العرض باللغة العربية">
+                        <input class="form-control-lg w-100 d-block border-0 text-end "type="text" name="symptoms[{{ $i }}][title_ar]" value="{{ $symptom->title_ar }}">
                      </div>
                   </div>
                   <div class="row mb-3">
                      <div class="col-md-6">
                         <label for="description_en" class="form-label">Description(En)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="description_en" name="symptoms[0][description_en]"  placeholder="Enter symptoms description en">{{ $symptom->description_en }}</textarea>
+                        <textarea  class="form-control-lg w-100 d-block border-0" name="symptoms[{{ $i }}][description_en]">{{ $symptom->description_en }}</textarea>
                      </div>
                      <div class="col-md-6">
                         <label for="description_ar" class="form-label float-end">وصف العرض</label>
-                        <textarea type="text" class="form-control-lg w-100 text-end d-block border-0" id="description_ar" name="symptoms[0][description_ar]"   placeholder="ادخل وصف العرض باللغة العربية">{{ $symptom->description_ar }}</textarea>
+                        <textarea  class="form-control-lg w-100 d-block border-0 text-end " name="symptoms[{{ $i }}][description_ar]">{{ $symptom->description_ar }}</textarea>
                      </div>
-                      @if($loop->last)
-        <div class="text-center mt-4 add-btn-wrapper">
-            <button type="button" class="btn btn-outline-primary p-3 w-50 add-symptoms-btn">
-                <i class="fa fa-plus"></i> Add another service symptom
-            </button>
-        </div>
-        @endif
                   </div>
+                  @if($loop->last)
+                  <div class="text-center mt-4 add-btn-wrapper">
+                     <button type="button" class="btn btn-outline-primary p-3 w-50 add-symptoms-btn">
+                     <i class="fa fa-plus"></i> Add another service symptom
+                     </button>
+                  </div>
+                  @endif
                </div>
                @endforeach
             </div>
             <div id="techniques-wrapper">
                <h5>Service techniques</h5>
                @foreach($result->techniques as $t => $technique)
-
-               <div class="card bg-light-gray p-4 mb-3 techniques-card" data-index="{{$t}}">
-                  <div class="row mb-3">
+               <div class="card bg-light-gray p-4 mb-3 techniques-card" data-index="{{ $t }}">
+                  <div class="row">
                      <div class="col-md-6">
                         <label for="title_en" class="form-label">techniques title(En)</label>
-                        <input type="text" class="form-control-lg w-100 d-block border-0" id="title_en" name="techniques[0][title_en]" placeholder="Enter techniques title(En)" value="{{ $technique->title_en }}">
+                        <input  class="form-control-lg w-100 d-block border-0" type="text" name="techniques[{{ $t }}][title_en]" value="{{ $technique->title_en }}">
                      </div>
                      <div class="col-md-6">
                         <label for="title_ar" class="form-label float-end">اسم التقنية</label>
-                        <input type="text" class="form-control-lg w-100 d-block border-0 text-end" id="title_ar" name="techniques[0][title_ar]" placeholder="ادخل اسم التقنية باللغة العربية" value="{{ $technique->title_ar }}">
+                        <input type="text" class="form-control-lg w-100 d-block border-0 text-end " name="techniques[{{ $t }}][title_ar]" value="{{ $technique->title_ar }}">
                      </div>
                   </div>
-                  <div class="row mb-3">
+                  <div class="row">
                      <div class="col-md-6">
                         <label for="description_en" class="form-label">Description(En)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="description_en" name="techniques[0][description_en]" placeholder="Enter techniques description en">{{ $technique->description_en }}</textarea>
+                        <textarea class="form-control-lg w-100 d-block border-0" name="techniques[{{ $t }}][description_en]">{{ $technique->description_en }}</textarea>
                      </div>
                      <div class="col-md-6">
                         <label for="description_ar" class="form-label float-end">وصف التقنية</label>
-                        <textarea type="text" class="form-control-lg text-end w-100 d-block border-0" id="description_ar" name="techniques[0][description_ar]" placeholder="ادخل وصف التقنية باللغة العربية">{{ $technique->description_ar }}</textarea>
+                        <textarea  class="form-control-lg w-100 d-block border-0 text-end" name="techniques[{{ $t }}][description_ar]">{{ $technique->description_ar }}</textarea>
                      </div>
+                  </div>
+                  <div class="row">
                      <div class="col-md-6">
                         <label for="suitable_for_en" class="form-label">Who is it suitable for?(En)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="suitable_for_en" name="techniques[0][suitable_for_en]" placeholder="Enter who is suitable for en">{{ $technique->suitable_for_en }}</textarea>
+                        <textarea  class="form-control-lg w-100 d-block border-0" name="techniques[{{ $t }}][suitable_for_en]">{{ $technique->suitable_for_en }}</textarea>
                      </div>
                      <div class="col-md-6">
                         <label for="suitable_for_ar" class="form-label float-end">لمن تناسب هذه التقنية</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="suitable_for_ar" name="techniques[0][suitable_for_ar]"  placeholder="ادخل وصف الاشخاص الذين تناسبهم هذه التقنية">{{ $technique->suitable_for_ar }}</textarea>
+                        <textarea  class="form-control-lg w-100 d-block border-0 text-end " name="techniques[{{ $t }}][suitable_for_ar]">{{ $technique->suitable_for_ar }}</textarea>
                      </div>
                   </div>
-                   @if($loop->last)
-        <div class="text-center mt-4 add-btn-wrapper">
-            <button type="button"
+                  @if($loop->last)
+                  <div class="text-center mt-4 add-btn-wrapper">
+                     <button type="button"
                         class="btn btn-outline-primary p-3 w-50 add-techniques-btn">
                      <i class="fa fa-plus"></i> Add another service techniques
                      </button>
-        </div>
-        @endif
-
+                  </div>
+                  @endif
                </div>
                @endforeach
             </div>
-
             <div class="row mb-3">
                <div class="col-md-6">
                   <label for="brief_en" class="form-label">why Alforsan(En)</label>
@@ -167,35 +166,34 @@
             <div id="faq-wrapper">
                <h5>Service FAQ</h5>
                @foreach($result->faqs as $q => $question)
-
                <div class="card bg-light-gray p-4 mb-3 faq-card" data-index="{{ $q }}">
-                  <div class="row mb-3">
+                  <div class="row">
                      <div class="col-md-6">
                         <label for="question_en" class="form-label">FAQ question (En)</label>
-                        <input type="text" class="form-control-lg w-100 d-block border-0" id="question_en" name="faqs[0][question_en]" placeholder="Enter question (En)" value="{{ $question->question_en }}">
+                        <input type="text"  class="form-control-lg w-100 d-block border-0"  name="faqs[{{ $q }}][question_en]" value="{{ $question->question_en }}">
                      </div>
                      <div class="col-md-6">
                         <label for="question_ar" class="form-label float-end">السؤال باللغة العربية</label>
-                        <input type="text" class="text-end form-control-lg w-100 d-block border-0" id="question_ar" name="faqs[0][question_ar]" placeholder="ادخل السؤال باللغة العربية" value="{{ $question->question_ar }}">
+                        <input type="text" class="form-control-lg w-100 d-block border-0 text-end" name="faqs[{{ $q }}][question_ar]" value="{{ $question->question_ar }}">
                      </div>
                   </div>
-                  <div class="row mb-3">
+                  <div class="row">
                      <div class="col-md-6">
                         <label for="answer_en" class="form-label">Answer(En)</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0" id="answer_en" name="faqs[0][answer_en]" placeholder="Enter question answer en">{{ $question->answer_en }}</textarea>
+                        <textarea name="faqs[{{ $q }}][answer_en]"  class="form-control-lg w-100 d-block border-0" >{{ $question->answer_en }}</textarea>
                      </div>
                      <div class="col-md-6">
                         <label for="answer_ar" class="form-label float-end">الاجابة باللغة العربية</label>
-                        <textarea type="text" class="form-control-lg w-100 d-block border-0 text-end" id="answer_ar" name="faqs[0][answer_ar]" placeholder="ادخل الاجابة باللغة العربية">{{ $question->answer_ar }}</textarea>
+                        <textarea name="faqs[{{ $q }}][answer_ar]" class="form-control-lg w-100 d-block border-0 text-end" >{{ $question->answer_ar }}</textarea>
                      </div>
-                      @if($loop->last)
-                    <div class="text-center mt-4 add-btn-wrapper">
-                        <button type="button" class="btn btn-outline-primary p-3 w-50  add-faq-btn">
-                            <i class="fa fa-plus"></i> Add another service faq
-                        </button>
-                    </div>
-                    @endif
                   </div>
+                  @if($loop->last)
+                  <div class="text-center mt-4 add-btn-wrapper">
+                     <button type="button" class="btn btn-outline-primary p-3 w-50  add-faq-btn">
+                     <i class="fa fa-plus"></i> Add another service faq
+                     </button>
+                  </div>
+                  @endif
                </div>
                @endforeach
             </div>
