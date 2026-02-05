@@ -3,7 +3,7 @@
 return [
     'home' => 'Home',
     'services' => 'Services',
-    'about_us' => 'About hospital',
+    'about_us' => 'About Hospital',
     'contact' => 'Contact Us',
     'phone' => '+20 123 456 789',
     'email' => 'Email',
@@ -45,7 +45,7 @@ return [
     'doctors title'=>'Our Medical Team.. Expertise You Can Trust',
     'doctors sub_title'=>'At Alforsan hospital, we believe that a doctor is the foundation of medical success. That is why our hospital features a distinguished team of ophthalmology professors and consultants. They combine scientific knowledge and practical experience at the highest level, and are recognized for their compassionate and high-quality patient care.',
     'no doctors found'=>'No doctors available at the moment',
-    'about_us title'=>'About Alforsan Eye hospital',
+    'about_us title'=>'About Alforsan Eye Hospital',
     'our vision'=>'Our Vision',
     'our vision text'=>'A leading hospital in the field of ophthalmology and surgery, providing exceptional care of the highest international medical standards, blended with our deeply held humanitarian values in treating our patients.',
     'our mission'=>'Our Mission',

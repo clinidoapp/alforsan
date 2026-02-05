@@ -60,7 +60,7 @@
          <div class="col-md-8 col-lg-9 mt-3">
             <div class="card shadow-sm border-0">
                <div class="card-body">
-                  <form method="POST" action="{{ route('StoreRequest') }}">
+                  <form id="requestForm" method="POST" action="{{ route('StoreRequest') }}">
                      @csrf
                      <!-- Name -->
                      <div class="mb-3">
@@ -109,9 +109,10 @@
       </div>
    </div>
 </section>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.17/js/intlTelInput.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.17/js/utils.js"></script>
-        <script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.17/js/intlTelInput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.17/js/utils.js"></script>
+<script>
   const input = document.querySelector("#phone");
 
   const iti = window.intlTelInput(input, {
@@ -128,5 +129,53 @@
     document.getElementById("phone_full").value = iti.getNumber();
   });
 </script>
+<script>
+$(function () {
+
+    const rules = {
+        full_name: v => v.length >= 3 && v.length <= 255,
+        phone: () => iti.isValidNumber(),
+        email: v => !v || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+        service_id: v => v
+    };
+
+    function validate(el) {
+        let ok = true;
+
+        if (el.attr('name') === 'phone') {
+            ok = iti.isValidNumber();
+            $('#phone_full').val(iti.getNumber()); // always sync full number
+        } else {
+            const v = $.trim(el.val());
+            ok = rules[el.attr('name')]?.(v) ?? true;
+        }
+
+        el.toggleClass('is-invalid', !ok);
+        return ok;
+    }
+
+    $('#phone').on('keyup blur countrychange', function () {
+        validate($(this));
+    });
+
+    $('#requestForm input, #requestForm textarea').on('keyup blur', function () {
+        validate($(this));
+    });
+
+    $('#requestForm select').on('change', function () {
+        validate($(this));
+    });
+
+    $('#requestForm').on('submit', function (e) {
+        let valid = true;
+        $(this).find('input, textarea, select').each(function () {
+            if (!validate($(this))) valid = false;
+        });
+        if (!valid) e.preventDefault();
+    });
+
+});
+</script>
+
 
 @endsection

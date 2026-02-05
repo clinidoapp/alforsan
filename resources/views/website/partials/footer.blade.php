@@ -72,4 +72,41 @@
         <a href="https://wa.me/{{ $whatsappNumber }}"target="_blank"class="whatsapp-float {{ $isArabic ? 'rtl' : 'ltr' }}"aria-label="WhatsApp Chat" title="{{ $isArabic ? 'تواصل معنا عبر واتساب' : 'Chat with us on WhatsApp' }}">
             <img src="{{ asset('images/whatsapp-icon@2x.webp') }}" height="60">
         </a>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+
+$(function() {
+    function updateFooterToggles() {
+        $('.footer-toggle').each(function() {
+            if ($(window).width() >= 768) { // Desktop
+                $(this)
+                    .removeAttr('data-bs-toggle')
+                    .removeAttr('data-bs-target');
+            } else { // Mobile
+                // Restore attributes if you want toggle to work on mobile
+                // Replace with the actual targets
+                $(this).attr('data-bs-toggle', 'collapse');
+                // Each button must have the correct target
+                const target = $(this).attr('data-original-target');
+                if (target) $(this).attr('data-bs-target', target);
+            }
+        });
+    }
+
+    // Save original targets so we can restore them
+    $('.footer-toggle').each(function() {
+        const target = $(this).attr('data-bs-target');
+        $(this).attr('data-original-target', target);
+    });
+
+    $(window).on('resize', updateFooterToggles);
+    updateFooterToggles(); // run on page load
+});
+
+    });
+
+// });
+</script>
+
 </footer>

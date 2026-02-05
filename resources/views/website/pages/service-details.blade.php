@@ -1,8 +1,8 @@
 @extends('layouts.website')
-@section('title', 'Services - Alforsan Hospital')
 @php
 $local=app()->getLocale();
 @endphp
+@section('title', $result->{'name_'.$local} . ' - Alforsan Hospital')
 @section('content')
 <section class="service-details py-5 mt-5 bg-light-blue">
    <div class="container-fluid mt-4 p-0 w-100 overflow-clip">
@@ -13,7 +13,7 @@ $local=app()->getLocale();
             </div>
          </div>
          <div class="col-md-10 service-image-container">
-            <img src="{{ asset('images/service_image/' . ($result->image ? $result->image : 'image.png')) }}" class="img-fluid rounded">
+            <img src="{{ asset('images/service_image/' . ($result->image ? $result->image : 'image.png')) }}" class="img-fluid w-100 rounded">
          </div>
       </div>
    </div>

@@ -90,29 +90,29 @@
          </div>
       </div>
       <div class="row">
-         <div class="col-md-3">
-            <div class="card mb-2 bg-light-blue">
+         <div class="col-md-3 mb-2">
+            <div class="card h-100 bg-light-blue">
                <img src="{{ asset('images/why_choose_us/doctor@2x.webp') }}">
                <h3 class="why_us_feature">{{ __('words.why_us_feature1') }}</h3>
                <p class="why_us_feature_description">{{ __('words.why_us_feature1 desc') }}</p>
             </div>
          </div>
-         <div class="col-md-3">
-            <div class="card mb-2 bg-light-blue">
+         <div class="col-md-3 mb-2">
+            <div class="card h-100 bg-light-blue">
                <img src="{{ asset('images/why_choose_us/technology@2x.webp') }}">
                <h3 class="why_us_feature">{{ __('words.why_us_feature2') }}</h3>
                <p class="why_us_feature_description">{{ __('words.why_us_feature2 desc') }}</p>
             </div>
          </div>
-         <div class="col-md-3">
-            <div class="card mb-2 bg-light-blue">
+         <div class="col-md-3 mb-2">
+            <div class="card h-100 bg-light-blue">
                <img src="{{ asset('images/why_choose_us/icon@2x.webp') }}">
                <h3 class="why_us_feature">{{ __('words.why_us_feature3') }}</h3>
                <p class="why_us_feature_description">{{ __('words.why_us_feature3 desc') }}</p>
             </div>
          </div>
-         <div class="col-md-3">
-            <div class="card mb-2 bg-light-blue">
+         <div class="col-md-3 mb-2">
+            <div class="card h-100 bg-light-blue">
                <img src="{{ asset('images/why_choose_us/services@2x.webp') }}">
                <h3 class="why_us_feature">{{ __('words.why_us_feature4') }}</h3>
                <p class="why_us_feature_description">{{ __('words.why_us_feature4 desc') }}</p>
@@ -135,7 +135,7 @@
          @foreach($doctors as $doctor)
          <div class="col-md-3">
             <a href="{{ route('doctorDetails', $doctor->id) }}" class="text-decoration-none">
-            <div class="card mb-2 text-center">
+            <div class="card h-100 mb-2 text-center">
                <img src="{{ asset('images/doctor_photos/' . ($doctor->image ? $doctor->image : 'alternative.jpg')) }}">
                <div class="p-3 doctor-data">
                   <h3 class="doctor_name">{{ $doctor->{'name_'.$local} }}</h3>
@@ -231,23 +231,23 @@
          </div>
       </div>
       <div class="row">
-         <div class="col-md-4">
-            <div class="card mb-2 p-3">
+         <div class="col-md-4 mb-2">
+            <div class="card h-100 p-3">
                <img src="{{ asset('images/contacts/call@2x.webp') }}">
                <h2>{{ __('words.contact') }}</h2>
                 <p> <span dir="ltr">+2 {{ env('site_phone_1') }} </span> </p>
                 <p>  <span dir="ltr">+2 {{ env('site_phone_2') }}  </span> </p>
             </div>
          </div>
-         <div class="col-md-4">
-            <div class="card mb-2 p-3">
+         <div class="col-md-4 mb-2">
+            <div class="card h-100 p-3">
                <img src="{{ asset('images/contacts/hours@2x.webp') }}">
                <h2>{{ __('words.Working hours') }}</h2>
                <p>{{ env('work_hours_'.$local) }}</p>
             </div>
          </div>
-         <div class="col-md-4">
-            <div class="card mb-2 p-3">
+         <div class="col-md-4 mb-2">
+            <div class="card h-100 p-3">
                <img src="{{ asset('images/contacts/address@2x.webp') }}">
                <h2>{{ __('words.address') }}</h2>
                <p>{{ env('site_address_'.$local) }} </p>

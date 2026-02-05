@@ -1,12 +1,14 @@
 /* ===============================
    English Website Styles (LTR)
    =============================== */
-@font-face {
+/* @font-face {
 	font-family: 'PT Serif Caption';
 	src: url('../fonts/PTSerifCaption-Regular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
-}
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=PT+Serif+Caption:ital@0;1&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
 	--primary-color: #32519b;
@@ -24,7 +26,7 @@ html {
 }
 
 body {
-	font-family: 'PT Serif Caption', serif;
+	font-family: 'Cairo', serif;
 	/* background-color: var(--bg-light); */
 	color: var(--text-dark);
 }
@@ -66,6 +68,8 @@ body {
 
 .nav-item {
 	margin: 0 10px;
+    font-weight: bold;
+    white-space: nowrap;
 }
 
 .nav-item .nav-link {
@@ -185,6 +189,7 @@ footer {
 
 .counters .card h2 {
 	font-size: 22px;
+
 }
 
 .counters .card span {
@@ -198,6 +203,7 @@ footer {
 .services h1 {
 	color: var(--secondary-color);
 	font-size: 2rem;
+    font-weight: bold;
 }
 
 .services .card {
@@ -212,6 +218,7 @@ footer {
 
 .services .card h3 {
 	font-size: 14px;
+    margin: 3px 0;
 }
 
 /* _________why choose us section___ */
@@ -226,6 +233,7 @@ footer {
 	letter-spacing: normal;
 	text-align: center;
 	color: #11b3cf;
+    font-weight: bold;
 }
 
 .why_choose_us p,
@@ -245,7 +253,7 @@ footer {
 .why_choose_us .card {
 	padding: 20px;
 	border: none;
-	min-height: 300px;
+	/* min-height: 300px; */
 }
 
 .why_choose_us .card img {
@@ -279,7 +287,6 @@ footer {
 .ourTeam .card {
 	border: none;
 	border-bottom: 8px solid var(--primary-color);
-    min-height: 345px;
 }
 
 .ourTeam .card img {
@@ -346,9 +353,7 @@ footer {
 }
 
 /* _________________contact us____________________ */
-.contactUs .card {
-    min-height: 190px;
-}
+
 .contactUs .card img {
 	width: 50px;
 	align-self: anchor-center;
@@ -388,6 +393,7 @@ footer {
 }
 .service-name-card h1{
     font-size: 22px;
+    font-weight: bold;
 }
 /* card styling */
 .service-name-card .card {
@@ -404,6 +410,7 @@ footer {
 }
 .service-image-container img{
     transform: scaleX(-1);
+    height: 400px;
 }
 .bg-primary{
     background-color:var(--primary-color) !important;
@@ -411,6 +418,7 @@ footer {
 .about-service h2{
     color:var(--secondary-color);
     font-size: 24px;
+    font-weight: bold;
 }
 .about-service .doctor-card{
     max-height: 320px;
@@ -524,6 +532,7 @@ footer {
 }
 .doctor-personal-data h1{
     font-size: 30px;
+    font-weight: bold;
 }
 
 .doctor-personal-data h2{
@@ -540,31 +549,40 @@ footer {
 /* ===========================
         About us
 ===============================*/
-.vm-container .card{
-    min-height: 330px;
-}
-
 .vm-container .card h2{
     font-size: 1.5rem;
     line-height: 2.3;
+    font-weight: bold;
 
 }
 .our-story h2{
     color:var(--secondary-color);
+    font-weight: bold;
 }
 .our-story .card{
     text-align: center;
-    min-height: 144px;
+    /* min-height: 144px; */
 }
 .our-story .card h2{
     color:var(--secondary-color);
     font-size: 26px;
+    font-weight: bold;
 }
 .our-story .card p{
     font-size: 18px;
 }
+.our-values h2{
+     font-size: 28px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2.29;
+  letter-spacing: normal;
+  text-align: center;
+  color: #11b3cf;
+  font-weight: bold;
+}
 .our-values .card{
-    min-height: 210px;
+    /* min-height: 210px; */
     place-content: center;
     margin-bottom: 10px;
     border-radius:1rem;
@@ -584,6 +602,7 @@ footer {
 ==================================*/
 .contact-us h1{
     color:var(--secondary-color);
+    font-weight: bold;
 }
 .contact-us .contact-methods img{
     width: 50px;
@@ -599,6 +618,14 @@ footer {
     color:var(--primary-color);
 }
 .form-control::placeholder {
+    color: #aaaaaa !important;
+    opacity: 1;
+    text-align: left;
+}
+.booking h2{
+    font-weight: bold;
+}
+.booking form .form-control::placeholder {
     color: #aaaaaa !important;
     opacity: 1;
     text-align: left;
@@ -722,7 +749,7 @@ z-index: 1055;
 	background: none;
 	border: 0;
 	color: var(--primary-color);
-	/* font-weight: 600; */
+	font-weight: bold;
 	width: 100%;
 	text-align: left;
 	padding: 0;
@@ -929,5 +956,8 @@ footer .list-unstyled {
 }
 .about-service .technique-card {
     min-height: 300px;
+}
+.service-image-container img{
+    height: 400px;
 }
 }

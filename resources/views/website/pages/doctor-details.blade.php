@@ -1,15 +1,16 @@
 @extends('layouts.website')
-@section('title', 'Doctors - Alforsan Hospital')
 @php
 $local=app()->getLocale();
 // dd($doctor);
 @endphp
+@section('title', $doctor->{'name_'.$local} . ' - Alforsan Hospital')
+
 @section('content')
 <section class="doctor-personal-data  py-5 mt-5 bg-white">
     <div class="container mt-4">
         <div class="row">
             <div class="text-center col-md-3">
-                <img src="{{ asset('images/doctor_photos/' . ($doctor->image ? $doctor->image : 'alternative.jpg')) }}" class="rounded mb-3">
+                <img src="{{ asset('images/doctor_photos/' . ($doctor->image ? $doctor->image : 'alternative.jpg')) }}" class="rounded mb-3 w-100">
             </div>
             <div class="col-md-9 align-content-center">
                 <h1 class="lh-lg">{{ $local=='ar'?'د. ':'Dr. ' }}{{ $doctor->{'name_'.$local} }}</h1>

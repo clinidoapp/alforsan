@@ -1,5 +1,5 @@
 @extends('layouts.website')
-@section('title', 'About Us - Alforsan Hospital')
+@section('title', __('words.thank you title') . ' - Alforsan Hospital')
 @section('content')
 <section class="thank-you py-5 mt-5 bg-light-blue">
    <div class="container mt-4">
