@@ -492,6 +492,7 @@ footer {
 .service-name-card h1{
     font-size: 22px;
     font-weight: bold;
+    margin-right: 20px;
 }
 .service-image-container{
         text-align: left;
@@ -531,6 +532,7 @@ footer {
 .service-faq .card h2{
     color:var(--secondary-color);
     font-size: 1.75rem;
+    font-weight: bold;
 }
 .accordion {
     max-width: 600px;
@@ -986,6 +988,9 @@ footer .list-unstyled {
 }
 .about-service .technique-card {
     min-height: 300px;
+}
+.service-image-container{
+    padding-left: 1rem;
 }
 .service-image-container img{
     height: 300px;
