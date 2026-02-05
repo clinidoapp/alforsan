@@ -17,10 +17,10 @@
                 <button class="footer-toggle" data-bs-toggle="collapse" data-bs-target="#footerLinks"> {{__('words.Quick links')}}</button>
 
                 <ul id="footerLinks" class="list-unstyled collapse d-md-block">
-                    <li><a href="#" class="text-dark text-decoration-none">{{__('words.home')}}</a></li>
-                    <li><a href="#" class="text-dark text-decoration-none">{{__('words.about_us')}}</a></li>
-                    <li><a href="#" class="text-dark text-decoration-none">{{__('words.doctors')}}</a></li>
-                    <li><a href="#" class="text-dark text-decoration-none">{{__('words.Call us')}}</a></li>
+                    <li><a href="{{ url('/') }}" class="text-dark text-decoration-none">{{__('words.home')}}</a></li>
+                    <li><a href="{{ url('/about') }}" class="text-dark text-decoration-none">{{__('words.about_us')}}</a></li>
+                    <li><a href="{{ url('/doctors') }}" class="text-dark text-decoration-none">{{__('words.doctors')}}</a></li>
+                    <li><a href="{{ url('/contact') }}" class="text-dark text-decoration-none">{{__('words.Call us')}}</a></li>
                 </ul>
             </div>
 
