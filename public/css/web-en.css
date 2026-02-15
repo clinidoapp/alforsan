@@ -142,12 +142,20 @@ footer {
 	position: relative;
 	height: 60vh;
     margin-top: 100px;
-	background-image: url('../images/bg-header-1@3x.webp');
+    overflow: hidden;
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }
-
+.home-header video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: -1;
+    transform: scaleX(-1);
+}
 .home-header .overlay {
 	position: absolute;
 	inset: 0;
@@ -189,6 +197,7 @@ footer {
 
 .counters .card h2 {
 	font-size: 22px;
+    font-weight: bold;
 
 }
 
@@ -217,7 +226,7 @@ footer {
 }
 
 .services .card h3 {
-	font-size: 14px;
+	font-size: 18px;
     margin: 3px 0;
 }
 
@@ -270,6 +279,7 @@ footer {
 	letter-spacing: normal;
 	text-align: center;
 	color: #32519b;
+    font-weight: bold;
 }
 
 .why_choose_us .card .why_us_feature_description {
@@ -303,6 +313,7 @@ footer {
 	letter-spacing: normal;
 	text-align: center;
 	color: #32519b;
+    font-weight: bold;
 }
 
 .ourTeam .card .doctor-data .about-doctor {
@@ -368,6 +379,7 @@ footer {
 	text-align: center;
 	color: #32519b;
 	margin-top: 14px;
+    font-weight: bold;
 }
 
 .contactUs .card p {
@@ -512,6 +524,10 @@ footer {
 .search-box.ltr .btn {
     border-radius: 0 8px 8px 0;
 }
+.doctor-card{
+    border: none !important;
+    border-bottom: 8px solid var(--primary-color) !important;
+}
 .doctor-card .doctorimg{
         height: 250px;
     width: 100%;
@@ -591,6 +607,7 @@ footer {
 }
 .our-values .card h4{
     font-size: 20px;
+    font-weight: bold;
 }
 .our-values .card p{
     font-size: 18px;
@@ -607,7 +624,7 @@ footer {
     font-weight: bold;
 }
 .contact-us .contact-methods img{
-    width: 50px;
+    width: 40px;
     margin-right: 20px;
 }
 .contact-us .contact-methods h2{
@@ -634,6 +651,10 @@ footer {
 }
 .booking form .form-control, .booking form .form-select{
     height: 56px !important;
+}
+.booking form label i{
+    font-size: 10px !important;
+    font-weight: normal !important;
 }
 /* intltelinput libarary start*/
 .iti {
@@ -850,6 +871,9 @@ footer .list-unstyled {
 		padding-right: 0 !important;
 		padding-left: 36px;
 	}
+    .navbar-toggler-icon{
+    filter: brightness(0) invert(1);
+}
 
 	.btn-outline-primary.w-100.selected {
 		background: #f5f5f5;
@@ -892,9 +916,8 @@ footer .list-unstyled {
 
 	.home-header {
 		text-align: center;
-		background-image: url(../images/bg@2x.webp);
 		margin-top: 94px;
-		height: 40vh;
+		height: 62vh;
 	}
 
 	.home-header h1 {

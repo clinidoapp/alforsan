@@ -10,13 +10,13 @@
        @if($services->count() > 0)
             <div class="text-center">
                 <h1>{{ __('words.Services-page-title') }}</h1>
-                <p>{{ __('words.Services-page-subtitle') }}</p>
+                <p class="fs-5">{{ __('words.Services-page-subtitle') }}</p>
             </div>
             <div class="row">
                 @foreach($services as $service)
-                <div class="col-md-2 col-6">
+                <div class="col-md-2 col-6 mb-3">
                     <a href="{{ route('serviceDetails', $service->slug) }}" class="text-decoration-none">
-                    <div class="card mb-3 p-2 text-center">
+                    <div class="card p-2 text-center h-100">
                     <img src="{{ asset('images/services_icons/'.$service->icon) }}">
                     <h3>{{ $service->{'name_'.$local} }} </h3>
                     </div>

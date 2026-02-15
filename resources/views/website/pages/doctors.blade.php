@@ -35,9 +35,9 @@
     </form>
       <div class="row">
          @foreach($doctors as $doctor)
-         <div class="col-md-3 col-12">
+         <div class="col-md-3 col-12  mb-3">
             <a href="{{ route('doctorDetails', $doctor->id) }}" class="text-decoration-none">
-            <div class="card mb-3 text-center doctor-card">
+            <div class="card text-center doctor-card h-100">
                <img class="w-100 rounded-top doctorimg" src="{{ asset('images/doctor_photos/' . ($doctor->image ? $doctor->image : 'alternative.jpg')) }}">
                 <div class="p-3 doctor-data fs-6">
                     <h3 class="doctor_name">{{ $doctor->{'name_'.$local} }}</h3>

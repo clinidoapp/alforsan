@@ -9,15 +9,15 @@
          <h1>{{ __('words.about_us title') }}</h1>
       </div>
       <div class="row py-3 vm-container">
-        <div class="col-lg-6 col-md-12">
-            <div class="h-100 card px-4 py-3 mb-3">
+        <div class="col-lg-6 col-md-12  mb-3">
+            <div class="h-100 card px-4 py-3">
                 <img src="{{ asset('images/vision@2x.webp') }}">
                 <h2>{{ __('words.our vision') }}</h2>
                 <p class="text-center">{{ __('words.our vision text') }}</p>
             </div>
         </div>
-        <div class="col-lg-6 col-md-12">
-            <div class="h-100 card px-4 py-3 mb-3">
+        <div class="col-lg-6 col-md-12  mb-3">
+            <div class="h-100 card px-4 py-3">
                 <img src="{{ asset('images/mission@2x.webp') }}">
                 <h2>{{ __('words.our mission') }}</h2>
                 <p class="text-center">{{ __('words.our mission text') }}</p>
@@ -33,19 +33,19 @@
                 <h2>{{{__('words.our story')}}}</h2>
                 <p>{{ __('words.our story text') }}</p>
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-4 mb-3">
                         <div class="card h-100 p-3 bg-light-blue">
-                            <h2>+15</h2>
+                            <h2>+13</h2>
                             <p>{{ __('words.experience') }}</p>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-4 mb-3">
                         <div class="card h-100 p-3 bg-light-blue">
                             <h2>+50K</h2>
                             <p>{{ __('words.Happy patient') }}</p>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-4 mb-3">
                         <div class="card h-100 p-3 bg-light-blue">
                             <h2>+100</h2>
                             <p>{{ __('words.Expert doctors') }}</p>

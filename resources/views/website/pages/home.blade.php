@@ -5,7 +5,11 @@
     $local=app()->getLocale();
 @endphp
 <section class="home-header">
-   <div class="overlay"></div>
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="{{ asset('images/video.mp4') }}" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+
    <div class="container h-100">
       <div class="row h-100 align-items-center text-center">
          <div class=" text-white">
@@ -35,7 +39,7 @@
          <div class="col-lg-3 col-6">
             <div class="text-center card mb-2 p-2 rounded-2">
                <img src="{{ asset('images/counters/years@2x.webp') }}"/>
-               <h2>+15</h2>
+               <h2>+13</h2>
                <span>{{ __('words.experience') }}</span>
             </div>
          </div>
