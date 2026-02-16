@@ -530,12 +530,7 @@ footer {
     max-height: 320px;
     border-bottom:10px solid var(--primary-color);
 }
-.about-service .symptom-card{
-    min-height: 160px;
-}
-.about-service .technique-card{
-    min-height: 320px;
-}
+
 .about-service .doctor-card img{
     height: 190px;
 }
@@ -890,129 +885,134 @@ footer .list-unstyled {
 		display: none;
 	}
 }
+/* iPad & iPad Air (portrait + landscape) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Your CSS here */
+.navbar-brand{
+    padding: 6px 30px 12px 60px;
+}
+.navbar-expand-md .navbar-nav{
+    padding-right: 4px;
+}
+.nav-item{
+    margin: 4px;
+}
+.home-header{
+    height: 40vh;
+}
+}
 
 
-@media (max-width: 768px) {
+/* iPad + Mobile */
+@media (max-width: 767px) {
+
+    /* ========== NAVBAR STRUCTURE ========== */
     .btn-outline-primary.w-100.selected {
         background: #f5f5f5;
         border: none;
+        font-weight: bold;
         color: #000;
-        font-weight: 600;
+        }
+    .nav_custome {
+        width: 100%;
+        flex-direction: column;
     }
 
-    .small-navbar .d-flex.justify-content-between.w-100{
+    .dm-flex {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar-brand {
+        padding: 6px 20px 12px 60px;
+        display: inline-block;
+		clip-path: polygon(70px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 70px);
+    }
+
+    /* Collapse menu full white background */
+    #mainNavbar {
+        background: #fff;
+        padding: 15px 0;
+        border-top: 1px solid #eee;
+    }
+
+    .nav-item {
+        margin: 8px 0;
+    }
+
+    .nav-item .nav-link {
+        color: #000 !important;
+        font-size: 16px;
+    }
+
+    .nav-item .nav-link.active {
+        color: var(--primary-color) !important;
+    }
+
+    /* ========== TOGGLER FIX ========== */
+
+    .navbar-toggler {
+        border: none;
+        margin: 10px;
+        box-shadow: none;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+
+    .navbar-toggler-icon {
+        filter: brightness(0) invert(1);
+    }
+
+    /* ========== TOP SMALL NAVBAR ========== */
+
+    .small-navbar .d-flex.justify-content-between.w-100 {
         font-size: 12px !important;
     }
-    .main-navbar{
-        margin-top: 26px;
+
+    .main-navbar {
+        margin-top: 25px; /* fix overlap with fixed-top */
     }
-	.nav_custome {
-		width: 100%;
-		color: var(--primary-color) !important;
-	}
 
-	.nav_custome #mainNavbar {
-		background: #fff;
-		color: var(--primary-color) !important;
-	}
-.navbar-toggler-icon{
-    filter: brightness(0) invert(1);
-}
-	.nav-item .nav-link {
-		color: #000;
-	}
+    /* ========== HOME HEADER ========== */
 
-	.navbar-toggler {
-		float: inline-end;
-		margin: 10px;
-		color: #fff;
-	}
+    .home-header {
+        text-align: center;
+        margin-top: 96px;
+    }
 
-	.navbar-brand {
-		font-weight: 700;
-		background: #fff;
-		margin: 0px;
-		padding: 6px 30px 12px 70px;
-		clip-path: polygon(70px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 70px);
-		display: inline-block;
-	}
-
-	.home-header {
-		text-align: center;
-		margin-top: 96px;
-	}
-
-	.home-header h1 {
-		font-size: 2rem;
+    .home-header h1 {
+        font-size: 2rem;
         line-height: 1.6;
-	}
+    }
 
-	.home-header p {
-		padding: 0;
-		font-size: 1rem;
-	}
+    .home-header p {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
 
-	.why_choose_us h1,
-	.ourTeam h1,
-	.Testimonials h1,
-	.contactUs h1,
-	.services h1 {
-		font-size: 20px;
-		line-height: 1.5;
-	}
+    /* ========== SERVICES & DOCTORS SLIDER STYLE ========== */
 
-	.why_choose_us p,
-	.ourTeam p,
-	.Testimonials p,
-	.contactUs p {
-		font-size: 16px;
-	}
+    .services-row,
+    .doctors_row {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 
-	.services-row,
-	.doctors_row {
-		flex-wrap: nowrap;
-		overflow-x: auto;
-		-webkit-overflow-scrolling: touch;
-	}
+    .services-row > [class*="col-"],
+    .doctors_row > [class*="col-"] {
+        flex: 0 0 auto;
+        width: 70%;
+        max-width: 70%;
+    }
 
-	.services-row>[class*="col-"],
-	.doctors_row>[class*="col-"] {
-		flex: 0 0 auto;
-		width: 70%;
-		max-width: 70%;
-	}
+    .services-row::-webkit-scrollbar,
+    .doctors_row::-webkit-scrollbar {
+        display: none;
+    }
 
-	.services-row::-webkit-scrollbar,
-	.doctors_row::-webkit-scrollbar {
-		display: none;
-	}
-
-	.why_choose_us .card {
-		min-height: 232px;
-	}
-.counters .card h2{
-    font-size: 18px;
-}
-.counters .card span{
-    font-size: 14px;
-}
-.about-service .doctor-card{
-    max-height:fit-content;
-}
-.service-name-card .card{
-    max-width: 50%;
-    font-size: 16px;
-}
-.about-service .symptom-card {
-    min-height: 132px;
-}
-.about-service .technique-card {
-    min-height: 300px;
-}
-.service-image-container{
-    padding-left: 1rem;
-}
-.service-image-container img{
-    height: 300px;
-}
 }

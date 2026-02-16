@@ -2,7 +2,7 @@
     $currentLocale = app()->getLocale();
 @endphp
 <!-- Top Navbar: Contacts & Social -->
-<nav class="navbar navbar-expand-lg navbar-dark py-1 small-navbar fixed-top">
+<nav class="navbar navbar-expand-md navbar-dark py-1 small-navbar fixed-top">
    <div class="container">
       <div class="d-flex justify-content-between w-100">
           <div class="social-links">
@@ -17,10 +17,10 @@
       </div>
    </div>
 </nav>
-<nav class="navbar navbar-expand-lg navbar-light main-navbar fixed-top">
-   <div class="d-block d-lg-flex nav_custome w-100">
+<nav class="navbar navbar-expand-md navbar-light main-navbar fixed-top">
+   <div class="d-block d-md-flex nav_custome w-100">
       <!-- Logo -->
-      <div class="dm-flex">
+      <div class="d-flex align-items-center justify-content-between dm-flex">
          <a class="navbar-brand" href="{{ url('/') }}">
          <img src="{{ asset('images/logo@3x.webp') }}" alt="Logo" height="50">
          </a>

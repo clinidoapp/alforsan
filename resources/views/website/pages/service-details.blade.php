@@ -33,7 +33,7 @@ $local=app()->getLocale();
             <div class="row g-4">
                @foreach ($result->symptoms as $symptom)
                <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card symptom-card p-3 mb-2">
+                <div class="card h-100 symptom-card p-3 mb-2">
                   <h3>{{ $symptom->{'title_'.$local} }}</h3>
                   <p>{{ $symptom->{'description_'.$local} }}</p>
                </div>
@@ -47,7 +47,7 @@ $local=app()->getLocale();
             <div class="row g-4">
                @foreach ($result->techniques as $technique)
                <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="card rounded-3 technique-card">
+                <div class="card h-100 rounded-3 technique-card">
                   <div class="card-tit bg-primary p-3 text-white rounded-top-3">
                      <p class="m-0">{{ $technique->{'title_'.$local} }}</p>
                   </div>
@@ -73,7 +73,7 @@ $local=app()->getLocale();
                @foreach($result->doctors as $doctor)
                <div class="col-lg-3 col-md-6 col-sm-12">
                   <a href="{{ route('doctorDetails', $doctor->id) }}" class="text-decoration-none">
-                     <div class="card doctor-card mb-3 text-center">
+                     <div class="card h-100 doctor-card mb-3 text-center">
                         <img class="w-100 rounded-top" src="{{ asset('images/doctor_photos/' . ($doctor->image ? $doctor->image : 'alternative.jpg')) }}">
                         <div class="p-3 doctor-data fs-6">
                            <h3 class="doctor_name">{{ $doctor->{'name_'.$local} }}</h3>

@@ -228,6 +228,8 @@ footer {
 .services .card h3 {
 	font-size: 18px;
     margin: 3px 0;
+    font-weight: bold;
+
 }
 
 /* _________why choose us section___ */
@@ -437,12 +439,7 @@ footer {
     max-height: 320px;
     border-bottom:10px solid var(--primary-color);
 }
-.about-service .symptom-card{
-    min-height: 160px;
-}
-.about-service .technique-card{
-    min-height: 320px;
-}
+
 .about-service .doctor-card img{
     height: 190px;
 }
@@ -865,8 +862,23 @@ footer .list-unstyled {
 	}
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Your CSS here */
+    .navbar-brand{
+        padding: 6px 70px 12px 30px;
+    }
+    .navbar-expand-md .navbar-nav{
+        padding-right: 4px;
+    }
+    .nav-item{
+        margin: 4px;
+    }
+    .home-header{
+        height: 40vh;
+    }
+}
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 	.navbar-nav {
 		padding-right: 0 !important;
 		padding-left: 36px;
