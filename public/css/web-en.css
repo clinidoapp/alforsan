@@ -988,12 +988,7 @@ footer .list-unstyled {
     max-width: 50%;
     font-size: 16px;
 }
-.about-service .symptom-card {
-    min-height: 132px;
-}
-.about-service .technique-card {
-    min-height: 300px;
-}
+
 .service-image-container{
     padding-right: 1rem;
 }
