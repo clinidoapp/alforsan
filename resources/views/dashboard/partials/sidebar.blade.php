@@ -131,6 +131,12 @@
          Settings
          </a>
       </li>
+        <li class="nav-item rounded-2 m-2">
+         <a href="{{route('about-us')}}" class="nav-link {{ Request::is(patterns: 'admin/about-us*') ? 'active' : '' }}">
+         <img src="{{ asset('images/dashboard-icons/setting.webp') }}">
+         About Us
+         </a>
+      </li>
       @endif
     @if(\App\Helpers\Permissions::hasPermission('view_page') )
 

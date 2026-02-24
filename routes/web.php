@@ -13,6 +13,7 @@ use App\Http\Controllers\website\ContactPageController;
 use App\Http\Controllers\website\DoctorsPageController;
 use App\Http\Controllers\website\HomePageController;
 use App\Http\Controllers\website\ServicesPageController;
+use App\Http\Controllers\dashboard\AboutUsController;
 use App\Http\Middleware\AuthMiddleware;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -117,6 +118,8 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     /*** Settings ***/
     Route::get('setting' , [SettingsController::class, 'setting'])->middleware(['permission:read_settings'])->name('setting');
     Route::post('setSetting' , [SettingsController::class, 'setSetting'])->middleware(['permission:update_settings'])->name('set-setting');
+
+    Route::get('about-us' , [AboutUsController::class, 'getAboutUs'])->middleware(['permission:read_settings'])->name('about-us');
 
     /*** Booking Requests ***/
     Route::get('booking-requests' ,[BookingController::class, 'listBookingRequests'])->middleware(['permission:read_booking_request'])->name('booking-requests');
