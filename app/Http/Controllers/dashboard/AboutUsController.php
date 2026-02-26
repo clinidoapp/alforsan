@@ -61,7 +61,7 @@ class AboutUsController extends Controller
 
                 'updated_at' => now(),
             ]);
-        return route('about-us');
+        return redirect()->route('about-us');
     }
 
 }
