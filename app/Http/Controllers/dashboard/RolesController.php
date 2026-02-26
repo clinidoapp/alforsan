@@ -70,27 +70,6 @@ class RolesController extends Controller
             })
             ->toArray();
 
-        /*
-             // dd($roles, $permissions , $rolePermissions );
-
-        $query = DB::table('roles')
-            ->leftJoin('user_role', 'roles.id', '=', 'user_role.role_id')
-
-            ->select('roles.id', 'roles.name' ,
-                DB::raw('COUNT(DISTINCT user_role.user_id) as users_count')
-            )
-            ->groupBy('roles.id', 'roles.name')
-            ->orderBy('roles.name');
-
-        if ($request->filled('role_name')) {
-            $query->where('roles.name', 'like', '%' . $request->role_name . '%');
-        }
-        if ($request->filled('role_id')) {
-            $query->where('roles.id', $request->role_id);
-        }
-
-        $roles = $query->paginate(10);*/
-
         return view('dashboard.pages.roles.list', compact('roles' , 'permissions' , 'rolePermissions'));
     }
     public function roleDetails(Request $request ,  $id){
@@ -195,32 +174,6 @@ class RolesController extends Controller
                 }
             }
 
-                //////////////////////////////
-           /* $baseSlug = Str::slug($data['name']);
-            if (!$id) {
-                $roleId = DB::table('roles')->insertGetId([
-                    'name' => $data['name'],
-                    'slug' => $baseSlug,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
-            }else {
-                DB::table('roles')->where('id', $id)->update([
-                    'name' => $data['name'],
-                    'slug' => $baseSlug,
-                    'updated_at' => now(),
-                ]);
-                DB::table('role_permissions')->where('role_id', $id)->delete();
-                $roleId = $id;
-            }
-            $rows = array_map(function ($permissionId) use ($roleId) {
-                return [
-                    'role_id' => $roleId,
-                    'permission_id' => $permissionId,
-                    'created_at' => now(),
-                ];
-            }, $data['permissions_ids']);
-            DB::table('role_permissions')->insert($rows);*/
         });
         return redirect()->route('roles-list')->with('success', 'Permissions updated successfully');
    }
@@ -235,18 +188,7 @@ class RolesController extends Controller
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
-            /*  if (!$id) {
 
-              }
-            /*else {
-                  DB::table('roles')->where('id', $id)->update([
-                      'name' => $data['name'],
-                      'slug' => $baseSlug,
-                      'updated_at' => now(),
-                  ]);
-                  DB::table('role_permissions')->where('role_id', $id)->delete();
-                  $roleId = $id;
-              }*/
             $rows = array_map(function ($permissionId) use ($roleId) {
                 return [
                     'role_id' => $roleId,

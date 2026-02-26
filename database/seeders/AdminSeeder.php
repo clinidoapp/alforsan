@@ -132,6 +132,7 @@ class AdminSeeder extends Seeder
             ['name' => 'Booking Services Management', 'slug' => 'booking_services_management'],
 
             ['name' => 'Settings Management', 'slug' => 'settings_management'],
+            ['name' => 'About Us Management', 'slug' => 'about_us_management'],
 
             ['name' => 'Admin Management', 'slug' => 'admin_management'],
 
@@ -191,6 +192,10 @@ class AdminSeeder extends Seeder
             /*** Settings Management ***/
             ['name' => 'Read Settings',   'slug' => 'read_settings',   'category_slug' => 'settings_management'],
             ['name' => 'Update Settings', 'slug' => 'update_settings', 'category_slug' => 'settings_management'],
+
+            /*** About Us Management ***/
+            ['name' => 'Read About Us',   'slug' => 'read_about_us',   'category_slug' => 'about_us_management'],
+            ['name' => 'Update About Us', 'slug' => 'update_about_us', 'category_slug' => 'about_us_management'],
 
             /*** Admin Management ***/
             ['name' => 'Create Admin', 'slug' => 'create_admin', 'category_slug' => 'admin_management'],

@@ -119,7 +119,9 @@ Route::middleware([AuthMiddleware::class])->prefix('admin')->group(function () {
     Route::get('setting' , [SettingsController::class, 'setting'])->middleware(['permission:read_settings'])->name('setting');
     Route::post('setSetting' , [SettingsController::class, 'setSetting'])->middleware(['permission:update_settings'])->name('set-setting');
 
-    Route::get('about-us' , [AboutUsController::class, 'getAboutUs'])->middleware(['permission:read_settings'])->name('about-us');
+    /*** Pages ***/
+    Route::get('about-us' , [AboutUsController::class, 'getAboutUs'])->middleware(['permission:read_about_us'])->name('about-us');
+    Route::post('updateAboutUs' , [AboutUsController::class, 'updateAboutUsPage'])->middleware(['permission:update_about_us'])->name('set-about-us');
 
     /*** Booking Requests ***/
     Route::get('booking-requests' ,[BookingController::class, 'listBookingRequests'])->middleware(['permission:read_booking_request'])->name('booking-requests');

@@ -16,7 +16,7 @@ class PermissionsController extends Controller
             ->distinct()
             ->orderBy('category')
             ->paginate(3);
-      //  dd($categories->links());
+
         $permissions = collect($categories->items())->map(function ($item) {
             return [
                 'category' => $item->category,
@@ -26,20 +26,5 @@ class PermissionsController extends Controller
                     ->get(['id', 'name', 'slug']),
             ];
         });
-
-/*
-
-        dd($categories);
-        $data = [
-        'pagination' => [
-        'current_page' => $categories->currentPage(),
-        'last_page' => $categories->lastPage(),
-        'per_page' => $categories->perPage(),
-        'total' => $categories->total(),
-            ]];
-        dd($data);
-*/
-
- //       return view('users.pages-permission', compact('permissions'));
     }
 }
