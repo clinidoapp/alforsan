@@ -18,7 +18,6 @@ class ContactPageController extends Controller
             ->get();
         return view('website.pages.contact' ,  compact('services'));
     }
-
     public function StoreRequest(StoreBookRequest $request){
 
         $data = $request->validated();
@@ -55,5 +54,9 @@ class ContactPageController extends Controller
         });
 
         return view('website.pages.thank-you' ,  compact('response'));
+    }
+    public function aboutContent(Request $request){
+        $about = DB::table('about_us')->first();
+        return view('website.pages.about' ,  compact('about'));
     }
 }

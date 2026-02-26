@@ -36,7 +36,7 @@ Route::post('/change-language', function (Request $request) {
 */
 //Route::view('/', 'website.pages.home');
 //Route::view('/services', 'website.pages.services');
-Route::view('/about', 'website.pages.about');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,7 +53,7 @@ Route::get('services/{slug}' , [ServicesPageController::class, 'serviceDetails']
 Route::get('doctors' , [DoctorsPageController::class, 'listDoctors']);
 Route::get('doctors/details/{id}' , [DoctorsPageController::class, 'doctorDetails'])->name('doctorDetails');
 Route::post('thank_you' , [ContactPageController::class, 'StoreRequest'])->name('StoreRequest');
-
+Route::get('/about',[ContactPageController::class, 'aboutContent'])->name('about');
 /**************** End Website **********************/
 
 
