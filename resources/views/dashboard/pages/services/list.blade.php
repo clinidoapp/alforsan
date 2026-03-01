@@ -52,7 +52,7 @@
                      <td>{{$service->id}}</td>
                      <td>{{$service->name_en}}</td>
                      <td>{{$service->name_ar}}</td>
-                     <td><img src="{{ asset('images/services_icons/'.$service->icon) }}"></td>
+                     <td><img src="{{ asset('images/services_icons/'.$service->icon) }}" class="w-25"></td>
                      <td class="py-2 text-center"><span class="w-100 rounded-pill badge bg-{{$service->status==1?'success':'danger'}}">{{$service->status==1?'Active':'InActive'}}</span></td>
                      <td>
                         @if(\App\Helpers\Permissions::hasPermission('read_service'))
