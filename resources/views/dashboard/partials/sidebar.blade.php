@@ -136,7 +136,7 @@
     @if(\App\Helpers\Permissions::hasPermission('read_about_us'))
       <li class="nav-item rounded-2 m-2">
          <a href="{{route('about-us')}}" class="nav-link {{ Request::is(patterns: 'admin/about-us*') ? 'active' : '' }}">
-         <img src="{{ asset('images/dashboard-icons/setting.webp') }}">
+         <img src="{{ asset('images/dashboard-icons/about-us.webp') }}">
          About Us
          </a>
       </li>
